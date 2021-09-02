@@ -94,7 +94,8 @@ namespace Developer_Tools
             this.buttonWordwrapConvert = new System.Windows.Forms.Button();
             this.textBoxWordwrapLength = new System.Windows.Forms.TextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.buttonStrinfFilterConvert = new System.Windows.Forms.Button();
+            this.textBoxStringFilterRemoveHEX = new System.Windows.Forms.TextBox();
+            this.buttonStringFilterConvert = new System.Windows.Forms.Button();
             this.checkBoxStringFilterRemoveHEX = new System.Windows.Forms.CheckBox();
             this.checkBoxStringFilterRemoveTab = new System.Windows.Forms.CheckBox();
             this.checkBoxStringFilterRemoveLF = new System.Windows.Forms.CheckBox();
@@ -533,7 +534,6 @@ namespace Developer_Tools
             this.label10 = new System.Windows.Forms.Label();
             this.saveJSONFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.openJSONFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.textBoxStringFilterRemoveHEX = new System.Windows.Forms.TextBox();
             this.menuStripMain.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -605,28 +605,28 @@ namespace Developer_Tools
             // createToolStripMenuItem
             // 
             this.createToolStripMenuItem.Name = "createToolStripMenuItem";
-            this.createToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.createToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
             this.createToolStripMenuItem.Text = "Create";
             this.createToolStripMenuItem.Click += new System.EventHandler(this.createToolStripMenuItem_Click);
             // 
             // loadToolStripMenuItem
             // 
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
             this.loadToolStripMenuItem.Text = "Load";
             this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // viewToolStripMenuItem
             // 
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            this.viewToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
             this.viewToolStripMenuItem.Text = "View";
             this.viewToolStripMenuItem.Click += new System.EventHandler(this.viewToolStripMenuItem_Click);
             // 
@@ -647,37 +647,37 @@ namespace Developer_Tools
             this.baudRateToolStripMenuItem,
             this.setupMultiPortToolStripMenuItem});
             this.serialToolStripMenuItem.Name = "serialToolStripMenuItem";
-            this.serialToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.serialToolStripMenuItem.Size = new System.Drawing.Size(102, 22);
             this.serialToolStripMenuItem.Text = "Serial";
             // 
             // connectToolStripMenuItem
             // 
             this.connectToolStripMenuItem.Name = "connectToolStripMenuItem";
-            this.connectToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.connectToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.connectToolStripMenuItem.Text = "Connect";
             // 
             // disconnectToolStripMenuItem
             // 
             this.disconnectToolStripMenuItem.Name = "disconnectToolStripMenuItem";
-            this.disconnectToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.disconnectToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.disconnectToolStripMenuItem.Text = "Disconnect";
             // 
             // cOMPORTToolStripMenuItem
             // 
             this.cOMPORTToolStripMenuItem.Name = "cOMPORTToolStripMenuItem";
-            this.cOMPORTToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cOMPORTToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.cOMPORTToolStripMenuItem.Text = "COMPORT";
             // 
             // baudRateToolStripMenuItem
             // 
             this.baudRateToolStripMenuItem.Name = "baudRateToolStripMenuItem";
-            this.baudRateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.baudRateToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.baudRateToolStripMenuItem.Text = "Setup Single Port";
             // 
             // setupMultiPortToolStripMenuItem
             // 
             this.setupMultiPortToolStripMenuItem.Name = "setupMultiPortToolStripMenuItem";
-            this.setupMultiPortToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.setupMultiPortToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.setupMultiPortToolStripMenuItem.Text = "Setup Multi Port";
             // 
             // logToolStripMenuItem
@@ -693,19 +693,19 @@ namespace Developer_Tools
             // openToolStripMenuItem1
             // 
             this.openToolStripMenuItem1.Name = "openToolStripMenuItem1";
-            this.openToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.openToolStripMenuItem1.Size = new System.Drawing.Size(114, 22);
             this.openToolStripMenuItem1.Text = "Open";
             // 
             // clearToolStripMenuItem
             // 
             this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
-            this.clearToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clearToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.clearToolStripMenuItem.Text = "Clear";
             // 
             // saveToolStripMenuItem1
             // 
             this.saveToolStripMenuItem1.Name = "saveToolStripMenuItem1";
-            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(114, 22);
             this.saveToolStripMenuItem1.Text = "Save As";
             // 
             // helpToolStripMenuItem
@@ -721,21 +721,21 @@ namespace Developer_Tools
             // webPageToolStripMenuItem
             // 
             this.webPageToolStripMenuItem.Name = "webPageToolStripMenuItem";
-            this.webPageToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.webPageToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.webPageToolStripMenuItem.Text = "Project Page";
             this.webPageToolStripMenuItem.Click += new System.EventHandler(this.webPageToolStripMenuItem_Click);
             // 
             // writeUsToolStripMenuItem
             // 
             this.writeUsToolStripMenuItem.Name = "writeUsToolStripMenuItem";
-            this.writeUsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.writeUsToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.writeUsToolStripMenuItem.Text = "Write Us";
             this.writeUsToolStripMenuItem.Click += new System.EventHandler(this.writeUsToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -1148,7 +1148,7 @@ namespace Developer_Tools
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.textBoxStringFilterRemoveHEX);
-            this.groupBox5.Controls.Add(this.buttonStrinfFilterConvert);
+            this.groupBox5.Controls.Add(this.buttonStringFilterConvert);
             this.groupBox5.Controls.Add(this.checkBoxStringFilterRemoveHEX);
             this.groupBox5.Controls.Add(this.checkBoxStringFilterRemoveTab);
             this.groupBox5.Controls.Add(this.checkBoxStringFilterRemoveLF);
@@ -1161,14 +1161,23 @@ namespace Developer_Tools
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "String Filter";
             // 
-            // buttonStrinfFilterConvert
+            // textBoxStringFilterRemoveHEX
             // 
-            this.buttonStrinfFilterConvert.Location = new System.Drawing.Point(6, 123);
-            this.buttonStrinfFilterConvert.Name = "buttonStrinfFilterConvert";
-            this.buttonStrinfFilterConvert.Size = new System.Drawing.Size(117, 35);
-            this.buttonStrinfFilterConvert.TabIndex = 8;
-            this.buttonStrinfFilterConvert.Text = "Convert";
-            this.buttonStrinfFilterConvert.UseVisualStyleBackColor = true;
+            this.textBoxStringFilterRemoveHEX.Enabled = false;
+            this.textBoxStringFilterRemoveHEX.Location = new System.Drawing.Point(107, 94);
+            this.textBoxStringFilterRemoveHEX.Name = "textBoxStringFilterRemoveHEX";
+            this.textBoxStringFilterRemoveHEX.Size = new System.Drawing.Size(23, 23);
+            this.textBoxStringFilterRemoveHEX.TabIndex = 9;
+            // 
+            // buttonStringFilterConvert
+            // 
+            this.buttonStringFilterConvert.Location = new System.Drawing.Point(6, 123);
+            this.buttonStringFilterConvert.Name = "buttonStringFilterConvert";
+            this.buttonStringFilterConvert.Size = new System.Drawing.Size(117, 35);
+            this.buttonStringFilterConvert.TabIndex = 8;
+            this.buttonStringFilterConvert.Text = "Convert";
+            this.buttonStringFilterConvert.UseVisualStyleBackColor = true;
+            this.buttonStringFilterConvert.Click += new System.EventHandler(this.buttonStringFilterConvert_Click);
             // 
             // checkBoxStringFilterRemoveHEX
             // 
@@ -5785,14 +5794,6 @@ namespace Developer_Tools
             this.label10.TabIndex = 0;
             this.label10.Text = "Bootloader";
             // 
-            // textBoxStringFilterRemoveHEX
-            // 
-            this.textBoxStringFilterRemoveHEX.Enabled = false;
-            this.textBoxStringFilterRemoveHEX.Location = new System.Drawing.Point(107, 94);
-            this.textBoxStringFilterRemoveHEX.Name = "textBoxStringFilterRemoveHEX";
-            this.textBoxStringFilterRemoveHEX.Size = new System.Drawing.Size(23, 23);
-            this.textBoxStringFilterRemoveHEX.TabIndex = 9;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -5933,7 +5934,7 @@ namespace Developer_Tools
         private System.Windows.Forms.RadioButton radiobuttonToolsOutputTextBoxHEX;
         private System.Windows.Forms.TextBox textBoxToolsOutputString;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.Button buttonStrinfFilterConvert;
+        private System.Windows.Forms.Button buttonStringFilterConvert;
         private System.Windows.Forms.CheckBox checkBoxStringFilterRemoveHEX;
         private System.Windows.Forms.CheckBox checkBoxStringFilterRemoveTab;
         private System.Windows.Forms.CheckBox checkBoxStringFilterRemoveLF;

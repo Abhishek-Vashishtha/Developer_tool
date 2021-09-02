@@ -163,5 +163,86 @@ namespace Developer_Tools
                 textBoxStringFilterRemoveHEX.Enabled = false;
             }
         }
+
+        private void buttonStringFilterConvert_Click(object sender, EventArgs e)
+        {
+            string input_string = String.Empty;
+            string input_format = String.Empty;
+            string output_string = String.Empty;
+            string output_format = String.Empty;
+
+            /* Verify valid input data */
+            if (radioButtonToolsInputTextBoxHEX.Checked == true)
+            {
+                if(DS_Functions.CheckValidHexString(textBoxToolsInputString.Text) == true)
+                {
+                    input_string = textBoxToolsInputString.Text;
+                    input_format = "HEX";
+                }
+            }
+            else if(radioButtonToolsInputTextBoxHEXSpaced.Checked == true)
+            {
+                if (DS_Functions.CheckValidHexString(DS_Functions.string_subtract(textBoxToolsInputString.Text," ","")) == true)
+                {
+                    input_string = DS_Functions.string_subtract(textBoxToolsInputString.Text, " ", "");
+                    input_format = "HEXSpaced";
+                }
+            }
+            else if (radioButtonToolsInputTextBoxASCII.Checked == true)
+            {
+                input_format = "ASCII";
+                input_string = textBoxToolsInputString.Text;
+            }
+
+
+            if (string.IsNullOrEmpty(input_string) == false)
+            {
+                /* calculating length of byte array */
+                int b_array_len = 0;
+                if (string.Equals(input_format, "ASCII") == true)
+                {
+                    b_array_len = input_string.Length;
+                }
+                else if (string.Equals(input_format, "HEX") == true || string.Equals(input_format, "HEXSpaced") == true)
+                {
+                    b_array_len = input_string.Length/2;
+                }
+                byte[] b_array = new byte[b_array_len];
+
+                /* converting into byte array */
+                if (string.Equals(input_format, "ASCII") == true)
+                {
+                    b_array = DS_Functions.ascii_string_to_byte_array(input_string);
+                }
+                else if (string.Equals(input_format, "HEX") == true || string.Equals(input_format, "HEXSpaced") == true)
+                {
+                    b_array = DS_Functions.hex_string_to_byte_array(input_string);
+                }
+
+                /* getting output formatter */
+                if (radiobuttonToolsOutputTextBoxHEX.Checked == true)
+                {
+                    input_format = "HEX";
+                    output_string = DS_Functions.byte_array_to_hex_string(b_array, b_array_len);
+                }
+                else if (radiobuttonToolsOutputTextBoxHEXSpaced.Checked == true)
+                {
+                    output_format = "HEXSpaced";
+                    output_string = DS_Functions.byte_array_to_hex_string(b_array, b_array_len);
+                    output_string = DS_Functions.string_insertor(output_string, " ", 2);
+                }
+                else if (radiobuttonToolsOutputTextBoxASCII.Checked == true)
+                {
+                    output_format = "ASCII";
+                    output_string = DS_Functions.byte_array_to_ascii_string(b_array, b_array_len);
+                }
+
+                textBoxToolsOutputString.Text = output_string;
+            }
+            else
+            {
+                MessageBox.Show("Invalid input String","Error");
+            }
+        }
     }
 }

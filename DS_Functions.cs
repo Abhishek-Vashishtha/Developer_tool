@@ -166,7 +166,8 @@ namespace Developer_Tools
 
         public static string byte_to_hex(byte b)
         {
-            string hex_string = b.ToString();
+            char c = byte_to_ascii_char(b);
+            string hex_string = ascii_char_to_hex(c);
             return hex_string;
         }
         public static string byte_array_to_hex_string(byte[] b_array, int b_array_len)        
@@ -218,6 +219,17 @@ namespace Developer_Tools
                 output_string += input_string.Substring(insert_len * i, insert_len);
                 output_string += str;
             }
+            return output_string;
+        }
+
+        public static string string_subtract(string input_string, char oldchar, char newchar)
+        {
+            string output_string = input_string.Replace(oldchar,newchar);
+            return output_string;
+        }
+        public static string string_subtract(string input_string, string oldstr, string newstr)
+        {
+            string output_string = input_string.Replace(oldstr, newstr);
             return output_string;
         }
 
