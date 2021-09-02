@@ -21,10 +21,10 @@ namespace Developer_Tools
             menuStripMain.ForeColor = Color.Blue;
            
             /* creating files at startup */
-            DS_Functions.startUpFilesChecking();
+            DS_App.startUpFilesChecking();
 
             /* Loading data from JSON */
-            DS_Functions.loadParametersFromJson();
+            DS_App.loadParametersFromJson();
         }
 
         private void createToolStripMenuItem_Click(object sender, EventArgs e)

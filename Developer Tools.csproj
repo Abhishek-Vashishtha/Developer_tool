@@ -62,7 +62,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DS_Functions.cs" />
+    <Compile Include="DS_App.cs" />
     <Compile Include="DS_JSON.cs" />
     <Compile Include="DS_TextFile.cs" />
     <Compile Include="Form1.cs">
