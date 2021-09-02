@@ -91,29 +91,29 @@ namespace Developer_Tools
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
-            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.buttonWordwrapConvert = new System.Windows.Forms.Button();
+            this.textBoxWordwrapLength = new System.Windows.Forms.TextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
-            this.checkBox6 = new System.Windows.Forms.CheckBox();
-            this.checkBox7 = new System.Windows.Forms.CheckBox();
-            this.checkBox8 = new System.Windows.Forms.CheckBox();
+            this.buttonStrinfFilterConvert = new System.Windows.Forms.Button();
+            this.checkBoxStringFilterRemoveHEX = new System.Windows.Forms.CheckBox();
+            this.checkBoxStringFilterRemoveTab = new System.Windows.Forms.CheckBox();
+            this.checkBoxStringFilterRemoveLF = new System.Windows.Forms.CheckBox();
+            this.checkBoxStringFilterRemoveCR = new System.Windows.Forms.CheckBox();
+            this.checkBoxStringFilterRemoveSpace = new System.Windows.Forms.CheckBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
-            this.radioButton6 = new System.Windows.Forms.RadioButton();
-            this.radioButton7 = new System.Windows.Forms.RadioButton();
-            this.radioButton8 = new System.Windows.Forms.RadioButton();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.buttonToolsOutputTextBoxCopy = new System.Windows.Forms.Button();
+            this.buttonToolsOutputTextBoxClear = new System.Windows.Forms.Button();
+            this.radiobuttonToolsOutputTextBoxHEXSpaced = new System.Windows.Forms.RadioButton();
+            this.radiobuttonToolsOutputTextBoxASCII = new System.Windows.Forms.RadioButton();
+            this.radiobuttonToolsOutputTextBoxHEX = new System.Windows.Forms.RadioButton();
+            this.textBoxToolsOutputString = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.buttonToolsInputTextBoxPaste = new System.Windows.Forms.Button();
+            this.buttonToolsInputTextBoxClear = new System.Windows.Forms.Button();
+            this.radioButtonToolsInputTextBoxHEXSpaced = new System.Windows.Forms.RadioButton();
+            this.radioButtonToolsInputTextBoxASCII = new System.Windows.Forms.RadioButton();
+            this.radioButtonToolsInputTextBoxHEX = new System.Windows.Forms.RadioButton();
+            this.textBoxToolsInputString = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabControl3 = new System.Windows.Forms.TabControl();
             this.tabPage5 = new System.Windows.Forms.TabPage();
@@ -533,6 +533,7 @@ namespace Developer_Tools
             this.label10 = new System.Windows.Forms.Label();
             this.saveJSONFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.openJSONFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.textBoxStringFilterRemoveHEX = new System.Windows.Forms.TextBox();
             this.menuStripMain.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -1108,8 +1109,8 @@ namespace Developer_Tools
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.label7);
-            this.groupBox3.Controls.Add(this.button5);
-            this.groupBox3.Controls.Add(this.textBox10);
+            this.groupBox3.Controls.Add(this.buttonWordwrapConvert);
+            this.groupBox3.Controls.Add(this.textBoxWordwrapLength);
             this.groupBox3.Location = new System.Drawing.Point(14, 380);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(136, 88);
@@ -1126,32 +1127,33 @@ namespace Developer_Tools
             this.label7.TabIndex = 9;
             this.label7.Text = "Length: ";
             // 
-            // button5
+            // buttonWordwrapConvert
             // 
-            this.button5.Location = new System.Drawing.Point(13, 50);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(117, 35);
-            this.button5.TabIndex = 8;
-            this.button5.Text = "Convert";
-            this.button5.UseVisualStyleBackColor = true;
+            this.buttonWordwrapConvert.Location = new System.Drawing.Point(13, 50);
+            this.buttonWordwrapConvert.Name = "buttonWordwrapConvert";
+            this.buttonWordwrapConvert.Size = new System.Drawing.Size(117, 35);
+            this.buttonWordwrapConvert.TabIndex = 8;
+            this.buttonWordwrapConvert.Text = "Convert";
+            this.buttonWordwrapConvert.UseVisualStyleBackColor = true;
             // 
-            // textBox10
+            // textBoxWordwrapLength
             // 
-            this.textBox10.Location = new System.Drawing.Point(86, 22);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(37, 23);
-            this.textBox10.TabIndex = 7;
-            this.textBox10.Text = "2";
-            this.textBox10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxWordwrapLength.Location = new System.Drawing.Point(86, 22);
+            this.textBoxWordwrapLength.Name = "textBoxWordwrapLength";
+            this.textBoxWordwrapLength.Size = new System.Drawing.Size(37, 23);
+            this.textBoxWordwrapLength.TabIndex = 7;
+            this.textBoxWordwrapLength.Text = "2";
+            this.textBoxWordwrapLength.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.button4);
-            this.groupBox5.Controls.Add(this.checkBox4);
-            this.groupBox5.Controls.Add(this.checkBox5);
-            this.groupBox5.Controls.Add(this.checkBox6);
-            this.groupBox5.Controls.Add(this.checkBox7);
-            this.groupBox5.Controls.Add(this.checkBox8);
+            this.groupBox5.Controls.Add(this.textBoxStringFilterRemoveHEX);
+            this.groupBox5.Controls.Add(this.buttonStrinfFilterConvert);
+            this.groupBox5.Controls.Add(this.checkBoxStringFilterRemoveHEX);
+            this.groupBox5.Controls.Add(this.checkBoxStringFilterRemoveTab);
+            this.groupBox5.Controls.Add(this.checkBoxStringFilterRemoveLF);
+            this.groupBox5.Controls.Add(this.checkBoxStringFilterRemoveCR);
+            this.groupBox5.Controls.Add(this.checkBoxStringFilterRemoveSpace);
             this.groupBox5.Location = new System.Drawing.Point(14, 214);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(136, 163);
@@ -1159,73 +1161,74 @@ namespace Developer_Tools
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "String Filter";
             // 
-            // button4
+            // buttonStrinfFilterConvert
             // 
-            this.button4.Location = new System.Drawing.Point(6, 123);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(117, 35);
-            this.button4.TabIndex = 8;
-            this.button4.Text = "Convert";
-            this.button4.UseVisualStyleBackColor = true;
+            this.buttonStrinfFilterConvert.Location = new System.Drawing.Point(6, 123);
+            this.buttonStrinfFilterConvert.Name = "buttonStrinfFilterConvert";
+            this.buttonStrinfFilterConvert.Size = new System.Drawing.Size(117, 35);
+            this.buttonStrinfFilterConvert.TabIndex = 8;
+            this.buttonStrinfFilterConvert.Text = "Convert";
+            this.buttonStrinfFilterConvert.UseVisualStyleBackColor = true;
             // 
-            // checkBox4
+            // checkBoxStringFilterRemoveHEX
             // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(6, 96);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(101, 21);
-            this.checkBox4.TabIndex = 6;
-            this.checkBox4.Text = "Remove HEX";
-            this.checkBox4.UseVisualStyleBackColor = true;
+            this.checkBoxStringFilterRemoveHEX.AutoSize = true;
+            this.checkBoxStringFilterRemoveHEX.Location = new System.Drawing.Point(6, 96);
+            this.checkBoxStringFilterRemoveHEX.Name = "checkBoxStringFilterRemoveHEX";
+            this.checkBoxStringFilterRemoveHEX.Size = new System.Drawing.Size(101, 21);
+            this.checkBoxStringFilterRemoveHEX.TabIndex = 6;
+            this.checkBoxStringFilterRemoveHEX.Text = "Remove HEX";
+            this.checkBoxStringFilterRemoveHEX.UseVisualStyleBackColor = true;
+            this.checkBoxStringFilterRemoveHEX.CheckedChanged += new System.EventHandler(this.checkBoxStringFilterRemoveHEX_CheckedChanged);
             // 
-            // checkBox5
+            // checkBoxStringFilterRemoveTab
             // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.Location = new System.Drawing.Point(6, 79);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(97, 21);
-            this.checkBox5.TabIndex = 5;
-            this.checkBox5.Text = "Remove Tab";
-            this.checkBox5.UseVisualStyleBackColor = true;
+            this.checkBoxStringFilterRemoveTab.AutoSize = true;
+            this.checkBoxStringFilterRemoveTab.Location = new System.Drawing.Point(6, 79);
+            this.checkBoxStringFilterRemoveTab.Name = "checkBoxStringFilterRemoveTab";
+            this.checkBoxStringFilterRemoveTab.Size = new System.Drawing.Size(97, 21);
+            this.checkBoxStringFilterRemoveTab.TabIndex = 5;
+            this.checkBoxStringFilterRemoveTab.Text = "Remove Tab";
+            this.checkBoxStringFilterRemoveTab.UseVisualStyleBackColor = true;
             // 
-            // checkBox6
+            // checkBoxStringFilterRemoveLF
             // 
-            this.checkBox6.AutoSize = true;
-            this.checkBox6.Location = new System.Drawing.Point(6, 60);
-            this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(91, 21);
-            this.checkBox6.TabIndex = 4;
-            this.checkBox6.Text = "Remove LF";
-            this.checkBox6.UseVisualStyleBackColor = true;
+            this.checkBoxStringFilterRemoveLF.AutoSize = true;
+            this.checkBoxStringFilterRemoveLF.Location = new System.Drawing.Point(6, 60);
+            this.checkBoxStringFilterRemoveLF.Name = "checkBoxStringFilterRemoveLF";
+            this.checkBoxStringFilterRemoveLF.Size = new System.Drawing.Size(91, 21);
+            this.checkBoxStringFilterRemoveLF.TabIndex = 4;
+            this.checkBoxStringFilterRemoveLF.Text = "Remove LF";
+            this.checkBoxStringFilterRemoveLF.UseVisualStyleBackColor = true;
             // 
-            // checkBox7
+            // checkBoxStringFilterRemoveCR
             // 
-            this.checkBox7.AutoSize = true;
-            this.checkBox7.Location = new System.Drawing.Point(6, 42);
-            this.checkBox7.Name = "checkBox7";
-            this.checkBox7.Size = new System.Drawing.Size(94, 21);
-            this.checkBox7.TabIndex = 3;
-            this.checkBox7.Text = "Remove CR";
-            this.checkBox7.UseVisualStyleBackColor = true;
+            this.checkBoxStringFilterRemoveCR.AutoSize = true;
+            this.checkBoxStringFilterRemoveCR.Location = new System.Drawing.Point(6, 42);
+            this.checkBoxStringFilterRemoveCR.Name = "checkBoxStringFilterRemoveCR";
+            this.checkBoxStringFilterRemoveCR.Size = new System.Drawing.Size(94, 21);
+            this.checkBoxStringFilterRemoveCR.TabIndex = 3;
+            this.checkBoxStringFilterRemoveCR.Text = "Remove CR";
+            this.checkBoxStringFilterRemoveCR.UseVisualStyleBackColor = true;
             // 
-            // checkBox8
+            // checkBoxStringFilterRemoveSpace
             // 
-            this.checkBox8.AutoSize = true;
-            this.checkBox8.Location = new System.Drawing.Point(6, 22);
-            this.checkBox8.Name = "checkBox8";
-            this.checkBox8.Size = new System.Drawing.Size(111, 21);
-            this.checkBox8.TabIndex = 2;
-            this.checkBox8.Text = "Remove Space";
-            this.checkBox8.UseVisualStyleBackColor = true;
+            this.checkBoxStringFilterRemoveSpace.AutoSize = true;
+            this.checkBoxStringFilterRemoveSpace.Location = new System.Drawing.Point(6, 22);
+            this.checkBoxStringFilterRemoveSpace.Name = "checkBoxStringFilterRemoveSpace";
+            this.checkBoxStringFilterRemoveSpace.Size = new System.Drawing.Size(111, 21);
+            this.checkBoxStringFilterRemoveSpace.TabIndex = 2;
+            this.checkBoxStringFilterRemoveSpace.Text = "Remove Space";
+            this.checkBoxStringFilterRemoveSpace.UseVisualStyleBackColor = true;
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.button10);
-            this.groupBox4.Controls.Add(this.button12);
-            this.groupBox4.Controls.Add(this.radioButton6);
-            this.groupBox4.Controls.Add(this.radioButton7);
-            this.groupBox4.Controls.Add(this.radioButton8);
-            this.groupBox4.Controls.Add(this.textBox8);
+            this.groupBox4.Controls.Add(this.buttonToolsOutputTextBoxCopy);
+            this.groupBox4.Controls.Add(this.buttonToolsOutputTextBoxClear);
+            this.groupBox4.Controls.Add(this.radiobuttonToolsOutputTextBoxHEXSpaced);
+            this.groupBox4.Controls.Add(this.radiobuttonToolsOutputTextBoxASCII);
+            this.groupBox4.Controls.Add(this.radiobuttonToolsOutputTextBoxHEX);
+            this.groupBox4.Controls.Add(this.textBoxToolsOutputString);
             this.groupBox4.Location = new System.Drawing.Point(641, 6);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(577, 209);
@@ -1233,72 +1236,74 @@ namespace Developer_Tools
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Output String";
             // 
-            // button10
+            // buttonToolsOutputTextBoxCopy
             // 
-            this.button10.Location = new System.Drawing.Point(472, 177);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(46, 23);
-            this.button10.TabIndex = 9;
-            this.button10.Text = "Copy";
-            this.button10.UseVisualStyleBackColor = true;
+            this.buttonToolsOutputTextBoxCopy.Location = new System.Drawing.Point(472, 177);
+            this.buttonToolsOutputTextBoxCopy.Name = "buttonToolsOutputTextBoxCopy";
+            this.buttonToolsOutputTextBoxCopy.Size = new System.Drawing.Size(46, 23);
+            this.buttonToolsOutputTextBoxCopy.TabIndex = 9;
+            this.buttonToolsOutputTextBoxCopy.Text = "Copy";
+            this.buttonToolsOutputTextBoxCopy.UseVisualStyleBackColor = true;
+            this.buttonToolsOutputTextBoxCopy.Click += new System.EventHandler(this.buttonToolsOutputTextBoxCopy_Click);
             // 
-            // button12
+            // buttonToolsOutputTextBoxClear
             // 
-            this.button12.Location = new System.Drawing.Point(520, 177);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(48, 23);
-            this.button12.TabIndex = 7;
-            this.button12.Text = "Clear";
-            this.button12.UseVisualStyleBackColor = true;
+            this.buttonToolsOutputTextBoxClear.Location = new System.Drawing.Point(520, 177);
+            this.buttonToolsOutputTextBoxClear.Name = "buttonToolsOutputTextBoxClear";
+            this.buttonToolsOutputTextBoxClear.Size = new System.Drawing.Size(48, 23);
+            this.buttonToolsOutputTextBoxClear.TabIndex = 7;
+            this.buttonToolsOutputTextBoxClear.Text = "Clear";
+            this.buttonToolsOutputTextBoxClear.UseVisualStyleBackColor = true;
+            this.buttonToolsOutputTextBoxClear.Click += new System.EventHandler(this.buttonToolsOutputTextBoxClear_Click);
             // 
-            // radioButton6
+            // radiobuttonToolsOutputTextBoxHEXSpaced
             // 
-            this.radioButton6.AutoSize = true;
-            this.radioButton6.Location = new System.Drawing.Point(129, 180);
-            this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(100, 21);
-            this.radioButton6.TabIndex = 3;
-            this.radioButton6.Text = "HEX SPACED";
-            this.radioButton6.UseVisualStyleBackColor = true;
+            this.radiobuttonToolsOutputTextBoxHEXSpaced.AutoSize = true;
+            this.radiobuttonToolsOutputTextBoxHEXSpaced.Location = new System.Drawing.Point(129, 180);
+            this.radiobuttonToolsOutputTextBoxHEXSpaced.Name = "radiobuttonToolsOutputTextBoxHEXSpaced";
+            this.radiobuttonToolsOutputTextBoxHEXSpaced.Size = new System.Drawing.Size(100, 21);
+            this.radiobuttonToolsOutputTextBoxHEXSpaced.TabIndex = 3;
+            this.radiobuttonToolsOutputTextBoxHEXSpaced.Text = "HEX SPACED";
+            this.radiobuttonToolsOutputTextBoxHEXSpaced.UseVisualStyleBackColor = true;
             // 
-            // radioButton7
+            // radiobuttonToolsOutputTextBoxASCII
             // 
-            this.radioButton7.AutoSize = true;
-            this.radioButton7.Checked = true;
-            this.radioButton7.Location = new System.Drawing.Point(6, 180);
-            this.radioButton7.Name = "radioButton7";
-            this.radioButton7.Size = new System.Drawing.Size(61, 21);
-            this.radioButton7.TabIndex = 2;
-            this.radioButton7.TabStop = true;
-            this.radioButton7.Text = "ASCII";
-            this.radioButton7.UseVisualStyleBackColor = true;
+            this.radiobuttonToolsOutputTextBoxASCII.AutoSize = true;
+            this.radiobuttonToolsOutputTextBoxASCII.Checked = true;
+            this.radiobuttonToolsOutputTextBoxASCII.Location = new System.Drawing.Point(6, 180);
+            this.radiobuttonToolsOutputTextBoxASCII.Name = "radiobuttonToolsOutputTextBoxASCII";
+            this.radiobuttonToolsOutputTextBoxASCII.Size = new System.Drawing.Size(61, 21);
+            this.radiobuttonToolsOutputTextBoxASCII.TabIndex = 2;
+            this.radiobuttonToolsOutputTextBoxASCII.TabStop = true;
+            this.radiobuttonToolsOutputTextBoxASCII.Text = "ASCII";
+            this.radiobuttonToolsOutputTextBoxASCII.UseVisualStyleBackColor = true;
             // 
-            // radioButton8
+            // radiobuttonToolsOutputTextBoxHEX
             // 
-            this.radioButton8.AutoSize = true;
-            this.radioButton8.Location = new System.Drawing.Point(73, 180);
-            this.radioButton8.Name = "radioButton8";
-            this.radioButton8.Size = new System.Drawing.Size(50, 21);
-            this.radioButton8.TabIndex = 1;
-            this.radioButton8.Text = "HEX";
-            this.radioButton8.UseVisualStyleBackColor = true;
+            this.radiobuttonToolsOutputTextBoxHEX.AutoSize = true;
+            this.radiobuttonToolsOutputTextBoxHEX.Location = new System.Drawing.Point(73, 180);
+            this.radiobuttonToolsOutputTextBoxHEX.Name = "radiobuttonToolsOutputTextBoxHEX";
+            this.radiobuttonToolsOutputTextBoxHEX.Size = new System.Drawing.Size(50, 21);
+            this.radiobuttonToolsOutputTextBoxHEX.TabIndex = 1;
+            this.radiobuttonToolsOutputTextBoxHEX.Text = "HEX";
+            this.radiobuttonToolsOutputTextBoxHEX.UseVisualStyleBackColor = true;
             // 
-            // textBox8
+            // textBoxToolsOutputString
             // 
-            this.textBox8.Location = new System.Drawing.Point(6, 22);
-            this.textBox8.Multiline = true;
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(565, 153);
-            this.textBox8.TabIndex = 0;
+            this.textBoxToolsOutputString.Location = new System.Drawing.Point(6, 22);
+            this.textBoxToolsOutputString.Multiline = true;
+            this.textBoxToolsOutputString.Name = "textBoxToolsOutputString";
+            this.textBoxToolsOutputString.Size = new System.Drawing.Size(565, 153);
+            this.textBoxToolsOutputString.TabIndex = 0;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.button7);
-            this.groupBox2.Controls.Add(this.button6);
-            this.groupBox2.Controls.Add(this.radioButton5);
-            this.groupBox2.Controls.Add(this.radioButton2);
-            this.groupBox2.Controls.Add(this.radioButton1);
-            this.groupBox2.Controls.Add(this.textBox7);
+            this.groupBox2.Controls.Add(this.buttonToolsInputTextBoxPaste);
+            this.groupBox2.Controls.Add(this.buttonToolsInputTextBoxClear);
+            this.groupBox2.Controls.Add(this.radioButtonToolsInputTextBoxHEXSpaced);
+            this.groupBox2.Controls.Add(this.radioButtonToolsInputTextBoxASCII);
+            this.groupBox2.Controls.Add(this.radioButtonToolsInputTextBoxHEX);
+            this.groupBox2.Controls.Add(this.textBoxToolsInputString);
             this.groupBox2.Location = new System.Drawing.Point(14, 6);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(621, 209);
@@ -1306,63 +1311,65 @@ namespace Developer_Tools
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Input String";
             // 
-            // button7
+            // buttonToolsInputTextBoxPaste
             // 
-            this.button7.Location = new System.Drawing.Point(511, 177);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(50, 23);
-            this.button7.TabIndex = 5;
-            this.button7.Text = "Paste";
-            this.button7.UseVisualStyleBackColor = true;
+            this.buttonToolsInputTextBoxPaste.Location = new System.Drawing.Point(511, 177);
+            this.buttonToolsInputTextBoxPaste.Name = "buttonToolsInputTextBoxPaste";
+            this.buttonToolsInputTextBoxPaste.Size = new System.Drawing.Size(50, 23);
+            this.buttonToolsInputTextBoxPaste.TabIndex = 5;
+            this.buttonToolsInputTextBoxPaste.Text = "Paste";
+            this.buttonToolsInputTextBoxPaste.UseVisualStyleBackColor = true;
+            this.buttonToolsInputTextBoxPaste.Click += new System.EventHandler(this.buttonToolsInputTextBoxPaste_Click);
             // 
-            // button6
+            // buttonToolsInputTextBoxClear
             // 
-            this.button6.Location = new System.Drawing.Point(567, 177);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(48, 23);
-            this.button6.TabIndex = 4;
-            this.button6.Text = "Clear";
-            this.button6.UseVisualStyleBackColor = true;
+            this.buttonToolsInputTextBoxClear.Location = new System.Drawing.Point(567, 177);
+            this.buttonToolsInputTextBoxClear.Name = "buttonToolsInputTextBoxClear";
+            this.buttonToolsInputTextBoxClear.Size = new System.Drawing.Size(48, 23);
+            this.buttonToolsInputTextBoxClear.TabIndex = 4;
+            this.buttonToolsInputTextBoxClear.Text = "Clear";
+            this.buttonToolsInputTextBoxClear.UseVisualStyleBackColor = true;
+            this.buttonToolsInputTextBoxClear.Click += new System.EventHandler(this.buttonToolsInputTextBoxClear_Click);
             // 
-            // radioButton5
+            // radioButtonToolsInputTextBoxHEXSpaced
             // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Location = new System.Drawing.Point(129, 179);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(100, 21);
-            this.radioButton5.TabIndex = 3;
-            this.radioButton5.Text = "HEX SPACED";
-            this.radioButton5.UseVisualStyleBackColor = true;
+            this.radioButtonToolsInputTextBoxHEXSpaced.AutoSize = true;
+            this.radioButtonToolsInputTextBoxHEXSpaced.Location = new System.Drawing.Point(129, 179);
+            this.radioButtonToolsInputTextBoxHEXSpaced.Name = "radioButtonToolsInputTextBoxHEXSpaced";
+            this.radioButtonToolsInputTextBoxHEXSpaced.Size = new System.Drawing.Size(100, 21);
+            this.radioButtonToolsInputTextBoxHEXSpaced.TabIndex = 3;
+            this.radioButtonToolsInputTextBoxHEXSpaced.Text = "HEX SPACED";
+            this.radioButtonToolsInputTextBoxHEXSpaced.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // radioButtonToolsInputTextBoxASCII
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Checked = true;
-            this.radioButton2.Location = new System.Drawing.Point(6, 179);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(61, 21);
-            this.radioButton2.TabIndex = 2;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "ASCII";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButtonToolsInputTextBoxASCII.AutoSize = true;
+            this.radioButtonToolsInputTextBoxASCII.Checked = true;
+            this.radioButtonToolsInputTextBoxASCII.Location = new System.Drawing.Point(6, 179);
+            this.radioButtonToolsInputTextBoxASCII.Name = "radioButtonToolsInputTextBoxASCII";
+            this.radioButtonToolsInputTextBoxASCII.Size = new System.Drawing.Size(61, 21);
+            this.radioButtonToolsInputTextBoxASCII.TabIndex = 2;
+            this.radioButtonToolsInputTextBoxASCII.TabStop = true;
+            this.radioButtonToolsInputTextBoxASCII.Text = "ASCII";
+            this.radioButtonToolsInputTextBoxASCII.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // radioButtonToolsInputTextBoxHEX
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(73, 179);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(50, 21);
-            this.radioButton1.TabIndex = 1;
-            this.radioButton1.Text = "HEX";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButtonToolsInputTextBoxHEX.AutoSize = true;
+            this.radioButtonToolsInputTextBoxHEX.Location = new System.Drawing.Point(73, 179);
+            this.radioButtonToolsInputTextBoxHEX.Name = "radioButtonToolsInputTextBoxHEX";
+            this.radioButtonToolsInputTextBoxHEX.Size = new System.Drawing.Size(50, 21);
+            this.radioButtonToolsInputTextBoxHEX.TabIndex = 1;
+            this.radioButtonToolsInputTextBoxHEX.Text = "HEX";
+            this.radioButtonToolsInputTextBoxHEX.UseVisualStyleBackColor = true;
             // 
-            // textBox7
+            // textBoxToolsInputString
             // 
-            this.textBox7.Location = new System.Drawing.Point(6, 22);
-            this.textBox7.Multiline = true;
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(609, 153);
-            this.textBox7.TabIndex = 0;
+            this.textBoxToolsInputString.Location = new System.Drawing.Point(6, 22);
+            this.textBoxToolsInputString.Multiline = true;
+            this.textBoxToolsInputString.Name = "textBoxToolsInputString";
+            this.textBoxToolsInputString.Size = new System.Drawing.Size(609, 153);
+            this.textBoxToolsInputString.TabIndex = 0;
             // 
             // tabPage3
             // 
@@ -5778,6 +5785,14 @@ namespace Developer_Tools
             this.label10.TabIndex = 0;
             this.label10.Text = "Bootloader";
             // 
+            // textBoxStringFilterRemoveHEX
+            // 
+            this.textBoxStringFilterRemoveHEX.Enabled = false;
+            this.textBoxStringFilterRemoveHEX.Location = new System.Drawing.Point(107, 94);
+            this.textBoxStringFilterRemoveHEX.Name = "textBoxStringFilterRemoveHEX";
+            this.textBoxStringFilterRemoveHEX.Size = new System.Drawing.Size(23, 23);
+            this.textBoxStringFilterRemoveHEX.TabIndex = 9;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -5908,30 +5923,30 @@ namespace Developer_Tools
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.RadioButton radioButton5;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.TextBox textBoxToolsInputString;
+        private System.Windows.Forms.RadioButton radioButtonToolsInputTextBoxHEXSpaced;
+        private System.Windows.Forms.RadioButton radioButtonToolsInputTextBoxASCII;
+        private System.Windows.Forms.RadioButton radioButtonToolsInputTextBoxHEX;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.RadioButton radioButton6;
-        private System.Windows.Forms.RadioButton radioButton7;
-        private System.Windows.Forms.RadioButton radioButton8;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.RadioButton radiobuttonToolsOutputTextBoxHEXSpaced;
+        private System.Windows.Forms.RadioButton radiobuttonToolsOutputTextBoxASCII;
+        private System.Windows.Forms.RadioButton radiobuttonToolsOutputTextBoxHEX;
+        private System.Windows.Forms.TextBox textBoxToolsOutputString;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.CheckBox checkBox4;
-        private System.Windows.Forms.CheckBox checkBox5;
-        private System.Windows.Forms.CheckBox checkBox6;
-        private System.Windows.Forms.CheckBox checkBox7;
-        private System.Windows.Forms.CheckBox checkBox8;
+        private System.Windows.Forms.Button buttonStrinfFilterConvert;
+        private System.Windows.Forms.CheckBox checkBoxStringFilterRemoveHEX;
+        private System.Windows.Forms.CheckBox checkBoxStringFilterRemoveTab;
+        private System.Windows.Forms.CheckBox checkBoxStringFilterRemoveLF;
+        private System.Windows.Forms.CheckBox checkBoxStringFilterRemoveCR;
+        private System.Windows.Forms.CheckBox checkBoxStringFilterRemoveSpace;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button buttonWordwrapConvert;
+        private System.Windows.Forms.TextBox textBoxWordwrapLength;
+        private System.Windows.Forms.Button buttonToolsInputTextBoxPaste;
+        private System.Windows.Forms.Button buttonToolsInputTextBoxClear;
+        private System.Windows.Forms.Button buttonToolsOutputTextBoxCopy;
+        private System.Windows.Forms.Button buttonToolsOutputTextBoxClear;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.TextBox textBox9;
         private System.Windows.Forms.Label label6;
@@ -6373,6 +6388,7 @@ namespace Developer_Tools
         private System.Windows.Forms.ToolStripMenuItem createToolStripMenuItem;
         private System.Windows.Forms.SaveFileDialog saveJSONFileDialog;
         private System.Windows.Forms.OpenFileDialog openJSONFileDialog;
+        private System.Windows.Forms.TextBox textBoxStringFilterRemoveHEX;
     }
 }
 

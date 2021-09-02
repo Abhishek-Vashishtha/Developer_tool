@@ -131,5 +131,37 @@ namespace Developer_Tools
         {
             MessageBox.Show("An ultimate tool to do the job easily. write us your feedback/suggestions/new feature on dheeraj.singhal@genus.in");
         }
+
+        private void buttonToolsInputTextBoxPaste_Click(object sender, EventArgs e)
+        {
+            textBoxToolsInputString.Text = Clipboard.GetText();
+        }
+
+        private void buttonToolsInputTextBoxClear_Click(object sender, EventArgs e)
+        {
+            textBoxToolsInputString.Text = String.Empty;
+        }
+
+        private void buttonToolsOutputTextBoxCopy_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(textBoxToolsOutputString.Text);
+        }
+
+        private void buttonToolsOutputTextBoxClear_Click(object sender, EventArgs e)
+        {
+            textBoxToolsOutputString.Text = String.Empty;
+        }
+
+        private void checkBoxStringFilterRemoveHEX_CheckedChanged(object sender, EventArgs e)
+        {
+            if(checkBoxStringFilterRemoveHEX.Checked == true)
+            {
+                textBoxStringFilterRemoveHEX.Enabled = true;
+            }
+            else
+            {
+                textBoxStringFilterRemoveHEX.Enabled = false;
+            }
+        }
     }
 }
