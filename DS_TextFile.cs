@@ -6,12 +6,11 @@ using System.Text;
 
 namespace Developer_Tools
 {
-    class DS_JSON
+    class DS_TextFile
     {
         public static void createNewFile(string path)
         {
             StreamWriter sw = File.AppendText(path);
-            sw.Write("{\n\"is_blank\"\t:true\n}");
             sw.Close();
             sw.Dispose();
         }

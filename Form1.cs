@@ -20,7 +20,14 @@ namespace Developer_Tools
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            DS_Common_Functions.startUpFilesChecking();
+            /* changing colors of fonts */
+            menuStripMain.ForeColor = Color.Blue;
+           
+            /* creating files at startup */
+            DS_Functions.startUpFilesChecking();
+
+            /* Loading data from JSON */
+            DS_Functions.loadParametersFromJson();
         }
     }
 }
