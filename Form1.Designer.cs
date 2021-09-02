@@ -617,10 +617,10 @@ namespace Developer_Tools
             // 
             // saveToolStripMenuItem
             // 
-            this.saveToolStripMenuItem.Enabled = false;
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveToolStripMenuItem.Text = "Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // viewToolStripMenuItem
             // 
@@ -646,38 +646,37 @@ namespace Developer_Tools
             this.baudRateToolStripMenuItem,
             this.setupMultiPortToolStripMenuItem});
             this.serialToolStripMenuItem.Name = "serialToolStripMenuItem";
-            this.serialToolStripMenuItem.Size = new System.Drawing.Size(102, 22);
+            this.serialToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.serialToolStripMenuItem.Text = "Serial";
             // 
             // connectToolStripMenuItem
             // 
             this.connectToolStripMenuItem.Name = "connectToolStripMenuItem";
-            this.connectToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.connectToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.connectToolStripMenuItem.Text = "Connect";
             // 
             // disconnectToolStripMenuItem
             // 
-            this.disconnectToolStripMenuItem.Enabled = false;
             this.disconnectToolStripMenuItem.Name = "disconnectToolStripMenuItem";
-            this.disconnectToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.disconnectToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.disconnectToolStripMenuItem.Text = "Disconnect";
             // 
             // cOMPORTToolStripMenuItem
             // 
             this.cOMPORTToolStripMenuItem.Name = "cOMPORTToolStripMenuItem";
-            this.cOMPORTToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.cOMPORTToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.cOMPORTToolStripMenuItem.Text = "COMPORT";
             // 
             // baudRateToolStripMenuItem
             // 
             this.baudRateToolStripMenuItem.Name = "baudRateToolStripMenuItem";
-            this.baudRateToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.baudRateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.baudRateToolStripMenuItem.Text = "Setup Single Port";
             // 
             // setupMultiPortToolStripMenuItem
             // 
             this.setupMultiPortToolStripMenuItem.Name = "setupMultiPortToolStripMenuItem";
-            this.setupMultiPortToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.setupMultiPortToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.setupMultiPortToolStripMenuItem.Text = "Setup Multi Port";
             // 
             // logToolStripMenuItem
@@ -693,19 +692,19 @@ namespace Developer_Tools
             // openToolStripMenuItem1
             // 
             this.openToolStripMenuItem1.Name = "openToolStripMenuItem1";
-            this.openToolStripMenuItem1.Size = new System.Drawing.Size(114, 22);
+            this.openToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.openToolStripMenuItem1.Text = "Open";
             // 
             // clearToolStripMenuItem
             // 
             this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
-            this.clearToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+            this.clearToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.clearToolStripMenuItem.Text = "Clear";
             // 
             // saveToolStripMenuItem1
             // 
             this.saveToolStripMenuItem1.Name = "saveToolStripMenuItem1";
-            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(114, 22);
+            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.saveToolStripMenuItem1.Text = "Save As";
             // 
             // helpToolStripMenuItem
@@ -721,20 +720,23 @@ namespace Developer_Tools
             // webPageToolStripMenuItem
             // 
             this.webPageToolStripMenuItem.Name = "webPageToolStripMenuItem";
-            this.webPageToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.webPageToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.webPageToolStripMenuItem.Text = "Project Page";
+            this.webPageToolStripMenuItem.Click += new System.EventHandler(this.webPageToolStripMenuItem_Click);
             // 
             // writeUsToolStripMenuItem
             // 
             this.writeUsToolStripMenuItem.Name = "writeUsToolStripMenuItem";
-            this.writeUsToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.writeUsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.writeUsToolStripMenuItem.Text = "Write Us";
+            this.writeUsToolStripMenuItem.Click += new System.EventHandler(this.writeUsToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // progressBar1
             // 

@@ -8,6 +8,8 @@ namespace Developer_Tools
 {
     public partial class Form1 : Form
     {
+        /* configuration file */
+        string config_file_name;
         public Form1()
         {
             InitializeComponent();
@@ -35,13 +37,16 @@ namespace Developer_Tools
 
             /* creates a new json file */
             string fileName = saveJSONFileDialog.FileName;
-            try
+            if(fileName.Length != 0)
             {
-                DS_JSON.createNewFile(fileName);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
+                try
+                {
+                    DS_JSON.createNewFile(fileName);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
 
@@ -55,7 +60,10 @@ namespace Developer_Tools
 
             /* displays the file in notepad */
             string fileName = openJSONFileDialog.FileName;
-            System.Diagnostics.Process.Start(@fileName);
+            if (fileName.Length != 0)
+            {
+                System.Diagnostics.Process.Start(@fileName);
+            }
         }
 
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
@@ -68,19 +76,60 @@ namespace Developer_Tools
 
             /* reading the file into string */
             string fileName = openJSONFileDialog.FileName;
-            string data = DS_JSON.readFile(fileName);
-
-            /* parsing JSON data from string */
-            var jsonData = JObject.Parse(data);
-
-            if(jsonData.HasValues == false)
+            if (fileName.Length != 0)
             {
-                MessageBox.Show("Empty JSON file");
+                config_file_name = fileName;
+                string data = DS_JSON.readFile(config_file_name);
+
+                /* parsing JSON data from string */
+                var jsonData = JObject.Parse(data);
+
+                if (jsonData.HasValues == false)
+                {
+                    MessageBox.Show("Empty JSON file");
+                }
+                else
+                {
+                   
+                }
+            }
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(config_file_name == null)
+            {
+                MessageBox.Show("Configuration file not loaded");
             }
             else
             {
-                
+                /* save all the date into JSON file here */
+
+
+
+                /* updating the text back to normal */
+                if(saveToolStripMenuItem.Text == "Save'")
+                {
+                    saveToolStripMenuItem.Text = "Save";
+                }
             }
+        }
+
+        private void writeUsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string address = "mailto: dheeraj.singhal @genus.in?cc = dheerajsinghal01@gmail.com & subject = Developers % 20Tool % 20remarks % 3A";
+            System.Diagnostics.Process.Start(@address);
+        }
+
+        private void webPageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string address = "https://in.linkedin.com/in/dheerajsinghal";
+            System.Diagnostics.Process.Start(@address);
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("An ultimate tool to do the job easily. write us your feedback/suggestions/new feature on dheeraj.singhal@genus.in");
         }
     }
 }
