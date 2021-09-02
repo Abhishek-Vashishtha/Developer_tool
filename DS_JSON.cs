@@ -11,9 +11,14 @@ namespace Developer_Tools
         public static void createNewFile(string path)
         {
             StreamWriter sw = File.AppendText(path);
-            sw.Write("{\n\"is_blank\"\t:true\n}");
+            sw.Write("{\n\n}");
             sw.Close();
             sw.Dispose();
+        }
+        public static string readFile(string path)
+        {
+            string fileContents = System.IO.File.ReadAllText(@path);
+            return fileContents;
         }
     }
 }

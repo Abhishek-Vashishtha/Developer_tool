@@ -11,10 +11,9 @@ namespace Developer_Tools
             sw.Close();
             sw.Dispose();
         }
-        public static string readTextFile(string path)
+        public static string readFile(string path)
         {
-            string fileContents = "";
-            fileContents = System.IO.File.ReadAllText(@path);
+            string fileContents = System.IO.File.ReadAllText(@path);
             return fileContents;
         }
     }
