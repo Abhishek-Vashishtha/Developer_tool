@@ -33,9 +33,10 @@ namespace Developer_Tools
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.menuStripMain = new System.Windows.Forms.MenuStrip();
             this.connectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.createToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.connectionToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.serialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.connectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -530,6 +531,8 @@ namespace Developer_Tools
             this.buttonBootCreate = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.saveJSONFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.openJSONFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.menuStripMain.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -590,18 +593,26 @@ namespace Developer_Tools
             // connectionToolStripMenuItem
             // 
             this.connectionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.openToolStripMenuItem,
+            this.createToolStripMenuItem,
+            this.loadToolStripMenuItem,
             this.saveToolStripMenuItem,
-            this.exitToolStripMenuItem});
+            this.viewToolStripMenuItem});
             this.connectionToolStripMenuItem.Name = "connectionToolStripMenuItem";
             this.connectionToolStripMenuItem.Size = new System.Drawing.Size(98, 20);
             this.connectionToolStripMenuItem.Text = "Configurations";
             // 
-            // openToolStripMenuItem
+            // createToolStripMenuItem
             // 
-            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.openToolStripMenuItem.Text = "Open";
+            this.createToolStripMenuItem.Name = "createToolStripMenuItem";
+            this.createToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.createToolStripMenuItem.Text = "Create";
+            this.createToolStripMenuItem.Click += new System.EventHandler(this.createToolStripMenuItem_Click);
+            // 
+            // loadToolStripMenuItem
+            // 
+            this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.loadToolStripMenuItem.Text = "Load";
             // 
             // saveToolStripMenuItem
             // 
@@ -610,11 +621,12 @@ namespace Developer_Tools
             this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveToolStripMenuItem.Text = "Save";
             // 
-            // exitToolStripMenuItem
+            // viewToolStripMenuItem
             // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
+            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.viewToolStripMenuItem.Text = "View";
+            this.viewToolStripMenuItem.Click += new System.EventHandler(this.viewToolStripMenuItem_Click);
             // 
             // connectionToolStripMenuItem1
             // 
@@ -633,38 +645,38 @@ namespace Developer_Tools
             this.baudRateToolStripMenuItem,
             this.setupMultiPortToolStripMenuItem});
             this.serialToolStripMenuItem.Name = "serialToolStripMenuItem";
-            this.serialToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.serialToolStripMenuItem.Size = new System.Drawing.Size(102, 22);
             this.serialToolStripMenuItem.Text = "Serial";
             // 
             // connectToolStripMenuItem
             // 
             this.connectToolStripMenuItem.Name = "connectToolStripMenuItem";
-            this.connectToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.connectToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.connectToolStripMenuItem.Text = "Connect";
             // 
             // disconnectToolStripMenuItem
             // 
             this.disconnectToolStripMenuItem.Enabled = false;
             this.disconnectToolStripMenuItem.Name = "disconnectToolStripMenuItem";
-            this.disconnectToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.disconnectToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.disconnectToolStripMenuItem.Text = "Disconnect";
             // 
             // cOMPORTToolStripMenuItem
             // 
             this.cOMPORTToolStripMenuItem.Name = "cOMPORTToolStripMenuItem";
-            this.cOMPORTToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cOMPORTToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.cOMPORTToolStripMenuItem.Text = "COMPORT";
             // 
             // baudRateToolStripMenuItem
             // 
             this.baudRateToolStripMenuItem.Name = "baudRateToolStripMenuItem";
-            this.baudRateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.baudRateToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.baudRateToolStripMenuItem.Text = "Setup Single Port";
             // 
             // setupMultiPortToolStripMenuItem
             // 
             this.setupMultiPortToolStripMenuItem.Name = "setupMultiPortToolStripMenuItem";
-            this.setupMultiPortToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.setupMultiPortToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.setupMultiPortToolStripMenuItem.Text = "Setup Multi Port";
             // 
             // logToolStripMenuItem
@@ -680,19 +692,19 @@ namespace Developer_Tools
             // openToolStripMenuItem1
             // 
             this.openToolStripMenuItem1.Name = "openToolStripMenuItem1";
-            this.openToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.openToolStripMenuItem1.Size = new System.Drawing.Size(114, 22);
             this.openToolStripMenuItem1.Text = "Open";
             // 
             // clearToolStripMenuItem
             // 
             this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
-            this.clearToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clearToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.clearToolStripMenuItem.Text = "Clear";
             // 
             // saveToolStripMenuItem1
             // 
             this.saveToolStripMenuItem1.Name = "saveToolStripMenuItem1";
-            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(114, 22);
             this.saveToolStripMenuItem1.Text = "Save As";
             // 
             // helpToolStripMenuItem
@@ -708,19 +720,19 @@ namespace Developer_Tools
             // webPageToolStripMenuItem
             // 
             this.webPageToolStripMenuItem.Name = "webPageToolStripMenuItem";
-            this.webPageToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.webPageToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.webPageToolStripMenuItem.Text = "Project Page";
             // 
             // writeUsToolStripMenuItem
             // 
             this.writeUsToolStripMenuItem.Name = "writeUsToolStripMenuItem";
-            this.writeUsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.writeUsToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.writeUsToolStripMenuItem.Text = "Write Us";
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.aboutToolStripMenuItem.Text = "About";
             // 
             // progressBar1
@@ -5859,7 +5871,7 @@ namespace Developer_Tools
         private System.Windows.Forms.MenuStrip menuStripMain;
         private System.Windows.Forms.ToolStripMenuItem connectionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem connectionToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem serialToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem connectToolStripMenuItem;
@@ -5870,7 +5882,6 @@ namespace Developer_Tools
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem clearToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem webPageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
@@ -6355,6 +6366,10 @@ namespace Developer_Tools
         private System.Windows.Forms.Label label_iAutoreadLabel;
         private System.Windows.Forms.CheckBox checkBox_LogData;
         private System.Windows.Forms.TextBox textBox_iAutoReadTime;
+        private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem createToolStripMenuItem;
+        private System.Windows.Forms.SaveFileDialog saveJSONFileDialog;
+        private System.Windows.Forms.OpenFileDialog openJSONFileDialog;
     }
 }
 

@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-
 namespace Developer_Tools
 {
     class DS_TextFile
@@ -13,6 +10,12 @@ namespace Developer_Tools
             StreamWriter sw = File.AppendText(path);
             sw.Close();
             sw.Dispose();
+        }
+        public static string readTextFile(string path)
+        {
+            string fileContents = "";
+            fileContents = System.IO.File.ReadAllText(@path);
+            return fileContents;
         }
     }
 }

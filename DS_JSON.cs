@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Developer_Tools
 {
-    class DS_JSON
+    class DS_JSON 
     {
         public static void createNewFile(string path)
         {

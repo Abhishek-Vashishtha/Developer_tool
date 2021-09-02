@@ -41,6 +41,12 @@ namespace Developer_Tools
                 DS_JSON.createNewFile(pathName);
             }
         }
+        public static void CloseUpFilesSaving()
+        {
+
+        }
+
+
         public static void loadParametersFromJson()
         {
 

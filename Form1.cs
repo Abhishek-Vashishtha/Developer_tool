@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using Newtonsoft.Json;
 using System.IO;
 
 namespace Developer_Tools
@@ -28,6 +22,44 @@ namespace Developer_Tools
 
             /* Loading data from JSON */
             DS_Functions.loadParametersFromJson();
+        }
+
+        private void createToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            /* opens save file dialog */
+            saveJSONFileDialog.Filter = "JSON files (*.json)|*.json";
+            saveJSONFileDialog.InitialDirectory = "D:\\DevelopersTool";
+            saveJSONFileDialog.Title = "Write the name of the configuration file.";
+            saveJSONFileDialog.ShowDialog();
+
+            /* creates a new json file */
+            string fileName = saveJSONFileDialog.FileName;
+            try
+            {
+                DS_JSON.createNewFile(fileName);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void viewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            /* opens open file dialog */
+            openJSONFileDialog.Filter = "JSON files (*.json)|*.json|All files (*.*)|*.*";
+            openJSONFileDialog.InitialDirectory = "D:\\DevelopersTool"; 
+            openJSONFileDialog.Title = "Select the file to view";
+            openJSONFileDialog.ShowDialog();
+
+            /* displays the file in notepad */
+            string fileName = openJSONFileDialog.FileName;
+            System.Diagnostics.Process.Start(@fileName);
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
