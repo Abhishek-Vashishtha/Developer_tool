@@ -395,7 +395,7 @@ namespace Developer_Tools
         }
         public static bool CheckValidHexString(string hex_string)
         {
-            if (hex_string.Length % 2 == 1)
+            if (hex_string.Length % 2 == 1 || hex_string.Length == 0)
             {
                 return false;
             }

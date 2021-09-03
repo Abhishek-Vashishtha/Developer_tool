@@ -8,6 +8,9 @@ namespace Developer_Tools
 {
     public partial class Form1 : Form
     {
+        /* global variables */
+        string newline = Environment.NewLine;
+
         /* configuration file */
         string config_file_name;
         public Form1()
@@ -197,44 +200,66 @@ namespace Developer_Tools
 
             if (string.IsNullOrEmpty(input_string) == false)
             {
-                /* calculating length of byte array */
-                int b_array_len = 0;
-                if (string.Equals(input_format, "ASCII") == true)
-                {
-                    b_array_len = input_string.Length;
-                }
-                else if (string.Equals(input_format, "HEX") == true || string.Equals(input_format, "HEXSpaced") == true)
-                {
-                    b_array_len = input_string.Length/2;
-                }
-                byte[] b_array = new byte[b_array_len];
+                string ascii_str = string.Empty;
 
                 /* converting into byte array */
                 if (string.Equals(input_format, "ASCII") == true)
                 {
-                    b_array = DS_Functions.ascii_string_to_byte_array(input_string);
+                    ascii_str = input_string;
                 }
                 else if (string.Equals(input_format, "HEX") == true || string.Equals(input_format, "HEXSpaced") == true)
                 {
-                    b_array = DS_Functions.hex_string_to_byte_array(input_string);
+                    ascii_str = DS_Functions.hex_string_to_ascii_string(input_string);
                 }
+                /* removing the desired characters */
+                if (checkBoxStringFilterRemoveSpace.Checked == true)
+                {
+                    ascii_str = DS_Functions.string_subtract(input_string, " ", "");
+                }
+                if (checkBoxStringFilterRemoveCR.Checked == true)
+                {
+                    ascii_str = DS_Functions.string_subtract(input_string,"\r","");
+                }
+                if (checkBoxStringFilterRemoveLF.Checked == true)
+                {
+                    ascii_str = DS_Functions.string_subtract(input_string, "\n", "");
+                }
+                if (checkBoxStringFilterRemoveTab.Checked == true)
+                {
+                    ascii_str = DS_Functions.string_subtract(input_string, "\t", "");
+                }
+                if (checkBoxStringFilterRemoveHEX.Checked == true)
+                {
+                    ascii_str = DS_Functions.string_subtract(input_string, DS_Functions.byte_to_ascii_char(13), DS_Functions.byte_to_ascii_char(32));
+                    string temp = textBoxStringFilterRemoveHEX.Text;
+                    temp = DS_Functions.string_subtract(temp, " ", "");
+                    if (DS_Functions.CheckValidHexString(temp) == true)
+                    {
+                        ascii_str = DS_Functions.string_subtract(input_string, temp, "");
+                    }
+                    else
+                    {
+                        MessageBox.Show("invalid HEX string");
+                    }
+                }
+
 
                 /* getting output formatter */
                 if (radiobuttonToolsOutputTextBoxHEX.Checked == true)
                 {
                     input_format = "HEX";
-                    output_string = DS_Functions.byte_array_to_hex_string(b_array, b_array_len);
+                    output_string = DS_Functions.ascii_string_to_hex_string(ascii_str);
                 }
                 else if (radiobuttonToolsOutputTextBoxHEXSpaced.Checked == true)
                 {
                     output_format = "HEXSpaced";
-                    output_string = DS_Functions.byte_array_to_hex_string(b_array, b_array_len);
+                    output_string = DS_Functions.ascii_string_to_hex_string(ascii_str);
                     output_string = DS_Functions.string_insertor(output_string, " ", 2);
                 }
                 else if (radiobuttonToolsOutputTextBoxASCII.Checked == true)
                 {
                     output_format = "ASCII";
-                    output_string = DS_Functions.byte_array_to_ascii_string(b_array, b_array_len);
+                    output_string = ascii_str;
                 }
 
                 textBoxToolsOutputString.Text = output_string;
@@ -243,6 +268,28 @@ namespace Developer_Tools
             {
                 MessageBox.Show("Invalid input String","Error");
             }
+        }
+
+        private void buttonWordwrapConvert_Click(object sender, EventArgs e)
+        {
+            string input_string, output_string = "";
+            input_string = textBoxToolsInputString.Text;
+            int wrap_len = Convert.ToInt16(textBoxWordwrapLength.Text);
+
+            for (int i = 0; i < 1 + (input_string.Length / wrap_len); i++)
+            {
+                if ((i + 1) * wrap_len > input_string.Length)
+                {
+                    output_string += input_string.Substring(i * wrap_len, input_string.Length - i * wrap_len);
+                }
+                else
+                {
+                    output_string += input_string.Substring(i * wrap_len, wrap_len);
+                }
+                output_string += newline;
+            }
+            textBoxToolsOutputString.Text = output_string;
+
         }
     }
 }

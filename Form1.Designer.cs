@@ -1135,6 +1135,7 @@ namespace Developer_Tools
             this.buttonWordwrapConvert.TabIndex = 8;
             this.buttonWordwrapConvert.Text = "Convert";
             this.buttonWordwrapConvert.UseVisualStyleBackColor = true;
+            this.buttonWordwrapConvert.Click += new System.EventHandler(this.buttonWordwrapConvert_Click);
             // 
             // textBoxWordwrapLength
             // 
@@ -1302,6 +1303,7 @@ namespace Developer_Tools
             this.textBoxToolsOutputString.Location = new System.Drawing.Point(6, 22);
             this.textBoxToolsOutputString.Multiline = true;
             this.textBoxToolsOutputString.Name = "textBoxToolsOutputString";
+            this.textBoxToolsOutputString.ReadOnly = true;
             this.textBoxToolsOutputString.Size = new System.Drawing.Size(565, 153);
             this.textBoxToolsOutputString.TabIndex = 0;
             // 
