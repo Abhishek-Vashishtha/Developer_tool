@@ -10,6 +10,7 @@ namespace Developer_Tools
     {
         /* global variables */
         string newline = Environment.NewLine;
+        public static bool login_success = false;
 
         /* configuration file */
         string config_file_name;

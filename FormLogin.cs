@@ -15,5 +15,24 @@ namespace Developer_Tools
         {
             InitializeComponent();
         }
+
+        private void button_LoginNow_Click(object sender, EventArgs e)
+        {
+            if(textBox_LoginUserName.Text == "dheeraj.singhal" && textBox_LoginPassword.Text == "genus_9024")
+            {
+                Form1.login_success = true;
+            }
+            else
+            {
+                MessageBox.Show("Invalid credentials");
+                textBox_LoginUserName.Text = "";
+                textBox_LoginPassword.Text = "";
+                Form1.login_success = false;
+            }
+            if(Form1.login_success == true)
+            {
+                this.Close();
+            }
+        }
     }
 }

@@ -15,7 +15,14 @@ namespace Developer_Tools
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            FormLogin login_form = new FormLogin();
+            Form1 form1 = new Form1();
+
+            Application.Run(login_form);
+            if (Form1.login_success == true)
+            {
+                Application.Run(form1);
+            }
         }
     }
 }
