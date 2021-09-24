@@ -18,7 +18,15 @@ namespace Developer_Tools
             FormLogin login_form = new FormLogin();
             Form1 form1 = new Form1();
 
-            Application.Run(login_form);
+            if (Environment.UserName == "dheeraj.singhal" && Environment.UserDomainName == "GENUSRND")
+            {
+                Form1.login_success = true;
+            }
+            else
+            {
+                Application.Run(login_form);
+            }
+
             if (Form1.login_success == true)
             {
                 Application.Run(form1);

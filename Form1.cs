@@ -29,6 +29,8 @@ namespace Developer_Tools
 
             /* Loading data from JSON */
             DS_App.loadParametersFromJson();
+
+            this.
         }
 
         private void createToolStripMenuItem_Click(object sender, EventArgs e)
