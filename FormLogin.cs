@@ -18,7 +18,7 @@ namespace Developer_Tools
 
         private void button_LoginNow_Click(object sender, EventArgs e)
         {
-            if(textBox_LoginUserName.Text == "dheeraj.singhal" && textBox_LoginPassword.Text == "genus_9024")
+            if(textBox_LoginUserName.Text == "`" && textBox_LoginPassword.Text == "`")
             {
                 Form1.login_success = true;
             }
