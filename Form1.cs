@@ -30,7 +30,7 @@ namespace Developer_Tools
             /* Loading data from JSON */
             DS_App.loadParametersFromJson();
 
-            this.
+            
         }
 
         private void createToolStripMenuItem_Click(object sender, EventArgs e)
@@ -135,7 +135,7 @@ namespace Developer_Tools
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("An ultimate tool to do the job easily. write us your feedback/suggestions/new feature on dheeraj.singhal@genus.in");
+            MessageBox.Show("An ultimate tool to do the job easily. write us your feedback/suggestions or request new feature @ dheeraj.singhal@genus.in");
         }
 
         private void buttonToolsInputTextBoxPaste_Click(object sender, EventArgs e)
