@@ -39,11 +39,6 @@ namespace Developer_Tools
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.connectionToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.serialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.connectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.disconnectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cOMPORTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.baudRateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.setupMultiPortToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,42 +47,37 @@ namespace Developer_Tools
             this.webPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.writeUsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.progressBarSerialConnection = new System.Windows.Forms.ProgressBar();
             this.timer100ms = new System.Windows.Forms.Timer(this.components);
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.button14 = new System.Windows.Forms.Button();
+            this.buttonDataTrafficCopy = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.textBoxDataTrafficRxBytesTotal = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.button13 = new System.Windows.Forms.Button();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton9 = new System.Windows.Forms.RadioButton();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.buttonDataTrafficClear = new System.Windows.Forms.Button();
+            this.textBoxDataTrafficTxBytesTotal = new System.Windows.Forms.TextBox();
+            this.radioButtonDataTrafficFormatHEXSpaced = new System.Windows.Forms.RadioButton();
+            this.radioButtonDataTrafficFormatASCII = new System.Windows.Forms.RadioButton();
+            this.radioButtonDataTrafficFormatHEX = new System.Windows.Forms.RadioButton();
+            this.textBox_DataTraffic = new System.Windows.Forms.TextBox();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.textBox_SendFrame = new System.Windows.Forms.TextBox();
+            this.checkBox_SendFrameHDLC = new System.Windows.Forms.CheckBox();
+            this.button_SendFrameClear = new System.Windows.Forms.Button();
+            this.button_SendFramePaste = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.textBoxSendRepeatSentCounter = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox_SendRepeatNoOfTimes = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.button3 = new System.Windows.Forms.Button();
+            this.textBox_SendRepeatTime = new System.Windows.Forms.TextBox();
+            this.checkBoxSendRepeat = new System.Windows.Forms.CheckBox();
+            this.button_DataSend = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -487,7 +477,6 @@ namespace Developer_Tools
             this.label120 = new System.Windows.Forms.Label();
             this.textBox_WFSaveText = new System.Windows.Forms.TextBox();
             this.textBox_WFSaveFileName = new System.Windows.Forms.TextBox();
-            this.pictureBoxWaveform = new System.Windows.Forms.PictureBox();
             this.textBox_WFSamples = new System.Windows.Forms.TextBox();
             this.textBox_WFFrame = new System.Windows.Forms.TextBox();
             this.groupBox24 = new System.Windows.Forms.GroupBox();
@@ -534,6 +523,10 @@ namespace Developer_Tools
             this.label10 = new System.Windows.Forms.Label();
             this.saveJSONFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.openJSONFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.radioButtonSendFrameFormatASCII = new System.Windows.Forms.RadioButton();
+            this.radioButtonSendFrameFormatHex = new System.Windows.Forms.RadioButton();
+            this.label113 = new System.Windows.Forms.Label();
+            this.pictureBoxWaveform = new System.Windows.Forms.PictureBox();
             this.menuStripMain.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -567,12 +560,12 @@ namespace Developer_Tools
             this.tabPage7.SuspendLayout();
             this.groupBox29.SuspendLayout();
             this.groupBox27.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWaveform)).BeginInit();
             this.groupBox24.SuspendLayout();
             this.tabPage8.SuspendLayout();
             this.groupBox10.SuspendLayout();
             this.groupBox9.SuspendLayout();
             this.groupBox8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWaveform)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStripMain
@@ -641,45 +634,9 @@ namespace Developer_Tools
             // 
             // serialToolStripMenuItem
             // 
-            this.serialToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.connectToolStripMenuItem,
-            this.disconnectToolStripMenuItem,
-            this.cOMPORTToolStripMenuItem,
-            this.baudRateToolStripMenuItem,
-            this.setupMultiPortToolStripMenuItem});
             this.serialToolStripMenuItem.Name = "serialToolStripMenuItem";
-            this.serialToolStripMenuItem.Size = new System.Drawing.Size(102, 22);
+            this.serialToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.serialToolStripMenuItem.Text = "Serial";
-            // 
-            // connectToolStripMenuItem
-            // 
-            this.connectToolStripMenuItem.Name = "connectToolStripMenuItem";
-            this.connectToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
-            this.connectToolStripMenuItem.Text = "Connect";
-            // 
-            // disconnectToolStripMenuItem
-            // 
-            this.disconnectToolStripMenuItem.Name = "disconnectToolStripMenuItem";
-            this.disconnectToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
-            this.disconnectToolStripMenuItem.Text = "Disconnect";
-            // 
-            // cOMPORTToolStripMenuItem
-            // 
-            this.cOMPORTToolStripMenuItem.Name = "cOMPORTToolStripMenuItem";
-            this.cOMPORTToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
-            this.cOMPORTToolStripMenuItem.Text = "COMPORT";
-            // 
-            // baudRateToolStripMenuItem
-            // 
-            this.baudRateToolStripMenuItem.Name = "baudRateToolStripMenuItem";
-            this.baudRateToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
-            this.baudRateToolStripMenuItem.Text = "Setup Single Port";
-            // 
-            // setupMultiPortToolStripMenuItem
-            // 
-            this.setupMultiPortToolStripMenuItem.Name = "setupMultiPortToolStripMenuItem";
-            this.setupMultiPortToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
-            this.setupMultiPortToolStripMenuItem.Text = "Setup Multi Port";
             // 
             // logToolStripMenuItem
             // 
@@ -739,12 +696,12 @@ namespace Developer_Tools
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
-            // progressBar1
+            // progressBarSerialConnection
             // 
-            this.progressBar1.Location = new System.Drawing.Point(1054, 0);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(179, 23);
-            this.progressBar1.TabIndex = 1;
+            this.progressBarSerialConnection.Location = new System.Drawing.Point(1054, 0);
+            this.progressBarSerialConnection.Name = "progressBarSerialConnection";
+            this.progressBarSerialConnection.Size = new System.Drawing.Size(179, 23);
+            this.progressBarSerialConnection.TabIndex = 1;
             // 
             // tabControl1
             // 
@@ -771,16 +728,16 @@ namespace Developer_Tools
             // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.button14);
+            this.groupBox6.Controls.Add(this.buttonDataTrafficCopy);
             this.groupBox6.Controls.Add(this.label8);
-            this.groupBox6.Controls.Add(this.textBox12);
+            this.groupBox6.Controls.Add(this.textBoxDataTrafficRxBytesTotal);
             this.groupBox6.Controls.Add(this.label6);
-            this.groupBox6.Controls.Add(this.button13);
-            this.groupBox6.Controls.Add(this.textBox11);
-            this.groupBox6.Controls.Add(this.radioButton3);
-            this.groupBox6.Controls.Add(this.radioButton4);
-            this.groupBox6.Controls.Add(this.radioButton9);
-            this.groupBox6.Controls.Add(this.textBox9);
+            this.groupBox6.Controls.Add(this.buttonDataTrafficClear);
+            this.groupBox6.Controls.Add(this.textBoxDataTrafficTxBytesTotal);
+            this.groupBox6.Controls.Add(this.radioButtonDataTrafficFormatHEXSpaced);
+            this.groupBox6.Controls.Add(this.radioButtonDataTrafficFormatASCII);
+            this.groupBox6.Controls.Add(this.radioButtonDataTrafficFormatHEX);
+            this.groupBox6.Controls.Add(this.textBox_DataTraffic);
             this.groupBox6.Location = new System.Drawing.Point(613, 6);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(605, 589);
@@ -788,14 +745,14 @@ namespace Developer_Tools
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Data Transfer Traffic";
             // 
-            // button14
+            // buttonDataTrafficCopy
             // 
-            this.button14.Location = new System.Drawing.Point(487, 555);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(58, 22);
-            this.button14.TabIndex = 22;
-            this.button14.Text = "Copy";
-            this.button14.UseVisualStyleBackColor = true;
+            this.buttonDataTrafficCopy.Location = new System.Drawing.Point(487, 555);
+            this.buttonDataTrafficCopy.Name = "buttonDataTrafficCopy";
+            this.buttonDataTrafficCopy.Size = new System.Drawing.Size(58, 22);
+            this.buttonDataTrafficCopy.TabIndex = 22;
+            this.buttonDataTrafficCopy.Text = "Copy";
+            this.buttonDataTrafficCopy.UseVisualStyleBackColor = true;
             // 
             // label8
             // 
@@ -806,14 +763,14 @@ namespace Developer_Tools
             this.label8.TabIndex = 18;
             this.label8.Text = "Rx Bytes:";
             // 
-            // textBox12
+            // textBoxDataTrafficRxBytesTotal
             // 
-            this.textBox12.Location = new System.Drawing.Point(411, 554);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(43, 23);
-            this.textBox12.TabIndex = 17;
-            this.textBox12.Text = "0";
-            this.textBox12.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxDataTrafficRxBytesTotal.Location = new System.Drawing.Point(411, 554);
+            this.textBoxDataTrafficRxBytesTotal.Name = "textBoxDataTrafficRxBytesTotal";
+            this.textBoxDataTrafficRxBytesTotal.Size = new System.Drawing.Size(43, 23);
+            this.textBoxDataTrafficRxBytesTotal.TabIndex = 17;
+            this.textBoxDataTrafficRxBytesTotal.Text = "0";
+            this.textBoxDataTrafficRxBytesTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label6
             // 
@@ -824,63 +781,63 @@ namespace Developer_Tools
             this.label6.TabIndex = 9;
             this.label6.Text = "Tx Bytes:";
             // 
-            // button13
+            // buttonDataTrafficClear
             // 
-            this.button13.Location = new System.Drawing.Point(551, 554);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(48, 23);
-            this.button13.TabIndex = 16;
-            this.button13.Text = "Clear";
-            this.button13.UseVisualStyleBackColor = true;
+            this.buttonDataTrafficClear.Location = new System.Drawing.Point(551, 554);
+            this.buttonDataTrafficClear.Name = "buttonDataTrafficClear";
+            this.buttonDataTrafficClear.Size = new System.Drawing.Size(48, 23);
+            this.buttonDataTrafficClear.TabIndex = 16;
+            this.buttonDataTrafficClear.Text = "Clear";
+            this.buttonDataTrafficClear.UseVisualStyleBackColor = true;
             // 
-            // textBox11
+            // textBoxDataTrafficTxBytesTotal
             // 
-            this.textBox11.Location = new System.Drawing.Point(298, 553);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(43, 23);
-            this.textBox11.TabIndex = 8;
-            this.textBox11.Text = "0";
-            this.textBox11.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxDataTrafficTxBytesTotal.Location = new System.Drawing.Point(298, 553);
+            this.textBoxDataTrafficTxBytesTotal.Name = "textBoxDataTrafficTxBytesTotal";
+            this.textBoxDataTrafficTxBytesTotal.Size = new System.Drawing.Size(43, 23);
+            this.textBoxDataTrafficTxBytesTotal.TabIndex = 8;
+            this.textBoxDataTrafficTxBytesTotal.Text = "0";
+            this.textBoxDataTrafficTxBytesTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // radioButton3
+            // radioButtonDataTrafficFormatHEXSpaced
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(129, 553);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(100, 21);
-            this.radioButton3.TabIndex = 15;
-            this.radioButton3.Text = "HEX SPACED";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioButtonDataTrafficFormatHEXSpaced.AutoSize = true;
+            this.radioButtonDataTrafficFormatHEXSpaced.Location = new System.Drawing.Point(129, 553);
+            this.radioButtonDataTrafficFormatHEXSpaced.Name = "radioButtonDataTrafficFormatHEXSpaced";
+            this.radioButtonDataTrafficFormatHEXSpaced.Size = new System.Drawing.Size(100, 21);
+            this.radioButtonDataTrafficFormatHEXSpaced.TabIndex = 15;
+            this.radioButtonDataTrafficFormatHEXSpaced.Text = "HEX SPACED";
+            this.radioButtonDataTrafficFormatHEXSpaced.UseVisualStyleBackColor = true;
             // 
-            // radioButton4
+            // radioButtonDataTrafficFormatASCII
             // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Checked = true;
-            this.radioButton4.Location = new System.Drawing.Point(6, 553);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(61, 21);
-            this.radioButton4.TabIndex = 14;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "ASCII";
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this.radioButtonDataTrafficFormatASCII.AutoSize = true;
+            this.radioButtonDataTrafficFormatASCII.Checked = true;
+            this.radioButtonDataTrafficFormatASCII.Location = new System.Drawing.Point(6, 553);
+            this.radioButtonDataTrafficFormatASCII.Name = "radioButtonDataTrafficFormatASCII";
+            this.radioButtonDataTrafficFormatASCII.Size = new System.Drawing.Size(61, 21);
+            this.radioButtonDataTrafficFormatASCII.TabIndex = 14;
+            this.radioButtonDataTrafficFormatASCII.TabStop = true;
+            this.radioButtonDataTrafficFormatASCII.Text = "ASCII";
+            this.radioButtonDataTrafficFormatASCII.UseVisualStyleBackColor = true;
             // 
-            // radioButton9
+            // radioButtonDataTrafficFormatHEX
             // 
-            this.radioButton9.AutoSize = true;
-            this.radioButton9.Location = new System.Drawing.Point(73, 553);
-            this.radioButton9.Name = "radioButton9";
-            this.radioButton9.Size = new System.Drawing.Size(50, 21);
-            this.radioButton9.TabIndex = 13;
-            this.radioButton9.Text = "HEX";
-            this.radioButton9.UseVisualStyleBackColor = true;
+            this.radioButtonDataTrafficFormatHEX.AutoSize = true;
+            this.radioButtonDataTrafficFormatHEX.Location = new System.Drawing.Point(73, 553);
+            this.radioButtonDataTrafficFormatHEX.Name = "radioButtonDataTrafficFormatHEX";
+            this.radioButtonDataTrafficFormatHEX.Size = new System.Drawing.Size(50, 21);
+            this.radioButtonDataTrafficFormatHEX.TabIndex = 13;
+            this.radioButtonDataTrafficFormatHEX.Text = "HEX";
+            this.radioButtonDataTrafficFormatHEX.UseVisualStyleBackColor = true;
             // 
-            // textBox9
+            // textBox_DataTraffic
             // 
-            this.textBox9.Location = new System.Drawing.Point(6, 19);
-            this.textBox9.Multiline = true;
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(593, 529);
-            this.textBox9.TabIndex = 12;
+            this.textBox_DataTraffic.Location = new System.Drawing.Point(6, 19);
+            this.textBox_DataTraffic.Multiline = true;
+            this.textBox_DataTraffic.Name = "textBox_DataTraffic";
+            this.textBox_DataTraffic.Size = new System.Drawing.Size(593, 529);
+            this.textBox_DataTraffic.TabIndex = 12;
             // 
             // tabControl2
             // 
@@ -905,15 +862,12 @@ namespace Developer_Tools
             // 
             // groupBox7
             // 
-            this.groupBox7.Controls.Add(this.textBox1);
-            this.groupBox7.Controls.Add(this.label4);
-            this.groupBox7.Controls.Add(this.checkBox2);
-            this.groupBox7.Controls.Add(this.textBox5);
-            this.groupBox7.Controls.Add(this.button1);
-            this.groupBox7.Controls.Add(this.label1);
-            this.groupBox7.Controls.Add(this.checkBox1);
-            this.groupBox7.Controls.Add(this.textBox2);
-            this.groupBox7.Controls.Add(this.button2);
+            this.groupBox7.Controls.Add(this.radioButtonSendFrameFormatASCII);
+            this.groupBox7.Controls.Add(this.radioButtonSendFrameFormatHex);
+            this.groupBox7.Controls.Add(this.textBox_SendFrame);
+            this.groupBox7.Controls.Add(this.checkBox_SendFrameHDLC);
+            this.groupBox7.Controls.Add(this.button_SendFrameClear);
+            this.groupBox7.Controls.Add(this.button_SendFramePaste);
             this.groupBox7.Location = new System.Drawing.Point(6, 6);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(587, 227);
@@ -921,99 +875,55 @@ namespace Developer_Tools
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Framing";
             // 
-            // textBox1
+            // textBox_SendFrame
             // 
-            this.textBox1.Location = new System.Drawing.Point(10, 21);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(571, 145);
-            this.textBox1.TabIndex = 0;
+            this.textBox_SendFrame.Location = new System.Drawing.Point(10, 21);
+            this.textBox_SendFrame.Multiline = true;
+            this.textBox_SendFrame.Name = "textBox_SendFrame";
+            this.textBox_SendFrame.Size = new System.Drawing.Size(571, 173);
+            this.textBox_SendFrame.TabIndex = 0;
             // 
-            // label4
+            // checkBox_SendFrameHDLC
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(155, 201);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(71, 17);
-            this.label4.TabIndex = 20;
-            this.label4.Text = "End String: ";
+            this.checkBox_SendFrameHDLC.AutoSize = true;
+            this.checkBox_SendFrameHDLC.Location = new System.Drawing.Point(133, 200);
+            this.checkBox_SendFrameHDLC.Name = "checkBox_SendFrameHDLC";
+            this.checkBox_SendFrameHDLC.Size = new System.Drawing.Size(121, 21);
+            this.checkBox_SendFrameHDLC.TabIndex = 16;
+            this.checkBox_SendFrameHDLC.Text = "Is HDLC Frame?";
+            this.checkBox_SendFrameHDLC.UseVisualStyleBackColor = true;
             // 
-            // checkBox2
+            // button_SendFrameClear
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(67, 172);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(61, 21);
-            this.checkBox2.TabIndex = 16;
-            this.checkBox2.Text = "HDLC";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.button_SendFrameClear.Location = new System.Drawing.Point(506, 197);
+            this.button_SendFrameClear.Name = "button_SendFrameClear";
+            this.button_SendFrameClear.Size = new System.Drawing.Size(75, 24);
+            this.button_SendFrameClear.TabIndex = 13;
+            this.button_SendFrameClear.Text = "Clear";
+            this.button_SendFrameClear.UseVisualStyleBackColor = true;
             // 
-            // textBox5
+            // button_SendFramePaste
             // 
-            this.textBox5.Location = new System.Drawing.Point(232, 198);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(51, 23);
-            this.textBox5.TabIndex = 19;
-            this.textBox5.Text = "7E";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(506, 169);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 24);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "Clear";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(134, 174);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(125, 17);
-            this.label1.TabIndex = 18;
-            this.label1.Text = "Start/End flag (HEX): ";
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(11, 172);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(51, 21);
-            this.checkBox1.TabIndex = 14;
-            this.checkBox1.Text = "HEX";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(259, 170);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(24, 23);
-            this.textBox2.TabIndex = 17;
-            this.textBox2.Text = "7E";
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(425, 169);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 24);
-            this.button2.TabIndex = 15;
-            this.button2.Text = "Paste";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button_SendFramePaste.Location = new System.Drawing.Point(425, 197);
+            this.button_SendFramePaste.Name = "button_SendFramePaste";
+            this.button_SendFramePaste.Size = new System.Drawing.Size(75, 24);
+            this.button_SendFramePaste.TabIndex = 15;
+            this.button_SendFramePaste.Text = "Paste";
+            this.button_SendFramePaste.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.textBox6);
+            this.groupBox1.Controls.Add(this.textBoxSendRepeatSentCounter);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.textBox4);
+            this.groupBox1.Controls.Add(this.textBox_SendRepeatNoOfTimes);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.checkBox3);
-            this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Location = new System.Drawing.Point(6, 483);
+            this.groupBox1.Controls.Add(this.textBox_SendRepeatTime);
+            this.groupBox1.Controls.Add(this.checkBoxSendRepeat);
+            this.groupBox1.Controls.Add(this.button_DataSend);
+            this.groupBox1.Location = new System.Drawing.Point(6, 505);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(587, 75);
+            this.groupBox1.Size = new System.Drawing.Size(587, 53);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Send Settings";
@@ -1021,39 +931,43 @@ namespace Developer_Tools
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(389, 47);
+            this.label5.Location = new System.Drawing.Point(378, 25);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(60, 17);
             this.label5.TabIndex = 7;
             this.label5.Text = "Counter: ";
+            this.label5.Visible = false;
             // 
-            // textBox6
+            // textBoxSendRepeatSentCounter
             // 
-            this.textBox6.Location = new System.Drawing.Point(455, 44);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(43, 23);
-            this.textBox6.TabIndex = 6;
-            this.textBox6.Text = "0";
-            this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxSendRepeatSentCounter.Location = new System.Drawing.Point(444, 22);
+            this.textBoxSendRepeatSentCounter.Name = "textBoxSendRepeatSentCounter";
+            this.textBoxSendRepeatSentCounter.ReadOnly = true;
+            this.textBoxSendRepeatSentCounter.Size = new System.Drawing.Size(43, 23);
+            this.textBoxSendRepeatSentCounter.TabIndex = 6;
+            this.textBoxSendRepeatSentCounter.Text = "0";
+            this.textBoxSendRepeatSentCounter.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxSendRepeatSentCounter.Visible = false;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(142, 50);
+            this.label3.Location = new System.Drawing.Point(244, 24);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(45, 17);
             this.label3.TabIndex = 5;
             this.label3.Text = "times: ";
+            this.label3.Visible = false;
             // 
-            // textBox4
+            // textBox_SendRepeatNoOfTimes
             // 
-            this.textBox4.Location = new System.Drawing.Point(193, 47);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(43, 23);
-            this.textBox4.TabIndex = 4;
-            this.textBox4.Text = "100";
-            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_SendRepeatNoOfTimes.Location = new System.Drawing.Point(295, 21);
+            this.textBox_SendRepeatNoOfTimes.Name = "textBox_SendRepeatNoOfTimes";
+            this.textBox_SendRepeatNoOfTimes.Size = new System.Drawing.Size(43, 23);
+            this.textBox_SendRepeatNoOfTimes.TabIndex = 4;
+            this.textBox_SendRepeatNoOfTimes.Text = "100";
+            this.textBox_SendRepeatNoOfTimes.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_SendRepeatNoOfTimes.Visible = false;
             // 
             // label2
             // 
@@ -1063,38 +977,41 @@ namespace Developer_Tools
             this.label2.Size = new System.Drawing.Size(64, 17);
             this.label2.TabIndex = 3;
             this.label2.Text = "time (ms):";
+            this.label2.Visible = false;
             // 
-            // textBox3
+            // textBox_SendRepeatTime
             // 
-            this.textBox3.Location = new System.Drawing.Point(193, 21);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(43, 23);
-            this.textBox3.TabIndex = 2;
-            this.textBox3.Text = "1000";
-            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_SendRepeatTime.Location = new System.Drawing.Point(193, 21);
+            this.textBox_SendRepeatTime.Name = "textBox_SendRepeatTime";
+            this.textBox_SendRepeatTime.Size = new System.Drawing.Size(43, 23);
+            this.textBox_SendRepeatTime.TabIndex = 2;
+            this.textBox_SendRepeatTime.Text = "1000";
+            this.textBox_SendRepeatTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_SendRepeatTime.Visible = false;
             // 
-            // checkBox3
+            // checkBoxSendRepeat
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(19, 23);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(98, 21);
-            this.checkBox3.TabIndex = 1;
-            this.checkBox3.Text = "Send Repeat";
-            this.checkBox3.UseVisualStyleBackColor = true;
+            this.checkBoxSendRepeat.AutoSize = true;
+            this.checkBoxSendRepeat.Location = new System.Drawing.Point(19, 23);
+            this.checkBoxSendRepeat.Name = "checkBoxSendRepeat";
+            this.checkBoxSendRepeat.Size = new System.Drawing.Size(98, 21);
+            this.checkBoxSendRepeat.TabIndex = 1;
+            this.checkBoxSendRepeat.Text = "Send Repeat";
+            this.checkBoxSendRepeat.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // button_DataSend
             // 
-            this.button3.Location = new System.Drawing.Point(504, 18);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 49);
-            this.button3.TabIndex = 0;
-            this.button3.Text = "Send";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button_DataSend.Location = new System.Drawing.Point(504, 18);
+            this.button_DataSend.Name = "button_DataSend";
+            this.button_DataSend.Size = new System.Drawing.Size(75, 28);
+            this.button_DataSend.TabIndex = 0;
+            this.button_DataSend.Text = "Send";
+            this.button_DataSend.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.tabPage2.Controls.Add(this.label113);
             this.tabPage2.Controls.Add(this.groupBox3);
             this.tabPage2.Controls.Add(this.groupBox5);
             this.tabPage2.Controls.Add(this.groupBox4);
@@ -4940,10 +4857,10 @@ namespace Developer_Tools
             this.tabPage7.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.tabPage7.Controls.Add(this.groupBox29);
             this.tabPage7.Controls.Add(this.groupBox27);
-            this.tabPage7.Controls.Add(this.pictureBoxWaveform);
             this.tabPage7.Controls.Add(this.textBox_WFSamples);
             this.tabPage7.Controls.Add(this.textBox_WFFrame);
             this.tabPage7.Controls.Add(this.groupBox24);
+            this.tabPage7.Controls.Add(this.pictureBoxWaveform);
             this.tabPage7.Location = new System.Drawing.Point(4, 25);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
@@ -5254,15 +5171,6 @@ namespace Developer_Tools
             this.textBox_WFSaveFileName.Name = "textBox_WFSaveFileName";
             this.textBox_WFSaveFileName.Size = new System.Drawing.Size(97, 23);
             this.textBox_WFSaveFileName.TabIndex = 0;
-            // 
-            // pictureBoxWaveform
-            // 
-            this.pictureBoxWaveform.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.pictureBoxWaveform.Location = new System.Drawing.Point(310, 137);
-            this.pictureBoxWaveform.Name = "pictureBoxWaveform";
-            this.pictureBoxWaveform.Size = new System.Drawing.Size(879, 427);
-            this.pictureBoxWaveform.TabIndex = 10;
-            this.pictureBoxWaveform.TabStop = false;
             // 
             // textBox_WFSamples
             // 
@@ -5796,6 +5704,46 @@ namespace Developer_Tools
             this.label10.TabIndex = 0;
             this.label10.Text = "Bootloader";
             // 
+            // radioButtonSendFrameFormatASCII
+            // 
+            this.radioButtonSendFrameFormatASCII.AutoSize = true;
+            this.radioButtonSendFrameFormatASCII.Checked = true;
+            this.radioButtonSendFrameFormatASCII.Location = new System.Drawing.Point(10, 199);
+            this.radioButtonSendFrameFormatASCII.Name = "radioButtonSendFrameFormatASCII";
+            this.radioButtonSendFrameFormatASCII.Size = new System.Drawing.Size(61, 21);
+            this.radioButtonSendFrameFormatASCII.TabIndex = 24;
+            this.radioButtonSendFrameFormatASCII.TabStop = true;
+            this.radioButtonSendFrameFormatASCII.Text = "ASCII";
+            this.radioButtonSendFrameFormatASCII.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonSendFrameFormatHex
+            // 
+            this.radioButtonSendFrameFormatHex.AutoSize = true;
+            this.radioButtonSendFrameFormatHex.Location = new System.Drawing.Point(77, 199);
+            this.radioButtonSendFrameFormatHex.Name = "radioButtonSendFrameFormatHex";
+            this.radioButtonSendFrameFormatHex.Size = new System.Drawing.Size(50, 21);
+            this.radioButtonSendFrameFormatHex.TabIndex = 23;
+            this.radioButtonSendFrameFormatHex.Text = "HEX";
+            this.radioButtonSendFrameFormatHex.UseVisualStyleBackColor = true;
+            // 
+            // label113
+            // 
+            this.label113.AutoSize = true;
+            this.label113.Location = new System.Drawing.Point(417, 358);
+            this.label113.Name = "label113";
+            this.label113.Size = new System.Drawing.Size(146, 17);
+            this.label113.TabIndex = 14;
+            this.label113.Text = "add checksum calculator";
+            // 
+            // pictureBoxWaveform
+            // 
+            this.pictureBoxWaveform.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.pictureBoxWaveform.Location = new System.Drawing.Point(310, 137);
+            this.pictureBoxWaveform.Name = "pictureBoxWaveform";
+            this.pictureBoxWaveform.Size = new System.Drawing.Size(879, 427);
+            this.pictureBoxWaveform.TabIndex = 10;
+            this.pictureBoxWaveform.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -5804,7 +5752,7 @@ namespace Developer_Tools
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(1234, 661);
             this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.progressBarSerialConnection);
             this.Controls.Add(this.menuStripMain);
             this.Font = new System.Drawing.Font("Palatino Linotype", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.Blue;
@@ -5827,6 +5775,7 @@ namespace Developer_Tools
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox5.ResumeLayout(false);
@@ -5873,7 +5822,6 @@ namespace Developer_Tools
             this.groupBox29.PerformLayout();
             this.groupBox27.ResumeLayout(false);
             this.groupBox27.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWaveform)).EndInit();
             this.groupBox24.ResumeLayout(false);
             this.groupBox24.PerformLayout();
             this.tabPage8.ResumeLayout(false);
@@ -5882,6 +5830,7 @@ namespace Developer_Tools
             this.groupBox9.ResumeLayout(false);
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWaveform)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -5895,10 +5844,6 @@ namespace Developer_Tools
         private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem serialToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem connectToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem disconnectToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem cOMPORTToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem baudRateToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem logToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem clearToolStripMenuItem;
@@ -5906,24 +5851,23 @@ namespace Developer_Tools
         private System.Windows.Forms.ToolStripMenuItem webPageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem writeUsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem setupMultiPortToolStripMenuItem;
-        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.ProgressBar progressBarSerialConnection;
         private System.Windows.Forms.Timer timer100ms;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabControl tabControl2;
         private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox_SendFrame;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.Button button_DataSend;
+        private System.Windows.Forms.CheckBox checkBoxSendRepeat;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox_SendRepeatTime;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox_SendRepeatNoOfTimes;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox textBoxSendRepeatSentCounter;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox textBoxToolsInputString;
         private System.Windows.Forms.RadioButton radioButtonToolsInputTextBoxHEXSpaced;
@@ -5950,25 +5894,20 @@ namespace Developer_Tools
         private System.Windows.Forms.Button buttonToolsOutputTextBoxCopy;
         private System.Windows.Forms.Button buttonToolsOutputTextBoxClear;
         private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox textBox_DataTraffic;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button button13;
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.RadioButton radioButton9;
+        private System.Windows.Forms.Button buttonDataTrafficClear;
+        private System.Windows.Forms.TextBox textBoxDataTrafficTxBytesTotal;
+        private System.Windows.Forms.RadioButton radioButtonDataTrafficFormatHEXSpaced;
+        private System.Windows.Forms.RadioButton radioButtonDataTrafficFormatASCII;
+        private System.Windows.Forms.RadioButton radioButtonDataTrafficFormatHEX;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.TextBox textBoxDataTrafficRxBytesTotal;
         private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.CheckBox checkBox_SendFrameHDLC;
+        private System.Windows.Forms.Button button_SendFrameClear;
+        private System.Windows.Forms.Button button_SendFramePaste;
+        private System.Windows.Forms.Button buttonDataTrafficCopy;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabControl tabControl3;
         private System.Windows.Forms.TabPage tabPage5;
@@ -6392,6 +6331,9 @@ namespace Developer_Tools
         private System.Windows.Forms.OpenFileDialog openJSONFileDialog;
         private System.Windows.Forms.TextBox textBoxStringFilterRemoveHEX;
         private System.Windows.Forms.ToolStripMenuItem miscelleToolStripMenuItem;
+        private System.Windows.Forms.RadioButton radioButtonSendFrameFormatASCII;
+        private System.Windows.Forms.RadioButton radioButtonSendFrameFormatHex;
+        private System.Windows.Forms.Label label113;
     }
 }
 

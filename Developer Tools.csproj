@@ -81,6 +81,12 @@
     <Compile Include="FormLogin.Designer.cs">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormSerialConfiguration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSerialConfiguration.Designer.cs">
+      <DependentUpon>FormSerialConfiguration.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormSerialSinglePortSetup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +100,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSerialConfiguration.resx">
+      <DependentUpon>FormSerialConfiguration.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormSerialSinglePortSetup.resx">
       <DependentUpon>FormSerialSinglePortSetup.cs</DependentUpon>
