@@ -140,22 +140,22 @@ namespace Developer_Tools
 
         private void buttonToolsInputTextBoxPaste_Click(object sender, EventArgs e)
         {
-            textBoxToolsInputString.Text = Clipboard.GetText();
+            textBox_ToolsInputString.Text = Clipboard.GetText();
         }
 
         private void buttonToolsInputTextBoxClear_Click(object sender, EventArgs e)
         {
-            textBoxToolsInputString.Text = String.Empty;
+            textBox_ToolsInputString.Text = String.Empty;
         }
 
         private void buttonToolsOutputTextBoxCopy_Click(object sender, EventArgs e)
         {
-            Clipboard.SetText(textBoxToolsOutputString.Text);
+            Clipboard.SetText(textBox_ToolsOutputString.Text);
         }
 
         private void buttonToolsOutputTextBoxClear_Click(object sender, EventArgs e)
         {
-            textBoxToolsOutputString.Text = String.Empty;
+            textBox_ToolsOutputString.Text = String.Empty;
         }
 
         private void checkBoxStringFilterRemoveHEX_CheckedChanged(object sender, EventArgs e)
@@ -180,24 +180,24 @@ namespace Developer_Tools
             /* Verify valid input data */
             if (radioButtonToolsInputTextBoxHEX.Checked == true)
             {
-                if(DS_Functions.CheckValidHexString(textBoxToolsInputString.Text) == true)
+                if(DS_Functions.CheckValidHexString(textBox_ToolsInputString.Text) == true)
                 {
-                    input_string = textBoxToolsInputString.Text;
+                    input_string = textBox_ToolsInputString.Text;
                     input_format = "HEX";
                 }
             }
             else if(radioButtonToolsInputTextBoxHEXSpaced.Checked == true)
             {
-                if (DS_Functions.CheckValidHexString(DS_Functions.string_subtract(textBoxToolsInputString.Text," ","")) == true)
+                if (DS_Functions.CheckValidHexString(DS_Functions.string_subtract(textBox_ToolsInputString.Text," ","")) == true)
                 {
-                    input_string = DS_Functions.string_subtract(textBoxToolsInputString.Text, " ", "");
+                    input_string = DS_Functions.string_subtract(textBox_ToolsInputString.Text, " ", "");
                     input_format = "HEXSpaced";
                 }
             }
             else if (radioButtonToolsInputTextBoxASCII.Checked == true)
             {
                 input_format = "ASCII";
-                input_string = textBoxToolsInputString.Text;
+                input_string = textBox_ToolsInputString.Text;
             }
 
 
@@ -265,7 +265,7 @@ namespace Developer_Tools
                     output_string = ascii_str;
                 }
 
-                textBoxToolsOutputString.Text = output_string;
+                textBox_ToolsOutputString.Text = output_string;
             }
             else
             {
@@ -276,7 +276,7 @@ namespace Developer_Tools
         private void buttonWordwrapConvert_Click(object sender, EventArgs e)
         {
             string input_string, output_string = "";
-            input_string = textBoxToolsInputString.Text;
+            input_string = textBox_ToolsInputString.Text;
             int wrap_len = Convert.ToInt16(textBoxWordwrapLength.Text);
 
             for (int i = 0; i < 1 + (input_string.Length / wrap_len); i++)
@@ -291,8 +291,45 @@ namespace Developer_Tools
                 }
                 output_string += newline;
             }
-            textBoxToolsOutputString.Text = output_string;
+            textBox_ToolsOutputString.Text = output_string;
 
+        }
+
+        /* calculate checsum/fcs etc */
+        private void button_ToolsCalculateChecksum_Click(object sender, EventArgs e)
+        {
+            if (textBox_ToolsInputString.Text != String.Empty)
+            {
+                byte[] barray = null;
+                bool input_string_error = false;
+                if (radioButtonToolsInputTextBoxHEX.Checked == true)
+                { 
+                    if(DS_Functions.CheckValidHexSpacedString(textBox_ToolsInputString.Text) == true)
+                    {
+                        barray = DS_Functions.hex_string_to_byte_array(textBox_ToolsInputString.Text.Replace(" ", ""));
+                    }
+                    else
+                    {
+                        input_string_error = true;
+                    }
+                }
+                else 
+                {
+                    barray = DS_Functions.ascii_string_to_byte_array(textBox_ToolsInputString.Text);
+                }
+
+                if (input_string_error == false)
+                {
+                    textBox_ToolsChecksumMemory.Text = DS_Functions.byte_to_hex(DS_CRC.CRC_MEM(barray, 0, barray.Length));
+                    textBox_ToolsChecksumBCCXOR.Text = DS_Functions.byte_to_hex(DS_CRC.CRC_BCC_XOR(barray, 0, barray.Length));
+                    textBox_ToolsChecksumCRC16.Text = DS_Functions.int_to_hex(DS_CRC.get_fcs(barray, 0, barray.Length));
+                }
+                else
+                {
+                    MessageBox.Show("Error in input string", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
         }
     }
 }

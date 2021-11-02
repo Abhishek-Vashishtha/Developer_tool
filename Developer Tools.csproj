@@ -66,8 +66,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DS_App.cs" />
+    <Compile Include="DS_CRC.cs" />
     <Compile Include="DS_Functions.cs" />
+    <Compile Include="DS_HDLC.cs" />
     <Compile Include="DS_JSON.cs" />
+    <Compile Include="DS_Serial.cs" />
     <Compile Include="DS_TextFile.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -87,12 +90,6 @@
     <Compile Include="FormSerialConfiguration.Designer.cs">
       <DependentUpon>FormSerialConfiguration.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormSerialSinglePortSetup.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormSerialSinglePortSetup.Designer.cs">
-      <DependentUpon>FormSerialSinglePortSetup.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -103,9 +100,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormSerialConfiguration.resx">
       <DependentUpon>FormSerialConfiguration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormSerialSinglePortSetup.resx">
-      <DependentUpon>FormSerialSinglePortSetup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

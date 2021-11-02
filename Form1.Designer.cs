@@ -97,14 +97,13 @@ namespace Developer_Tools
             this.radiobuttonToolsOutputTextBoxHEXSpaced = new System.Windows.Forms.RadioButton();
             this.radiobuttonToolsOutputTextBoxASCII = new System.Windows.Forms.RadioButton();
             this.radiobuttonToolsOutputTextBoxHEX = new System.Windows.Forms.RadioButton();
-            this.textBoxToolsOutputString = new System.Windows.Forms.TextBox();
+            this.textBox_ToolsOutputString = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.buttonToolsInputTextBoxPaste = new System.Windows.Forms.Button();
             this.buttonToolsInputTextBoxClear = new System.Windows.Forms.Button();
-            this.radioButtonToolsInputTextBoxHEXSpaced = new System.Windows.Forms.RadioButton();
             this.radioButtonToolsInputTextBoxASCII = new System.Windows.Forms.RadioButton();
             this.radioButtonToolsInputTextBoxHEX = new System.Windows.Forms.RadioButton();
-            this.textBoxToolsInputString = new System.Windows.Forms.TextBox();
+            this.textBox_ToolsInputString = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabControl3 = new System.Windows.Forms.TabControl();
             this.tabPage5 = new System.Windows.Forms.TabPage();
@@ -525,9 +524,17 @@ namespace Developer_Tools
             this.openJSONFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.radioButtonSendFrameFormatASCII = new System.Windows.Forms.RadioButton();
             this.radioButtonSendFrameFormatHex = new System.Windows.Forms.RadioButton();
-            this.label113 = new System.Windows.Forms.Label();
             this.pictureBoxWaveform = new System.Windows.Forms.PictureBox();
             this.timer1sec = new System.Windows.Forms.Timer(this.components);
+            this.groupBox25 = new System.Windows.Forms.GroupBox();
+            this.textBox_ToolsChecksumMemory = new System.Windows.Forms.TextBox();
+            this.textBox_ToolsChecksumBCCXOR = new System.Windows.Forms.TextBox();
+            this.textBox_ToolsChecksumCRC16 = new System.Windows.Forms.TextBox();
+            this.button_ToolsCalculateChecksum = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label113 = new System.Windows.Forms.Label();
+            this.radioButtonToolsInputTextBoxHEXSpaced = new System.Windows.Forms.RadioButton();
             this.menuStripMain.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -567,6 +574,7 @@ namespace Developer_Tools
             this.groupBox9.SuspendLayout();
             this.groupBox8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWaveform)).BeginInit();
+            this.groupBox25.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStripMain
@@ -1016,7 +1024,7 @@ namespace Developer_Tools
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.tabPage2.Controls.Add(this.label113);
+            this.tabPage2.Controls.Add(this.groupBox25);
             this.tabPage2.Controls.Add(this.groupBox3);
             this.tabPage2.Controls.Add(this.groupBox5);
             this.tabPage2.Controls.Add(this.groupBox4);
@@ -1033,7 +1041,7 @@ namespace Developer_Tools
             this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Controls.Add(this.buttonWordwrapConvert);
             this.groupBox3.Controls.Add(this.textBoxWordwrapLength);
-            this.groupBox3.Location = new System.Drawing.Point(14, 380);
+            this.groupBox3.Location = new System.Drawing.Point(156, 214);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(136, 88);
             this.groupBox3.TabIndex = 13;
@@ -1051,9 +1059,9 @@ namespace Developer_Tools
             // 
             // buttonWordwrapConvert
             // 
-            this.buttonWordwrapConvert.Location = new System.Drawing.Point(13, 50);
+            this.buttonWordwrapConvert.Location = new System.Drawing.Point(6, 50);
             this.buttonWordwrapConvert.Name = "buttonWordwrapConvert";
-            this.buttonWordwrapConvert.Size = new System.Drawing.Size(117, 35);
+            this.buttonWordwrapConvert.Size = new System.Drawing.Size(124, 35);
             this.buttonWordwrapConvert.TabIndex = 8;
             this.buttonWordwrapConvert.Text = "Convert";
             this.buttonWordwrapConvert.UseVisualStyleBackColor = true;
@@ -1160,7 +1168,7 @@ namespace Developer_Tools
             this.groupBox4.Controls.Add(this.radiobuttonToolsOutputTextBoxHEXSpaced);
             this.groupBox4.Controls.Add(this.radiobuttonToolsOutputTextBoxASCII);
             this.groupBox4.Controls.Add(this.radiobuttonToolsOutputTextBoxHEX);
-            this.groupBox4.Controls.Add(this.textBoxToolsOutputString);
+            this.groupBox4.Controls.Add(this.textBox_ToolsOutputString);
             this.groupBox4.Location = new System.Drawing.Point(641, 6);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(577, 209);
@@ -1220,14 +1228,14 @@ namespace Developer_Tools
             this.radiobuttonToolsOutputTextBoxHEX.Text = "HEX";
             this.radiobuttonToolsOutputTextBoxHEX.UseVisualStyleBackColor = true;
             // 
-            // textBoxToolsOutputString
+            // textBox_ToolsOutputString
             // 
-            this.textBoxToolsOutputString.Location = new System.Drawing.Point(6, 22);
-            this.textBoxToolsOutputString.Multiline = true;
-            this.textBoxToolsOutputString.Name = "textBoxToolsOutputString";
-            this.textBoxToolsOutputString.ReadOnly = true;
-            this.textBoxToolsOutputString.Size = new System.Drawing.Size(565, 153);
-            this.textBoxToolsOutputString.TabIndex = 0;
+            this.textBox_ToolsOutputString.Location = new System.Drawing.Point(6, 22);
+            this.textBox_ToolsOutputString.Multiline = true;
+            this.textBox_ToolsOutputString.Name = "textBox_ToolsOutputString";
+            this.textBox_ToolsOutputString.ReadOnly = true;
+            this.textBox_ToolsOutputString.Size = new System.Drawing.Size(565, 153);
+            this.textBox_ToolsOutputString.TabIndex = 0;
             // 
             // groupBox2
             // 
@@ -1236,7 +1244,7 @@ namespace Developer_Tools
             this.groupBox2.Controls.Add(this.radioButtonToolsInputTextBoxHEXSpaced);
             this.groupBox2.Controls.Add(this.radioButtonToolsInputTextBoxASCII);
             this.groupBox2.Controls.Add(this.radioButtonToolsInputTextBoxHEX);
-            this.groupBox2.Controls.Add(this.textBoxToolsInputString);
+            this.groupBox2.Controls.Add(this.textBox_ToolsInputString);
             this.groupBox2.Location = new System.Drawing.Point(14, 6);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(621, 209);
@@ -1264,16 +1272,6 @@ namespace Developer_Tools
             this.buttonToolsInputTextBoxClear.UseVisualStyleBackColor = true;
             this.buttonToolsInputTextBoxClear.Click += new System.EventHandler(this.buttonToolsInputTextBoxClear_Click);
             // 
-            // radioButtonToolsInputTextBoxHEXSpaced
-            // 
-            this.radioButtonToolsInputTextBoxHEXSpaced.AutoSize = true;
-            this.radioButtonToolsInputTextBoxHEXSpaced.Location = new System.Drawing.Point(129, 179);
-            this.radioButtonToolsInputTextBoxHEXSpaced.Name = "radioButtonToolsInputTextBoxHEXSpaced";
-            this.radioButtonToolsInputTextBoxHEXSpaced.Size = new System.Drawing.Size(100, 21);
-            this.radioButtonToolsInputTextBoxHEXSpaced.TabIndex = 3;
-            this.radioButtonToolsInputTextBoxHEXSpaced.Text = "HEX SPACED";
-            this.radioButtonToolsInputTextBoxHEXSpaced.UseVisualStyleBackColor = true;
-            // 
             // radioButtonToolsInputTextBoxASCII
             // 
             this.radioButtonToolsInputTextBoxASCII.AutoSize = true;
@@ -1296,13 +1294,13 @@ namespace Developer_Tools
             this.radioButtonToolsInputTextBoxHEX.Text = "HEX";
             this.radioButtonToolsInputTextBoxHEX.UseVisualStyleBackColor = true;
             // 
-            // textBoxToolsInputString
+            // textBox_ToolsInputString
             // 
-            this.textBoxToolsInputString.Location = new System.Drawing.Point(6, 22);
-            this.textBoxToolsInputString.Multiline = true;
-            this.textBoxToolsInputString.Name = "textBoxToolsInputString";
-            this.textBoxToolsInputString.Size = new System.Drawing.Size(609, 153);
-            this.textBoxToolsInputString.TabIndex = 0;
+            this.textBox_ToolsInputString.Location = new System.Drawing.Point(6, 22);
+            this.textBox_ToolsInputString.Multiline = true;
+            this.textBox_ToolsInputString.Name = "textBox_ToolsInputString";
+            this.textBox_ToolsInputString.Size = new System.Drawing.Size(609, 153);
+            this.textBox_ToolsInputString.TabIndex = 0;
             // 
             // tabPage3
             // 
@@ -5731,15 +5729,6 @@ namespace Developer_Tools
             this.radioButtonSendFrameFormatHex.Text = "HEX";
             this.radioButtonSendFrameFormatHex.UseVisualStyleBackColor = true;
             // 
-            // label113
-            // 
-            this.label113.AutoSize = true;
-            this.label113.Location = new System.Drawing.Point(417, 358);
-            this.label113.Name = "label113";
-            this.label113.Size = new System.Drawing.Size(146, 17);
-            this.label113.TabIndex = 14;
-            this.label113.Text = "add checksum calculator";
-            // 
             // pictureBoxWaveform
             // 
             this.pictureBoxWaveform.BackColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -5752,6 +5741,90 @@ namespace Developer_Tools
             // timer1sec
             // 
             this.timer1sec.Interval = 1000;
+            // 
+            // groupBox25
+            // 
+            this.groupBox25.Controls.Add(this.label113);
+            this.groupBox25.Controls.Add(this.label4);
+            this.groupBox25.Controls.Add(this.label1);
+            this.groupBox25.Controls.Add(this.button_ToolsCalculateChecksum);
+            this.groupBox25.Controls.Add(this.textBox_ToolsChecksumCRC16);
+            this.groupBox25.Controls.Add(this.textBox_ToolsChecksumBCCXOR);
+            this.groupBox25.Controls.Add(this.textBox_ToolsChecksumMemory);
+            this.groupBox25.Location = new System.Drawing.Point(298, 214);
+            this.groupBox25.Name = "groupBox25";
+            this.groupBox25.Size = new System.Drawing.Size(161, 140);
+            this.groupBox25.TabIndex = 15;
+            this.groupBox25.TabStop = false;
+            this.groupBox25.Text = "Checksum";
+            // 
+            // textBox_ToolsChecksumMemory
+            // 
+            this.textBox_ToolsChecksumMemory.Location = new System.Drawing.Point(88, 17);
+            this.textBox_ToolsChecksumMemory.Name = "textBox_ToolsChecksumMemory";
+            this.textBox_ToolsChecksumMemory.Size = new System.Drawing.Size(63, 23);
+            this.textBox_ToolsChecksumMemory.TabIndex = 0;
+            // 
+            // textBox_ToolsChecksumBCCXOR
+            // 
+            this.textBox_ToolsChecksumBCCXOR.Location = new System.Drawing.Point(88, 42);
+            this.textBox_ToolsChecksumBCCXOR.Name = "textBox_ToolsChecksumBCCXOR";
+            this.textBox_ToolsChecksumBCCXOR.Size = new System.Drawing.Size(63, 23);
+            this.textBox_ToolsChecksumBCCXOR.TabIndex = 1;
+            // 
+            // textBox_ToolsChecksumCRC16
+            // 
+            this.textBox_ToolsChecksumCRC16.Location = new System.Drawing.Point(88, 67);
+            this.textBox_ToolsChecksumCRC16.Name = "textBox_ToolsChecksumCRC16";
+            this.textBox_ToolsChecksumCRC16.Size = new System.Drawing.Size(63, 23);
+            this.textBox_ToolsChecksumCRC16.TabIndex = 2;
+            // 
+            // button_ToolsCalculateChecksum
+            // 
+            this.button_ToolsCalculateChecksum.Location = new System.Drawing.Point(10, 96);
+            this.button_ToolsCalculateChecksum.Name = "button_ToolsCalculateChecksum";
+            this.button_ToolsCalculateChecksum.Size = new System.Drawing.Size(141, 35);
+            this.button_ToolsCalculateChecksum.TabIndex = 10;
+            this.button_ToolsCalculateChecksum.Text = "Calculate";
+            this.button_ToolsCalculateChecksum.UseVisualStyleBackColor = true;
+            this.button_ToolsCalculateChecksum.Click += new System.EventHandler(this.button_ToolsCalculateChecksum_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(23, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(62, 17);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Memory: ";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(17, 45);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(65, 17);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "BCC XOR:";
+            // 
+            // label113
+            // 
+            this.label113.AutoSize = true;
+            this.label113.Location = new System.Drawing.Point(7, 70);
+            this.label113.Name = "label113";
+            this.label113.Size = new System.Drawing.Size(76, 17);
+            this.label113.TabIndex = 12;
+            this.label113.Text = "CRC16/FCS:";
+            // 
+            // radioButtonToolsInputTextBoxHEXSpaced
+            // 
+            this.radioButtonToolsInputTextBoxHEXSpaced.AutoSize = true;
+            this.radioButtonToolsInputTextBoxHEXSpaced.Location = new System.Drawing.Point(129, 179);
+            this.radioButtonToolsInputTextBoxHEXSpaced.Name = "radioButtonToolsInputTextBoxHEXSpaced";
+            this.radioButtonToolsInputTextBoxHEXSpaced.Size = new System.Drawing.Size(100, 21);
+            this.radioButtonToolsInputTextBoxHEXSpaced.TabIndex = 3;
+            this.radioButtonToolsInputTextBoxHEXSpaced.Text = "HEX SPACED";
+            this.radioButtonToolsInputTextBoxHEXSpaced.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -5784,7 +5857,6 @@ namespace Developer_Tools
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox5.ResumeLayout(false);
@@ -5840,6 +5912,8 @@ namespace Developer_Tools
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWaveform)).EndInit();
+            this.groupBox25.ResumeLayout(false);
+            this.groupBox25.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -5878,15 +5952,14 @@ namespace Developer_Tools
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBoxSendRepeatSentCounter;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox textBoxToolsInputString;
-        private System.Windows.Forms.RadioButton radioButtonToolsInputTextBoxHEXSpaced;
+        private System.Windows.Forms.TextBox textBox_ToolsInputString;
         private System.Windows.Forms.RadioButton radioButtonToolsInputTextBoxASCII;
         private System.Windows.Forms.RadioButton radioButtonToolsInputTextBoxHEX;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.RadioButton radiobuttonToolsOutputTextBoxHEXSpaced;
         private System.Windows.Forms.RadioButton radiobuttonToolsOutputTextBoxASCII;
         private System.Windows.Forms.RadioButton radiobuttonToolsOutputTextBoxHEX;
-        private System.Windows.Forms.TextBox textBoxToolsOutputString;
+        private System.Windows.Forms.TextBox textBox_ToolsOutputString;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Button buttonStringFilterConvert;
         private System.Windows.Forms.CheckBox checkBoxStringFilterRemoveHEX;
@@ -6342,8 +6415,16 @@ namespace Developer_Tools
         private System.Windows.Forms.ToolStripMenuItem miscelleToolStripMenuItem;
         private System.Windows.Forms.RadioButton radioButtonSendFrameFormatASCII;
         private System.Windows.Forms.RadioButton radioButtonSendFrameFormatHex;
-        private System.Windows.Forms.Label label113;
         private System.Windows.Forms.Timer timer1sec;
+        private System.Windows.Forms.GroupBox groupBox25;
+        private System.Windows.Forms.Label label113;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button_ToolsCalculateChecksum;
+        private System.Windows.Forms.TextBox textBox_ToolsChecksumCRC16;
+        private System.Windows.Forms.TextBox textBox_ToolsChecksumBCCXOR;
+        private System.Windows.Forms.TextBox textBox_ToolsChecksumMemory;
+        private System.Windows.Forms.RadioButton radioButtonToolsInputTextBoxHEXSpaced;
     }
 }
 

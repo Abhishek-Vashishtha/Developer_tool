@@ -199,6 +199,14 @@ namespace Developer_Tools
             }
             return hex_string;
         }
+        public static string int_to_hex(int i)
+        {
+            byte[] barry = new byte[2];
+            barry[0] = (byte)(i / 256);
+            barry[1] = (byte)(i % 256);
+            string hex_string = byte_array_to_hex_string(barry, 2);
+            return hex_string;
+        }
 
         public static string string_insertor(string input_string, char c, int insert_len)
         {
