@@ -766,6 +766,7 @@ namespace Developer_Tools
             this.buttonDataTrafficCopy.TabIndex = 22;
             this.buttonDataTrafficCopy.Text = "Copy";
             this.buttonDataTrafficCopy.UseVisualStyleBackColor = true;
+            this.buttonDataTrafficCopy.Click += new System.EventHandler(this.buttonDataTrafficCopy_Click);
             // 
             // label8
             // 
@@ -802,6 +803,7 @@ namespace Developer_Tools
             this.buttonDataTrafficClear.TabIndex = 16;
             this.buttonDataTrafficClear.Text = "Clear";
             this.buttonDataTrafficClear.UseVisualStyleBackColor = true;
+            this.buttonDataTrafficClear.Click += new System.EventHandler(this.buttonDataTrafficClear_Click);
             // 
             // textBoxDataTrafficTxBytesTotal
             // 
@@ -914,6 +916,7 @@ namespace Developer_Tools
             this.button_SendFrameClear.TabIndex = 13;
             this.button_SendFrameClear.Text = "Clear";
             this.button_SendFrameClear.UseVisualStyleBackColor = true;
+            this.button_SendFrameClear.Click += new System.EventHandler(this.button_SendFrameClear_Click);
             // 
             // button_SendFramePaste
             // 
@@ -923,6 +926,7 @@ namespace Developer_Tools
             this.button_SendFramePaste.TabIndex = 15;
             this.button_SendFramePaste.Text = "Paste";
             this.button_SendFramePaste.UseVisualStyleBackColor = true;
+            this.button_SendFramePaste.Click += new System.EventHandler(this.button_SendFramePaste_Click);
             // 
             // groupBox1
             // 

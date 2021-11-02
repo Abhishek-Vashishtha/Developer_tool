@@ -331,5 +331,25 @@ namespace Developer_Tools
 
             }
         }
+
+        private void button_SendFramePaste_Click(object sender, EventArgs e)
+        {
+            textBox_SendFrame.Text = Clipboard.GetText();
+        }
+
+        private void button_SendFrameClear_Click(object sender, EventArgs e)
+        {
+            textBox_SendFrame.Text = String.Empty;
+        }
+
+        private void buttonDataTrafficCopy_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(textBox_DataTraffic.Text);
+        }
+
+        private void buttonDataTrafficClear_Click(object sender, EventArgs e)
+        {
+            textBox_DataTraffic.Text = String.Empty;
+        }
     }
 }

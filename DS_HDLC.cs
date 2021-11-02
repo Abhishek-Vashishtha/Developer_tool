@@ -7,8 +7,7 @@ namespace Developer_Tools
 {
     class DS_HDLC
     {
-        int hdlc_info_len, hdlc_frame_len;
-
+        
         public static bool verify_hdlc_frame(byte[] b_array, int length)
         {
             int temp_len;
