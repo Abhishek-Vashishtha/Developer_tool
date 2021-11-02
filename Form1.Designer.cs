@@ -48,7 +48,7 @@ namespace Developer_Tools
             this.writeUsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.progressBarSerialConnection = new System.Windows.Forms.ProgressBar();
-            this.timer100ms = new System.Windows.Forms.Timer(this.components);
+            this.timer10ms = new System.Windows.Forms.Timer(this.components);
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
@@ -527,6 +527,7 @@ namespace Developer_Tools
             this.radioButtonSendFrameFormatHex = new System.Windows.Forms.RadioButton();
             this.label113 = new System.Windows.Forms.Label();
             this.pictureBoxWaveform = new System.Windows.Forms.PictureBox();
+            this.timer1sec = new System.Windows.Forms.Timer(this.components);
             this.menuStripMain.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -702,6 +703,10 @@ namespace Developer_Tools
             this.progressBarSerialConnection.Name = "progressBarSerialConnection";
             this.progressBarSerialConnection.Size = new System.Drawing.Size(179, 23);
             this.progressBarSerialConnection.TabIndex = 1;
+            // 
+            // timer10ms
+            // 
+            this.timer10ms.Interval = 10;
             // 
             // tabControl1
             // 
@@ -5744,6 +5749,10 @@ namespace Developer_Tools
             this.pictureBoxWaveform.TabIndex = 10;
             this.pictureBoxWaveform.TabStop = false;
             // 
+            // timer1sec
+            // 
+            this.timer1sec.Interval = 1000;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -5852,7 +5861,7 @@ namespace Developer_Tools
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem writeUsToolStripMenuItem;
         private System.Windows.Forms.ProgressBar progressBarSerialConnection;
-        private System.Windows.Forms.Timer timer100ms;
+        private System.Windows.Forms.Timer timer10ms;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
@@ -6334,6 +6343,7 @@ namespace Developer_Tools
         private System.Windows.Forms.RadioButton radioButtonSendFrameFormatASCII;
         private System.Windows.Forms.RadioButton radioButtonSendFrameFormatHex;
         private System.Windows.Forms.Label label113;
+        private System.Windows.Forms.Timer timer1sec;
     }
 }
 
