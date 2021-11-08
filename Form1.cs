@@ -302,7 +302,7 @@ namespace Developer_Tools
             {
                 byte[] barray = null;
                 bool input_string_error = false;
-                if (radioButtonToolsInputTextBoxHEX.Checked == true)
+                if (radioButtonToolsInputTextBoxHEX.Checked == true || radioButtonToolsInputTextBoxHEXSpaced.Checked == true)
                 { 
                     if(DS_Functions.CheckValidHexSpacedString(textBox_ToolsInputString.Text) == true)
                     {
@@ -350,6 +350,14 @@ namespace Developer_Tools
         private void buttonDataTrafficClear_Click(object sender, EventArgs e)
         {
             textBox_DataTraffic.Text = String.Empty;
+        }
+
+        private void serialToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormSerialConfiguration form_serial = new FormSerialConfiguration();
+            Application.Run(form_serial);
+
+
         }
     }
 }
