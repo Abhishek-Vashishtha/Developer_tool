@@ -1000,7 +1000,6 @@ namespace Developer_Tools
             this.label5.Size = new System.Drawing.Size(60, 17);
             this.label5.TabIndex = 7;
             this.label5.Text = "Counter: ";
-            this.label5.Visible = false;
             // 
             // textBox_SendRepeatSentCounter
             // 
@@ -1011,7 +1010,6 @@ namespace Developer_Tools
             this.textBox_SendRepeatSentCounter.TabIndex = 6;
             this.textBox_SendRepeatSentCounter.Text = "0";
             this.textBox_SendRepeatSentCounter.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox_SendRepeatSentCounter.Visible = false;
             // 
             // label3
             // 
@@ -1021,7 +1019,6 @@ namespace Developer_Tools
             this.label3.Size = new System.Drawing.Size(45, 17);
             this.label3.TabIndex = 5;
             this.label3.Text = "times: ";
-            this.label3.Visible = false;
             // 
             // textBox_SendRepeatNoOfTimes
             // 
@@ -1031,7 +1028,6 @@ namespace Developer_Tools
             this.textBox_SendRepeatNoOfTimes.TabIndex = 4;
             this.textBox_SendRepeatNoOfTimes.Text = "100";
             this.textBox_SendRepeatNoOfTimes.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox_SendRepeatNoOfTimes.Visible = false;
             // 
             // label2
             // 
@@ -1041,7 +1037,6 @@ namespace Developer_Tools
             this.label2.Size = new System.Drawing.Size(64, 17);
             this.label2.TabIndex = 3;
             this.label2.Text = "time (ms):";
-            this.label2.Visible = false;
             // 
             // textBox_SendRepeatTime
             // 
@@ -1051,7 +1046,6 @@ namespace Developer_Tools
             this.textBox_SendRepeatTime.TabIndex = 2;
             this.textBox_SendRepeatTime.Text = "1000";
             this.textBox_SendRepeatTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox_SendRepeatTime.Visible = false;
             // 
             // checkBox_SendRepeat
             // 

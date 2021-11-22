@@ -379,8 +379,19 @@ namespace Developer_Tools
 
         private void timer1sec_Tick(object sender, EventArgs e)
         {
+            bool connection_status = false;
+            
             /* enable/disable functionlity as per flags */
-
+            if(checkBox_SendRepeat.Checked == true)
+            {
+                textBox_SendRepeatTime.Enabled = true;
+                textBox_SendRepeatNoOfTimes.Enabled = true;
+            }
+            else
+            {
+                textBox_SendRepeatTime.Enabled = false;
+                textBox_SendRepeatNoOfTimes.Enabled = false;
+            }
             
             /* pop up notification when a port is connected or disconnected */
             DS_Serial.update_port_list();
@@ -389,16 +400,24 @@ namespace Developer_Tools
             /* fill up information periodically */
             if(radioButton_CommunicationSerial.Checked == true && serial_port.IsOpen == true)
             {
-                progressBar_connectionStatus.Value = 100;
+                connection_status = true;
             }
-            else
+
+            if (connection_status == true)                  /* Connected */
+            {
+                progressBar_connectionStatus.Value = 100;
+                button_Send.Enabled = true;
+                ToolStripMenuItem_Connect.Enabled = false;
+                ToolStripMenuItem_Disconnect.Enabled = true;
+            }
+            else                                            /* Disconnected */
             {
                 progressBar_connectionStatus.Value = 0;
+                button_Send.Enabled = false;
+                ToolStripMenuItem_Connect.Enabled = true;
+                ToolStripMenuItem_Disconnect.Enabled = false;
             }
-
-
-            /* update availble serial ports every second */
-
+            
 
         }
 
