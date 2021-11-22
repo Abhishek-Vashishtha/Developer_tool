@@ -52,34 +52,34 @@ namespace Developer_Tools
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.buttonDataTrafficCopy = new System.Windows.Forms.Button();
+            this.button_DataTrafficCopy = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBoxDataTrafficRxBytesTotal = new System.Windows.Forms.TextBox();
+            this.textBox_DataTrafficRxBytesTotal = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.buttonDataTrafficClear = new System.Windows.Forms.Button();
-            this.textBoxDataTrafficTxBytesTotal = new System.Windows.Forms.TextBox();
-            this.radioButtonDataTrafficFormatHEXSpaced = new System.Windows.Forms.RadioButton();
-            this.radioButtonDataTrafficFormatASCII = new System.Windows.Forms.RadioButton();
-            this.radioButtonDataTrafficFormatHEX = new System.Windows.Forms.RadioButton();
+            this.button_DataTrafficClear = new System.Windows.Forms.Button();
+            this.textBox_DataTrafficTxBytesTotal = new System.Windows.Forms.TextBox();
+            this.radioButton_DataTrafficFormatHEXSpaced = new System.Windows.Forms.RadioButton();
+            this.radioButton_DataTrafficFormatASCII = new System.Windows.Forms.RadioButton();
+            this.radioButton_DataTrafficFormatHEX = new System.Windows.Forms.RadioButton();
             this.textBox_DataTraffic = new System.Windows.Forms.TextBox();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.radioButtonSendFrameFormatASCII = new System.Windows.Forms.RadioButton();
-            this.radioButtonSendFrameFormatHex = new System.Windows.Forms.RadioButton();
+            this.radioButton_SendFrameFormatASCII = new System.Windows.Forms.RadioButton();
+            this.radioButton_SendFrameFormatHex = new System.Windows.Forms.RadioButton();
             this.textBox_SendFrame = new System.Windows.Forms.TextBox();
             this.checkBox_SendFrameHDLC = new System.Windows.Forms.CheckBox();
             this.button_SendFrameClear = new System.Windows.Forms.Button();
             this.button_SendFramePaste = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBoxSendRepeatSentCounter = new System.Windows.Forms.TextBox();
+            this.textBox_SendRepeatSentCounter = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.textBox_SendRepeatNoOfTimes = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox_SendRepeatTime = new System.Windows.Forms.TextBox();
-            this.checkBoxSendRepeat = new System.Windows.Forms.CheckBox();
-            this.button_DataSend = new System.Windows.Forms.Button();
+            this.checkBox_SendRepeat = new System.Windows.Forms.CheckBox();
+            this.button_Send = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox25 = new System.Windows.Forms.GroupBox();
             this.label113 = new System.Windows.Forms.Label();
@@ -742,15 +742,15 @@ namespace Developer_Tools
             // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.buttonDataTrafficCopy);
+            this.groupBox6.Controls.Add(this.button_DataTrafficCopy);
             this.groupBox6.Controls.Add(this.label8);
-            this.groupBox6.Controls.Add(this.textBoxDataTrafficRxBytesTotal);
+            this.groupBox6.Controls.Add(this.textBox_DataTrafficRxBytesTotal);
             this.groupBox6.Controls.Add(this.label6);
-            this.groupBox6.Controls.Add(this.buttonDataTrafficClear);
-            this.groupBox6.Controls.Add(this.textBoxDataTrafficTxBytesTotal);
-            this.groupBox6.Controls.Add(this.radioButtonDataTrafficFormatHEXSpaced);
-            this.groupBox6.Controls.Add(this.radioButtonDataTrafficFormatASCII);
-            this.groupBox6.Controls.Add(this.radioButtonDataTrafficFormatHEX);
+            this.groupBox6.Controls.Add(this.button_DataTrafficClear);
+            this.groupBox6.Controls.Add(this.textBox_DataTrafficTxBytesTotal);
+            this.groupBox6.Controls.Add(this.radioButton_DataTrafficFormatHEXSpaced);
+            this.groupBox6.Controls.Add(this.radioButton_DataTrafficFormatASCII);
+            this.groupBox6.Controls.Add(this.radioButton_DataTrafficFormatHEX);
             this.groupBox6.Controls.Add(this.textBox_DataTraffic);
             this.groupBox6.Location = new System.Drawing.Point(613, 6);
             this.groupBox6.Name = "groupBox6";
@@ -759,15 +759,15 @@ namespace Developer_Tools
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Data Transfer Traffic";
             // 
-            // buttonDataTrafficCopy
+            // button_DataTrafficCopy
             // 
-            this.buttonDataTrafficCopy.Location = new System.Drawing.Point(487, 555);
-            this.buttonDataTrafficCopy.Name = "buttonDataTrafficCopy";
-            this.buttonDataTrafficCopy.Size = new System.Drawing.Size(58, 22);
-            this.buttonDataTrafficCopy.TabIndex = 22;
-            this.buttonDataTrafficCopy.Text = "Copy";
-            this.buttonDataTrafficCopy.UseVisualStyleBackColor = true;
-            this.buttonDataTrafficCopy.Click += new System.EventHandler(this.buttonDataTrafficCopy_Click);
+            this.button_DataTrafficCopy.Location = new System.Drawing.Point(487, 555);
+            this.button_DataTrafficCopy.Name = "button_DataTrafficCopy";
+            this.button_DataTrafficCopy.Size = new System.Drawing.Size(58, 22);
+            this.button_DataTrafficCopy.TabIndex = 22;
+            this.button_DataTrafficCopy.Text = "Copy";
+            this.button_DataTrafficCopy.UseVisualStyleBackColor = true;
+            this.button_DataTrafficCopy.Click += new System.EventHandler(this.buttonDataTrafficCopy_Click);
             // 
             // label8
             // 
@@ -778,14 +778,14 @@ namespace Developer_Tools
             this.label8.TabIndex = 18;
             this.label8.Text = "Rx Bytes:";
             // 
-            // textBoxDataTrafficRxBytesTotal
+            // textBox_DataTrafficRxBytesTotal
             // 
-            this.textBoxDataTrafficRxBytesTotal.Location = new System.Drawing.Point(411, 554);
-            this.textBoxDataTrafficRxBytesTotal.Name = "textBoxDataTrafficRxBytesTotal";
-            this.textBoxDataTrafficRxBytesTotal.Size = new System.Drawing.Size(43, 23);
-            this.textBoxDataTrafficRxBytesTotal.TabIndex = 17;
-            this.textBoxDataTrafficRxBytesTotal.Text = "0";
-            this.textBoxDataTrafficRxBytesTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_DataTrafficRxBytesTotal.Location = new System.Drawing.Point(411, 554);
+            this.textBox_DataTrafficRxBytesTotal.Name = "textBox_DataTrafficRxBytesTotal";
+            this.textBox_DataTrafficRxBytesTotal.Size = new System.Drawing.Size(43, 23);
+            this.textBox_DataTrafficRxBytesTotal.TabIndex = 17;
+            this.textBox_DataTrafficRxBytesTotal.Text = "0";
+            this.textBox_DataTrafficRxBytesTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label6
             // 
@@ -796,56 +796,56 @@ namespace Developer_Tools
             this.label6.TabIndex = 9;
             this.label6.Text = "Tx Bytes:";
             // 
-            // buttonDataTrafficClear
+            // button_DataTrafficClear
             // 
-            this.buttonDataTrafficClear.Location = new System.Drawing.Point(551, 554);
-            this.buttonDataTrafficClear.Name = "buttonDataTrafficClear";
-            this.buttonDataTrafficClear.Size = new System.Drawing.Size(48, 23);
-            this.buttonDataTrafficClear.TabIndex = 16;
-            this.buttonDataTrafficClear.Text = "Clear";
-            this.buttonDataTrafficClear.UseVisualStyleBackColor = true;
-            this.buttonDataTrafficClear.Click += new System.EventHandler(this.buttonDataTrafficClear_Click);
+            this.button_DataTrafficClear.Location = new System.Drawing.Point(551, 554);
+            this.button_DataTrafficClear.Name = "button_DataTrafficClear";
+            this.button_DataTrafficClear.Size = new System.Drawing.Size(48, 23);
+            this.button_DataTrafficClear.TabIndex = 16;
+            this.button_DataTrafficClear.Text = "Clear";
+            this.button_DataTrafficClear.UseVisualStyleBackColor = true;
+            this.button_DataTrafficClear.Click += new System.EventHandler(this.buttonDataTrafficClear_Click);
             // 
-            // textBoxDataTrafficTxBytesTotal
+            // textBox_DataTrafficTxBytesTotal
             // 
-            this.textBoxDataTrafficTxBytesTotal.Location = new System.Drawing.Point(298, 553);
-            this.textBoxDataTrafficTxBytesTotal.Name = "textBoxDataTrafficTxBytesTotal";
-            this.textBoxDataTrafficTxBytesTotal.Size = new System.Drawing.Size(43, 23);
-            this.textBoxDataTrafficTxBytesTotal.TabIndex = 8;
-            this.textBoxDataTrafficTxBytesTotal.Text = "0";
-            this.textBoxDataTrafficTxBytesTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_DataTrafficTxBytesTotal.Location = new System.Drawing.Point(298, 553);
+            this.textBox_DataTrafficTxBytesTotal.Name = "textBox_DataTrafficTxBytesTotal";
+            this.textBox_DataTrafficTxBytesTotal.Size = new System.Drawing.Size(43, 23);
+            this.textBox_DataTrafficTxBytesTotal.TabIndex = 8;
+            this.textBox_DataTrafficTxBytesTotal.Text = "0";
+            this.textBox_DataTrafficTxBytesTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // radioButtonDataTrafficFormatHEXSpaced
+            // radioButton_DataTrafficFormatHEXSpaced
             // 
-            this.radioButtonDataTrafficFormatHEXSpaced.AutoSize = true;
-            this.radioButtonDataTrafficFormatHEXSpaced.Location = new System.Drawing.Point(129, 553);
-            this.radioButtonDataTrafficFormatHEXSpaced.Name = "radioButtonDataTrafficFormatHEXSpaced";
-            this.radioButtonDataTrafficFormatHEXSpaced.Size = new System.Drawing.Size(100, 21);
-            this.radioButtonDataTrafficFormatHEXSpaced.TabIndex = 15;
-            this.radioButtonDataTrafficFormatHEXSpaced.Text = "HEX SPACED";
-            this.radioButtonDataTrafficFormatHEXSpaced.UseVisualStyleBackColor = true;
+            this.radioButton_DataTrafficFormatHEXSpaced.AutoSize = true;
+            this.radioButton_DataTrafficFormatHEXSpaced.Location = new System.Drawing.Point(129, 553);
+            this.radioButton_DataTrafficFormatHEXSpaced.Name = "radioButton_DataTrafficFormatHEXSpaced";
+            this.radioButton_DataTrafficFormatHEXSpaced.Size = new System.Drawing.Size(100, 21);
+            this.radioButton_DataTrafficFormatHEXSpaced.TabIndex = 15;
+            this.radioButton_DataTrafficFormatHEXSpaced.Text = "HEX SPACED";
+            this.radioButton_DataTrafficFormatHEXSpaced.UseVisualStyleBackColor = true;
             // 
-            // radioButtonDataTrafficFormatASCII
+            // radioButton_DataTrafficFormatASCII
             // 
-            this.radioButtonDataTrafficFormatASCII.AutoSize = true;
-            this.radioButtonDataTrafficFormatASCII.Checked = true;
-            this.radioButtonDataTrafficFormatASCII.Location = new System.Drawing.Point(6, 553);
-            this.radioButtonDataTrafficFormatASCII.Name = "radioButtonDataTrafficFormatASCII";
-            this.radioButtonDataTrafficFormatASCII.Size = new System.Drawing.Size(61, 21);
-            this.radioButtonDataTrafficFormatASCII.TabIndex = 14;
-            this.radioButtonDataTrafficFormatASCII.TabStop = true;
-            this.radioButtonDataTrafficFormatASCII.Text = "ASCII";
-            this.radioButtonDataTrafficFormatASCII.UseVisualStyleBackColor = true;
+            this.radioButton_DataTrafficFormatASCII.AutoSize = true;
+            this.radioButton_DataTrafficFormatASCII.Checked = true;
+            this.radioButton_DataTrafficFormatASCII.Location = new System.Drawing.Point(6, 553);
+            this.radioButton_DataTrafficFormatASCII.Name = "radioButton_DataTrafficFormatASCII";
+            this.radioButton_DataTrafficFormatASCII.Size = new System.Drawing.Size(61, 21);
+            this.radioButton_DataTrafficFormatASCII.TabIndex = 14;
+            this.radioButton_DataTrafficFormatASCII.TabStop = true;
+            this.radioButton_DataTrafficFormatASCII.Text = "ASCII";
+            this.radioButton_DataTrafficFormatASCII.UseVisualStyleBackColor = true;
             // 
-            // radioButtonDataTrafficFormatHEX
+            // radioButton_DataTrafficFormatHEX
             // 
-            this.radioButtonDataTrafficFormatHEX.AutoSize = true;
-            this.radioButtonDataTrafficFormatHEX.Location = new System.Drawing.Point(73, 553);
-            this.radioButtonDataTrafficFormatHEX.Name = "radioButtonDataTrafficFormatHEX";
-            this.radioButtonDataTrafficFormatHEX.Size = new System.Drawing.Size(50, 21);
-            this.radioButtonDataTrafficFormatHEX.TabIndex = 13;
-            this.radioButtonDataTrafficFormatHEX.Text = "HEX";
-            this.radioButtonDataTrafficFormatHEX.UseVisualStyleBackColor = true;
+            this.radioButton_DataTrafficFormatHEX.AutoSize = true;
+            this.radioButton_DataTrafficFormatHEX.Location = new System.Drawing.Point(73, 553);
+            this.radioButton_DataTrafficFormatHEX.Name = "radioButton_DataTrafficFormatHEX";
+            this.radioButton_DataTrafficFormatHEX.Size = new System.Drawing.Size(50, 21);
+            this.radioButton_DataTrafficFormatHEX.TabIndex = 13;
+            this.radioButton_DataTrafficFormatHEX.Text = "HEX";
+            this.radioButton_DataTrafficFormatHEX.UseVisualStyleBackColor = true;
             // 
             // textBox_DataTraffic
             // 
@@ -878,8 +878,8 @@ namespace Developer_Tools
             // 
             // groupBox7
             // 
-            this.groupBox7.Controls.Add(this.radioButtonSendFrameFormatASCII);
-            this.groupBox7.Controls.Add(this.radioButtonSendFrameFormatHex);
+            this.groupBox7.Controls.Add(this.radioButton_SendFrameFormatASCII);
+            this.groupBox7.Controls.Add(this.radioButton_SendFrameFormatHex);
             this.groupBox7.Controls.Add(this.textBox_SendFrame);
             this.groupBox7.Controls.Add(this.checkBox_SendFrameHDLC);
             this.groupBox7.Controls.Add(this.button_SendFrameClear);
@@ -891,27 +891,27 @@ namespace Developer_Tools
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Framing";
             // 
-            // radioButtonSendFrameFormatASCII
+            // radioButton_SendFrameFormatASCII
             // 
-            this.radioButtonSendFrameFormatASCII.AutoSize = true;
-            this.radioButtonSendFrameFormatASCII.Checked = true;
-            this.radioButtonSendFrameFormatASCII.Location = new System.Drawing.Point(10, 199);
-            this.radioButtonSendFrameFormatASCII.Name = "radioButtonSendFrameFormatASCII";
-            this.radioButtonSendFrameFormatASCII.Size = new System.Drawing.Size(61, 21);
-            this.radioButtonSendFrameFormatASCII.TabIndex = 24;
-            this.radioButtonSendFrameFormatASCII.TabStop = true;
-            this.radioButtonSendFrameFormatASCII.Text = "ASCII";
-            this.radioButtonSendFrameFormatASCII.UseVisualStyleBackColor = true;
+            this.radioButton_SendFrameFormatASCII.AutoSize = true;
+            this.radioButton_SendFrameFormatASCII.Checked = true;
+            this.radioButton_SendFrameFormatASCII.Location = new System.Drawing.Point(10, 199);
+            this.radioButton_SendFrameFormatASCII.Name = "radioButton_SendFrameFormatASCII";
+            this.radioButton_SendFrameFormatASCII.Size = new System.Drawing.Size(61, 21);
+            this.radioButton_SendFrameFormatASCII.TabIndex = 24;
+            this.radioButton_SendFrameFormatASCII.TabStop = true;
+            this.radioButton_SendFrameFormatASCII.Text = "ASCII";
+            this.radioButton_SendFrameFormatASCII.UseVisualStyleBackColor = true;
             // 
-            // radioButtonSendFrameFormatHex
+            // radioButton_SendFrameFormatHex
             // 
-            this.radioButtonSendFrameFormatHex.AutoSize = true;
-            this.radioButtonSendFrameFormatHex.Location = new System.Drawing.Point(77, 199);
-            this.radioButtonSendFrameFormatHex.Name = "radioButtonSendFrameFormatHex";
-            this.radioButtonSendFrameFormatHex.Size = new System.Drawing.Size(50, 21);
-            this.radioButtonSendFrameFormatHex.TabIndex = 23;
-            this.radioButtonSendFrameFormatHex.Text = "HEX";
-            this.radioButtonSendFrameFormatHex.UseVisualStyleBackColor = true;
+            this.radioButton_SendFrameFormatHex.AutoSize = true;
+            this.radioButton_SendFrameFormatHex.Location = new System.Drawing.Point(77, 199);
+            this.radioButton_SendFrameFormatHex.Name = "radioButton_SendFrameFormatHex";
+            this.radioButton_SendFrameFormatHex.Size = new System.Drawing.Size(50, 21);
+            this.radioButton_SendFrameFormatHex.TabIndex = 23;
+            this.radioButton_SendFrameFormatHex.Text = "HEX";
+            this.radioButton_SendFrameFormatHex.UseVisualStyleBackColor = true;
             // 
             // textBox_SendFrame
             // 
@@ -954,13 +954,13 @@ namespace Developer_Tools
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.textBoxSendRepeatSentCounter);
+            this.groupBox1.Controls.Add(this.textBox_SendRepeatSentCounter);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.textBox_SendRepeatNoOfTimes);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.textBox_SendRepeatTime);
-            this.groupBox1.Controls.Add(this.checkBoxSendRepeat);
-            this.groupBox1.Controls.Add(this.button_DataSend);
+            this.groupBox1.Controls.Add(this.checkBox_SendRepeat);
+            this.groupBox1.Controls.Add(this.button_Send);
             this.groupBox1.Location = new System.Drawing.Point(6, 505);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(587, 53);
@@ -978,16 +978,16 @@ namespace Developer_Tools
             this.label5.Text = "Counter: ";
             this.label5.Visible = false;
             // 
-            // textBoxSendRepeatSentCounter
+            // textBox_SendRepeatSentCounter
             // 
-            this.textBoxSendRepeatSentCounter.Location = new System.Drawing.Point(444, 22);
-            this.textBoxSendRepeatSentCounter.Name = "textBoxSendRepeatSentCounter";
-            this.textBoxSendRepeatSentCounter.ReadOnly = true;
-            this.textBoxSendRepeatSentCounter.Size = new System.Drawing.Size(43, 23);
-            this.textBoxSendRepeatSentCounter.TabIndex = 6;
-            this.textBoxSendRepeatSentCounter.Text = "0";
-            this.textBoxSendRepeatSentCounter.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBoxSendRepeatSentCounter.Visible = false;
+            this.textBox_SendRepeatSentCounter.Location = new System.Drawing.Point(444, 22);
+            this.textBox_SendRepeatSentCounter.Name = "textBox_SendRepeatSentCounter";
+            this.textBox_SendRepeatSentCounter.ReadOnly = true;
+            this.textBox_SendRepeatSentCounter.Size = new System.Drawing.Size(43, 23);
+            this.textBox_SendRepeatSentCounter.TabIndex = 6;
+            this.textBox_SendRepeatSentCounter.Text = "0";
+            this.textBox_SendRepeatSentCounter.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_SendRepeatSentCounter.Visible = false;
             // 
             // label3
             // 
@@ -1029,24 +1029,24 @@ namespace Developer_Tools
             this.textBox_SendRepeatTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBox_SendRepeatTime.Visible = false;
             // 
-            // checkBoxSendRepeat
+            // checkBox_SendRepeat
             // 
-            this.checkBoxSendRepeat.AutoSize = true;
-            this.checkBoxSendRepeat.Location = new System.Drawing.Point(19, 23);
-            this.checkBoxSendRepeat.Name = "checkBoxSendRepeat";
-            this.checkBoxSendRepeat.Size = new System.Drawing.Size(98, 21);
-            this.checkBoxSendRepeat.TabIndex = 1;
-            this.checkBoxSendRepeat.Text = "Send Repeat";
-            this.checkBoxSendRepeat.UseVisualStyleBackColor = true;
+            this.checkBox_SendRepeat.AutoSize = true;
+            this.checkBox_SendRepeat.Location = new System.Drawing.Point(19, 23);
+            this.checkBox_SendRepeat.Name = "checkBox_SendRepeat";
+            this.checkBox_SendRepeat.Size = new System.Drawing.Size(98, 21);
+            this.checkBox_SendRepeat.TabIndex = 1;
+            this.checkBox_SendRepeat.Text = "Send Repeat";
+            this.checkBox_SendRepeat.UseVisualStyleBackColor = true;
             // 
-            // button_DataSend
+            // button_Send
             // 
-            this.button_DataSend.Location = new System.Drawing.Point(504, 18);
-            this.button_DataSend.Name = "button_DataSend";
-            this.button_DataSend.Size = new System.Drawing.Size(75, 28);
-            this.button_DataSend.TabIndex = 0;
-            this.button_DataSend.Text = "Send";
-            this.button_DataSend.UseVisualStyleBackColor = true;
+            this.button_Send.Location = new System.Drawing.Point(504, 18);
+            this.button_Send.Name = "button_Send";
+            this.button_Send.Size = new System.Drawing.Size(75, 28);
+            this.button_Send.TabIndex = 0;
+            this.button_Send.Text = "Send";
+            this.button_Send.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
@@ -5948,14 +5948,14 @@ namespace Developer_Tools
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.TextBox textBox_SendFrame;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button_DataSend;
-        private System.Windows.Forms.CheckBox checkBoxSendRepeat;
+        private System.Windows.Forms.Button button_Send;
+        private System.Windows.Forms.CheckBox checkBox_SendRepeat;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox_SendRepeatTime;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox_SendRepeatNoOfTimes;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBoxSendRepeatSentCounter;
+        private System.Windows.Forms.TextBox textBox_SendRepeatSentCounter;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox textBox_ToolsInputString;
         private System.Windows.Forms.RadioButton radioButtonToolsInputTextBoxASCII;
@@ -5983,18 +5983,18 @@ namespace Developer_Tools
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.TextBox textBox_DataTraffic;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button buttonDataTrafficClear;
-        private System.Windows.Forms.TextBox textBoxDataTrafficTxBytesTotal;
-        private System.Windows.Forms.RadioButton radioButtonDataTrafficFormatHEXSpaced;
-        private System.Windows.Forms.RadioButton radioButtonDataTrafficFormatASCII;
-        private System.Windows.Forms.RadioButton radioButtonDataTrafficFormatHEX;
+        private System.Windows.Forms.Button button_DataTrafficClear;
+        private System.Windows.Forms.TextBox textBox_DataTrafficTxBytesTotal;
+        private System.Windows.Forms.RadioButton radioButton_DataTrafficFormatHEXSpaced;
+        private System.Windows.Forms.RadioButton radioButton_DataTrafficFormatASCII;
+        private System.Windows.Forms.RadioButton radioButton_DataTrafficFormatHEX;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBoxDataTrafficRxBytesTotal;
+        private System.Windows.Forms.TextBox textBox_DataTrafficRxBytesTotal;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.CheckBox checkBox_SendFrameHDLC;
         private System.Windows.Forms.Button button_SendFrameClear;
         private System.Windows.Forms.Button button_SendFramePaste;
-        private System.Windows.Forms.Button buttonDataTrafficCopy;
+        private System.Windows.Forms.Button button_DataTrafficCopy;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabControl tabControl3;
         private System.Windows.Forms.TabPage tabPage5;
@@ -6418,8 +6418,8 @@ namespace Developer_Tools
         private System.Windows.Forms.OpenFileDialog openJSONFileDialog;
         private System.Windows.Forms.TextBox textBoxStringFilterRemoveHEX;
         private System.Windows.Forms.ToolStripMenuItem miscelleToolStripMenuItem;
-        private System.Windows.Forms.RadioButton radioButtonSendFrameFormatASCII;
-        private System.Windows.Forms.RadioButton radioButtonSendFrameFormatHex;
+        private System.Windows.Forms.RadioButton radioButton_SendFrameFormatASCII;
+        private System.Windows.Forms.RadioButton radioButton_SendFrameFormatHex;
         private System.Windows.Forms.Timer timer1sec;
         private System.Windows.Forms.GroupBox groupBox25;
         private System.Windows.Forms.Label label113;
