@@ -65,6 +65,8 @@ namespace Developer_Tools
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.radioButtonSendFrameFormatASCII = new System.Windows.Forms.RadioButton();
+            this.radioButtonSendFrameFormatHex = new System.Windows.Forms.RadioButton();
             this.textBox_SendFrame = new System.Windows.Forms.TextBox();
             this.checkBox_SendFrameHDLC = new System.Windows.Forms.CheckBox();
             this.button_SendFrameClear = new System.Windows.Forms.Button();
@@ -79,6 +81,14 @@ namespace Developer_Tools
             this.checkBoxSendRepeat = new System.Windows.Forms.CheckBox();
             this.button_DataSend = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupBox25 = new System.Windows.Forms.GroupBox();
+            this.label113 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button_ToolsCalculateChecksum = new System.Windows.Forms.Button();
+            this.textBox_ToolsChecksumCRC16 = new System.Windows.Forms.TextBox();
+            this.textBox_ToolsChecksumBCCXOR = new System.Windows.Forms.TextBox();
+            this.textBox_ToolsChecksumMemory = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
             this.buttonWordwrapConvert = new System.Windows.Forms.Button();
@@ -101,6 +111,7 @@ namespace Developer_Tools
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.buttonToolsInputTextBoxPaste = new System.Windows.Forms.Button();
             this.buttonToolsInputTextBoxClear = new System.Windows.Forms.Button();
+            this.radioButtonToolsInputTextBoxHEXSpaced = new System.Windows.Forms.RadioButton();
             this.radioButtonToolsInputTextBoxASCII = new System.Windows.Forms.RadioButton();
             this.radioButtonToolsInputTextBoxHEX = new System.Windows.Forms.RadioButton();
             this.textBox_ToolsInputString = new System.Windows.Forms.TextBox();
@@ -497,6 +508,7 @@ namespace Developer_Tools
             this.checkBox_WFCh0TypeSel = new System.Windows.Forms.CheckBox();
             this.button_WFDecode = new System.Windows.Forms.Button();
             this.button_WFCapture = new System.Windows.Forms.Button();
+            this.pictureBoxWaveform = new System.Windows.Forms.PictureBox();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.textBoxRTCOUTTime = new System.Windows.Forms.TextBox();
@@ -522,19 +534,7 @@ namespace Developer_Tools
             this.label10 = new System.Windows.Forms.Label();
             this.saveJSONFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.openJSONFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.radioButtonSendFrameFormatASCII = new System.Windows.Forms.RadioButton();
-            this.radioButtonSendFrameFormatHex = new System.Windows.Forms.RadioButton();
-            this.pictureBoxWaveform = new System.Windows.Forms.PictureBox();
             this.timer1sec = new System.Windows.Forms.Timer(this.components);
-            this.groupBox25 = new System.Windows.Forms.GroupBox();
-            this.textBox_ToolsChecksumMemory = new System.Windows.Forms.TextBox();
-            this.textBox_ToolsChecksumBCCXOR = new System.Windows.Forms.TextBox();
-            this.textBox_ToolsChecksumCRC16 = new System.Windows.Forms.TextBox();
-            this.button_ToolsCalculateChecksum = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label113 = new System.Windows.Forms.Label();
-            this.radioButtonToolsInputTextBoxHEXSpaced = new System.Windows.Forms.RadioButton();
             this.menuStripMain.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -544,6 +544,7 @@ namespace Developer_Tools
             this.groupBox7.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.groupBox25.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -569,12 +570,11 @@ namespace Developer_Tools
             this.groupBox29.SuspendLayout();
             this.groupBox27.SuspendLayout();
             this.groupBox24.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWaveform)).BeginInit();
             this.tabPage8.SuspendLayout();
             this.groupBox10.SuspendLayout();
             this.groupBox9.SuspendLayout();
             this.groupBox8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWaveform)).BeginInit();
-            this.groupBox25.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStripMain
@@ -608,28 +608,28 @@ namespace Developer_Tools
             // createToolStripMenuItem
             // 
             this.createToolStripMenuItem.Name = "createToolStripMenuItem";
-            this.createToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
+            this.createToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.createToolStripMenuItem.Text = "Create";
             this.createToolStripMenuItem.Click += new System.EventHandler(this.createToolStripMenuItem_Click);
             // 
             // loadToolStripMenuItem
             // 
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.loadToolStripMenuItem.Text = "Load";
             this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // viewToolStripMenuItem
             // 
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            this.viewToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.viewToolStripMenuItem.Text = "View";
             this.viewToolStripMenuItem.Click += new System.EventHandler(this.viewToolStripMenuItem_Click);
             // 
@@ -891,6 +891,28 @@ namespace Developer_Tools
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Framing";
             // 
+            // radioButtonSendFrameFormatASCII
+            // 
+            this.radioButtonSendFrameFormatASCII.AutoSize = true;
+            this.radioButtonSendFrameFormatASCII.Checked = true;
+            this.radioButtonSendFrameFormatASCII.Location = new System.Drawing.Point(10, 199);
+            this.radioButtonSendFrameFormatASCII.Name = "radioButtonSendFrameFormatASCII";
+            this.radioButtonSendFrameFormatASCII.Size = new System.Drawing.Size(61, 21);
+            this.radioButtonSendFrameFormatASCII.TabIndex = 24;
+            this.radioButtonSendFrameFormatASCII.TabStop = true;
+            this.radioButtonSendFrameFormatASCII.Text = "ASCII";
+            this.radioButtonSendFrameFormatASCII.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonSendFrameFormatHex
+            // 
+            this.radioButtonSendFrameFormatHex.AutoSize = true;
+            this.radioButtonSendFrameFormatHex.Location = new System.Drawing.Point(77, 199);
+            this.radioButtonSendFrameFormatHex.Name = "radioButtonSendFrameFormatHex";
+            this.radioButtonSendFrameFormatHex.Size = new System.Drawing.Size(50, 21);
+            this.radioButtonSendFrameFormatHex.TabIndex = 23;
+            this.radioButtonSendFrameFormatHex.Text = "HEX";
+            this.radioButtonSendFrameFormatHex.UseVisualStyleBackColor = true;
+            // 
             // textBox_SendFrame
             // 
             this.textBox_SendFrame.Location = new System.Drawing.Point(10, 21);
@@ -1040,6 +1062,80 @@ namespace Developer_Tools
             this.tabPage2.Size = new System.Drawing.Size(1226, 601);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Tools";
+            // 
+            // groupBox25
+            // 
+            this.groupBox25.Controls.Add(this.label113);
+            this.groupBox25.Controls.Add(this.label4);
+            this.groupBox25.Controls.Add(this.label1);
+            this.groupBox25.Controls.Add(this.button_ToolsCalculateChecksum);
+            this.groupBox25.Controls.Add(this.textBox_ToolsChecksumCRC16);
+            this.groupBox25.Controls.Add(this.textBox_ToolsChecksumBCCXOR);
+            this.groupBox25.Controls.Add(this.textBox_ToolsChecksumMemory);
+            this.groupBox25.Location = new System.Drawing.Point(298, 214);
+            this.groupBox25.Name = "groupBox25";
+            this.groupBox25.Size = new System.Drawing.Size(161, 140);
+            this.groupBox25.TabIndex = 15;
+            this.groupBox25.TabStop = false;
+            this.groupBox25.Text = "Checksum";
+            // 
+            // label113
+            // 
+            this.label113.AutoSize = true;
+            this.label113.Location = new System.Drawing.Point(7, 70);
+            this.label113.Name = "label113";
+            this.label113.Size = new System.Drawing.Size(76, 17);
+            this.label113.TabIndex = 12;
+            this.label113.Text = "CRC16/FCS:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(17, 45);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(65, 17);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "BCC XOR:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(23, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(62, 17);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Memory: ";
+            // 
+            // button_ToolsCalculateChecksum
+            // 
+            this.button_ToolsCalculateChecksum.Location = new System.Drawing.Point(10, 96);
+            this.button_ToolsCalculateChecksum.Name = "button_ToolsCalculateChecksum";
+            this.button_ToolsCalculateChecksum.Size = new System.Drawing.Size(141, 35);
+            this.button_ToolsCalculateChecksum.TabIndex = 10;
+            this.button_ToolsCalculateChecksum.Text = "Calculate";
+            this.button_ToolsCalculateChecksum.UseVisualStyleBackColor = true;
+            this.button_ToolsCalculateChecksum.Click += new System.EventHandler(this.button_ToolsCalculateChecksum_Click);
+            // 
+            // textBox_ToolsChecksumCRC16
+            // 
+            this.textBox_ToolsChecksumCRC16.Location = new System.Drawing.Point(88, 67);
+            this.textBox_ToolsChecksumCRC16.Name = "textBox_ToolsChecksumCRC16";
+            this.textBox_ToolsChecksumCRC16.Size = new System.Drawing.Size(63, 23);
+            this.textBox_ToolsChecksumCRC16.TabIndex = 2;
+            // 
+            // textBox_ToolsChecksumBCCXOR
+            // 
+            this.textBox_ToolsChecksumBCCXOR.Location = new System.Drawing.Point(88, 42);
+            this.textBox_ToolsChecksumBCCXOR.Name = "textBox_ToolsChecksumBCCXOR";
+            this.textBox_ToolsChecksumBCCXOR.Size = new System.Drawing.Size(63, 23);
+            this.textBox_ToolsChecksumBCCXOR.TabIndex = 1;
+            // 
+            // textBox_ToolsChecksumMemory
+            // 
+            this.textBox_ToolsChecksumMemory.Location = new System.Drawing.Point(88, 17);
+            this.textBox_ToolsChecksumMemory.Name = "textBox_ToolsChecksumMemory";
+            this.textBox_ToolsChecksumMemory.Size = new System.Drawing.Size(63, 23);
+            this.textBox_ToolsChecksumMemory.TabIndex = 0;
             // 
             // groupBox3
             // 
@@ -1276,6 +1372,16 @@ namespace Developer_Tools
             this.buttonToolsInputTextBoxClear.Text = "Clear";
             this.buttonToolsInputTextBoxClear.UseVisualStyleBackColor = true;
             this.buttonToolsInputTextBoxClear.Click += new System.EventHandler(this.buttonToolsInputTextBoxClear_Click);
+            // 
+            // radioButtonToolsInputTextBoxHEXSpaced
+            // 
+            this.radioButtonToolsInputTextBoxHEXSpaced.AutoSize = true;
+            this.radioButtonToolsInputTextBoxHEXSpaced.Location = new System.Drawing.Point(129, 179);
+            this.radioButtonToolsInputTextBoxHEXSpaced.Name = "radioButtonToolsInputTextBoxHEXSpaced";
+            this.radioButtonToolsInputTextBoxHEXSpaced.Size = new System.Drawing.Size(100, 21);
+            this.radioButtonToolsInputTextBoxHEXSpaced.TabIndex = 3;
+            this.radioButtonToolsInputTextBoxHEXSpaced.Text = "HEX SPACED";
+            this.radioButtonToolsInputTextBoxHEXSpaced.UseVisualStyleBackColor = true;
             // 
             // radioButtonToolsInputTextBoxASCII
             // 
@@ -5134,16 +5240,16 @@ namespace Developer_Tools
             this.groupBox27.Controls.Add(this.textBox_WFSaveFileName);
             this.groupBox27.Location = new System.Drawing.Point(18, 438);
             this.groupBox27.Name = "groupBox27";
-            this.groupBox27.Size = new System.Drawing.Size(286, 114);
+            this.groupBox27.Size = new System.Drawing.Size(286, 78);
             this.groupBox27.TabIndex = 11;
             this.groupBox27.TabStop = false;
             this.groupBox27.Text = "Saving Image";
             // 
             // button_WFSave
             // 
-            this.button_WFSave.Location = new System.Drawing.Point(175, 23);
+            this.button_WFSave.Location = new System.Drawing.Point(193, 23);
             this.button_WFSave.Name = "button_WFSave";
-            this.button_WFSave.Size = new System.Drawing.Size(98, 43);
+            this.button_WFSave.Size = new System.Drawing.Size(80, 46);
             this.button_WFSave.TabIndex = 5;
             this.button_WFSave.Text = "Save";
             this.button_WFSave.UseVisualStyleBackColor = true;
@@ -5153,9 +5259,9 @@ namespace Developer_Tools
             this.label121.AutoSize = true;
             this.label121.Location = new System.Drawing.Point(6, 49);
             this.label121.Name = "label121";
-            this.label121.Size = new System.Drawing.Size(71, 17);
+            this.label121.Size = new System.Drawing.Size(74, 17);
             this.label121.TabIndex = 4;
-            this.label121.Text = "ImageText:";
+            this.label121.Text = "Image Text:";
             // 
             // label120
             // 
@@ -5168,14 +5274,14 @@ namespace Developer_Tools
             // 
             // textBox_WFSaveText
             // 
-            this.textBox_WFSaveText.Location = new System.Drawing.Point(72, 46);
+            this.textBox_WFSaveText.Location = new System.Drawing.Point(90, 46);
             this.textBox_WFSaveText.Name = "textBox_WFSaveText";
             this.textBox_WFSaveText.Size = new System.Drawing.Size(97, 23);
             this.textBox_WFSaveText.TabIndex = 1;
             // 
             // textBox_WFSaveFileName
             // 
-            this.textBox_WFSaveFileName.Location = new System.Drawing.Point(72, 23);
+            this.textBox_WFSaveFileName.Location = new System.Drawing.Point(90, 22);
             this.textBox_WFSaveFileName.Name = "textBox_WFSaveFileName";
             this.textBox_WFSaveFileName.Size = new System.Drawing.Size(97, 23);
             this.textBox_WFSaveFileName.TabIndex = 0;
@@ -5480,6 +5586,15 @@ namespace Developer_Tools
             this.button_WFCapture.Text = "Capture";
             this.button_WFCapture.UseVisualStyleBackColor = true;
             // 
+            // pictureBoxWaveform
+            // 
+            this.pictureBoxWaveform.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.pictureBoxWaveform.Location = new System.Drawing.Point(310, 137);
+            this.pictureBoxWaveform.Name = "pictureBoxWaveform";
+            this.pictureBoxWaveform.Size = new System.Drawing.Size(879, 427);
+            this.pictureBoxWaveform.TabIndex = 10;
+            this.pictureBoxWaveform.TabStop = false;
+            // 
             // tabPage8
             // 
             this.tabPage8.BackColor = System.Drawing.SystemColors.ActiveCaption;
@@ -5712,124 +5827,9 @@ namespace Developer_Tools
             this.label10.TabIndex = 0;
             this.label10.Text = "Bootloader";
             // 
-            // radioButtonSendFrameFormatASCII
-            // 
-            this.radioButtonSendFrameFormatASCII.AutoSize = true;
-            this.radioButtonSendFrameFormatASCII.Checked = true;
-            this.radioButtonSendFrameFormatASCII.Location = new System.Drawing.Point(10, 199);
-            this.radioButtonSendFrameFormatASCII.Name = "radioButtonSendFrameFormatASCII";
-            this.radioButtonSendFrameFormatASCII.Size = new System.Drawing.Size(61, 21);
-            this.radioButtonSendFrameFormatASCII.TabIndex = 24;
-            this.radioButtonSendFrameFormatASCII.TabStop = true;
-            this.radioButtonSendFrameFormatASCII.Text = "ASCII";
-            this.radioButtonSendFrameFormatASCII.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonSendFrameFormatHex
-            // 
-            this.radioButtonSendFrameFormatHex.AutoSize = true;
-            this.radioButtonSendFrameFormatHex.Location = new System.Drawing.Point(77, 199);
-            this.radioButtonSendFrameFormatHex.Name = "radioButtonSendFrameFormatHex";
-            this.radioButtonSendFrameFormatHex.Size = new System.Drawing.Size(50, 21);
-            this.radioButtonSendFrameFormatHex.TabIndex = 23;
-            this.radioButtonSendFrameFormatHex.Text = "HEX";
-            this.radioButtonSendFrameFormatHex.UseVisualStyleBackColor = true;
-            // 
-            // pictureBoxWaveform
-            // 
-            this.pictureBoxWaveform.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.pictureBoxWaveform.Location = new System.Drawing.Point(310, 137);
-            this.pictureBoxWaveform.Name = "pictureBoxWaveform";
-            this.pictureBoxWaveform.Size = new System.Drawing.Size(879, 427);
-            this.pictureBoxWaveform.TabIndex = 10;
-            this.pictureBoxWaveform.TabStop = false;
-            // 
             // timer1sec
             // 
             this.timer1sec.Interval = 1000;
-            // 
-            // groupBox25
-            // 
-            this.groupBox25.Controls.Add(this.label113);
-            this.groupBox25.Controls.Add(this.label4);
-            this.groupBox25.Controls.Add(this.label1);
-            this.groupBox25.Controls.Add(this.button_ToolsCalculateChecksum);
-            this.groupBox25.Controls.Add(this.textBox_ToolsChecksumCRC16);
-            this.groupBox25.Controls.Add(this.textBox_ToolsChecksumBCCXOR);
-            this.groupBox25.Controls.Add(this.textBox_ToolsChecksumMemory);
-            this.groupBox25.Location = new System.Drawing.Point(298, 214);
-            this.groupBox25.Name = "groupBox25";
-            this.groupBox25.Size = new System.Drawing.Size(161, 140);
-            this.groupBox25.TabIndex = 15;
-            this.groupBox25.TabStop = false;
-            this.groupBox25.Text = "Checksum";
-            // 
-            // textBox_ToolsChecksumMemory
-            // 
-            this.textBox_ToolsChecksumMemory.Location = new System.Drawing.Point(88, 17);
-            this.textBox_ToolsChecksumMemory.Name = "textBox_ToolsChecksumMemory";
-            this.textBox_ToolsChecksumMemory.Size = new System.Drawing.Size(63, 23);
-            this.textBox_ToolsChecksumMemory.TabIndex = 0;
-            // 
-            // textBox_ToolsChecksumBCCXOR
-            // 
-            this.textBox_ToolsChecksumBCCXOR.Location = new System.Drawing.Point(88, 42);
-            this.textBox_ToolsChecksumBCCXOR.Name = "textBox_ToolsChecksumBCCXOR";
-            this.textBox_ToolsChecksumBCCXOR.Size = new System.Drawing.Size(63, 23);
-            this.textBox_ToolsChecksumBCCXOR.TabIndex = 1;
-            // 
-            // textBox_ToolsChecksumCRC16
-            // 
-            this.textBox_ToolsChecksumCRC16.Location = new System.Drawing.Point(88, 67);
-            this.textBox_ToolsChecksumCRC16.Name = "textBox_ToolsChecksumCRC16";
-            this.textBox_ToolsChecksumCRC16.Size = new System.Drawing.Size(63, 23);
-            this.textBox_ToolsChecksumCRC16.TabIndex = 2;
-            // 
-            // button_ToolsCalculateChecksum
-            // 
-            this.button_ToolsCalculateChecksum.Location = new System.Drawing.Point(10, 96);
-            this.button_ToolsCalculateChecksum.Name = "button_ToolsCalculateChecksum";
-            this.button_ToolsCalculateChecksum.Size = new System.Drawing.Size(141, 35);
-            this.button_ToolsCalculateChecksum.TabIndex = 10;
-            this.button_ToolsCalculateChecksum.Text = "Calculate";
-            this.button_ToolsCalculateChecksum.UseVisualStyleBackColor = true;
-            this.button_ToolsCalculateChecksum.Click += new System.EventHandler(this.button_ToolsCalculateChecksum_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(23, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 17);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "Memory: ";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(17, 45);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(65, 17);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "BCC XOR:";
-            // 
-            // label113
-            // 
-            this.label113.AutoSize = true;
-            this.label113.Location = new System.Drawing.Point(7, 70);
-            this.label113.Name = "label113";
-            this.label113.Size = new System.Drawing.Size(76, 17);
-            this.label113.TabIndex = 12;
-            this.label113.Text = "CRC16/FCS:";
-            // 
-            // radioButtonToolsInputTextBoxHEXSpaced
-            // 
-            this.radioButtonToolsInputTextBoxHEXSpaced.AutoSize = true;
-            this.radioButtonToolsInputTextBoxHEXSpaced.Location = new System.Drawing.Point(129, 179);
-            this.radioButtonToolsInputTextBoxHEXSpaced.Name = "radioButtonToolsInputTextBoxHEXSpaced";
-            this.radioButtonToolsInputTextBoxHEXSpaced.Size = new System.Drawing.Size(100, 21);
-            this.radioButtonToolsInputTextBoxHEXSpaced.TabIndex = 3;
-            this.radioButtonToolsInputTextBoxHEXSpaced.Text = "HEX SPACED";
-            this.radioButtonToolsInputTextBoxHEXSpaced.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -5862,6 +5862,8 @@ namespace Developer_Tools
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
+            this.groupBox25.ResumeLayout(false);
+            this.groupBox25.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox5.ResumeLayout(false);
@@ -5910,15 +5912,13 @@ namespace Developer_Tools
             this.groupBox27.PerformLayout();
             this.groupBox24.ResumeLayout(false);
             this.groupBox24.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWaveform)).EndInit();
             this.tabPage8.ResumeLayout(false);
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
             this.groupBox9.ResumeLayout(false);
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWaveform)).EndInit();
-            this.groupBox25.ResumeLayout(false);
-            this.groupBox25.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
