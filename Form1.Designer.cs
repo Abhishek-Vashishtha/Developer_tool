@@ -39,6 +39,7 @@ namespace Developer_Tools
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.connectionToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Connect = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_Disconnect = new System.Windows.Forms.ToolStripMenuItem();
             this.logToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -80,6 +81,13 @@ namespace Developer_Tools
             this.textBox_SendRepeatTime = new System.Windows.Forms.TextBox();
             this.checkBox_SendRepeat = new System.Windows.Forms.CheckBox();
             this.button_Send = new System.Windows.Forms.Button();
+            this.tabPage9 = new System.Windows.Forms.TabPage();
+            this.groupBox28 = new System.Windows.Forms.GroupBox();
+            this.comboBox_SerialSingleBaudRate = new System.Windows.Forms.ComboBox();
+            this.comboBox_SerialSingleCOMPORT = new System.Windows.Forms.ComboBox();
+            this.groupBox26 = new System.Windows.Forms.GroupBox();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton_CommunicationSerial = new System.Windows.Forms.RadioButton();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox25 = new System.Windows.Forms.GroupBox();
             this.label113 = new System.Windows.Forms.Label();
@@ -535,14 +543,8 @@ namespace Developer_Tools
             this.saveJSONFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.openJSONFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.timer1sec = new System.Windows.Forms.Timer(this.components);
-            this.tabPage9 = new System.Windows.Forms.TabPage();
-            this.groupBox26 = new System.Windows.Forms.GroupBox();
-            this.radioButton_CommunicationSerial = new System.Windows.Forms.RadioButton();
-            this.groupBox28 = new System.Windows.Forms.GroupBox();
-            this.ToolStripMenuItem_Disconnect = new System.Windows.Forms.ToolStripMenuItem();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.comboBox_SerialSingleCOMPORT = new System.Windows.Forms.ComboBox();
-            this.comboBox_SerialSingleBaudRate = new System.Windows.Forms.ComboBox();
+            this.tabPage10 = new System.Windows.Forms.TabPage();
+            this.checkBox_EnergyMeterShowVectorDiagram = new System.Windows.Forms.CheckBox();
             this.menuStripMain.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -551,6 +553,9 @@ namespace Developer_Tools
             this.tabPage4.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.tabPage9.SuspendLayout();
+            this.groupBox28.SuspendLayout();
+            this.groupBox26.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox25.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -583,9 +588,7 @@ namespace Developer_Tools
             this.groupBox10.SuspendLayout();
             this.groupBox9.SuspendLayout();
             this.groupBox8.SuspendLayout();
-            this.tabPage9.SuspendLayout();
-            this.groupBox26.SuspendLayout();
-            this.groupBox28.SuspendLayout();
+            this.tabPage10.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStripMain
@@ -619,28 +622,28 @@ namespace Developer_Tools
             // createToolStripMenuItem
             // 
             this.createToolStripMenuItem.Name = "createToolStripMenuItem";
-            this.createToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.createToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
             this.createToolStripMenuItem.Text = "Create";
             this.createToolStripMenuItem.Click += new System.EventHandler(this.createToolStripMenuItem_Click);
             // 
             // loadToolStripMenuItem
             // 
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
             this.loadToolStripMenuItem.Text = "Load";
             this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // viewToolStripMenuItem
             // 
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            this.viewToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
             this.viewToolStripMenuItem.Text = "View";
             this.viewToolStripMenuItem.Click += new System.EventHandler(this.viewToolStripMenuItem_Click);
             // 
@@ -658,7 +661,15 @@ namespace Developer_Tools
             this.ToolStripMenuItem_Connect.Name = "ToolStripMenuItem_Connect";
             this.ToolStripMenuItem_Connect.Size = new System.Drawing.Size(180, 22);
             this.ToolStripMenuItem_Connect.Text = "Connect";
-            this.ToolStripMenuItem_Connect.Click += new System.EventHandler(this.serialToolStripMenuItem_Click);
+            this.ToolStripMenuItem_Connect.Click += new System.EventHandler(this.ToolStripMenuItem_Connect_Click);
+            // 
+            // ToolStripMenuItem_Disconnect
+            // 
+            this.ToolStripMenuItem_Disconnect.Enabled = false;
+            this.ToolStripMenuItem_Disconnect.Name = "ToolStripMenuItem_Disconnect";
+            this.ToolStripMenuItem_Disconnect.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItem_Disconnect.Text = "Disconnect";
+            this.ToolStripMenuItem_Disconnect.Click += new System.EventHandler(this.ToolStripMenuItem_Disconnect_Click);
             // 
             // logToolStripMenuItem
             // 
@@ -672,13 +683,13 @@ namespace Developer_Tools
             // openToolStripMenuItem1
             // 
             this.openToolStripMenuItem1.Name = "openToolStripMenuItem1";
-            this.openToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.openToolStripMenuItem1.Size = new System.Drawing.Size(103, 22);
             this.openToolStripMenuItem1.Text = "Open";
             // 
             // clearToolStripMenuItem
             // 
             this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
-            this.clearToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clearToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.clearToolStripMenuItem.Text = "Clear";
             // 
             // miscelleToolStripMenuItem
@@ -700,21 +711,21 @@ namespace Developer_Tools
             // webPageToolStripMenuItem
             // 
             this.webPageToolStripMenuItem.Name = "webPageToolStripMenuItem";
-            this.webPageToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.webPageToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.webPageToolStripMenuItem.Text = "Project Page";
             this.webPageToolStripMenuItem.Click += new System.EventHandler(this.webPageToolStripMenuItem_Click);
             // 
             // writeUsToolStripMenuItem
             // 
             this.writeUsToolStripMenuItem.Name = "writeUsToolStripMenuItem";
-            this.writeUsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.writeUsToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.writeUsToolStripMenuItem.Text = "Write Us";
             this.writeUsToolStripMenuItem.Click += new System.EventHandler(this.writeUsToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -1060,6 +1071,90 @@ namespace Developer_Tools
             this.button_Send.TabIndex = 0;
             this.button_Send.Text = "Send";
             this.button_Send.UseVisualStyleBackColor = true;
+            // 
+            // tabPage9
+            // 
+            this.tabPage9.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.tabPage9.Controls.Add(this.groupBox28);
+            this.tabPage9.Controls.Add(this.groupBox26);
+            this.tabPage9.Location = new System.Drawing.Point(4, 25);
+            this.tabPage9.Name = "tabPage9";
+            this.tabPage9.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage9.Size = new System.Drawing.Size(599, 566);
+            this.tabPage9.TabIndex = 2;
+            this.tabPage9.Text = "Setup";
+            // 
+            // groupBox28
+            // 
+            this.groupBox28.Controls.Add(this.comboBox_SerialSingleBaudRate);
+            this.groupBox28.Controls.Add(this.comboBox_SerialSingleCOMPORT);
+            this.groupBox28.Location = new System.Drawing.Point(7, 95);
+            this.groupBox28.Name = "groupBox28";
+            this.groupBox28.Size = new System.Drawing.Size(586, 62);
+            this.groupBox28.TabIndex = 1;
+            this.groupBox28.TabStop = false;
+            this.groupBox28.Text = "Serial (Single Port)";
+            // 
+            // comboBox_SerialSingleBaudRate
+            // 
+            this.comboBox_SerialSingleBaudRate.FormattingEnabled = true;
+            this.comboBox_SerialSingleBaudRate.Items.AddRange(new object[] {
+            "1200",
+            "2400",
+            "4800",
+            "9600",
+            "19200",
+            "38400",
+            "57600",
+            "115200"});
+            this.comboBox_SerialSingleBaudRate.Location = new System.Drawing.Point(86, 22);
+            this.comboBox_SerialSingleBaudRate.Name = "comboBox_SerialSingleBaudRate";
+            this.comboBox_SerialSingleBaudRate.Size = new System.Drawing.Size(73, 24);
+            this.comboBox_SerialSingleBaudRate.TabIndex = 1;
+            this.comboBox_SerialSingleBaudRate.Text = "9600";
+            // 
+            // comboBox_SerialSingleCOMPORT
+            // 
+            this.comboBox_SerialSingleCOMPORT.FormattingEnabled = true;
+            this.comboBox_SerialSingleCOMPORT.Location = new System.Drawing.Point(7, 22);
+            this.comboBox_SerialSingleCOMPORT.Name = "comboBox_SerialSingleCOMPORT";
+            this.comboBox_SerialSingleCOMPORT.Size = new System.Drawing.Size(73, 24);
+            this.comboBox_SerialSingleCOMPORT.TabIndex = 0;
+            this.comboBox_SerialSingleCOMPORT.Text = "Select";
+            // 
+            // groupBox26
+            // 
+            this.groupBox26.Controls.Add(this.radioButton1);
+            this.groupBox26.Controls.Add(this.radioButton_CommunicationSerial);
+            this.groupBox26.Location = new System.Drawing.Point(7, 7);
+            this.groupBox26.Name = "groupBox26";
+            this.groupBox26.Size = new System.Drawing.Size(586, 82);
+            this.groupBox26.TabIndex = 0;
+            this.groupBox26.TabStop = false;
+            this.groupBox26.Text = "Communication mode";
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Enabled = false;
+            this.radioButton1.Location = new System.Drawing.Point(7, 50);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(123, 21);
+            this.radioButton1.TabIndex = 1;
+            this.radioButton1.Text = "Serial (Multi Port)";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // radioButton_CommunicationSerial
+            // 
+            this.radioButton_CommunicationSerial.AutoSize = true;
+            this.radioButton_CommunicationSerial.Checked = true;
+            this.radioButton_CommunicationSerial.Location = new System.Drawing.Point(7, 23);
+            this.radioButton_CommunicationSerial.Name = "radioButton_CommunicationSerial";
+            this.radioButton_CommunicationSerial.Size = new System.Drawing.Size(129, 21);
+            this.radioButton_CommunicationSerial.TabIndex = 0;
+            this.radioButton_CommunicationSerial.TabStop = true;
+            this.radioButton_CommunicationSerial.Text = "Serial (Single Port)";
+            this.radioButton_CommunicationSerial.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
@@ -1440,6 +1535,7 @@ namespace Developer_Tools
             // tabControl3
             // 
             this.tabControl3.Controls.Add(this.tabPage5);
+            this.tabControl3.Controls.Add(this.tabPage10);
             this.tabControl3.Controls.Add(this.tabPage6);
             this.tabControl3.Controls.Add(this.tabPage7);
             this.tabControl3.Controls.Add(this.tabPage8);
@@ -5843,97 +5939,28 @@ namespace Developer_Tools
             // timer1sec
             // 
             this.timer1sec.Interval = 1000;
+            this.timer1sec.Tick += new System.EventHandler(this.timer1sec_Tick);
             // 
-            // tabPage9
+            // tabPage10
             // 
-            this.tabPage9.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.tabPage9.Controls.Add(this.groupBox28);
-            this.tabPage9.Controls.Add(this.groupBox26);
-            this.tabPage9.Location = new System.Drawing.Point(4, 25);
-            this.tabPage9.Name = "tabPage9";
-            this.tabPage9.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage9.Size = new System.Drawing.Size(599, 566);
-            this.tabPage9.TabIndex = 2;
-            this.tabPage9.Text = "Setup";
+            this.tabPage10.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.tabPage10.Controls.Add(this.checkBox_EnergyMeterShowVectorDiagram);
+            this.tabPage10.Location = new System.Drawing.Point(4, 25);
+            this.tabPage10.Name = "tabPage10";
+            this.tabPage10.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage10.Size = new System.Drawing.Size(1206, 562);
+            this.tabPage10.TabIndex = 4;
+            this.tabPage10.Text = "Vector Diagram";
             // 
-            // groupBox26
+            // checkBox_EnergyMeterShowVectorDiagram
             // 
-            this.groupBox26.Controls.Add(this.radioButton1);
-            this.groupBox26.Controls.Add(this.radioButton_CommunicationSerial);
-            this.groupBox26.Location = new System.Drawing.Point(7, 7);
-            this.groupBox26.Name = "groupBox26";
-            this.groupBox26.Size = new System.Drawing.Size(586, 82);
-            this.groupBox26.TabIndex = 0;
-            this.groupBox26.TabStop = false;
-            this.groupBox26.Text = "Communication mode";
-            // 
-            // radioButton_CommunicationSerial
-            // 
-            this.radioButton_CommunicationSerial.AutoSize = true;
-            this.radioButton_CommunicationSerial.Checked = true;
-            this.radioButton_CommunicationSerial.Location = new System.Drawing.Point(7, 23);
-            this.radioButton_CommunicationSerial.Name = "radioButton_CommunicationSerial";
-            this.radioButton_CommunicationSerial.Size = new System.Drawing.Size(129, 21);
-            this.radioButton_CommunicationSerial.TabIndex = 0;
-            this.radioButton_CommunicationSerial.TabStop = true;
-            this.radioButton_CommunicationSerial.Text = "Serial (Single Port)";
-            this.radioButton_CommunicationSerial.UseVisualStyleBackColor = true;
-            // 
-            // groupBox28
-            // 
-            this.groupBox28.Controls.Add(this.comboBox_SerialSingleBaudRate);
-            this.groupBox28.Controls.Add(this.comboBox_SerialSingleCOMPORT);
-            this.groupBox28.Location = new System.Drawing.Point(7, 95);
-            this.groupBox28.Name = "groupBox28";
-            this.groupBox28.Size = new System.Drawing.Size(586, 62);
-            this.groupBox28.TabIndex = 1;
-            this.groupBox28.TabStop = false;
-            this.groupBox28.Text = "Serial (Single Port)";
-            // 
-            // ToolStripMenuItem_Disconnect
-            // 
-            this.ToolStripMenuItem_Disconnect.Enabled = false;
-            this.ToolStripMenuItem_Disconnect.Name = "ToolStripMenuItem_Disconnect";
-            this.ToolStripMenuItem_Disconnect.Size = new System.Drawing.Size(180, 22);
-            this.ToolStripMenuItem_Disconnect.Text = "Disconnect";
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Enabled = false;
-            this.radioButton1.Location = new System.Drawing.Point(7, 50);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(123, 21);
-            this.radioButton1.TabIndex = 1;
-            this.radioButton1.Text = "Serial (Multi Port)";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // comboBox_SerialSingleCOMPORT
-            // 
-            this.comboBox_SerialSingleCOMPORT.FormattingEnabled = true;
-            this.comboBox_SerialSingleCOMPORT.Location = new System.Drawing.Point(7, 22);
-            this.comboBox_SerialSingleCOMPORT.Name = "comboBox_SerialSingleCOMPORT";
-            this.comboBox_SerialSingleCOMPORT.Size = new System.Drawing.Size(73, 24);
-            this.comboBox_SerialSingleCOMPORT.TabIndex = 0;
-            this.comboBox_SerialSingleCOMPORT.Text = "Select";
-            // 
-            // comboBox_SerialSingleBaudRate
-            // 
-            this.comboBox_SerialSingleBaudRate.FormattingEnabled = true;
-            this.comboBox_SerialSingleBaudRate.Items.AddRange(new object[] {
-            "1200",
-            "2400",
-            "4800",
-            "9600",
-            "19200",
-            "38400",
-            "57600",
-            "115200"});
-            this.comboBox_SerialSingleBaudRate.Location = new System.Drawing.Point(86, 22);
-            this.comboBox_SerialSingleBaudRate.Name = "comboBox_SerialSingleBaudRate";
-            this.comboBox_SerialSingleBaudRate.Size = new System.Drawing.Size(73, 24);
-            this.comboBox_SerialSingleBaudRate.TabIndex = 1;
-            this.comboBox_SerialSingleBaudRate.Text = "9600";
+            this.checkBox_EnergyMeterShowVectorDiagram.AutoSize = true;
+            this.checkBox_EnergyMeterShowVectorDiagram.Location = new System.Drawing.Point(8, 7);
+            this.checkBox_EnergyMeterShowVectorDiagram.Name = "checkBox_EnergyMeterShowVectorDiagram";
+            this.checkBox_EnergyMeterShowVectorDiagram.Size = new System.Drawing.Size(149, 21);
+            this.checkBox_EnergyMeterShowVectorDiagram.TabIndex = 0;
+            this.checkBox_EnergyMeterShowVectorDiagram.Text = "Show Vector Diagram";
+            this.checkBox_EnergyMeterShowVectorDiagram.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -5965,6 +5992,10 @@ namespace Developer_Tools
             this.groupBox7.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.tabPage9.ResumeLayout(false);
+            this.groupBox28.ResumeLayout(false);
+            this.groupBox26.ResumeLayout(false);
+            this.groupBox26.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.groupBox25.ResumeLayout(false);
             this.groupBox25.PerformLayout();
@@ -6023,10 +6054,8 @@ namespace Developer_Tools
             this.groupBox9.ResumeLayout(false);
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
-            this.tabPage9.ResumeLayout(false);
-            this.groupBox26.ResumeLayout(false);
-            this.groupBox26.PerformLayout();
-            this.groupBox28.ResumeLayout(false);
+            this.tabPage10.ResumeLayout(false);
+            this.tabPage10.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -6546,6 +6575,8 @@ namespace Developer_Tools
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.ComboBox comboBox_SerialSingleBaudRate;
         private System.Windows.Forms.ComboBox comboBox_SerialSingleCOMPORT;
+        private System.Windows.Forms.TabPage tabPage10;
+        private System.Windows.Forms.CheckBox checkBox_EnergyMeterShowVectorDiagram;
     }
 }
 

@@ -30,7 +30,8 @@ namespace Developer_Tools
             /* Loading data from JSON */
             DS_App.loadParametersFromJson();
 
-            
+            timer1sec.Enabled = true;
+            timer10ms.Enabled = true;
         }
 
         private void createToolStripMenuItem_Click(object sender, EventArgs e)
@@ -352,10 +353,30 @@ namespace Developer_Tools
             textBox_DataTraffic.Text = String.Empty;
         }
 
-        private void serialToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ToolStripMenuItem_Connect_Click(object sender, EventArgs e)
         {
            
 
+        }
+
+        private void ToolStripMenuItem_Disconnect_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void timer1sec_Tick(object sender, EventArgs e)
+        {
+            /* enable/disable functionlity as per flags */
+
+
+            /* fill up information periodically */
+
+
+            /* update availble serial ports every second */
+
+
+            /* pop up notification when a port is connected or disconnected */
+            DS_Serial.update_port_list();
         }
     }
 }
