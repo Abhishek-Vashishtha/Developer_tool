@@ -12,7 +12,7 @@ namespace Developer_Tools
         static string[] PortListNew, PortListOld;
         byte[] send_data = new byte[550];
         byte[] receive_data = new byte[550];
-        int receive_data_head, send_data_head;
+        int receive_data_head;
         bool receive_isr_f, frame_receiving_f;
         public DS_Serial()
         {
@@ -155,22 +155,19 @@ namespace Developer_Tools
             }
             PortListOld = PortListNew;
         }
-        public bool write(int length)
+        public bool write(int start_loc, int length)
         {
             if (this.IsOpen == true)
             {
-                if (length < 550)
+                if (start_loc + length >= 550)
                 {
-                    send_data_head = length;
-                }
-                else
-                {
+                    MessageBox.Show("Send buffer overflow..!");
                     return false;
                 }
 
                 try
                 {
-                    Write(send_data, 0, send_data_head);
+                    Write(send_data, start_loc, length);
                 }
                 catch (Exception ex)
                 {

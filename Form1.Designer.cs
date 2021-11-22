@@ -950,9 +950,9 @@ namespace Developer_Tools
             this.checkBox_SendFrameHDLC.AutoSize = true;
             this.checkBox_SendFrameHDLC.Location = new System.Drawing.Point(133, 200);
             this.checkBox_SendFrameHDLC.Name = "checkBox_SendFrameHDLC";
-            this.checkBox_SendFrameHDLC.Size = new System.Drawing.Size(121, 21);
+            this.checkBox_SendFrameHDLC.Size = new System.Drawing.Size(149, 21);
             this.checkBox_SendFrameHDLC.TabIndex = 16;
-            this.checkBox_SendFrameHDLC.Text = "Is HDLC Frame?";
+            this.checkBox_SendFrameHDLC.Text = "Create HDLC Frame?";
             this.checkBox_SendFrameHDLC.UseVisualStyleBackColor = true;
             // 
             // button_SendFrameClear
@@ -1065,6 +1065,7 @@ namespace Developer_Tools
             this.button_Send.TabIndex = 0;
             this.button_Send.Text = "Send";
             this.button_Send.UseVisualStyleBackColor = true;
+            this.button_Send.Click += new System.EventHandler(this.button_Send_Click);
             // 
             // tabPage9
             // 
