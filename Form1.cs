@@ -354,9 +354,7 @@ namespace Developer_Tools
 
         private void serialToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormSerialConfiguration form_serial = new FormSerialConfiguration();
-            Application.Run(form_serial);
-
+           
 
         }
     }
