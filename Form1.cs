@@ -14,6 +14,11 @@ namespace Developer_Tools
 
         /* configuration file */
         string config_file_name;
+
+
+        /* Serial Port */
+        DS_Serial serial_port = new DS_Serial();
+
         public Form1()
         {
             InitializeComponent();
@@ -32,6 +37,15 @@ namespace Developer_Tools
 
             timer1sec.Enabled = true;
             timer10ms.Enabled = true;
+
+            if (DS_Serial.GetPortNames().Length != 0)
+            {
+                comboBox_SerialSingleCOMPORT.Text = DS_Serial.GetPortNames()[0];
+            }
+            else
+            {
+                comboBox_SerialSingleCOMPORT.Text = string.Empty;
+            }
         }
 
         private void createToolStripMenuItem_Click(object sender, EventArgs e)
@@ -355,28 +369,43 @@ namespace Developer_Tools
 
         private void ToolStripMenuItem_Connect_Click(object sender, EventArgs e)
         {
-           
-
+            serial_port.Connect(comboBox_SerialSingleCOMPORT.Text, Convert.ToInt32(comboBox_SerialSingleBaudRate.Text));
         }
 
         private void ToolStripMenuItem_Disconnect_Click(object sender, EventArgs e)
         {
-
+            serial_port.Disconnect();
         }
 
         private void timer1sec_Tick(object sender, EventArgs e)
         {
             /* enable/disable functionlity as per flags */
 
+            
+            /* pop up notification when a port is connected or disconnected */
+            DS_Serial.update_port_list();
+
 
             /* fill up information periodically */
+            if(radioButton_CommunicationSerial.Checked == true && serial_port.IsOpen == true)
+            {
+                progressBar_connectionStatus.Value = 100;
+            }
+            else
+            {
+                progressBar_connectionStatus.Value = 0;
+            }
 
 
             /* update availble serial ports every second */
 
 
-            /* pop up notification when a port is connected or disconnected */
-            DS_Serial.update_port_list();
+        }
+
+        private void comboBox_SerialSingleCOMPORT_Click(object sender, EventArgs e)
+        {
+            comboBox_SerialSingleCOMPORT.Items.Clear();
+            comboBox_SerialSingleCOMPORT.Items.AddRange(DS_Serial.GetPortNames());
         }
     }
 }

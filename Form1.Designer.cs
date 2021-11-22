@@ -48,7 +48,7 @@ namespace Developer_Tools
             this.webPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.writeUsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.progressBarSerialConnection = new System.Windows.Forms.ProgressBar();
+            this.progressBar_connectionStatus = new System.Windows.Forms.ProgressBar();
             this.timer10ms = new System.Windows.Forms.Timer(this.components);
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -665,7 +665,6 @@ namespace Developer_Tools
             // 
             // ToolStripMenuItem_Disconnect
             // 
-            this.ToolStripMenuItem_Disconnect.Enabled = false;
             this.ToolStripMenuItem_Disconnect.Name = "ToolStripMenuItem_Disconnect";
             this.ToolStripMenuItem_Disconnect.Size = new System.Drawing.Size(180, 22);
             this.ToolStripMenuItem_Disconnect.Text = "Disconnect";
@@ -729,12 +728,13 @@ namespace Developer_Tools
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
-            // progressBarSerialConnection
+            // progressBar_connectionStatus
             // 
-            this.progressBarSerialConnection.Location = new System.Drawing.Point(1054, 0);
-            this.progressBarSerialConnection.Name = "progressBarSerialConnection";
-            this.progressBarSerialConnection.Size = new System.Drawing.Size(179, 23);
-            this.progressBarSerialConnection.TabIndex = 1;
+            this.progressBar_connectionStatus.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.progressBar_connectionStatus.Location = new System.Drawing.Point(967, 1);
+            this.progressBar_connectionStatus.Name = "progressBar_connectionStatus";
+            this.progressBar_connectionStatus.Size = new System.Drawing.Size(255, 23);
+            this.progressBar_connectionStatus.TabIndex = 1;
             // 
             // timer10ms
             // 
@@ -1121,6 +1121,7 @@ namespace Developer_Tools
             this.comboBox_SerialSingleCOMPORT.Size = new System.Drawing.Size(73, 24);
             this.comboBox_SerialSingleCOMPORT.TabIndex = 0;
             this.comboBox_SerialSingleCOMPORT.Text = "Select";
+            this.comboBox_SerialSingleCOMPORT.Click += new System.EventHandler(this.comboBox_SerialSingleCOMPORT_Click);
             // 
             // groupBox26
             // 
@@ -5970,7 +5971,7 @@ namespace Developer_Tools
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(1234, 661);
             this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.progressBarSerialConnection);
+            this.Controls.Add(this.progressBar_connectionStatus);
             this.Controls.Add(this.menuStripMain);
             this.Font = new System.Drawing.Font("Palatino Linotype", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.Blue;
@@ -6076,7 +6077,7 @@ namespace Developer_Tools
         private System.Windows.Forms.ToolStripMenuItem webPageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem writeUsToolStripMenuItem;
-        private System.Windows.Forms.ProgressBar progressBarSerialConnection;
+        private System.Windows.Forms.ProgressBar progressBar_connectionStatus;
         private System.Windows.Forms.Timer timer10ms;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
