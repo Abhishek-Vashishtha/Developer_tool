@@ -182,11 +182,11 @@ namespace Developer_Tools
             }
             PortListOld = PortListNew;
         }
-        public bool write(int start_loc, int length)
+        public bool write(int length)
         {
             if (this.IsOpen == true)
             {
-                if (start_loc + length >= 550)
+                if (length >= 550)
                 {
                     MessageBox.Show("Send buffer overflow..!");
                     return false;
@@ -194,7 +194,7 @@ namespace Developer_Tools
 
                 try
                 {
-                    Write(send_buffer, start_loc, length);
+                    Write(send_buffer, 0, length);
                 }
                 catch (Exception ex)
                 {
@@ -208,6 +208,30 @@ namespace Developer_Tools
                 return false;
             }
             return true;
+        }
+        public bool write(byte[] b_array, int start_loc, int length)
+        {
+            /* checking length */
+            if(start_loc + length >= 550)
+            {
+                MessageBox.Show("serial tx buffer will overflow"); 
+                return false;
+            }
+
+            /* copy into variable */
+            for(int i = 0; i < length; i++)
+            {
+                send_buffer[i] = b_array[start_loc + i];
+            }
+
+            if(write(length) == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
