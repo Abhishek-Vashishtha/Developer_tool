@@ -15,13 +15,15 @@ namespace Developer_Tools
         byte[] receive_buffer = new byte[550];
         int receive_data_head;
         int receive_frame_timeout;
-        bool frame_process_f;
+        bool frame_process_f, frame_processed_f;
         bool frame_receiving_f;
         public DS_Serial()
         {
             receive_data_head = 0;
             frame_receiving_f = false;
             receive_frame_timeout = 0;
+            frame_processed_f = true;
+            frame_process_f = false;
         }
         public bool Connect(string com_port, Int32 baud_rate)
         {
@@ -93,17 +95,21 @@ namespace Developer_Tools
         public void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
         {
             int bytesToRead = this.BytesToRead;
-            for (int index = 0; index < bytesToRead; ++index)
+            if (frame_processed_f == true)
             {
-                receive_buffer[receive_data_head++] = (byte)this.ReadByte();
-                if (receive_data_head >= 550)
+                for (int index = 0; index < bytesToRead; ++index)
                 {
-                    receive_data_head = 0;
-                    MessageBox.Show("Receive Buffer overflow", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    receive_buffer[receive_data_head++] = (byte)this.ReadByte();
+                    if (receive_data_head >= 550)
+                    {
+                        receive_data_head = 0;
+                        MessageBox.Show("Receive Buffer overflow", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
+                receive_frame_timeout = 0;
+                frame_receiving_f = true;
+                Form1.total_received_bytes += bytesToRead;
             }
-            receive_frame_timeout = 0;
-            frame_receiving_f = true;
         }
         public void serial_loop_10ms()
         {
@@ -112,6 +118,7 @@ namespace Developer_Tools
                 receive_frame_timeout += 10;
                 if (receive_frame_timeout >= 50)
                 {
+                    frame_processed_f = false;
                     frame_process_f = true;
                     frame_receiving_f = false;
                 }
@@ -125,7 +132,8 @@ namespace Developer_Tools
         }
         public void process_frame()
         {
-
+            frame_processed_f = true;
+            receive_data_head = 0;
         }
         public static void update_port_list()
         {
@@ -195,6 +203,7 @@ namespace Developer_Tools
                 try
                 {
                     Write(send_buffer, 0, length);
+                    Form1.total_sent_bytes += length;
                 }
                 catch (Exception ex)
                 {

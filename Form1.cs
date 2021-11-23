@@ -21,6 +21,7 @@ namespace Developer_Tools
         byte[] tx_buffer = new byte[550];
         byte[] rx_buffer = new byte[550];
         int tx_buffer_head, rx_buffer_head;
+        public static int total_sent_bytes, total_received_bytes;
 
         /* Serial Port */
         DS_Serial serial_port = new DS_Serial();
@@ -424,6 +425,8 @@ namespace Developer_Tools
             {
                 connection_status = false;
             }
+            textBox_DataTrafficTxBytesTotal.Text = total_sent_bytes.ToString();
+            textBox_DataTrafficRxBytesTotal.Text = total_received_bytes.ToString();
 
             if (connection_status == true)                  /* Connected */
             {
@@ -515,5 +518,6 @@ namespace Developer_Tools
                 serial_port.write(temp_b_array, 0, temp_b_array_length, false);
             }
         }
+        
     }
 }
