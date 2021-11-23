@@ -13,13 +13,20 @@ namespace Developer_Tools
         static string[] PortListNew, PortListOld;
         byte[] send_buffer = new byte[550];
         byte[] receive_buffer = new byte[550];
-        int receive_data_head;
+        int receive_buffer_head, send_buffer_head;
         int receive_frame_timeout;
         bool frame_process_f, frame_processed_f;
         bool frame_receiving_f;
+
+        /* send repeat variables */
+        public bool SendRepeatEnable;
+        public int SendRepeatTimeInMs, SendRepeatNoOfTimes, SendRepeaSentCounter;
+        int SendRepeatTimer;
         public DS_Serial()
         {
-            receive_data_head = 0;
+            SendRepeaSentCounter = 0;
+            receive_buffer_head = 0;
+            SendRepeatEnable = false;
             frame_receiving_f = false;
             receive_frame_timeout = 0;
             frame_processed_f = true;
@@ -99,10 +106,10 @@ namespace Developer_Tools
             {
                 for (int index = 0; index < bytesToRead; ++index)
                 {
-                    receive_buffer[receive_data_head++] = (byte)this.ReadByte();
-                    if (receive_data_head >= 550)
+                    receive_buffer[receive_buffer_head++] = (byte)this.ReadByte();
+                    if (receive_buffer_head >= 550)
                     {
-                        receive_data_head = 0;
+                        receive_buffer_head = 0;
                         MessageBox.Show("Receive Buffer overflow", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
@@ -129,11 +136,28 @@ namespace Developer_Tools
                 Thread ProcessFrame = new Thread(new ThreadStart(process_frame));
                 ProcessFrame.Start();
             }
-        }
+            if(SendRepeatEnable == true)
+            {
+                if (SendRepeaSentCounter < SendRepeatNoOfTimes)
+                {
+                    SendRepeatTimer += 10;
+                    if (SendRepeatTimer >= SendRepeatTimeInMs)
+                    {
+                        SendRepeatTimer = 0;
+                        write();
+                        SendRepeaSentCounter++;
+                    }
+                }
+                else
+                {
+                    SendRepeatEnable = false;
+                }
+            }
+    }
         public void process_frame()
         {
             frame_processed_f = true;
-            receive_data_head = 0;
+            receive_buffer_head = 0;
         }
         public static void update_port_list()
         {
@@ -190,20 +214,21 @@ namespace Developer_Tools
             }
             PortListOld = PortListNew;
         }
-        public bool write(int length)
+        public bool write()
         {
             if (this.IsOpen == true)
             {
-                if (length >= 550)
+                if (send_buffer_head >= 550)
                 {
                     MessageBox.Show("Send buffer overflow..!");
+                    send_buffer_head = 0;
                     return false;
                 }
 
                 try
                 {
-                    Write(send_buffer, 0, length);
-                    Form1.total_sent_bytes += length;
+                    Write(send_buffer, 0, send_buffer_head);
+                    Form1.total_sent_bytes += send_buffer_head;
                 }
                 catch (Exception ex)
                 {
@@ -249,8 +274,54 @@ namespace Developer_Tools
                     send_buffer[i] = b_array[start_loc + i];
                 }
             }
-            if(write(length) == true)
+            send_buffer_head = length;
+            if (write() == true)
             {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public bool write(byte[] b_array, int start_loc, int length, bool sendHDLC, bool SendRepeat1, int SendRepeatTimeInMs1, int SendRepeatNoOfTimes1)
+        {
+            /* checking length */
+            if (sendHDLC == true)
+            {
+                if (start_loc + length >= 550 - 6)
+                {
+                    MessageBox.Show("serial tx buffer will overflow");
+                    return false;
+                }
+            }
+            else
+            {
+                if (start_loc + length >= 550)
+                {
+                    MessageBox.Show("serial tx buffer will overflow");
+                    return false;
+                }
+            }
+
+            if (sendHDLC == true)
+            {
+                DS_HDLC.make_hdlc_frame(this.send_buffer, b_array, start_loc, length);
+            }
+            else
+            {
+                for (int i = 0; i < length; i++)
+                {
+                    send_buffer[i] = b_array[start_loc + i];
+                }
+            }
+            send_buffer_head = length;
+            if (write() == true)
+            {
+                SendRepeatEnable = SendRepeat1;
+                SendRepeatTimeInMs = SendRepeatTimeInMs1;
+                SendRepeatNoOfTimes = SendRepeatNoOfTimes1;
+                SendRepeaSentCounter++;
                 return true;
             }
             else

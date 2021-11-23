@@ -409,7 +409,9 @@ namespace Developer_Tools
             else
             {
                 textBox_SendRepeatTime.Enabled = false;
+                textBox_SendRepeatTime.Text = "1000";
                 textBox_SendRepeatNoOfTimes.Enabled = false;
+                textBox_SendRepeatNoOfTimes.Text = "100";
             }
             
             /* pop up notification when a port is connected or disconnected */
@@ -443,7 +445,7 @@ namespace Developer_Tools
                 ToolStripMenuItem_Disconnect.Enabled = false;
             }
             
-
+            textBox_SendRepeatSentCounter.Text = serial_port.SendRepeaSentCounter.ToString();
         }
 
         private void comboBox_SerialSingleCOMPORT_Click(object sender, EventArgs e)
@@ -507,15 +509,14 @@ namespace Developer_Tools
             {
                 temp_b_array = DS_Functions.ascii_string_to_byte_array(textBox_SendFrame.Text);
                 temp_b_array_length = send_frame_length;
-            }    
-               
-            if (checkBox_SendFrameHDLC.Checked == true)
+            }
+            if (checkBox_SendRepeat.Checked == true)
             {
-                serial_port.write(temp_b_array, 0, temp_b_array_length, true);
+                serial_port.write(temp_b_array, 0, temp_b_array_length, checkBox_SendFrameHDLC.Checked,true,Convert.ToInt32(textBox_SendRepeatTime.Text), Convert.ToInt32(textBox_SendRepeatNoOfTimes.Text));
             }
             else
             {
-                serial_port.write(temp_b_array, 0, temp_b_array_length, false);
+                serial_port.write(temp_b_array, 0, temp_b_array_length, checkBox_SendFrameHDLC.Checked);
             }
         }
         
