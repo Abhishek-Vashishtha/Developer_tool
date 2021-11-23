@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO.Ports;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Developer_Tools
@@ -10,13 +11,17 @@ namespace Developer_Tools
     class DS_Serial : SerialPort
     {
         static string[] PortListNew, PortListOld;
-        byte[] send_data = new byte[550];
-        byte[] receive_data = new byte[550];
-        int receive_data_head;
-        bool receive_isr_f, frame_receiving_f;
+        byte[] send_buffer = new byte[550];
+        byte[] receive_buffer = new byte[550];
+        int receive_data_head, send_buffer_head;
+        int receive_frame_timeout;
+        bool frame_process_f;
+        bool frame_receiving_f;
         public DS_Serial()
         {
             receive_data_head = 0;
+            frame_receiving_f = false;
+            receive_frame_timeout = 0;
         }
         public bool Connect(string com_port, Int32 baud_rate)
         {
@@ -90,15 +95,37 @@ namespace Developer_Tools
             int bytesToRead = this.BytesToRead;
             for (int index = 0; index < bytesToRead; ++index)
             {
-                receive_data[receive_data_head++] = (byte)this.ReadByte();
+                receive_buffer[receive_data_head++] = (byte)this.ReadByte();
                 if (receive_data_head >= 550)
                 {
                     receive_data_head = 0;
                     MessageBox.Show("Receive Buffer overflow", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            receive_isr_f = true;
+            receive_frame_timeout = 0;
             frame_receiving_f = true;
+        }
+        public void serial_loop_10ms()
+        {
+            if (frame_receiving_f == true)
+            {
+                receive_frame_timeout += 10;
+                if (receive_frame_timeout >= 50)
+                {
+                    frame_process_f = true;
+                    frame_receiving_f = false;
+                }
+            }
+            if(frame_process_f == true)
+            {
+                frame_process_f = false;
+                Thread ProcessFrame = new Thread(new ThreadStart(process_frame));
+                ProcessFrame.Start();
+            }
+        }
+        public void process_frame()
+        {
+
         }
         public static void update_port_list()
         {
@@ -167,7 +194,7 @@ namespace Developer_Tools
 
                 try
                 {
-                    Write(send_data, start_loc, length);
+                    Write(send_buffer, start_loc, length);
                 }
                 catch (Exception ex)
                 {

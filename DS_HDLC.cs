@@ -7,9 +7,6 @@ namespace Developer_Tools
 {
     class DS_HDLC
     {
-        /* parameter is complete frame length */
-       
-
         /* parameter is hdlc frame length */
         static void fill_hdlc_length(byte[] b_array, int hdlc_frame_len)
         {
@@ -32,21 +29,21 @@ namespace Developer_Tools
             b_array[hdlc_frame_len + 1] = 0x7E;
         }
         /* parameter is hdlc frame length */
-        static void fill_hdlc_infornation(byte[] b_array_dest, byte[] b_array_source, int len)
+        static void fill_hdlc_infornation(byte[] b_array_dest, byte[] b_array_source, int start_loc, int len)
         {
             for(int i = 0; i < len; i++)
             {
-                b_array_dest[3 + i] = b_array_source[i];
+                b_array_dest[3 + i] = b_array_source[i + start_loc];
             }
         }
-        public static void make_hdlc_frame(byte[] dest_array, byte[] source_array, int source_array_len)
+        public static void make_hdlc_frame(byte[] b_array, byte[] info_array, int start_loc, int len)
         {
-            int hdlc_frame_len = source_array_len + 4;                   //  A0 len and FCS
+            int hdlc_frame_len = len + 4;                   //  A0 len and FCS
 
-            fill_hdlc_start_end_flag(dest_array, hdlc_frame_len); 
-            fill_hdlc_length(dest_array, hdlc_frame_len);
-            fill_hdlc_infornation(dest_array, source_array, source_array_len);
-            fill_hdlc_fcs(dest_array, hdlc_frame_len);
+            fill_hdlc_start_end_flag(b_array, hdlc_frame_len); 
+            fill_hdlc_length(b_array, hdlc_frame_len);
+            fill_hdlc_infornation(b_array, info_array, start_loc, len);
+            fill_hdlc_fcs(b_array, hdlc_frame_len);
         }
 
         public static bool verify_hdlc_frame(byte[] b_array, int frame_length)
