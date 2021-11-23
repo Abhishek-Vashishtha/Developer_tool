@@ -372,6 +372,10 @@ namespace Developer_Tools
         private void buttonDataTrafficClear_Click(object sender, EventArgs e)
         {
             textBox_DataTraffic.Text = String.Empty;
+            total_received_bytes = 0;
+            total_sent_bytes = 0;
+            textBox_DataTrafficTxBytesTotal.Text = "0";
+            textBox_DataTrafficRxBytesTotal.Text = "0";
         }
 
         private void ToolStripMenuItem_Connect_Click(object sender, EventArgs e)
