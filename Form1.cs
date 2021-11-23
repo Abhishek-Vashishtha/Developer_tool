@@ -15,6 +15,12 @@ namespace Developer_Tools
         /* configuration file */
         string config_file_name;
 
+        /* communication */
+        byte[] temp_b_array = new byte[1000];
+        int temp_b_array_length;
+        byte[] tx_buffer = new byte[550];
+        byte[] rx_buffer = new byte[550];
+        int tx_buffer_head, rx_buffer_head;
 
         /* Serial Port */
         DS_Serial serial_port = new DS_Serial();
@@ -369,17 +375,29 @@ namespace Developer_Tools
 
         private void ToolStripMenuItem_Connect_Click(object sender, EventArgs e)
         {
-            serial_port.Connect(comboBox_SerialSingleCOMPORT.Text, Convert.ToInt32(comboBox_SerialSingleBaudRate.Text));
+            if (radioButton_CommunicationSerial.Checked == true)
+            {
+                if(serial_port.Connect(comboBox_SerialSingleCOMPORT.Text, Convert.ToInt32(comboBox_SerialSingleBaudRate.Text)) == true)
+                {
+                    
+                }
+            }
         }
 
         private void ToolStripMenuItem_Disconnect_Click(object sender, EventArgs e)
         {
-            serial_port.Disconnect();
+            if (radioButton_CommunicationSerial.Checked == true)
+            {
+                if (serial_port.Disconnect() == true)
+                {
+                    
+                }
+            }
         }
 
         private void timer1sec_Tick(object sender, EventArgs e)
         {
-            bool connection_status = false;
+            bool connection_status;
             
             /* enable/disable functionlity as per flags */
             if(checkBox_SendRepeat.Checked == true)
@@ -401,6 +419,10 @@ namespace Developer_Tools
             if(radioButton_CommunicationSerial.Checked == true && serial_port.IsOpen == true)
             {
                 connection_status = true;
+            }
+            else
+            {
+                connection_status = false;
             }
 
             if (connection_status == true)                  /* Connected */
@@ -425,6 +447,73 @@ namespace Developer_Tools
         {
             comboBox_SerialSingleCOMPORT.Items.Clear();
             comboBox_SerialSingleCOMPORT.Items.AddRange(DS_Serial.GetPortNames());
+        }
+
+        private void timer10ms_Tick(object sender, EventArgs e)
+        {
+            serial_port.serial_loop_10ms();
+        }
+
+        private void button_Send_Click(object sender, EventArgs e)
+        {
+            int send_frame_length = 0;
+
+            /* validate the input frame */
+            if (radioButton_SendFrameFormatHex.Checked == true)
+            {
+                if(DS_Functions.CheckValidHexSpacedString(textBox_SendFrame.Text) == false)
+                {
+                    MessageBox.Show("Invalid Input Data..!!");
+                    return;
+                }
+            }
+
+            /* calculating the length */
+            send_frame_length = textBox_SendFrame.Text.Replace(" ","").Length;
+
+            if (radioButton_SendFrameFormatHex.Checked == true)
+            {
+                send_frame_length /= 2;
+            }
+
+            /* checking the length */
+            if (checkBox_SendFrameHDLC.Checked == true)
+            {
+                if (send_frame_length >= 550 - 6)
+                {
+                    MessageBox.Show("Large Input Data..!!");
+                    return;
+                }
+            }
+            else
+            {
+                if (send_frame_length >= 550)
+                {
+                    MessageBox.Show("Large Input Data..!!");
+                    return;
+                }
+            }
+            
+            /* making a byte aray from input data */
+            if (radioButton_SendFrameFormatHex.Checked == true)
+            {
+                temp_b_array = DS_Functions.hex_string_to_byte_array(textBox_SendFrame.Text.Replace(" ", ""));
+                temp_b_array_length = send_frame_length;
+            }
+            else
+            {
+                temp_b_array = DS_Functions.ascii_string_to_byte_array(textBox_SendFrame.Text);
+                temp_b_array_length = send_frame_length;
+            }    
+               
+            if (checkBox_SendFrameHDLC.Checked == true)
+            {
+                serial_port.write(temp_b_array, 0, temp_b_array_length, true);
+            }
+            else
+            {
+                serial_port.write(temp_b_array, 0, temp_b_array_length, false);
+            }
         }
     }
 }

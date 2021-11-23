@@ -3707,7 +3707,6 @@ namespace Developer_Tools
             this.tabPage11.Size = new System.Drawing.Size(1206, 562);
             this.tabPage11.TabIndex = 5;
             this.tabPage11.Text = "Instant data";
-            this.tabPage11.Click += new System.EventHandler(this.tabPage11_Click);
             // 
             // textBox1
             // 
@@ -6389,7 +6388,6 @@ namespace Developer_Tools
             this.groupBox17.TabIndex = 677;
             this.groupBox17.TabStop = false;
             this.groupBox17.Text = "MISC";
-            this.groupBox17.Enter += new System.EventHandler(this.groupBox17_Enter);
             // 
             // Form1
             // 

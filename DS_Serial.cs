@@ -13,7 +13,7 @@ namespace Developer_Tools
         static string[] PortListNew, PortListOld;
         byte[] send_buffer = new byte[550];
         byte[] receive_buffer = new byte[550];
-        int receive_data_head, send_buffer_head;
+        int receive_data_head;
         int receive_frame_timeout;
         bool frame_process_f;
         bool frame_receiving_f;
@@ -209,21 +209,37 @@ namespace Developer_Tools
             }
             return true;
         }
-        public bool write(byte[] b_array, int start_loc, int length)
+        public bool write(byte[] b_array, int start_loc, int length, bool sendHDLC)
         {
             /* checking length */
-            if(start_loc + length >= 550)
+            if (sendHDLC == true)
             {
-                MessageBox.Show("serial tx buffer will overflow"); 
-                return false;
+                if (start_loc + length >= 550 - 6)
+                {
+                    MessageBox.Show("serial tx buffer will overflow");
+                    return false;
+                }
+            }
+            else
+            {
+                if (start_loc + length >= 550)
+                {
+                    MessageBox.Show("serial tx buffer will overflow");
+                    return false;
+                }
             }
 
-            /* copy into variable */
-            for(int i = 0; i < length; i++)
+            if (sendHDLC == true)
             {
-                send_buffer[i] = b_array[start_loc + i];
+                DS_HDLC.make_hdlc_frame(this.send_buffer, b_array, start_loc, length);
             }
-
+            else
+            {
+                for (int i = 0; i < length; i++)
+                {
+                    send_buffer[i] = b_array[start_loc + i];
+                }
+            }
             if(write(length) == true)
             {
                 return true;
