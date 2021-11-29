@@ -399,8 +399,12 @@ namespace Developer_Tools
                 }
             }
         }
-
         private void timer1sec_Tick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void timerText500ms_Tick(object sender, EventArgs e)
         {
             bool connection_status;
             
@@ -458,6 +462,7 @@ namespace Developer_Tools
             comboBox_SerialSingleCOMPORT.Items.AddRange(DS_Serial.GetPortNames());
         }
 
+        
         private void timer10ms_Tick(object sender, EventArgs e)
         {
             serial_port.serial_loop_10ms();

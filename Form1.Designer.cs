@@ -583,6 +583,7 @@ namespace Developer_Tools
             this.saveJSONFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.openJSONFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.timer1sec = new System.Windows.Forms.Timer(this.components);
+            this.timerText500ms = new System.Windows.Forms.Timer(this.components);
             this.menuStripMain.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -6389,6 +6390,11 @@ namespace Developer_Tools
             this.timer1sec.Interval = 1000;
             this.timer1sec.Tick += new System.EventHandler(this.timer1sec_Tick);
             // 
+            // timerText500ms
+            // 
+            this.timerText500ms.Interval = 500;
+            this.timerText500ms.Tick += new System.EventHandler(this.timerText500ms_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -7040,6 +7046,7 @@ namespace Developer_Tools
         private System.Windows.Forms.Label label47;
         private System.Windows.Forms.CheckBox checkBox4;
         private System.Windows.Forms.TextBox textBox149;
+        private System.Windows.Forms.Timer timerText500ms;
     }
 }
 
