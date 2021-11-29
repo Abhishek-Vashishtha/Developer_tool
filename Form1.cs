@@ -44,7 +44,7 @@ namespace Developer_Tools
 
             timer1sec.Enabled = true;
             timer10ms.Enabled = true;
-
+            timer500ms.Enabled = true;
             if (DS_Serial.GetPortNames().Length != 0)
             {
                 comboBox_SerialSingleCOMPORT.Text = DS_Serial.GetPortNames()[0];
