@@ -488,7 +488,7 @@ namespace Developer_Tools
             /* checking the length */
             if (checkBox_SendFrameHDLC.Checked == true)
             {
-                if (send_frame_length >= 550 - 6)
+                if (send_frame_length >= 550 - 6)       /* 7E 7E A0 LEN FCS FCS */
                 {
                     MessageBox.Show("Large Input Data..!!");
                     return;
@@ -514,6 +514,7 @@ namespace Developer_Tools
                 temp_b_array = DS_Functions.ascii_string_to_byte_array(textBox_SendFrame.Text);
                 temp_b_array_length = send_frame_length;
             }
+
             if (checkBox_SendRepeat.Checked == true)
             {
                 serial_port.write(temp_b_array, 0, temp_b_array_length, checkBox_SendFrameHDLC.Checked,true,Convert.ToInt32(textBox_SendRepeatTime.Text), Convert.ToInt32(textBox_SendRepeatNoOfTimes.Text));
