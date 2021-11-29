@@ -151,8 +151,6 @@ namespace Developer_Tools
                 else
                 {
                     SendRepeatEnable = false;
-                    SendRepeaSentCounter = 0;
-                    SendRepeatNoOfTimes = 0;
                     SendRepeatTimer = 0;
                 }
             }
@@ -312,6 +310,7 @@ namespace Developer_Tools
             if (sendHDLC == true)
             {
                 DS_HDLC.make_hdlc_frame(this.send_buffer, b_array, start_loc, length);
+                send_buffer_head = length + 6;
             }
             else
             {
@@ -319,13 +318,14 @@ namespace Developer_Tools
                 {
                     send_buffer[i] = b_array[start_loc + i];
                 }
+                send_buffer_head = length;
             }
-            send_buffer_head = length;
             if (write() == true)
             {
                 SendRepeatEnable = SendRepeat1;
                 SendRepeatTimeInMs = SendRepeatTimeInMs1;
                 SendRepeatNoOfTimes = SendRepeatNoOfTimes1;
+                SendRepeaSentCounter = 0;
                 SendRepeaSentCounter++;
                 return true;
             }
