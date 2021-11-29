@@ -144,13 +144,16 @@ namespace Developer_Tools
                     if (SendRepeatTimer >= SendRepeatTimeInMs)
                     {
                         SendRepeatTimer = 0;
-                        write();
                         SendRepeaSentCounter++;
+                        write();
                     }
                 }
                 else
                 {
                     SendRepeatEnable = false;
+                    SendRepeaSentCounter = 0;
+                    SendRepeatNoOfTimes = 0;
+                    SendRepeatTimer = 0;
                 }
             }
     }
