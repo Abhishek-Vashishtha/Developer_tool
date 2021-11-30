@@ -12,6 +12,10 @@ namespace Developer_Tools
         string newline = Environment.NewLine;
         public static bool login_success = false;
 
+        /* communication traffic */
+        static int traffic_mode;
+        static string traffic_string = String.Empty;
+        
         /* configuration file */
         string config_file_name;
 
@@ -20,7 +24,6 @@ namespace Developer_Tools
         int temp_b_array_length;
         byte[] tx_buffer = new byte[550];
         byte[] rx_buffer = new byte[550];
-        int tx_buffer_head, rx_buffer_head;
         public static int total_sent_bytes, total_received_bytes;
 
         /* Serial Port */
@@ -45,6 +48,7 @@ namespace Developer_Tools
             timer1sec.Enabled = true;
             timer10ms.Enabled = true;
             timer500ms.Enabled = true;
+            timer100ms.Enabled = true;
             if (DS_Serial.GetPortNames().Length != 0)
             {
                 comboBox_SerialSingleCOMPORT.Text = DS_Serial.GetPortNames()[0];
@@ -452,8 +456,27 @@ namespace Developer_Tools
                 ToolStripMenuItem_Connect.Enabled = true;
                 ToolStripMenuItem_Disconnect.Enabled = false;
             }
-            
-            textBox_SendRepeatSentCounter.Text = serial_port.SendRepeaSentCounter.ToString();
+            try
+            {
+                textBox_SendRepeatSentCounter.Text = serial_port.SendRepeaSentCounter.ToString();
+            }
+            catch(Exception ex)
+            {
+                textBox_SendRepeatSentCounter.Text = ex.Message;
+            }
+            if (radioButton_DataTrafficFormatASCII.Checked == true)       /* ASCII */
+            {
+                traffic_mode = 1;
+            }
+            else if (radioButton_DataTrafficFormatHEX.Checked == true)  /* HEX */
+            {
+                traffic_mode = 2;
+            }
+            else if(radioButton_DataTrafficFormatHEXSpaced.Checked == true)  /* HEX Spaced */
+            {
+                traffic_mode = 3;
+            }
+
         }
 
         private void comboBox_SerialSingleCOMPORT_Click(object sender, EventArgs e)
@@ -529,6 +552,36 @@ namespace Developer_Tools
                 serial_port.write(temp_b_array, 0, temp_b_array_length, checkBox_SendFrameHDLC.Checked);
             }
         }
-        
+
+        private void timer100ms_Tick(object sender, EventArgs e)
+        {
+            string s = String.Empty;// traffic_string;
+            if(traffic_string.Length != 0)
+            {
+                s = traffic_string;
+                traffic_string = String.Empty;
+            }
+            textBox_DataTraffic.AppendText(s);
+            traffic_string = String.Empty;
+        }
+
+        public static void fillTrafficString(string header, byte[] data, int length)
+        {
+            traffic_string += Environment.NewLine;
+            traffic_string += header;
+            if (traffic_mode == 1)       /* ASCII */
+            {
+                traffic_string += DS_Functions.byte_array_to_ascii_string(data, length);
+
+            }
+            else if(traffic_mode == 2)  /* HEX */
+            {
+                traffic_string += DS_Functions.byte_array_to_hex_string(data, length);
+            }
+            else if(traffic_mode == 3)  /* HEX Spaced */
+            {
+                traffic_string += DS_Functions.byte_array_to_hex_string_spaced(data, length);
+            }
+        }
     }
 }

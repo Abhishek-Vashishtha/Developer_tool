@@ -584,6 +584,7 @@ namespace Developer_Tools
             this.openJSONFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.timer1sec = new System.Windows.Forms.Timer(this.components);
             this.timer500ms = new System.Windows.Forms.Timer(this.components);
+            this.timer100ms = new System.Windows.Forms.Timer(this.components);
             this.menuStripMain.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -880,22 +881,22 @@ namespace Developer_Tools
             // radioButton_DataTrafficFormatHEXSpaced
             // 
             this.radioButton_DataTrafficFormatHEXSpaced.AutoSize = true;
+            this.radioButton_DataTrafficFormatHEXSpaced.Checked = true;
             this.radioButton_DataTrafficFormatHEXSpaced.Location = new System.Drawing.Point(120, 553);
             this.radioButton_DataTrafficFormatHEXSpaced.Name = "radioButton_DataTrafficFormatHEXSpaced";
             this.radioButton_DataTrafficFormatHEXSpaced.Size = new System.Drawing.Size(100, 21);
             this.radioButton_DataTrafficFormatHEXSpaced.TabIndex = 15;
+            this.radioButton_DataTrafficFormatHEXSpaced.TabStop = true;
             this.radioButton_DataTrafficFormatHEXSpaced.Text = "HEX SPACED";
             this.radioButton_DataTrafficFormatHEXSpaced.UseVisualStyleBackColor = true;
             // 
             // radioButton_DataTrafficFormatASCII
             // 
             this.radioButton_DataTrafficFormatASCII.AutoSize = true;
-            this.radioButton_DataTrafficFormatASCII.Checked = true;
             this.radioButton_DataTrafficFormatASCII.Location = new System.Drawing.Point(6, 553);
             this.radioButton_DataTrafficFormatASCII.Name = "radioButton_DataTrafficFormatASCII";
             this.radioButton_DataTrafficFormatASCII.Size = new System.Drawing.Size(61, 21);
             this.radioButton_DataTrafficFormatASCII.TabIndex = 14;
-            this.radioButton_DataTrafficFormatASCII.TabStop = true;
             this.radioButton_DataTrafficFormatASCII.Text = "ASCII";
             this.radioButton_DataTrafficFormatASCII.UseVisualStyleBackColor = true;
             // 
@@ -914,6 +915,7 @@ namespace Developer_Tools
             this.textBox_DataTraffic.Location = new System.Drawing.Point(6, 19);
             this.textBox_DataTraffic.Multiline = true;
             this.textBox_DataTraffic.Name = "textBox_DataTraffic";
+            this.textBox_DataTraffic.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox_DataTraffic.Size = new System.Drawing.Size(593, 529);
             this.textBox_DataTraffic.TabIndex = 12;
             // 
@@ -6395,6 +6397,10 @@ namespace Developer_Tools
             this.timer500ms.Interval = 500;
             this.timer500ms.Tick += new System.EventHandler(this.timerText500ms_Tick);
             // 
+            // timer100ms
+            // 
+            this.timer100ms.Tick += new System.EventHandler(this.timer100ms_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -7047,6 +7053,7 @@ namespace Developer_Tools
         private System.Windows.Forms.CheckBox checkBox4;
         private System.Windows.Forms.TextBox textBox149;
         private System.Windows.Forms.Timer timer500ms;
+        private System.Windows.Forms.Timer timer100ms;
     }
 }
 

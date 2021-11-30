@@ -145,7 +145,15 @@ namespace Developer_Tools
                     {
                         SendRepeatTimer = 0;
                         SendRepeaSentCounter++;
-                        write();
+                        if(write() == false)
+                        {
+                            SendRepeatEnable = false;
+                            SendRepeatTimer = 0;
+                        }
+                        else
+                        {
+                            Form1.fillTrafficString("<< ", send_buffer, send_buffer_head);
+                        }
                     }
                 }
                 else
@@ -157,6 +165,18 @@ namespace Developer_Tools
     }
         public void process_frame()
         {
+            Form1.fillTrafficString(">> ", receive_buffer, receive_buffer_head);
+
+
+
+
+
+
+
+
+
+
+
             frame_processed_f = true;
             receive_buffer_head = 0;
         }
@@ -280,6 +300,7 @@ namespace Developer_Tools
             
             if (write() == true)
             {
+                Form1.fillTrafficString("<< ", send_buffer, send_buffer_head); 
                 return true;
             }
             else
@@ -327,6 +348,7 @@ namespace Developer_Tools
                 SendRepeatNoOfTimes = SendRepeatNoOfTimes1;
                 SendRepeaSentCounter = 0;
                 SendRepeaSentCounter++;
+                Form1.fillTrafficString("<< ", send_buffer, send_buffer_head);
                 return true;
             }
             else

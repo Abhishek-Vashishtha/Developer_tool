@@ -180,6 +180,16 @@ namespace Developer_Tools
             return hex_string;
         }
 
+        public static string byte_array_to_hex_string_spaced(byte[] b_array, int b_array_len)
+        {
+            string hex_string = "";
+            for (int index = 0; index < b_array_len; index++)
+            {
+                hex_string += byte_to_hex(b_array[index]);
+                hex_string += " ";
+            }
+            return hex_string;
+        }
         public static string byte_array_to_hex_string(byte[] b_array, int b_array_len, int start_ptr)                                /* Verified */
         {
             string hex_string = "";
