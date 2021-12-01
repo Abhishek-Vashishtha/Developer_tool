@@ -29,6 +29,17 @@ namespace Developer_Tools
         /* Serial Port */
         DS_Serial serial_port = new DS_Serial();
 
+        /******************************** Energy Meter Variables ********************************/
+        /* input signal */
+        public static double ip_vol_r, ip_vol_y, ip_vol_b, ip_curr_r, ip_curr_y, ip_curr_b, ip_curr_n_calculated;
+        public static double ip_ang_r, ip_ang_y, ip_ang_b, ip_ang_n_calculated, ip_ang_ry, ip_ang_rb;
+        public static double ip_freq;
+        public static double ip_watt_r, ip_watt_y, ip_watt_b, ip_watt_total_fwd, ip_watt_total_net, ip_var_r, ip_var_y, ip_var_b, ip_var_total_fwd, ip_var_total_net, ip_va_r, ip_va_y, ip_va_b, ip_va_total_fwd, ip_va_total_net;
+        public static double ip_pf_r, ip_pf_y, ip_pf_b, ip_pf_fwd, ip_pf_net;
+        public static int metering_mode;
+        /* error calculation */
+        public static int ip_avg_samples;
+        public static bool cal_accuracy;
         public Form1()
         {
             InitializeComponent();
@@ -593,6 +604,178 @@ namespace Developer_Tools
         private void textBox_ErrorAvg_Click(object sender, EventArgs e)
         {
             textBox_ErrorAvg.SelectAll();
+        }
+
+        private void button_InputUpdate_Click(object sender, EventArgs e)
+        {
+            ip_vol_r = Convert.ToDouble(textBox_InputVr.Text);
+            ip_vol_y = Convert.ToDouble(textBox_InputVy.Text);
+            ip_vol_b = Convert.ToDouble(textBox_InputVb.Text);
+
+            ip_curr_r = Convert.ToDouble(textBox_InputIr.Text);
+            ip_curr_y = Convert.ToDouble(textBox_InputIy.Text);
+            ip_curr_b = Convert.ToDouble(textBox_InputIb.Text);
+
+            ip_ang_r = Convert.ToDouble(textBox_InputAngr.Text);
+            ip_ang_y = Convert.ToDouble(textBox_InputAngy.Text);
+            ip_ang_b = Convert.ToDouble(textBox_InputAngb.Text);
+
+            ip_freq = Convert.ToDouble(textBox_InputFreq.Text);
+            ip_ang_ry = Convert.ToDouble(textBox_InputAngRY.Text);
+            ip_ang_rb = Convert.ToDouble(textBox_InputAngRB.Text);
+            ip_avg_samples = Convert.ToInt16(textBox_ErrorAvg.Text); 
+            
+            if(radioButton_InputModeFwd.Checked == true)
+            {
+                metering_mode = 1;                                          /* Forwarded Metering */
+            }
+            else if(radioButton_InputModeNet.Checked == true)
+            {
+                metering_mode = 2;                                          /* Net Metering */
+            }
+            else
+            {
+                metering_mode = 0;
+            }
+
+            cal_accuracy = checkBox_ErrorCalculateEnable.Checked;
+
+            ip_watt_r = ip_vol_r * ip_curr_r * Math.Cos(Math.PI * ip_ang_r / 180.0);
+            ip_watt_y = ip_vol_y * ip_curr_y * Math.Cos(Math.PI * ip_ang_y / 180.0);
+            ip_watt_b = ip_vol_b * ip_curr_b * Math.Cos(Math.PI * ip_ang_b / 180.0);
+
+            ip_var_r = ip_vol_r * ip_curr_r * Math.Sin(Math.PI * ip_ang_r / 180.0);
+            ip_var_y = ip_vol_y * ip_curr_y * Math.Sin(Math.PI * ip_ang_y / 180.0);
+            ip_var_b = ip_vol_b * ip_curr_b * Math.Sin(Math.PI * ip_ang_b / 180.0);
+
+            ip_va_r = Math.Sqrt(ip_watt_r * ip_watt_r + ip_var_r * ip_var_r);
+            ip_va_y = Math.Sqrt(ip_watt_y * ip_watt_y + ip_var_y * ip_var_y);
+            ip_va_b = Math.Sqrt(ip_watt_b * ip_watt_b + ip_var_b * ip_var_b);
+
+            if (ip_va_r != 0)
+            {
+                ip_pf_r = ip_watt_r / ip_va_r;
+            }
+            else
+            {
+                ip_pf_r = 1;
+            }
+            if (ip_va_y != 0)
+            {
+                ip_pf_y = ip_watt_y / ip_va_y;
+            }
+            else
+            {
+                ip_pf_y = 1;
+            }
+            if (ip_va_b != 0)
+            {
+                ip_pf_b = ip_watt_b / ip_va_b;
+            }
+            else
+            {
+                ip_pf_b = 1;
+            }
+            int qr, qy, qb;
+            if(ip_watt_r >= 0 && ip_var_r >= 0)
+            {
+                qr = 1;
+            }
+            else if(ip_watt_r < 0 && ip_var_r >= 0)
+            {
+                qr = 2;
+            }
+            else if (ip_watt_r < 0 && ip_var_r < 0)
+            {
+                qr = 3;
+            }
+            else
+            {
+                qr = 4;
+            }
+            if (ip_watt_y >= 0 && ip_var_y >= 0)
+            {
+                qy = 1;
+            }
+            else if (ip_watt_y < 0 && ip_var_y >= 0)
+            {
+                qy = 2;
+            }
+            else if (ip_watt_y < 0 && ip_var_y < 0)
+            {
+                qy = 3;
+            }
+            else
+            {
+                qy = 4;
+            }
+            if (ip_watt_b >= 0 && ip_var_b >= 0)
+            {
+                qb = 1;
+            }
+            else if (ip_watt_b < 0 && ip_var_b >= 0)
+            {
+                qb = 2;
+            }
+            else if (ip_watt_b < 0 && ip_var_b < 0)
+            {
+                qb = 3;
+            }
+            else
+            {
+                qb = 4;
+            }
+
+            ip_watt_total_fwd = Math.Abs(ip_watt_r) + Math.Abs(ip_watt_y) + Math.Abs(ip_watt_b);
+            double temp = 0;
+            if (qr == 1 || qr == 3)
+                temp += Math.Abs(ip_var_r);
+            else
+                temp -= Math.Abs(ip_var_r);
+
+            if (qy == 1 || qy == 3)
+                temp += Math.Abs(ip_var_y);
+            else
+                temp -= Math.Abs(ip_var_y);
+
+            if (qb == 1 || qb == 3)
+                temp += Math.Abs(ip_var_b);
+            else
+                temp -= Math.Abs(ip_var_b);
+
+            ip_var_total_fwd = temp;
+            ip_va_total_fwd = Math.Sqrt(ip_watt_total_fwd * ip_watt_total_fwd + ip_var_total_fwd * ip_var_total_fwd);
+            ip_pf_fwd = ip_watt_total_fwd / ip_va_total_fwd;
+
+            ip_watt_total_net = ip_watt_r + ip_watt_y + ip_watt_b;
+            ip_var_total_net = ip_var_r + ip_var_y + ip_var_b;
+            ip_va_total_net = Math.Sqrt(ip_watt_total_net * ip_watt_total_net + ip_var_total_net * ip_var_total_net);
+            ip_pf_net = ip_watt_total_net / ip_va_total_net;
+
+            /* updating text boxes */
+            textBox_InputWattR.Text = ip_watt_r.ToString("0.0");
+            textBox_InputWattY.Text = ip_watt_y.ToString("0.0");
+            textBox_InputWattB.Text = ip_watt_b.ToString("0.0");
+            textBox_InputWattTotalFwd.Text = ip_watt_total_fwd.ToString("0.0");
+            textBox_InputWattTotalNet.Text = ip_watt_total_net.ToString("0.0");
+
+            textBox_InputVARR.Text = ip_var_r.ToString("0.0");
+            textBox_InputVARY.Text = ip_var_y.ToString("0.0");
+            textBox_InputVARB.Text = ip_var_b.ToString("0.0");
+            textBox_InputVARTotalFwd.Text = ip_var_total_fwd.ToString("0.0");
+            textBox_InputVARTotalNet.Text = ip_var_total_net.ToString("0.0");
+
+            textBox_InputVAR.Text = ip_va_r.ToString("0.0");
+            textBox_InputVAY.Text = ip_va_y.ToString("0.0");
+            textBox_InputVAB.Text = ip_va_b.ToString("0.0");
+            textBox_InputVATotalFwd.Text = ip_va_total_fwd.ToString("0.0");
+            textBox_InputVATotalNet.Text = ip_va_total_net.ToString("0.0");
+
+            textBox_InputPFR.Text = ip_pf_r.ToString("0.000");
+            textBox_InputPFY.Text = ip_pf_y.ToString("0.000");
+            textBox_InputPFB.Text = ip_pf_b.ToString("0.000");
+            textBox_InputPFFwd.Text = ip_pf_fwd.ToString("0.000");
+            textBox_InputPFNet.Text = ip_pf_net.ToString("0.000");
         }
 
         public static void fillTrafficString(string header, byte[] data, int length)
