@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.IO;
 using Newtonsoft.Json.Linq;
+using System.Windows;
 
 namespace Developer_Tools
 {
@@ -752,6 +753,35 @@ namespace Developer_Tools
             ip_va_total_net = Math.Sqrt(ip_watt_total_net * ip_watt_total_net + ip_var_total_net * ip_var_total_net);
             ip_pf_net = ip_watt_total_net / ip_va_total_net;
 
+            /* neutral current calculation Lag angle is +, Lead is - */
+            double angle, mag;
+            angle = 0;
+            mag = ip_curr_r;
+            Vector vect_ref = new Vector(mag * Math.Cos(angle * Math.PI / 180.0), mag * Math.Sin(angle * Math.PI / 180.0)); //ref is Vr
+            
+            angle = ip_ang_r;
+            mag = ip_curr_r;
+            Vector vect_ir = new Vector(mag * Math.Cos(angle * Math.PI / 180.0), mag * Math.Sin(angle * Math.PI / 180.0));
+
+            angle = ip_ang_y + ip_ang_ry;
+            mag = ip_curr_y;
+            Vector vect_iy = new Vector(mag * Math.Cos(angle * Math.PI / 180.0), mag * Math.Sin(angle * Math.PI / 180.0));
+
+            angle = ip_ang_b - ip_ang_rb;
+            mag = ip_curr_b;
+            Vector vect_ib = new Vector(mag * Math.Cos(angle * Math.PI / 180.0), mag * Math.Sin(angle * Math.PI / 180.0));
+
+            Vector vect_in = Vector.Add(vect_ir, vect_iy);
+            vect_in = Vector.Add(vect_in, vect_ib);
+            ip_curr_n_calculated = vect_in.Length;
+            if (ip_curr_n_calculated != 0)
+            {
+                ip_ang_n_calculated = Vector.AngleBetween(vect_in, vect_ref);
+            }
+            else
+            {
+                ip_ang_n_calculated = 0;
+            }
             /* updating text boxes */
             textBox_InputWattR.Text = ip_watt_r.ToString("0.0");
             textBox_InputWattY.Text = ip_watt_y.ToString("0.0");
@@ -776,6 +806,9 @@ namespace Developer_Tools
             textBox_InputPFB.Text = ip_pf_b.ToString("0.000");
             textBox_InputPFFwd.Text = ip_pf_fwd.ToString("0.000");
             textBox_InputPFNet.Text = ip_pf_net.ToString("0.000");
+
+            textBox_NeuCurrentCalculated.Text = ip_curr_n_calculated.ToString("0.000");
+            textBox_NeuCurrentAngleCalculated.Text = ip_ang_n_calculated.ToString("0.00");
         }
 
         public static void fillTrafficString(string header, byte[] data, int length)
