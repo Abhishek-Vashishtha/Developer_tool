@@ -102,9 +102,7 @@ namespace Developer_Tools
             this.buttonWordwrapConvert = new System.Windows.Forms.Button();
             this.textBoxWordwrapLength = new System.Windows.Forms.TextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.textBoxStringFilterRemoveHEX = new System.Windows.Forms.TextBox();
             this.buttonStringFilterConvert = new System.Windows.Forms.Button();
-            this.checkBoxStringFilterRemoveHEX = new System.Windows.Forms.CheckBox();
             this.checkBoxStringFilterRemoveTab = new System.Windows.Forms.CheckBox();
             this.checkBoxStringFilterRemoveLF = new System.Windows.Forms.CheckBox();
             this.checkBoxStringFilterRemoveCR = new System.Windows.Forms.CheckBox();
@@ -1324,48 +1322,27 @@ namespace Developer_Tools
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.textBoxStringFilterRemoveHEX);
             this.groupBox5.Controls.Add(this.buttonStringFilterConvert);
-            this.groupBox5.Controls.Add(this.checkBoxStringFilterRemoveHEX);
             this.groupBox5.Controls.Add(this.checkBoxStringFilterRemoveTab);
             this.groupBox5.Controls.Add(this.checkBoxStringFilterRemoveLF);
             this.groupBox5.Controls.Add(this.checkBoxStringFilterRemoveCR);
             this.groupBox5.Controls.Add(this.checkBoxStringFilterRemoveSpace);
             this.groupBox5.Location = new System.Drawing.Point(14, 214);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(136, 163);
+            this.groupBox5.Size = new System.Drawing.Size(136, 151);
             this.groupBox5.TabIndex = 12;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "String Filter";
             // 
-            // textBoxStringFilterRemoveHEX
-            // 
-            this.textBoxStringFilterRemoveHEX.Enabled = false;
-            this.textBoxStringFilterRemoveHEX.Location = new System.Drawing.Point(107, 94);
-            this.textBoxStringFilterRemoveHEX.Name = "textBoxStringFilterRemoveHEX";
-            this.textBoxStringFilterRemoveHEX.Size = new System.Drawing.Size(23, 23);
-            this.textBoxStringFilterRemoveHEX.TabIndex = 9;
-            // 
             // buttonStringFilterConvert
             // 
-            this.buttonStringFilterConvert.Location = new System.Drawing.Point(6, 123);
+            this.buttonStringFilterConvert.Location = new System.Drawing.Point(6, 106);
             this.buttonStringFilterConvert.Name = "buttonStringFilterConvert";
             this.buttonStringFilterConvert.Size = new System.Drawing.Size(117, 35);
             this.buttonStringFilterConvert.TabIndex = 8;
             this.buttonStringFilterConvert.Text = "Convert";
             this.buttonStringFilterConvert.UseVisualStyleBackColor = true;
             this.buttonStringFilterConvert.Click += new System.EventHandler(this.buttonStringFilterConvert_Click);
-            // 
-            // checkBoxStringFilterRemoveHEX
-            // 
-            this.checkBoxStringFilterRemoveHEX.AutoSize = true;
-            this.checkBoxStringFilterRemoveHEX.Location = new System.Drawing.Point(6, 96);
-            this.checkBoxStringFilterRemoveHEX.Name = "checkBoxStringFilterRemoveHEX";
-            this.checkBoxStringFilterRemoveHEX.Size = new System.Drawing.Size(101, 21);
-            this.checkBoxStringFilterRemoveHEX.TabIndex = 6;
-            this.checkBoxStringFilterRemoveHEX.Text = "Remove HEX";
-            this.checkBoxStringFilterRemoveHEX.UseVisualStyleBackColor = true;
-            this.checkBoxStringFilterRemoveHEX.CheckedChanged += new System.EventHandler(this.checkBoxStringFilterRemoveHEX_CheckedChanged);
             // 
             // checkBoxStringFilterRemoveTab
             // 
@@ -6541,7 +6518,6 @@ namespace Developer_Tools
         private System.Windows.Forms.TextBox textBox_ToolsOutputString;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Button buttonStringFilterConvert;
-        private System.Windows.Forms.CheckBox checkBoxStringFilterRemoveHEX;
         private System.Windows.Forms.CheckBox checkBoxStringFilterRemoveTab;
         private System.Windows.Forms.CheckBox checkBoxStringFilterRemoveLF;
         private System.Windows.Forms.CheckBox checkBoxStringFilterRemoveCR;
@@ -6769,7 +6745,6 @@ namespace Developer_Tools
         private System.Windows.Forms.ToolStripMenuItem createToolStripMenuItem;
         private System.Windows.Forms.SaveFileDialog saveJSONFileDialog;
         private System.Windows.Forms.OpenFileDialog openJSONFileDialog;
-        private System.Windows.Forms.TextBox textBoxStringFilterRemoveHEX;
         private System.Windows.Forms.ToolStripMenuItem miscelleToolStripMenuItem;
         private System.Windows.Forms.RadioButton radioButton_SendFrameFormatASCII;
         private System.Windows.Forms.RadioButton radioButton_SendFrameFormatHex;

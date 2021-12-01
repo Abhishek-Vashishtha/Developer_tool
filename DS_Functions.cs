@@ -94,6 +94,18 @@ namespace Developer_Tools
             }
             return hex_string;
         }
+
+        public static String ascii_string_to_hex_string_spaced(string ascii_string)
+        {
+            string hex_string = "";
+            foreach (char c in ascii_string)
+            {
+                hex_string += ascii_char_to_hex(c);
+                hex_string += " ";
+            }
+            return hex_string;
+        }
+
         public static String ascii_string_to_hex_string(string ascii_string, int start_ptr)
         {
             string hex_string = ascii_string.Substring(start_ptr);

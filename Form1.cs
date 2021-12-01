@@ -184,110 +184,83 @@ namespace Developer_Tools
             textBox_ToolsOutputString.Text = String.Empty;
         }
 
-        private void checkBoxStringFilterRemoveHEX_CheckedChanged(object sender, EventArgs e)
-        {
-            if(checkBoxStringFilterRemoveHEX.Checked == true)
-            {
-                textBoxStringFilterRemoveHEX.Enabled = true;
-            }
-            else
-            {
-                textBoxStringFilterRemoveHEX.Enabled = false;
-            }
-        }
 
         private void buttonStringFilterConvert_Click(object sender, EventArgs e)
         {
-            string input_string = String.Empty;
-            string input_format = String.Empty;
+            string input_ascii_string = String.Empty;
             string output_string = String.Empty;
             string output_format = String.Empty;
 
-            /* Verify valid input data */
+            /* getting output format */
+            if (radiobuttonToolsOutputTextBoxHEX.Checked == true)
+            {
+                output_format = "HEX";
+            }
+            else if (radiobuttonToolsOutputTextBoxHEXSpaced.Checked == true)
+            {
+                output_format = "HEXSpaced";
+            }
+            else if (radiobuttonToolsOutputTextBoxASCII.Checked == true)
+            {
+                output_format = "ASCII";
+            }
+            
+            /* Verify valid input data and making ascii string */
             if (radioButtonToolsInputTextBoxHEX.Checked == true)
             {
                 if(DS_Functions.CheckValidHexString(textBox_ToolsInputString.Text) == true)
                 {
-                    input_string = textBox_ToolsInputString.Text;
-                    input_format = "HEX";
+                    input_ascii_string = DS_Functions.hex_string_to_ascii_string(textBox_ToolsInputString.Text);
                 }
             }
             else if(radioButtonToolsInputTextBoxHEXSpaced.Checked == true)
             {
                 if (DS_Functions.CheckValidHexString(DS_Functions.string_subtract(textBox_ToolsInputString.Text," ","")) == true)
                 {
-                    input_string = DS_Functions.string_subtract(textBox_ToolsInputString.Text, " ", "");
-                    input_format = "HEXSpaced";
+                    input_ascii_string = DS_Functions.hex_string_to_ascii_string(DS_Functions.string_subtract(textBox_ToolsInputString.Text, " ", ""));
                 }
             }
             else if (radioButtonToolsInputTextBoxASCII.Checked == true)
             {
-                input_format = "ASCII";
-                input_string = textBox_ToolsInputString.Text;
+                input_ascii_string = textBox_ToolsInputString.Text;
             }
 
-
-            if (string.IsNullOrEmpty(input_string) == false)
+            
+            if (string.IsNullOrEmpty(input_ascii_string) == false)
             {
                 string ascii_str = string.Empty;
 
-                /* converting into byte array */
-                if (string.Equals(input_format, "ASCII") == true)
-                {
-                    ascii_str = input_string;
-                }
-                else if (string.Equals(input_format, "HEX") == true || string.Equals(input_format, "HEXSpaced") == true)
-                {
-                    ascii_str = DS_Functions.hex_string_to_ascii_string(input_string);
-                }
+                
                 /* removing the desired characters */
                 if (checkBoxStringFilterRemoveSpace.Checked == true)
                 {
-                    ascii_str = DS_Functions.string_subtract(input_string, " ", "");
+                    ascii_str = DS_Functions.string_subtract(input_ascii_string, " ", "");
                 }
                 if (checkBoxStringFilterRemoveCR.Checked == true)
                 {
-                    ascii_str = DS_Functions.string_subtract(input_string,"\r","");
+                    ascii_str = DS_Functions.string_subtract(ascii_str, "\r","");
                 }
                 if (checkBoxStringFilterRemoveLF.Checked == true)
                 {
-                    ascii_str = DS_Functions.string_subtract(input_string, "\n", "");
+                    ascii_str = DS_Functions.string_subtract(ascii_str, "\n", "");
                 }
                 if (checkBoxStringFilterRemoveTab.Checked == true)
                 {
-                    ascii_str = DS_Functions.string_subtract(input_string, "\t", "");
-                }
-                if (checkBoxStringFilterRemoveHEX.Checked == true)
-                {
-                    ascii_str = DS_Functions.string_subtract(input_string, DS_Functions.byte_to_ascii_char(13), DS_Functions.byte_to_ascii_char(32));
-                    string temp = textBoxStringFilterRemoveHEX.Text;
-                    temp = DS_Functions.string_subtract(temp, " ", "");
-                    if (DS_Functions.CheckValidHexString(temp) == true)
-                    {
-                        ascii_str = DS_Functions.string_subtract(input_string, temp, "");
-                    }
-                    else
-                    {
-                        MessageBox.Show("invalid HEX string");
-                    }
+                    ascii_str = DS_Functions.string_subtract(ascii_str, "\t", "");
                 }
 
 
                 /* getting output formatter */
-                if (radiobuttonToolsOutputTextBoxHEX.Checked == true)
+                if (string.Equals(output_format, "HEX"))
                 {
-                    input_format = "HEX";
                     output_string = DS_Functions.ascii_string_to_hex_string(ascii_str);
                 }
-                else if (radiobuttonToolsOutputTextBoxHEXSpaced.Checked == true)
+                else if (string.Equals(output_format, "HEXSpaced"))
                 {
-                    output_format = "HEXSpaced";
-                    output_string = DS_Functions.ascii_string_to_hex_string(ascii_str);
-                    output_string = DS_Functions.string_insertor(output_string, " ", 2);
+                    output_string = DS_Functions.ascii_string_to_hex_string_spaced(ascii_str);
                 }
-                else if (radiobuttonToolsOutputTextBoxASCII.Checked == true)
+                else if (string.Equals(output_format, "ASCII"))
                 {
-                    output_format = "ASCII";
                     output_string = ascii_str;
                 }
 
