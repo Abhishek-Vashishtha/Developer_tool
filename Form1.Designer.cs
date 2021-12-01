@@ -231,6 +231,9 @@ namespace Developer_Tools
             this.label45 = new System.Windows.Forms.Label();
             this.textBox56 = new System.Windows.Forms.TextBox();
             this.groupBox30 = new System.Windows.Forms.GroupBox();
+            this.groupBox19 = new System.Windows.Forms.GroupBox();
+            this.radioButton_InputModeNet = new System.Windows.Forms.RadioButton();
+            this.radioButton_InputModeFwd = new System.Windows.Forms.RadioButton();
             this.groupBox31 = new System.Windows.Forms.GroupBox();
             this.textBox105 = new System.Windows.Forms.TextBox();
             this.textBox106 = new System.Windows.Forms.TextBox();
@@ -251,19 +254,17 @@ namespace Developer_Tools
             this.label172 = new System.Windows.Forms.Label();
             this.label173 = new System.Windows.Forms.Label();
             this.textBox92 = new System.Windows.Forms.TextBox();
-            this.textBox57 = new System.Windows.Forms.TextBox();
-            this.label152 = new System.Windows.Forms.Label();
             this.label153 = new System.Windows.Forms.Label();
             this.textBox58 = new System.Windows.Forms.TextBox();
             this.label154 = new System.Windows.Forms.Label();
             this.textBox59 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.textBox60 = new System.Windows.Forms.TextBox();
+            this.button_InputUpdate = new System.Windows.Forms.Button();
+            this.checkBox_ErrorCalculateEnable = new System.Windows.Forms.CheckBox();
+            this.textBox_InputFreq = new System.Windows.Forms.TextBox();
             this.label155 = new System.Windows.Forms.Label();
-            this.textBox61 = new System.Windows.Forms.TextBox();
-            this.textBox62 = new System.Windows.Forms.TextBox();
-            this.textBox63 = new System.Windows.Forms.TextBox();
+            this.textBox_InputAngRB = new System.Windows.Forms.TextBox();
+            this.textBox_ErrorAvg = new System.Windows.Forms.TextBox();
+            this.textBox_InputAngRY = new System.Windows.Forms.TextBox();
             this.label156 = new System.Windows.Forms.Label();
             this.label157 = new System.Windows.Forms.Label();
             this.label158 = new System.Windows.Forms.Label();
@@ -289,19 +290,19 @@ namespace Developer_Tools
             this.textBox77 = new System.Windows.Forms.TextBox();
             this.textBox78 = new System.Windows.Forms.TextBox();
             this.textBox79 = new System.Windows.Forms.TextBox();
-            this.textBox80 = new System.Windows.Forms.TextBox();
-            this.textBox81 = new System.Windows.Forms.TextBox();
-            this.textBox82 = new System.Windows.Forms.TextBox();
+            this.textBox_InputAngb = new System.Windows.Forms.TextBox();
+            this.textBox_InputAngy = new System.Windows.Forms.TextBox();
+            this.textBox_InputAngr = new System.Windows.Forms.TextBox();
             this.label165 = new System.Windows.Forms.Label();
             this.textBox83 = new System.Windows.Forms.TextBox();
-            this.textBox84 = new System.Windows.Forms.TextBox();
-            this.textBox85 = new System.Windows.Forms.TextBox();
+            this.textBox_InputIb = new System.Windows.Forms.TextBox();
+            this.textBox_InputVb = new System.Windows.Forms.TextBox();
             this.textBox86 = new System.Windows.Forms.TextBox();
-            this.textBox87 = new System.Windows.Forms.TextBox();
-            this.textBox88 = new System.Windows.Forms.TextBox();
+            this.textBox_InputIy = new System.Windows.Forms.TextBox();
+            this.textBox_InputVy = new System.Windows.Forms.TextBox();
             this.textBox89 = new System.Windows.Forms.TextBox();
-            this.textBox90 = new System.Windows.Forms.TextBox();
-            this.textBox91 = new System.Windows.Forms.TextBox();
+            this.textBox_InputIr = new System.Windows.Forms.TextBox();
+            this.textBox_InputVr = new System.Windows.Forms.TextBox();
             this.label166 = new System.Windows.Forms.Label();
             this.label167 = new System.Windows.Forms.Label();
             this.label168 = new System.Windows.Forms.Label();
@@ -609,6 +610,7 @@ namespace Developer_Tools
             this.groupBox16.SuspendLayout();
             this.groupBox15.SuspendLayout();
             this.groupBox30.SuspendLayout();
+            this.groupBox19.SuspendLayout();
             this.groupBox31.SuspendLayout();
             this.tabPage10.SuspendLayout();
             this.tabPage6.SuspendLayout();
@@ -2744,21 +2746,20 @@ namespace Developer_Tools
             // 
             // groupBox30
             // 
+            this.groupBox30.Controls.Add(this.groupBox19);
             this.groupBox30.Controls.Add(this.groupBox31);
             this.groupBox30.Controls.Add(this.textBox92);
-            this.groupBox30.Controls.Add(this.textBox57);
-            this.groupBox30.Controls.Add(this.label152);
             this.groupBox30.Controls.Add(this.label153);
             this.groupBox30.Controls.Add(this.textBox58);
             this.groupBox30.Controls.Add(this.label154);
             this.groupBox30.Controls.Add(this.textBox59);
-            this.groupBox30.Controls.Add(this.button1);
-            this.groupBox30.Controls.Add(this.checkBox1);
-            this.groupBox30.Controls.Add(this.textBox60);
+            this.groupBox30.Controls.Add(this.button_InputUpdate);
+            this.groupBox30.Controls.Add(this.checkBox_ErrorCalculateEnable);
+            this.groupBox30.Controls.Add(this.textBox_InputFreq);
             this.groupBox30.Controls.Add(this.label155);
-            this.groupBox30.Controls.Add(this.textBox61);
-            this.groupBox30.Controls.Add(this.textBox62);
-            this.groupBox30.Controls.Add(this.textBox63);
+            this.groupBox30.Controls.Add(this.textBox_InputAngRB);
+            this.groupBox30.Controls.Add(this.textBox_ErrorAvg);
+            this.groupBox30.Controls.Add(this.textBox_InputAngRY);
             this.groupBox30.Controls.Add(this.label156);
             this.groupBox30.Controls.Add(this.label157);
             this.groupBox30.Controls.Add(this.label158);
@@ -2784,19 +2785,19 @@ namespace Developer_Tools
             this.groupBox30.Controls.Add(this.textBox77);
             this.groupBox30.Controls.Add(this.textBox78);
             this.groupBox30.Controls.Add(this.textBox79);
-            this.groupBox30.Controls.Add(this.textBox80);
-            this.groupBox30.Controls.Add(this.textBox81);
-            this.groupBox30.Controls.Add(this.textBox82);
+            this.groupBox30.Controls.Add(this.textBox_InputAngb);
+            this.groupBox30.Controls.Add(this.textBox_InputAngy);
+            this.groupBox30.Controls.Add(this.textBox_InputAngr);
             this.groupBox30.Controls.Add(this.label165);
             this.groupBox30.Controls.Add(this.textBox83);
-            this.groupBox30.Controls.Add(this.textBox84);
-            this.groupBox30.Controls.Add(this.textBox85);
+            this.groupBox30.Controls.Add(this.textBox_InputIb);
+            this.groupBox30.Controls.Add(this.textBox_InputVb);
             this.groupBox30.Controls.Add(this.textBox86);
-            this.groupBox30.Controls.Add(this.textBox87);
-            this.groupBox30.Controls.Add(this.textBox88);
+            this.groupBox30.Controls.Add(this.textBox_InputIy);
+            this.groupBox30.Controls.Add(this.textBox_InputVy);
             this.groupBox30.Controls.Add(this.textBox89);
-            this.groupBox30.Controls.Add(this.textBox90);
-            this.groupBox30.Controls.Add(this.textBox91);
+            this.groupBox30.Controls.Add(this.textBox_InputIr);
+            this.groupBox30.Controls.Add(this.textBox_InputVr);
             this.groupBox30.Controls.Add(this.label166);
             this.groupBox30.Controls.Add(this.label167);
             this.groupBox30.Controls.Add(this.label168);
@@ -2809,6 +2810,39 @@ namespace Developer_Tools
             this.groupBox30.TabIndex = 600;
             this.groupBox30.TabStop = false;
             this.groupBox30.Text = "Accuracy Calculation";
+            // 
+            // groupBox19
+            // 
+            this.groupBox19.Controls.Add(this.radioButton_InputModeNet);
+            this.groupBox19.Controls.Add(this.radioButton_InputModeFwd);
+            this.groupBox19.Location = new System.Drawing.Point(262, 29);
+            this.groupBox19.Name = "groupBox19";
+            this.groupBox19.Size = new System.Drawing.Size(126, 59);
+            this.groupBox19.TabIndex = 534;
+            this.groupBox19.TabStop = false;
+            this.groupBox19.Text = "Mode";
+            // 
+            // radioButton_InputModeNet
+            // 
+            this.radioButton_InputModeNet.AutoSize = true;
+            this.radioButton_InputModeNet.Checked = true;
+            this.radioButton_InputModeNet.Location = new System.Drawing.Point(6, 34);
+            this.radioButton_InputModeNet.Name = "radioButton_InputModeNet";
+            this.radioButton_InputModeNet.Size = new System.Drawing.Size(93, 20);
+            this.radioButton_InputModeNet.TabIndex = 1;
+            this.radioButton_InputModeNet.TabStop = true;
+            this.radioButton_InputModeNet.Text = "Net Metering";
+            this.radioButton_InputModeNet.UseVisualStyleBackColor = true;
+            // 
+            // radioButton_InputModeFwd
+            // 
+            this.radioButton_InputModeFwd.AutoSize = true;
+            this.radioButton_InputModeFwd.Location = new System.Drawing.Point(6, 15);
+            this.radioButton_InputModeFwd.Name = "radioButton_InputModeFwd";
+            this.radioButton_InputModeFwd.Size = new System.Drawing.Size(96, 20);
+            this.radioButton_InputModeFwd.TabIndex = 0;
+            this.radioButton_InputModeFwd.Text = "Fwd Metering";
+            this.radioButton_InputModeFwd.UseVisualStyleBackColor = true;
             // 
             // groupBox31
             // 
@@ -3023,32 +3057,11 @@ namespace Developer_Tools
             this.textBox92.Text = "0";
             this.textBox92.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox57
-            // 
-            this.textBox57.BackColor = System.Drawing.Color.Gold;
-            this.textBox57.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox57.Location = new System.Drawing.Point(64, 215);
-            this.textBox57.Name = "textBox57";
-            this.textBox57.Size = new System.Drawing.Size(42, 20);
-            this.textBox57.TabIndex = 531;
-            this.textBox57.Text = "-120";
-            this.textBox57.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label152
-            // 
-            this.label152.AutoSize = true;
-            this.label152.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label152.Location = new System.Drawing.Point(5, 217);
-            this.label152.Name = "label152";
-            this.label152.Size = new System.Drawing.Size(57, 13);
-            this.label152.TabIndex = 530;
-            this.label152.Text = "Angle Y-B:";
-            // 
             // label153
             // 
             this.label153.AutoSize = true;
             this.label153.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label153.Location = new System.Drawing.Point(112, 239);
+            this.label153.Location = new System.Drawing.Point(114, 217);
             this.label153.Name = "label153";
             this.label153.Size = new System.Drawing.Size(94, 13);
             this.label153.TabIndex = 529;
@@ -3057,7 +3070,7 @@ namespace Developer_Tools
             // textBox58
             // 
             this.textBox58.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox58.Location = new System.Drawing.Point(210, 239);
+            this.textBox58.Location = new System.Drawing.Point(212, 217);
             this.textBox58.Name = "textBox58";
             this.textBox58.ReadOnly = true;
             this.textBox58.Size = new System.Drawing.Size(61, 20);
@@ -3067,7 +3080,7 @@ namespace Developer_Tools
             // 
             this.label154.AutoSize = true;
             this.label154.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label154.Location = new System.Drawing.Point(118, 218);
+            this.label154.Location = new System.Drawing.Point(120, 196);
             this.label154.Name = "label154";
             this.label154.Size = new System.Drawing.Size(86, 13);
             this.label154.TabIndex = 527;
@@ -3076,97 +3089,101 @@ namespace Developer_Tools
             // textBox59
             // 
             this.textBox59.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox59.Location = new System.Drawing.Point(210, 216);
+            this.textBox59.Location = new System.Drawing.Point(212, 194);
             this.textBox59.Name = "textBox59";
             this.textBox59.ReadOnly = true;
             this.textBox59.Size = new System.Drawing.Size(61, 20);
             this.textBox59.TabIndex = 526;
             // 
-            // button1
+            // button_InputUpdate
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(279, 235);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(106, 31);
-            this.button1.TabIndex = 525;
-            this.button1.Text = "Update";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button_InputUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_InputUpdate.Location = new System.Drawing.Point(279, 235);
+            this.button_InputUpdate.Name = "button_InputUpdate";
+            this.button_InputUpdate.Size = new System.Drawing.Size(106, 31);
+            this.button_InputUpdate.TabIndex = 525;
+            this.button_InputUpdate.Text = "Update";
+            this.button_InputUpdate.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
+            // checkBox_ErrorCalculateEnable
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.Location = new System.Drawing.Point(296, 219);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(89, 17);
-            this.checkBox1.TabIndex = 524;
-            this.checkBox1.Text = "Cal Accuracy";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox_ErrorCalculateEnable.AutoSize = true;
+            this.checkBox_ErrorCalculateEnable.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.checkBox_ErrorCalculateEnable.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox_ErrorCalculateEnable.Location = new System.Drawing.Point(296, 219);
+            this.checkBox_ErrorCalculateEnable.Name = "checkBox_ErrorCalculateEnable";
+            this.checkBox_ErrorCalculateEnable.Size = new System.Drawing.Size(89, 17);
+            this.checkBox_ErrorCalculateEnable.TabIndex = 524;
+            this.checkBox_ErrorCalculateEnable.Text = "Cal Accuracy";
+            this.checkBox_ErrorCalculateEnable.UseVisualStyleBackColor = true;
             // 
-            // textBox60
+            // textBox_InputFreq
             // 
-            this.textBox60.BackColor = System.Drawing.Color.Gold;
-            this.textBox60.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox60.Location = new System.Drawing.Point(210, 194);
-            this.textBox60.Name = "textBox60";
-            this.textBox60.Size = new System.Drawing.Size(61, 20);
-            this.textBox60.TabIndex = 523;
-            this.textBox60.Text = "50";
-            this.textBox60.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_InputFreq.BackColor = System.Drawing.Color.Gold;
+            this.textBox_InputFreq.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_InputFreq.Location = new System.Drawing.Point(64, 239);
+            this.textBox_InputFreq.Name = "textBox_InputFreq";
+            this.textBox_InputFreq.Size = new System.Drawing.Size(41, 20);
+            this.textBox_InputFreq.TabIndex = 523;
+            this.textBox_InputFreq.Text = "50";
+            this.textBox_InputFreq.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_InputFreq.Click += new System.EventHandler(this.textBox_InputFreq_Click);
             // 
             // label155
             // 
             this.label155.AutoSize = true;
             this.label155.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label155.Location = new System.Drawing.Point(144, 197);
+            this.label155.Location = new System.Drawing.Point(2, 242);
             this.label155.Name = "label155";
             this.label155.Size = new System.Drawing.Size(60, 13);
             this.label155.TabIndex = 522;
             this.label155.Text = "Frequency:";
             // 
-            // textBox61
+            // textBox_InputAngRB
             // 
-            this.textBox61.BackColor = System.Drawing.Color.Gold;
-            this.textBox61.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox61.Location = new System.Drawing.Point(64, 236);
-            this.textBox61.Name = "textBox61";
-            this.textBox61.Size = new System.Drawing.Size(42, 20);
-            this.textBox61.TabIndex = 521;
-            this.textBox61.Text = "-120";
-            this.textBox61.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_InputAngRB.BackColor = System.Drawing.Color.Gold;
+            this.textBox_InputAngRB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_InputAngRB.Location = new System.Drawing.Point(63, 216);
+            this.textBox_InputAngRB.Name = "textBox_InputAngRB";
+            this.textBox_InputAngRB.Size = new System.Drawing.Size(42, 20);
+            this.textBox_InputAngRB.TabIndex = 521;
+            this.textBox_InputAngRB.Text = "-120";
+            this.textBox_InputAngRB.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_InputAngRB.Click += new System.EventHandler(this.textBox_InputAngRB_Click);
             // 
-            // textBox62
+            // textBox_ErrorAvg
             // 
-            this.textBox62.BackColor = System.Drawing.Color.Gold;
-            this.textBox62.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox62.Location = new System.Drawing.Point(356, 194);
-            this.textBox62.Name = "textBox62";
-            this.textBox62.Size = new System.Drawing.Size(30, 20);
-            this.textBox62.TabIndex = 432;
-            this.textBox62.Text = "5";
-            this.textBox62.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_ErrorAvg.BackColor = System.Drawing.Color.Gold;
+            this.textBox_ErrorAvg.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_ErrorAvg.Location = new System.Drawing.Point(356, 194);
+            this.textBox_ErrorAvg.Name = "textBox_ErrorAvg";
+            this.textBox_ErrorAvg.Size = new System.Drawing.Size(30, 20);
+            this.textBox_ErrorAvg.TabIndex = 432;
+            this.textBox_ErrorAvg.Text = "5";
+            this.textBox_ErrorAvg.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_ErrorAvg.Click += new System.EventHandler(this.textBox_ErrorAvg_Click);
             // 
-            // textBox63
+            // textBox_InputAngRY
             // 
-            this.textBox63.BackColor = System.Drawing.Color.Gold;
-            this.textBox63.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox63.Location = new System.Drawing.Point(64, 194);
-            this.textBox63.Name = "textBox63";
-            this.textBox63.Size = new System.Drawing.Size(42, 20);
-            this.textBox63.TabIndex = 520;
-            this.textBox63.Text = "120";
-            this.textBox63.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_InputAngRY.BackColor = System.Drawing.Color.Gold;
+            this.textBox_InputAngRY.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_InputAngRY.Location = new System.Drawing.Point(64, 194);
+            this.textBox_InputAngRY.Name = "textBox_InputAngRY";
+            this.textBox_InputAngRY.Size = new System.Drawing.Size(42, 20);
+            this.textBox_InputAngRY.TabIndex = 520;
+            this.textBox_InputAngRY.Text = "120";
+            this.textBox_InputAngRY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_InputAngRY.Click += new System.EventHandler(this.textBox_InputAngRY_Click);
             // 
             // label156
             // 
             this.label156.AutoSize = true;
             this.label156.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label156.Location = new System.Drawing.Point(7, 239);
+            this.label156.Location = new System.Drawing.Point(6, 219);
             this.label156.Name = "label156";
             this.label156.Size = new System.Drawing.Size(58, 13);
             this.label156.TabIndex = 519;
-            this.label156.Text = "Angle B-R:";
+            this.label156.Text = "Angle R-B:";
             // 
             // label157
             // 
@@ -3251,11 +3268,11 @@ namespace Developer_Tools
             this.label160.AutoSize = true;
             this.label160.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label160.ForeColor = System.Drawing.Color.Black;
-            this.label160.Location = new System.Drawing.Point(351, 14);
+            this.label160.Location = new System.Drawing.Point(331, 14);
             this.label160.Name = "label160";
-            this.label160.Size = new System.Drawing.Size(24, 13);
+            this.label160.Size = new System.Drawing.Size(51, 13);
             this.label160.TabIndex = 497;
-            this.label160.Text = "Net";
+            this.label160.Text = "Total Net";
             // 
             // textBox68
             // 
@@ -3298,11 +3315,11 @@ namespace Developer_Tools
             this.label161.AutoSize = true;
             this.label161.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label161.ForeColor = System.Drawing.Color.Black;
-            this.label161.Location = new System.Drawing.Point(277, 13);
+            this.label161.Location = new System.Drawing.Point(265, 13);
             this.label161.Name = "label161";
-            this.label161.Size = new System.Drawing.Size(31, 13);
+            this.label161.Size = new System.Drawing.Size(54, 13);
             this.label161.TabIndex = 493;
-            this.label161.Text = "Total";
+            this.label161.Text = "Total Fwd";
             // 
             // textBox71
             // 
@@ -3442,38 +3459,41 @@ namespace Developer_Tools
             this.textBox79.Text = "0";
             this.textBox79.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox80
+            // textBox_InputAngb
             // 
-            this.textBox80.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.textBox80.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox80.Location = new System.Drawing.Point(195, 72);
-            this.textBox80.Name = "textBox80";
-            this.textBox80.Size = new System.Drawing.Size(61, 20);
-            this.textBox80.TabIndex = 470;
-            this.textBox80.Text = "0";
-            this.textBox80.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_InputAngb.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.textBox_InputAngb.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_InputAngb.Location = new System.Drawing.Point(195, 72);
+            this.textBox_InputAngb.Name = "textBox_InputAngb";
+            this.textBox_InputAngb.Size = new System.Drawing.Size(61, 20);
+            this.textBox_InputAngb.TabIndex = 470;
+            this.textBox_InputAngb.Text = "0";
+            this.textBox_InputAngb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_InputAngb.Click += new System.EventHandler(this.textBox_InputAngb_Click);
             // 
-            // textBox81
+            // textBox_InputAngy
             // 
-            this.textBox81.BackColor = System.Drawing.Color.LightGoldenrodYellow;
-            this.textBox81.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox81.Location = new System.Drawing.Point(129, 72);
-            this.textBox81.Name = "textBox81";
-            this.textBox81.Size = new System.Drawing.Size(61, 20);
-            this.textBox81.TabIndex = 469;
-            this.textBox81.Text = "0";
-            this.textBox81.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_InputAngy.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.textBox_InputAngy.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_InputAngy.Location = new System.Drawing.Point(129, 72);
+            this.textBox_InputAngy.Name = "textBox_InputAngy";
+            this.textBox_InputAngy.Size = new System.Drawing.Size(61, 20);
+            this.textBox_InputAngy.TabIndex = 469;
+            this.textBox_InputAngy.Text = "0";
+            this.textBox_InputAngy.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_InputAngy.Click += new System.EventHandler(this.textBox_InputAngy_Click);
             // 
-            // textBox82
+            // textBox_InputAngr
             // 
-            this.textBox82.BackColor = System.Drawing.Color.LightCoral;
-            this.textBox82.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox82.Location = new System.Drawing.Point(64, 72);
-            this.textBox82.Name = "textBox82";
-            this.textBox82.Size = new System.Drawing.Size(61, 20);
-            this.textBox82.TabIndex = 468;
-            this.textBox82.Text = "0";
-            this.textBox82.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_InputAngr.BackColor = System.Drawing.Color.LightCoral;
+            this.textBox_InputAngr.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_InputAngr.Location = new System.Drawing.Point(64, 72);
+            this.textBox_InputAngr.Name = "textBox_InputAngr";
+            this.textBox_InputAngr.Size = new System.Drawing.Size(61, 20);
+            this.textBox_InputAngr.TabIndex = 468;
+            this.textBox_InputAngr.Text = "0";
+            this.textBox_InputAngr.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_InputAngr.Click += new System.EventHandler(this.textBox_InputAngr_Click);
             // 
             // label165
             // 
@@ -3497,27 +3517,29 @@ namespace Developer_Tools
             this.textBox83.Text = "0";
             this.textBox83.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox84
+            // textBox_InputIb
             // 
-            this.textBox84.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.textBox84.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox84.Location = new System.Drawing.Point(195, 50);
-            this.textBox84.Name = "textBox84";
-            this.textBox84.Size = new System.Drawing.Size(61, 20);
-            this.textBox84.TabIndex = 465;
-            this.textBox84.Text = "10";
-            this.textBox84.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_InputIb.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.textBox_InputIb.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_InputIb.Location = new System.Drawing.Point(195, 50);
+            this.textBox_InputIb.Name = "textBox_InputIb";
+            this.textBox_InputIb.Size = new System.Drawing.Size(61, 20);
+            this.textBox_InputIb.TabIndex = 465;
+            this.textBox_InputIb.Text = "10";
+            this.textBox_InputIb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_InputIb.Click += new System.EventHandler(this.textBox_InputIb_Click);
             // 
-            // textBox85
+            // textBox_InputVb
             // 
-            this.textBox85.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.textBox85.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox85.Location = new System.Drawing.Point(195, 29);
-            this.textBox85.Name = "textBox85";
-            this.textBox85.Size = new System.Drawing.Size(61, 20);
-            this.textBox85.TabIndex = 464;
-            this.textBox85.Text = "240";
-            this.textBox85.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_InputVb.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.textBox_InputVb.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_InputVb.Location = new System.Drawing.Point(195, 29);
+            this.textBox_InputVb.Name = "textBox_InputVb";
+            this.textBox_InputVb.Size = new System.Drawing.Size(61, 20);
+            this.textBox_InputVb.TabIndex = 464;
+            this.textBox_InputVb.Text = "240";
+            this.textBox_InputVb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_InputVb.Click += new System.EventHandler(this.textBox_InputVb_Click);
             // 
             // textBox86
             // 
@@ -3531,27 +3553,29 @@ namespace Developer_Tools
             this.textBox86.Text = "0";
             this.textBox86.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox87
+            // textBox_InputIy
             // 
-            this.textBox87.BackColor = System.Drawing.Color.LightGoldenrodYellow;
-            this.textBox87.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox87.Location = new System.Drawing.Point(129, 50);
-            this.textBox87.Name = "textBox87";
-            this.textBox87.Size = new System.Drawing.Size(61, 20);
-            this.textBox87.TabIndex = 462;
-            this.textBox87.Text = "10";
-            this.textBox87.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_InputIy.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.textBox_InputIy.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_InputIy.Location = new System.Drawing.Point(129, 50);
+            this.textBox_InputIy.Name = "textBox_InputIy";
+            this.textBox_InputIy.Size = new System.Drawing.Size(61, 20);
+            this.textBox_InputIy.TabIndex = 462;
+            this.textBox_InputIy.Text = "10";
+            this.textBox_InputIy.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_InputIy.Click += new System.EventHandler(this.textBox_InputIy_Click);
             // 
-            // textBox88
+            // textBox_InputVy
             // 
-            this.textBox88.BackColor = System.Drawing.Color.LightGoldenrodYellow;
-            this.textBox88.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox88.Location = new System.Drawing.Point(129, 29);
-            this.textBox88.Name = "textBox88";
-            this.textBox88.Size = new System.Drawing.Size(61, 20);
-            this.textBox88.TabIndex = 461;
-            this.textBox88.Text = "240";
-            this.textBox88.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_InputVy.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.textBox_InputVy.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_InputVy.Location = new System.Drawing.Point(129, 29);
+            this.textBox_InputVy.Name = "textBox_InputVy";
+            this.textBox_InputVy.Size = new System.Drawing.Size(61, 20);
+            this.textBox_InputVy.TabIndex = 461;
+            this.textBox_InputVy.Text = "240";
+            this.textBox_InputVy.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_InputVy.Click += new System.EventHandler(this.textBox_InputVy_Click);
             // 
             // textBox89
             // 
@@ -3565,27 +3589,29 @@ namespace Developer_Tools
             this.textBox89.Text = "0";
             this.textBox89.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox90
+            // textBox_InputIr
             // 
-            this.textBox90.BackColor = System.Drawing.Color.LightCoral;
-            this.textBox90.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox90.Location = new System.Drawing.Point(64, 50);
-            this.textBox90.Name = "textBox90";
-            this.textBox90.Size = new System.Drawing.Size(61, 20);
-            this.textBox90.TabIndex = 459;
-            this.textBox90.Text = "10";
-            this.textBox90.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_InputIr.BackColor = System.Drawing.Color.LightCoral;
+            this.textBox_InputIr.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_InputIr.Location = new System.Drawing.Point(64, 50);
+            this.textBox_InputIr.Name = "textBox_InputIr";
+            this.textBox_InputIr.Size = new System.Drawing.Size(61, 20);
+            this.textBox_InputIr.TabIndex = 459;
+            this.textBox_InputIr.Text = "10";
+            this.textBox_InputIr.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_InputIr.Click += new System.EventHandler(this.textBox_InputIr_Click);
             // 
-            // textBox91
+            // textBox_InputVr
             // 
-            this.textBox91.BackColor = System.Drawing.Color.LightCoral;
-            this.textBox91.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox91.Location = new System.Drawing.Point(64, 29);
-            this.textBox91.Name = "textBox91";
-            this.textBox91.Size = new System.Drawing.Size(61, 20);
-            this.textBox91.TabIndex = 458;
-            this.textBox91.Text = "240";
-            this.textBox91.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_InputVr.BackColor = System.Drawing.Color.LightCoral;
+            this.textBox_InputVr.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_InputVr.Location = new System.Drawing.Point(64, 29);
+            this.textBox_InputVr.Name = "textBox_InputVr";
+            this.textBox_InputVr.Size = new System.Drawing.Size(61, 20);
+            this.textBox_InputVr.TabIndex = 458;
+            this.textBox_InputVr.Text = "240";
+            this.textBox_InputVr.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_InputVr.Click += new System.EventHandler(this.textBox_InputVr_Click);
             // 
             // label166
             // 
@@ -6439,6 +6465,8 @@ namespace Developer_Tools
             this.groupBox15.PerformLayout();
             this.groupBox30.ResumeLayout(false);
             this.groupBox30.PerformLayout();
+            this.groupBox19.ResumeLayout(false);
+            this.groupBox19.PerformLayout();
             this.groupBox31.ResumeLayout(false);
             this.groupBox31.PerformLayout();
             this.tabPage10.ResumeLayout(false);
@@ -6841,19 +6869,17 @@ namespace Developer_Tools
         private System.Windows.Forms.Label label172;
         private System.Windows.Forms.Label label173;
         private System.Windows.Forms.TextBox textBox92;
-        private System.Windows.Forms.TextBox textBox57;
-        private System.Windows.Forms.Label label152;
         private System.Windows.Forms.Label label153;
         private System.Windows.Forms.TextBox textBox58;
         private System.Windows.Forms.Label label154;
         private System.Windows.Forms.TextBox textBox59;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.TextBox textBox60;
+        private System.Windows.Forms.Button button_InputUpdate;
+        private System.Windows.Forms.CheckBox checkBox_ErrorCalculateEnable;
+        private System.Windows.Forms.TextBox textBox_InputFreq;
         private System.Windows.Forms.Label label155;
-        private System.Windows.Forms.TextBox textBox61;
-        private System.Windows.Forms.TextBox textBox62;
-        private System.Windows.Forms.TextBox textBox63;
+        private System.Windows.Forms.TextBox textBox_InputAngRB;
+        private System.Windows.Forms.TextBox textBox_ErrorAvg;
+        private System.Windows.Forms.TextBox textBox_InputAngRY;
         private System.Windows.Forms.Label label156;
         private System.Windows.Forms.Label label157;
         private System.Windows.Forms.Label label158;
@@ -6879,19 +6905,19 @@ namespace Developer_Tools
         private System.Windows.Forms.TextBox textBox77;
         private System.Windows.Forms.TextBox textBox78;
         private System.Windows.Forms.TextBox textBox79;
-        private System.Windows.Forms.TextBox textBox80;
-        private System.Windows.Forms.TextBox textBox81;
-        private System.Windows.Forms.TextBox textBox82;
+        private System.Windows.Forms.TextBox textBox_InputAngb;
+        private System.Windows.Forms.TextBox textBox_InputAngy;
+        private System.Windows.Forms.TextBox textBox_InputAngr;
         private System.Windows.Forms.Label label165;
         private System.Windows.Forms.TextBox textBox83;
-        private System.Windows.Forms.TextBox textBox84;
-        private System.Windows.Forms.TextBox textBox85;
+        private System.Windows.Forms.TextBox textBox_InputIb;
+        private System.Windows.Forms.TextBox textBox_InputVb;
         private System.Windows.Forms.TextBox textBox86;
-        private System.Windows.Forms.TextBox textBox87;
-        private System.Windows.Forms.TextBox textBox88;
+        private System.Windows.Forms.TextBox textBox_InputIy;
+        private System.Windows.Forms.TextBox textBox_InputVy;
         private System.Windows.Forms.TextBox textBox89;
-        private System.Windows.Forms.TextBox textBox90;
-        private System.Windows.Forms.TextBox textBox91;
+        private System.Windows.Forms.TextBox textBox_InputIr;
+        private System.Windows.Forms.TextBox textBox_InputVr;
         private System.Windows.Forms.Label label166;
         private System.Windows.Forms.Label label167;
         private System.Windows.Forms.Label label168;
@@ -7029,6 +7055,9 @@ namespace Developer_Tools
         private System.Windows.Forms.TextBox textBox149;
         private System.Windows.Forms.Timer timer500ms;
         private System.Windows.Forms.Timer timer100ms;
+        private System.Windows.Forms.GroupBox groupBox19;
+        private System.Windows.Forms.RadioButton radioButton_InputModeNet;
+        private System.Windows.Forms.RadioButton radioButton_InputModeFwd;
     }
 }
 

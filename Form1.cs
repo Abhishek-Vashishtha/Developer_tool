@@ -538,6 +538,63 @@ namespace Developer_Tools
             traffic_string = String.Empty;
         }
 
+        private void textBox_InputVr_Click(object sender, EventArgs e)
+        {
+            textBox_InputVr.SelectAll();
+        }
+        private void textBox_InputVy_Click(object sender, EventArgs e)
+        {
+            textBox_InputVy.SelectAll();
+        }
+        private void textBox_InputVb_Click(object sender, EventArgs e)
+        {
+            textBox_InputVb.SelectAll();
+        }
+        private void textBox_InputIr_Click(object sender, EventArgs e)
+        {
+            textBox_InputIr.SelectAll();
+        }
+        private void textBox_InputIy_Click(object sender, EventArgs e)
+        {
+            textBox_InputIy.SelectAll();
+        }
+        private void textBox_InputIb_Click(object sender, EventArgs e)
+        {
+            textBox_InputIb.SelectAll();
+        }
+        private void textBox_InputAngr_Click(object sender, EventArgs e)
+        {
+            textBox_InputAngr.SelectAll();
+        }
+        private void textBox_InputAngy_Click(object sender, EventArgs e)
+        {
+            textBox_InputAngy.SelectAll();
+        }
+        private void textBox_InputAngb_Click(object sender, EventArgs e)
+        {
+            textBox_InputAngb.SelectAll();
+        }
+
+        private void textBox_InputAngRY_Click(object sender, EventArgs e)
+        {
+            textBox_InputAngRY.SelectAll();
+        }
+
+        private void textBox_InputAngRB_Click(object sender, EventArgs e)
+        {
+            textBox_InputAngRB.SelectAll();
+        }
+
+        private void textBox_InputFreq_Click(object sender, EventArgs e)
+        {
+            textBox_InputFreq.SelectAll();
+        }
+
+        private void textBox_ErrorAvg_Click(object sender, EventArgs e)
+        {
+            textBox_ErrorAvg.SelectAll();
+        }
+
         public static void fillTrafficString(string header, byte[] data, int length)
         {
             traffic_string += Environment.NewLine;
