@@ -16,7 +16,7 @@ namespace Developer_Tools
         /* communication traffic */
         static int traffic_mode;
         static string traffic_string = String.Empty;
-        
+
         /* configuration file */
         string config_file_name;
 
@@ -25,7 +25,7 @@ namespace Developer_Tools
         int temp_b_array_length;
         byte[] tx_buffer = new byte[550];
         byte[] rx_buffer = new byte[550];
-        
+
 
         /* Serial Port */
         DS_Serial serial_port = new DS_Serial();
@@ -41,6 +41,50 @@ namespace Developer_Tools
         /* error calculation */
         public static int ip_avg_samples;
         public static bool cal_accuracy;
+
+        /* instant frame variables */
+        public static double VolR, VolY, VolB, CurrRSigned, CurrYSigned, CurrBSigned, CurrN, CurrNVector, VolRY, VolYB, VolBR;
+        public static double VolRdc, VolYdc, VolBdc, CurrRdc, CurrYdc, CurrBdc, CurrNdc;
+        public static double PFR, PFY, PFB, PFNet;
+        public static double AnglePFR, AnglePFY, AnglePFB, AngleNVector, AngleRY, AngleYB, AngleBR;
+        public static double WattR, WattY, WattB, WattNet;
+        public static double VARR, VARY, VARB, VARNet;
+        public static double VAR, VAY, VAB, VANet;
+        public static double FreqR, FreqY, FreqB, FreqNet;
+        public static int QuadrantR, QuadrantY, QuadrantB, QuadrantNet;
+        public static int SamplesR, SamplesY, SamplesB, SamplesN, SamplesPerSec;
+        public static double THDVr, THDVy, THDVb, THDIr, THDIy, THDIb;
+        public static double EnergyWhR_imp, EnergyWhY_imp, EnergyWhB_imp, EnergyWhTotal_imp;
+        public static double EnergyWhR_exp, EnergyWhY_exp, EnergyWhB_exp, EnergyWhTotal_exp;
+        public static double EnergyVARhR_q1, EnergyVARhY_q1, EnergyVARhB_q1, EnergyVARhTotal_q1;
+        public static double EnergyVARhR_q2, EnergyVARhY_q2, EnergyVARhB_q2, EnergyVARhTotal_q2;
+        public static double EnergyVARhR_q3, EnergyVARhY_q3, EnergyVARhB_q3, EnergyVARhTotal_q3;
+        public static double EnergyVARhR_q4, EnergyVARhY_q4, EnergyVARhB_q4, EnergyVARhTotal_q4;
+        public static double EnergyVAhR_imp, EnergyVAhY_imp, EnergyVAhB_imp, EnergyVAhTotal_imp;
+        public static double EnergyVAhR_exp, EnergyVAhY_exp, EnergyVAhB_exp, EnergyVAhTotal_exp;
+        public static double EnergyFWhR_imp, EnergyFWhY_imp, EnergyFWhB_imp, EnergyFWhTotal_imp;
+        public static double EnergyFWhR_exp, EnergyFWhY_exp, EnergyFWhB_exp, EnergyFWhTotal_exp;
+        public static int pulse_EnergyWhR_imp, pulse_EnergyWhY_imp, pulse_EnergyWhB_imp, pulse_EnergyWhTotal_imp;
+        public static int pulse_EnergyWhR_exp, pulse_EnergyWhY_exp, pulse_EnergyWhB_exp, pulse_EnergyWhTotal_exp;
+        public static int pulse_EnergyVARhR_q1, pulse_EnergyVARhY_q1, pulse_EnergyVARhB_q1, pulse_EnergyVARhTotal_q1;
+        public static int pulse_EnergyVARhR_q2, pulse_EnergyVARhY_q2, pulse_EnergyVARhB_q2, pulse_EnergyVARhTotal_q2;
+        public static int pulse_EnergyVARhR_q3, pulse_EnergyVARhY_q3, pulse_EnergyVARhB_q3, pulse_EnergyVARhTotal_q3;
+        public static int pulse_EnergyVARhR_q4, pulse_EnergyVARhY_q4, pulse_EnergyVARhB_q4, pulse_EnergyVARhTotal_q4;
+        public static int pulse_EnergyVAhR_imp, pulse_EnergyVAhY_imp, pulse_EnergyVAhB_imp, pulse_EnergyVAhTotal_imp;
+        public static int pulse_EnergyVAhR_exp, pulse_EnergyVAhY_exp, pulse_EnergyVAhB_exp, pulse_EnergyVAhTotal_exp;
+        public static int pulse_EnergyFWhR_imp, pulse_EnergyFWhY_imp, pulse_EnergyFWhB_imp, pulse_EnergyFWhTotal_imp;
+        public static int pulse_EnergyFWhR_exp, pulse_EnergyFWhY_exp, pulse_EnergyFWhB_exp, pulse_EnergyFWhTotal_exp;
+
+        public static string Time;
+        public static int powerUpSec, reactiveSamples, reactiveTimer, reactiveTimeDelay, reactiveTimeDeviation;
+        public static long LoopCycles;
+        public static double battery_voltage, battery_voltage_rtc, temperature_tlv;
+        public static string MISCData, TamperStatus;
+
+        public static int METER_CONST = 1200, PULSE = 6;
+        public double QUANTA = 0.005;
+
+
         public Form1()
         {
             InitializeComponent();
@@ -50,7 +94,7 @@ namespace Developer_Tools
         {
             /* changing colors of fonts */
             menuStripMain.ForeColor = Color.Blue;
-           
+
             /* creating files at startup */
             DS_App.startUpFilesChecking();
 
@@ -81,7 +125,7 @@ namespace Developer_Tools
 
             /* creates a new json file */
             string fileName = saveJSONFileDialog.FileName;
-            if(fileName.Length != 0)
+            if (fileName.Length != 0)
             {
                 try
                 {
@@ -98,7 +142,7 @@ namespace Developer_Tools
         {
             /* opens open file dialog */
             openJSONFileDialog.Filter = "JSON files (*.json)|*.json|All files (*.*)|*.*";
-            openJSONFileDialog.InitialDirectory = "D:\\DevelopersTool"; 
+            openJSONFileDialog.InitialDirectory = "D:\\DevelopersTool";
             openJSONFileDialog.Title = "Select the file to view";
             openJSONFileDialog.ShowDialog();
 
@@ -134,14 +178,14 @@ namespace Developer_Tools
                 }
                 else
                 {
-                   
+
                 }
             }
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(config_file_name == null)
+            if (config_file_name == null)
             {
                 MessageBox.Show("Configuration file not loaded");
             }
@@ -152,7 +196,7 @@ namespace Developer_Tools
 
 
                 /* updating the text back to normal */
-                if(saveToolStripMenuItem.Text == "Save'")
+                if (saveToolStripMenuItem.Text == "Save'")
                 {
                     saveToolStripMenuItem.Text = "Save";
                 }
@@ -247,18 +291,18 @@ namespace Developer_Tools
             {
                 output_format = "ASCII";
             }
-            
+
             /* Verify valid input data and making ascii string */
             if (radioButtonToolsInputTextBoxHEX.Checked == true)
             {
-                if(DS_Functions.CheckValidHexString(textBox_ToolsInputString.Text) == true)
+                if (DS_Functions.CheckValidHexString(textBox_ToolsInputString.Text) == true)
                 {
                     input_ascii_string = DS_Functions.hex_string_to_ascii_string(textBox_ToolsInputString.Text);
                 }
             }
-            else if(radioButtonToolsInputTextBoxHEXSpaced.Checked == true)
+            else if (radioButtonToolsInputTextBoxHEXSpaced.Checked == true)
             {
-                if (DS_Functions.CheckValidHexString(DS_Functions.string_subtract(textBox_ToolsInputString.Text," ","")) == true)
+                if (DS_Functions.CheckValidHexString(DS_Functions.string_subtract(textBox_ToolsInputString.Text, " ", "")) == true)
                 {
                     input_ascii_string = DS_Functions.hex_string_to_ascii_string(DS_Functions.string_subtract(textBox_ToolsInputString.Text, " ", ""));
                 }
@@ -268,12 +312,12 @@ namespace Developer_Tools
                 input_ascii_string = textBox_ToolsInputString.Text;
             }
 
-            
+
             if (string.IsNullOrEmpty(input_ascii_string) == false)
             {
                 string ascii_str = string.Empty;
 
-                
+
                 /* removing the desired characters */
                 if (checkBoxStringFilterRemoveSpace.Checked == true)
                 {
@@ -281,7 +325,7 @@ namespace Developer_Tools
                 }
                 if (checkBoxStringFilterRemoveCR.Checked == true)
                 {
-                    ascii_str = DS_Functions.string_subtract(ascii_str, "\r","");
+                    ascii_str = DS_Functions.string_subtract(ascii_str, "\r", "");
                 }
                 if (checkBoxStringFilterRemoveLF.Checked == true)
                 {
@@ -311,7 +355,7 @@ namespace Developer_Tools
             }
             else
             {
-                MessageBox.Show("Invalid input String","Error");
+                MessageBox.Show("Invalid input String", "Error");
             }
         }
 
@@ -350,8 +394,8 @@ namespace Developer_Tools
                 byte[] barray = null;
                 bool input_string_error = false;
                 if (radioButtonToolsInputTextBoxHEX.Checked == true || radioButtonToolsInputTextBoxHEXSpaced.Checked == true)
-                { 
-                    if(DS_Functions.CheckValidHexSpacedString(textBox_ToolsInputString.Text) == true)
+                {
+                    if (DS_Functions.CheckValidHexSpacedString(textBox_ToolsInputString.Text) == true)
                     {
                         barray = DS_Functions.hex_string_to_byte_array(textBox_ToolsInputString.Text.Replace(" ", ""));
                     }
@@ -360,7 +404,7 @@ namespace Developer_Tools
                         input_string_error = true;
                     }
                 }
-                else 
+                else
                 {
                     barray = DS_Functions.ascii_string_to_byte_array(textBox_ToolsInputString.Text);
                 }
@@ -407,9 +451,9 @@ namespace Developer_Tools
         {
             if (radioButton_CommunicationSerial.Checked == true)
             {
-                if(serial_port.Connect(comboBox_SerialSingleCOMPORT.Text, Convert.ToInt32(comboBox_SerialSingleBaudRate.Text)) == true)
+                if (serial_port.Connect(comboBox_SerialSingleCOMPORT.Text, Convert.ToInt32(comboBox_SerialSingleBaudRate.Text)) == true)
                 {
-                    
+
                 }
             }
         }
@@ -420,7 +464,7 @@ namespace Developer_Tools
             {
                 if (serial_port.Disconnect() == true)
                 {
-                    
+
                 }
             }
         }
@@ -432,13 +476,13 @@ namespace Developer_Tools
         private void timerText500ms_Tick(object sender, EventArgs e)
         {
             bool connection_status;
-            
+
             /* enable/disable functionlity as per flags */
-            if(checkBox_SendRepeat.Checked == true)
+            if (checkBox_SendRepeat.Checked == true)
             {
                 textBox_SendRepeatTime.Enabled = true;
                 textBox_SendRepeatNoOfTimes.Enabled = true;
-                if(serial_port.SendRepeatEnable == true)
+                if (serial_port.SendRepeatEnable == true)
                 {
                     button_SendRepeatStop.Enabled = true;
                 }
@@ -454,13 +498,13 @@ namespace Developer_Tools
                 textBox_SendRepeatNoOfTimes.Enabled = false;
                 textBox_SendRepeatNoOfTimes.Text = "100";
             }
-            
+
             /* pop up notification when a port is connected or disconnected */
             DS_Serial.update_port_list();
 
 
             /* fill up information periodically */
-            if(radioButton_CommunicationSerial.Checked == true && serial_port.IsOpen == true)
+            if (radioButton_CommunicationSerial.Checked == true && serial_port.IsOpen == true)
             {
                 connection_status = true;
             }
@@ -490,7 +534,7 @@ namespace Developer_Tools
             {
                 textBox_SendRepeatSentCounter.Text = serial_port.SendRepeatSentCounter.ToString();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 textBox_SendRepeatSentCounter.Text = ex.Message;
             }
@@ -502,11 +546,221 @@ namespace Developer_Tools
             {
                 traffic_mode = 2;
             }
-            else if(radioButton_DataTrafficFormatHEXSpaced.Checked == true)  /* HEX Spaced */
+            else if (radioButton_DataTrafficFormatHEXSpaced.Checked == true)  /* HEX Spaced */
             {
                 traffic_mode = 3;
             }
 
+
+            /* Metrology Data */
+            textBox_VolR.Text = VolR.ToString("0.00");
+            textBox_VolY.Text = VolY.ToString("0.00");
+            textBox_VolB.Text = VolB.ToString("0.00");
+            textBox_VolRdc.Text = VolRdc.ToString();
+            textBox_VolYdc.Text = VolYdc.ToString();
+            textBox_VolBdc.Text = VolBdc.ToString();
+
+            textBox_CurrR.Text = CurrRSigned.ToString("0.000");
+            textBox_CurrY.Text = CurrYSigned.ToString("0.000");
+            textBox_CurrB.Text = CurrBSigned.ToString("0.000");
+            textBox_CurrN.Text = CurrN.ToString("0.000");
+
+            textBox_CurrRdc.Text = CurrRdc.ToString();
+            textBox_CurrYdc.Text = CurrYdc.ToString();
+            textBox_CurrBdc.Text = CurrBdc.ToString();
+            textBox_CurrNdc.Text = CurrNdc.ToString();
+
+            //textBox_PFR.Text = PFR.ToString("0.000");
+            //textBox_PFY.Text = PFY.ToString("0.000");
+            //textBox_PFB.Text = PFB.ToString("0.000");
+            //textBox_PFNet.Text = PFNet.ToString("0.000");
+            //
+            //textBox_AnglePFRph.Text = AnglePFR.ToString("0.00");
+            //textBox_AnglePFYph.Text = AnglePFY.ToString("0.00");
+            //textBox_AnglePFBph.Text = AnglePFB.ToString("0.00");
+            //
+            //textBox_WattR.Text = WattR.ToString("0.0");
+            //textBox_WattY.Text = WattY.ToString("0.0");
+            //textBox_WattB.Text = WattB.ToString("0.0");
+            //textBox_WattNet.Text = WattNet.ToString("0.0");
+            //
+            //textBox_VARR.Text = VARR.ToString("0.0");
+            //textBox_VARY.Text = VARY.ToString("0.0");
+            //textBox_VARB.Text = VARB.ToString("0.0");
+            //textBox_VARNet.Text = VARNet.ToString("0.0");
+            //
+            //textBox_VAR.Text = VAR.ToString("0.0");
+            //textBox_VAY.Text = VAY.ToString("0.0");
+            //textBox_VAB.Text = VAB.ToString("0.0");
+            //textBox_VANet.Text = VANet.ToString("0.0");
+            //
+            //textBox_FreqR.Text = FreqR.ToString("0.000");
+            //textBox_FreqY.Text = FreqY.ToString("0.000");
+            //textBox_FreqB.Text = FreqB.ToString("0.000");
+            //textBox_FreqNet.Text = FreqNet.ToString("0.000");
+            //
+            //textBox_QuadR.Text = QuadrantR.ToString();
+            //textBox_QuadY.Text = QuadrantY.ToString();
+            //textBox_QuadB.Text = QuadrantB.ToString();
+            //textBox_QuadNet.Text = QuadrantNet.ToString();
+            //
+            //textBox_CalAngleActR.Text = CalAngleActR.ToString("0.00");
+            //textBox_CalAngleActY.Text = CalAngleActY.ToString("0.00");
+            //textBox_CalAngleActB.Text = CalAngleActB.ToString("0.00");
+            //
+            //textBox_CalAngleReactR.Text = CalAngleReactR.ToString("0.00");
+            //textBox_CalAngleReactY.Text = CalAngleReactY.ToString("0.00");
+            //textBox_CalAngleReactB.Text = CalAngleReactB.ToString("0.00");
+            //
+            //textBox_SamplesR.Text = SamplesR.ToString();
+            //textBox_SamplesY.Text = SamplesY.ToString();
+            //textBox_SamplesB.Text = SamplesB.ToString();
+            //textBox_SamplesPerSec.Text = SamplesPerSec.ToString();
+            //textBox_SamplesN.Text = SamplesN.ToString();
+            //
+            //textBox_CurrNeuVector.Text = CurrNVector.ToString("0.000");
+            //textBox_AngleNeuVector.Text = AngleNVector.ToString("0.00");
+            //
+            //textBox_Time.Text = Time;
+            //
+            //textBox_VolRY.Text = VolRY.ToString("0.00");
+            //textBox_VolYB.Text = VolYB.ToString("0.00");
+            //textBox_VolBR.Text = VolBR.ToString("0.00");
+            //
+            //textBox_AngleRY.Text = AngleRY.ToString("0.00");
+            //textBox_AngleYB.Text = AngleYB.ToString("0.00");
+            //textBox_AngleBR.Text = AngleBR.ToString("0.00");
+            //
+            //textBox_EnergyWhR.Text = EnergyWhR.ToString("0.0000");
+            //textBox_EnergyWhY.Text = EnergyWhY.ToString("0.0000");
+            //textBox_EnergyWhB.Text = EnergyWhB.ToString("0.0000");
+            //textBox_EnergyWhTotal.Text = EnergyWhTotal.ToString("0.0000");
+            //textBox_EnergyVARhLagTotal.Text = EnergyVARhLagTotal.ToString("0.0000");
+            //textBox_EnergyVARhLeadTotal.Text = EnergyVARhLeadTotal.ToString("0.0000");
+            //textBox_EnergyVAhTotal.Text = EnergyVAhTotal.ToString("0.0000");
+            //
+            //labelMetrologyTimer.Text = metrology_timer.ToString();
+            //
+            //textBox_ErrorActR.Text = error_act_r.ToString("0.00");
+            //textBox_ErrorActY.Text = error_act_y.ToString("0.00");
+            //textBox_ErrorActB.Text = error_act_b.ToString("0.00");
+            //textBox_ErrorActTotal.Text = error_act_total.ToString("0.00");
+            //
+            //textBox_ErrorReactR.Text = error_react_r.ToString("0.00");
+            //textBox_ErrorReactY.Text = error_react_y.ToString("0.00");
+            //textBox_ErrorReactB.Text = error_react_b.ToString("0.00");
+            //textBox_ErrorReactTotal.Text = error_react_total.ToString("0.00");
+            //
+            //textBox_ErrorAppR.Text = error_app_r.ToString("0.00");
+            //textBox_ErrorAppY.Text = error_app_y.ToString("0.00");
+            //textBox_ErrorAppB.Text = error_app_b.ToString("0.00");
+            //textBox_ErrorAppTotal.Text = error_app_total.ToString("0.00");
+            //
+            //textBox_TempTLV.Text = temperature_tlv.ToString();
+            //textBox_BatteryVoltage.Text = battery_voltage.ToString("0.00");
+            //
+            //textBox_ReactiveSamples.Text = reactiveSamples.ToString();
+            //textBox_ReactiveTimer.Text = reactiveTimer.ToString();
+            //textBox_ReactiveTimeDelay.Text = reactiveTimeDelay.ToString();
+            //textBox_ReactiveTimeDeviation.Text = reactiveTimeDeviation.ToString();
+            //
+            //textBox_THDVr.Text = THDVr.ToString("0.0");
+            //textBox_THDVy.Text = THDVy.ToString("0.0");
+            //textBox_THDVb.Text = THDVb.ToString("0.0");
+            //textBox_THDIr.Text = THDIr.ToString("0.0");
+            //textBox_THDIy.Text = THDIy.ToString("0.0");
+            //textBox_THDIb.Text = THDIb.ToString("0.0");
+            //
+            //textBox_EnergyWhTotalFunda.Text = EnergyWhTotalFunda.ToString("0.0000");
+            //textBox_LoopCycles.Text = LoopCycles.ToString();
+            //
+            //textBox_TamperStatus.Text = "";
+            //if (DS_Functions.checkBit(tamper_status[7], 0x80) == true) { textBox_TamperStatus.Text += " | bit63"; }
+            //if (DS_Functions.checkBit(tamper_status[7], 0x40) == true) { textBox_TamperStatus.Text += " | bit62"; }
+            //if (DS_Functions.checkBit(tamper_status[7], 0x20) == true) { textBox_TamperStatus.Text += " | bit61"; }
+            //if (DS_Functions.checkBit(tamper_status[7], 0x10) == true) { textBox_TamperStatus.Text += " | bit60"; }
+            //if (DS_Functions.checkBit(tamper_status[7], 0x08) == true) { textBox_TamperStatus.Text += " | bit59"; }
+            //if (DS_Functions.checkBit(tamper_status[7], 0x04) == true) { textBox_TamperStatus.Text += " | bit58"; }
+            //if (DS_Functions.checkBit(tamper_status[7], 0x02) == true) { textBox_TamperStatus.Text += " | bit57"; }
+            //if (DS_Functions.checkBit(tamper_status[7], 0x01) == true) { textBox_TamperStatus.Text += " | bit56"; }
+            //
+            //if (DS_Functions.checkBit(tamper_status[6], 0x80) == true) { textBox_TamperStatus.Text += " | bit55"; }
+            //if (DS_Functions.checkBit(tamper_status[6], 0x40) == true) { textBox_TamperStatus.Text += " | bit54"; }
+            //if (DS_Functions.checkBit(tamper_status[6], 0x20) == true) { textBox_TamperStatus.Text += " | bit53"; }
+            //if (DS_Functions.checkBit(tamper_status[6], 0x10) == true) { textBox_TamperStatus.Text += " | bit52"; }
+            //if (DS_Functions.checkBit(tamper_status[6], 0x08) == true) { textBox_TamperStatus.Text += " | bit51"; }
+            //if (DS_Functions.checkBit(tamper_status[6], 0x04) == true) { textBox_TamperStatus.Text += " | bit50"; }
+            //if (DS_Functions.checkBit(tamper_status[6], 0x02) == true) { textBox_TamperStatus.Text += " | bit49"; }
+            //if (DS_Functions.checkBit(tamper_status[6], 0x01) == true) { textBox_TamperStatus.Text += " | bit48"; }
+            //
+            //if (DS_Functions.checkBit(tamper_status[5], 0x80) == true) { textBox_TamperStatus.Text += " | bit47"; }
+            //if (DS_Functions.checkBit(tamper_status[5], 0x40) == true) { textBox_TamperStatus.Text += " | bit46"; }
+            //if (DS_Functions.checkBit(tamper_status[5], 0x20) == true) { textBox_TamperStatus.Text += " | bit45"; }
+            //if (DS_Functions.checkBit(tamper_status[5], 0x10) == true) { textBox_TamperStatus.Text += " | bit44"; }
+            //if (DS_Functions.checkBit(tamper_status[5], 0x08) == true) { textBox_TamperStatus.Text += " | bit43"; }
+            //if (DS_Functions.checkBit(tamper_status[5], 0x04) == true) { textBox_TamperStatus.Text += " | bit42"; }
+            //if (DS_Functions.checkBit(tamper_status[5], 0x02) == true) { textBox_TamperStatus.Text += " | bit41"; }
+            //if (DS_Functions.checkBit(tamper_status[5], 0x01) == true) { textBox_TamperStatus.Text += " | Faulty Capacitor"; }
+            //
+            //if (DS_Functions.checkBit(tamper_status[4], 0x80) == true) { textBox_TamperStatus.Text += " | RTC Battery Low"; }
+            //if (DS_Functions.checkBit(tamper_status[4], 0x40) == true) { textBox_TamperStatus.Text += " | Over Cureent B"; }
+            //if (DS_Functions.checkBit(tamper_status[4], 0x20) == true) { textBox_TamperStatus.Text += " | Over Current Y"; }
+            //if (DS_Functions.checkBit(tamper_status[4], 0x10) == true) { textBox_TamperStatus.Text += " | Over Current R"; }
+            //if (DS_Functions.checkBit(tamper_status[4], 0x08) == true) { textBox_TamperStatus.Text += " | Abnormal Frequency"; }
+            //if (DS_Functions.checkBit(tamper_status[4], 0x04) == true) { textBox_TamperStatus.Text += " | Two wire"; }
+            //if (DS_Functions.checkBit(tamper_status[4], 0x02) == true) { textBox_TamperStatus.Text += " | RTC Reading Error"; }
+            //if (DS_Functions.checkBit(tamper_status[4], 0x01) == true) { textBox_TamperStatus.Text += " | bit32"; }
+            //
+            //if (DS_Functions.checkBit(tamper_status[3], 0x80) == true) { textBox_TamperStatus.Text += " | 35KV/ESD"; }
+            //if (DS_Functions.checkBit(tamper_status[3], 0x40) == true) { textBox_TamperStatus.Text += " | Invalid phase association"; }
+            //if (DS_Functions.checkBit(tamper_status[3], 0x20) == true) { textBox_TamperStatus.Text += " | Invalid voltage"; }
+            //if (DS_Functions.checkBit(tamper_status[3], 0x10) == true) { textBox_TamperStatus.Text += " | High Neutral Current"; }
+            //if (DS_Functions.checkBit(tamper_status[3], 0x08) == true) { textBox_TamperStatus.Text += " | Wrong connection"; }
+            //if (DS_Functions.checkBit(tamper_status[3], 0x04) == true) { textBox_TamperStatus.Text += " | Main battery low"; }
+            //if (DS_Functions.checkBit(tamper_status[3], 0x02) == true) { textBox_TamperStatus.Text += " | Low Load"; }
+            //if (DS_Functions.checkBit(tamper_status[3], 0x01) == true) { textBox_TamperStatus.Text += " | Over Load"; }
+            //
+            //if (DS_Functions.checkBit(tamper_status[2], 0x80) == true) { textBox_TamperStatus.Text += " | EEPROM Fail"; }
+            //if (DS_Functions.checkBit(tamper_status[2], 0x40) == true) { textBox_TamperStatus.Text += " | B Phase Active Export"; }
+            //if (DS_Functions.checkBit(tamper_status[2], 0x20) == true) { textBox_TamperStatus.Text += " | Y Phase Active Export"; }
+            //if (DS_Functions.checkBit(tamper_status[2], 0x10) == true) { textBox_TamperStatus.Text += " | R Phase Active Export"; }
+            //if (DS_Functions.checkBit(tamper_status[2], 0x08) == true) { textBox_TamperStatus.Text += " | Phase sequence reverse"; }
+            //if (DS_Functions.checkBit(tamper_status[2], 0x04) == true) { textBox_TamperStatus.Text += " | Top Cover"; }
+            //if (DS_Functions.checkBit(tamper_status[2], 0x02) == true) { textBox_TamperStatus.Text += " | Low PF"; }
+            //if (DS_Functions.checkBit(tamper_status[2], 0x01) == true) { textBox_TamperStatus.Text += " | Neutral Disturb"; }
+            //
+            //if (DS_Functions.checkBit(tamper_status[1], 0x80) == true) { textBox_TamperStatus.Text += " | Magnet"; }
+            //if (DS_Functions.checkBit(tamper_status[1], 0x40) == true) { textBox_TamperStatus.Text += " | Over Current"; }
+            //if (DS_Functions.checkBit(tamper_status[1], 0x20) == true) { textBox_TamperStatus.Text += " | CT Bypass"; }
+            //if (DS_Functions.checkBit(tamper_status[1], 0x10) == true) { textBox_TamperStatus.Text += " | Current Unbalance"; }
+            //if (DS_Functions.checkBit(tamper_status[1], 0x08) == true) { textBox_TamperStatus.Text += " | CY Open B"; }
+            //if (DS_Functions.checkBit(tamper_status[1], 0x04) == true) { textBox_TamperStatus.Text += " | CT Open Y"; }
+            //if (DS_Functions.checkBit(tamper_status[1], 0x02) == true) { textBox_TamperStatus.Text += " | CT Open R"; }
+            //if (DS_Functions.checkBit(tamper_status[1], 0x01) == true) { textBox_TamperStatus.Text += " | CT Reverse B"; }
+            //
+            //if (DS_Functions.checkBit(tamper_status[0], 0x80) == true) { textBox_TamperStatus.Text += " | CT Reverse Y"; }
+            //if (DS_Functions.checkBit(tamper_status[0], 0x40) == true) { textBox_TamperStatus.Text += " | CT Reverse R"; }
+            //if (DS_Functions.checkBit(tamper_status[0], 0x20) == true) { textBox_TamperStatus.Text += " | Vol Unbalance"; }
+            //if (DS_Functions.checkBit(tamper_status[0], 0x10) == true) { textBox_TamperStatus.Text += " | Vol Low"; }
+            //if (DS_Functions.checkBit(tamper_status[0], 0x08) == true) { textBox_TamperStatus.Text += " | Vol High"; }
+            //if (DS_Functions.checkBit(tamper_status[0], 0x04) == true) { textBox_TamperStatus.Text += " | Vol Miss B"; }
+            //if (DS_Functions.checkBit(tamper_status[0], 0x02) == true) { textBox_TamperStatus.Text += " | Vol Miss Y"; }
+            //if (DS_Functions.checkBit(tamper_status[0], 0x01) == true) { textBox_TamperStatus.Text += " | Vol Miss R"; }
+            //
+            //
+            //textBox_MISCData.Text = MISCData;
+            //
+            ///* Vector Diagram Display */
+            //if (ShowVectorDiag == true)
+            //{
+            //    if (v_diag.Visible == false)
+            //    {
+            //        v_diag.ShowDialog();
+            //    }
+            //    v_diag.Invalidate();  // request a delayed Repaint by the normal MessageLoop system    
+            //    v_diag.Update();      // forces Repaint of invalidated area 
+            //    v_diag.Refresh();     // Combines Invalidate() and Update()
+            //}
         }
 
         private void comboBox_SerialSingleCOMPORT_Click(object sender, EventArgs e)
@@ -515,7 +769,7 @@ namespace Developer_Tools
             comboBox_SerialSingleCOMPORT.Items.AddRange(DS_Serial.GetPortNames());
         }
 
-        
+
         private void timer10ms_Tick(object sender, EventArgs e)
         {
             serial_port.serial_loop_10ms();
@@ -528,7 +782,7 @@ namespace Developer_Tools
             /* validate the input frame */
             if (radioButton_SendFrameFormatHex.Checked == true)
             {
-                if(DS_Functions.CheckValidHexSpacedString(textBox_SendFrame.Text) == false)
+                if (DS_Functions.CheckValidHexSpacedString(textBox_SendFrame.Text) == false)
                 {
                     MessageBox.Show("Invalid Input Data..!!");
                     return;
@@ -536,7 +790,7 @@ namespace Developer_Tools
             }
 
             /* calculating the length */
-            send_frame_length = textBox_SendFrame.Text.Replace(" ","").Length;
+            send_frame_length = textBox_SendFrame.Text.Replace(" ", "").Length;
 
             if (radioButton_SendFrameFormatHex.Checked == true)
             {
@@ -560,7 +814,7 @@ namespace Developer_Tools
                     return;
                 }
             }
-            
+
             /* making a byte aray from input data */
             if (radioButton_SendFrameFormatHex.Checked == true)
             {
@@ -575,7 +829,7 @@ namespace Developer_Tools
 
             if (checkBox_SendRepeat.Checked == true)
             {
-                serial_port.write(temp_b_array, 0, temp_b_array_length, checkBox_SendFrameHDLC.Checked,true,Convert.ToInt32(textBox_SendRepeatTime.Text), Convert.ToInt32(textBox_SendRepeatNoOfTimes.Text));
+                serial_port.write(temp_b_array, 0, temp_b_array_length, checkBox_SendFrameHDLC.Checked, true, Convert.ToInt32(textBox_SendRepeatTime.Text), Convert.ToInt32(textBox_SendRepeatNoOfTimes.Text));
             }
             else
             {
@@ -586,7 +840,7 @@ namespace Developer_Tools
         private void timer100ms_Tick(object sender, EventArgs e)
         {
             string s = String.Empty;// traffic_string;
-            if(traffic_string.Length != 0)
+            if (traffic_string.Length != 0)
             {
                 s = traffic_string;
                 traffic_string = String.Empty;
@@ -669,13 +923,13 @@ namespace Developer_Tools
             ip_freq = Convert.ToDouble(textBox_InputFreq.Text);
             ip_ang_ry = Convert.ToDouble(textBox_InputAngRY.Text);
             ip_ang_rb = Convert.ToDouble(textBox_InputAngRB.Text);
-            ip_avg_samples = Convert.ToInt16(textBox_ErrorAvg.Text); 
-            
-            if(radioButton_InputModeFwd.Checked == true)
+            ip_avg_samples = Convert.ToInt16(textBox_ErrorAvg.Text);
+
+            if (radioButton_InputModeFwd.Checked == true)
             {
                 metering_mode = 1;                                          /* Forwarded Metering */
             }
-            else if(radioButton_InputModeNet.Checked == true)
+            else if (radioButton_InputModeNet.Checked == true)
             {
                 metering_mode = 2;                                          /* Net Metering */
             }
@@ -723,11 +977,11 @@ namespace Developer_Tools
                 ip_pf_b = 1;
             }
             int qr, qy, qb;
-            if(ip_watt_r >= 0 && ip_var_r >= 0)
+            if (ip_watt_r >= 0 && ip_var_r >= 0)
             {
                 qr = 1;
             }
-            else if(ip_watt_r < 0 && ip_var_r >= 0)
+            else if (ip_watt_r < 0 && ip_var_r >= 0)
             {
                 qr = 2;
             }
@@ -803,7 +1057,7 @@ namespace Developer_Tools
             angle = 0;
             mag = ip_curr_r;
             Vector vect_ref = new Vector(mag * Math.Cos(angle * Math.PI / 180.0), mag * Math.Sin(angle * Math.PI / 180.0)); //ref is Vr
-            
+
             angle = ip_ang_r;
             mag = ip_curr_r;
             Vector vect_ir = new Vector(mag * Math.Cos(angle * Math.PI / 180.0), mag * Math.Sin(angle * Math.PI / 180.0));
@@ -865,18 +1119,377 @@ namespace Developer_Tools
                 traffic_string += DS_Functions.byte_array_to_ascii_string(data, length);
 
             }
-            else if(traffic_mode == 2)  /* HEX */
+            else if (traffic_mode == 2)  /* HEX */
             {
                 traffic_string += DS_Functions.byte_array_to_hex_string(data, length);
             }
-            else if(traffic_mode == 3)  /* HEX Spaced */
+            else if (traffic_mode == 3)  /* HEX Spaced */
             {
                 traffic_string += DS_Functions.byte_array_to_hex_string_spaced(data, length);
             }
         }
         public static void ProcessForm1String(byte[] b_array, int b_array_len)
         {
+            ushort arr_ptr = 0;
+            /* Checking for valid HDLC Frame */
+            if (DS_HDLC.verify_hdlc_frame(b_array, b_array_len) == true)
+            {
+                DS_HDLC.decode_hdlc_frame(b_array);
+                if (DS_HDLC.HdlcCommandCode == 0)                        /* waveform capture */
+                {
+                    //debug_string_for_textbox = DS_Functions.Byte_Array_To_HEX_String(b_array, 0, b_array_len);
+                    //update_wf_capture_info = true;
+                }
+                else if (DS_HDLC.HdlcCommandCode == 15)
+                {
+                    //debug_string_for_textbox = DS_Functions.Byte_Array_To_HEX_String(b_array, 9, 288);
+                    //update_cal_data = true;
+                }
+                else if (DS_HDLC.HdlcCommandCode == 1)               /* Instant Data frame */
+                {
+                    /* reading data into variables */
 
+                    /* Displaying in the checkbox */
+
+                    /* showing vector diagram */
+
+                    /* taking log into file */
+                    arr_ptr = 9;
+                    VolR = DS_Functions.ByteArrayToUs32(b_array, arr_ptr, 100); arr_ptr += 4;
+                    VolY = DS_Functions.ByteArrayToUs32(b_array, arr_ptr, 100); arr_ptr += 4;
+                    VolB = DS_Functions.ByteArrayToUs32(b_array, arr_ptr, 100); arr_ptr += 4;
+
+                    VolRdc = DS_Functions.ByteArrayToS32(b_array, arr_ptr, 100); arr_ptr += 4;
+                    VolYdc = DS_Functions.ByteArrayToS32(b_array, arr_ptr, 100); arr_ptr += 4;
+                    VolBdc = DS_Functions.ByteArrayToS32(b_array, arr_ptr, 100); arr_ptr += 4;
+
+                    CurrRSigned = DS_Functions.ByteArrayToS32(b_array, arr_ptr, 1000); arr_ptr += 4;
+                    CurrYSigned = DS_Functions.ByteArrayToS32(b_array, arr_ptr, 1000); arr_ptr += 4;
+                    CurrBSigned = DS_Functions.ByteArrayToS32(b_array, arr_ptr, 1000); arr_ptr += 4;
+                    CurrN = DS_Functions.ByteArrayToUs32(b_array, arr_ptr, 1000); arr_ptr += 4;
+
+                    CurrRdc = DS_Functions.ByteArrayToS32(b_array, arr_ptr, 1000); arr_ptr += 4;
+                    CurrYdc = DS_Functions.ByteArrayToS32(b_array, arr_ptr, 1000); arr_ptr += 4;
+                    CurrBdc = DS_Functions.ByteArrayToS32(b_array, arr_ptr, 1000); arr_ptr += 4;
+                    CurrNdc = DS_Functions.ByteArrayToS32(b_array, arr_ptr, 1000); arr_ptr += 4;
+
+                    //PFR = (DS_Functions.CheckForNegativeValue(DS_Functions.ByteArrayToInt(b_array, 59), 2) / 1000.0);
+                    //PFY = (DS_Functions.CheckForNegativeValue(DS_Functions.ByteArrayToInt(b_array, 61), 2) / 1000.0);
+                    //PFB = (DS_Functions.CheckForNegativeValue(DS_Functions.ByteArrayToInt(b_array, 63), 2) / 1000.0);
+                    //PFNet = (DS_Functions.CheckForNegativeValue(DS_Functions.ByteArrayToInt(b_array, 65), 2) / 1000.0);
+                    //
+                    //AnglePFR = (DS_Functions.CheckForNegativeValue(DS_Functions.ByteArrayToInt(b_array, 67), 2) / 100.0);
+                    //AnglePFY = (DS_Functions.CheckForNegativeValue(DS_Functions.ByteArrayToInt(b_array, 69), 2) / 100.0);
+                    //AnglePFB = (DS_Functions.CheckForNegativeValue(DS_Functions.ByteArrayToInt(b_array, 71), 2) / 100.0);
+                    //
+                    //WattR = (DS_Functions.CheckForNegativeValue(DS_Functions.ByteArrayToLong(b_array, 73), 4) / 10.0);
+                    //WattY = (DS_Functions.CheckForNegativeValue(DS_Functions.ByteArrayToLong(b_array, 77), 4) / 10.0);
+                    //WattB = (DS_Functions.CheckForNegativeValue(DS_Functions.ByteArrayToLong(b_array, 81), 4) / 10.0);
+                    //WattNet = (DS_Functions.CheckForNegativeValue(DS_Functions.ByteArrayToLong(b_array, 85), 4) / 10.0);
+                    //
+                    //VARR = (DS_Functions.CheckForNegativeValue(DS_Functions.ByteArrayToLong(b_array, 89), 4) / 10.0);
+                    //VARY = (DS_Functions.CheckForNegativeValue(DS_Functions.ByteArrayToLong(b_array, 93), 4) / 10.0);
+                    //VARB = (DS_Functions.CheckForNegativeValue(DS_Functions.ByteArrayToLong(b_array, 97), 4) / 10.0);
+                    //VARNet = (DS_Functions.CheckForNegativeValue(DS_Functions.ByteArrayToLong(b_array, 101), 4) / 10.0);
+                    //
+                    //VAR = (DS_Functions.CheckForNegativeValue(DS_Functions.ByteArrayToLong(b_array, 105), 4) / 10.0);
+                    //VAY = (DS_Functions.CheckForNegativeValue(DS_Functions.ByteArrayToLong(b_array, 109), 4) / 10.0);
+                    //VAB = (DS_Functions.CheckForNegativeValue(DS_Functions.ByteArrayToLong(b_array, 113), 4) / 10.0);
+                    //VANet = (DS_Functions.CheckForNegativeValue(DS_Functions.ByteArrayToLong(b_array, 117), 4) / 10.0);
+                    //
+                    //FreqR = (DS_Functions.ByteArrayToInt(b_array, 121) / 1000.0);
+                    //FreqY = (DS_Functions.ByteArrayToInt(b_array, 123) / 1000.0);
+                    //FreqB = (DS_Functions.ByteArrayToInt(b_array, 125) / 1000.0);
+                    //FreqNet = (DS_Functions.ByteArrayToInt(b_array, 127) / 1000.0);
+                    //
+                    //QuadrantR = b_array[129];
+                    //QuadrantY = b_array[130];
+                    //QuadrantB = b_array[131];
+                    //QuadrantNet = b_array[132];
+                    //
+                    //CalAngleActR = (DS_Functions.CheckForNegativeValue(DS_Functions.ByteArrayToInt(b_array, 131), 2) / 100.0);
+                    //CalAngleActY = (DS_Functions.CheckForNegativeValue(DS_Functions.ByteArrayToInt(b_array, 135), 2) / 100.0);
+                    //CalAngleActB = (DS_Functions.CheckForNegativeValue(DS_Functions.ByteArrayToInt(b_array, 137), 2) / 100.0);
+                    //
+                    //CalAngleReactR = (DS_Functions.CheckForNegativeValue(DS_Functions.ByteArrayToInt(b_array, 139), 2) / 100.0);
+                    //CalAngleReactY = (DS_Functions.CheckForNegativeValue(DS_Functions.ByteArrayToInt(b_array, 141), 2) / 100.0);
+                    //CalAngleReactB = (DS_Functions.CheckForNegativeValue(DS_Functions.ByteArrayToInt(b_array, 143), 2) / 100.0);
+                    //
+                    //SamplesR = DS_Functions.ByteArrayToInt(b_array, 145);
+                    //SamplesY = DS_Functions.ByteArrayToInt(b_array, 147);
+                    //SamplesB = DS_Functions.ByteArrayToInt(b_array, 149);
+                    //SamplesPerSec = DS_Functions.ByteArrayToInt(b_array, 151);
+                    //SamplesN = DS_Functions.ByteArrayToInt(b_array, 153);
+                    //
+                    //CurrNVector = (DS_Functions.CheckForNegativeValue(DS_Functions.ByteArrayToLong(b_array, 155), 4) / 1000.0);
+                    //AngleNVector = (DS_Functions.CheckForNegativeValue(DS_Functions.ByteArrayToInt(b_array, 159), 2) / 100.0);
+                    //
+                    //Time = receive_data[161].ToString("D2") + ":" + receive_data[162].ToString("D2") + ":" + receive_data[163].ToString("D2") + " " +
+                    //    receive_data[164].ToString("D2") + "/" + receive_data[165].ToString("D2") + "/" + receive_data[166].ToString("D2");
+                    //
+                    //VolRY = (DS_Functions.ByteArrayToInt(b_array, 167) / 100.0);
+                    //VolYB = (DS_Functions.ByteArrayToInt(b_array, 169) / 100.0);
+                    //VolBR = (DS_Functions.ByteArrayToInt(b_array, 171) / 100.0);
+                    //
+                    //AngleRY = DS_Functions.ByteArrayToInt(b_array, 173) / 100.0;
+                    //AngleYB = DS_Functions.ByteArrayToInt(b_array, 175) / 100.0;
+                    //AngleBR = DS_Functions.ByteArrayToInt(b_array, 177) / 100.0;
+                    //
+                    //EnergyWhR = (DS_Functions.ByteArrayToLong(b_array, 179) / 1000.0);
+                    //EnergyWhY = (DS_Functions.ByteArrayToLong(b_array, 183) / 1000.0);
+                    //EnergyWhB = (DS_Functions.ByteArrayToLong(b_array, 187) / 1000.0);
+                    //EnergyWhTotal = (DS_Functions.ByteArrayToLong(b_array, 191) / 1000.0);
+                    //EnergyVARhLagTotal = (DS_Functions.ByteArrayToLong(b_array, 195) / 1000.0);
+                    //EnergyVARhLeadTotal = (DS_Functions.ByteArrayToLong(b_array, 199) / 1000.0);
+                    //EnergyVAhTotal = (DS_Functions.ByteArrayToLong(b_array, 203) / 1000.0);
+                    //
+                    //pulseEnergyWhR = b_array[207];
+                    //pulseEnergyWhY = b_array[208];
+                    //pulseEnergyWhB = b_array[209];
+                    //pulseEnergyWhTotal = b_array[210];
+                    //pulseEnergyVARhLagTotal = b_array[211];
+                    //pulseEnergyVARhLeadTotal = b_array[212];
+                    //pulseEnergyVAhTotal = b_array[213];
+                    //
+                    //EnergyWhR += QUANTA * (pulseEnergyWhR / PULSE);
+                    //EnergyWhY += QUANTA * (pulseEnergyWhY / PULSE);
+                    //EnergyWhB += QUANTA * (pulseEnergyWhB / PULSE);
+                    //EnergyWhTotal += QUANTA * (pulseEnergyWhTotal / PULSE);
+                    //EnergyVARhLagTotal += QUANTA * (pulseEnergyVARhLagTotal / PULSE);
+                    //EnergyVARhLeadTotal += QUANTA * (pulseEnergyVARhLeadTotal / PULSE);
+                    //EnergyVAhTotal += QUANTA * (pulseEnergyVAhTotal / PULSE);
+                    //
+                    //EnergyWhR += GetPulseWeight[pulseEnergyWhR % PULSE];
+                    //EnergyWhY += GetPulseWeight[pulseEnergyWhY % PULSE];
+                    //EnergyWhB += GetPulseWeight[pulseEnergyWhB % PULSE];
+                    //EnergyWhTotal += GetPulseWeight[pulseEnergyWhTotal % PULSE];
+                    //EnergyVARhLagTotal += GetPulseWeight[pulseEnergyVARhLagTotal % PULSE];
+                    //EnergyVARhLeadTotal += GetPulseWeight[pulseEnergyVARhLeadTotal % PULSE];
+                    //EnergyVAhTotal += GetPulseWeight[pulseEnergyVAhTotal % PULSE];
+                    //
+                    //metrology_timer = DS_Functions.ByteArrayToInt(b_array, 214);
+                    //
+                    //temperature_tlv = (DS_Functions.CheckForNegativeValue(DS_Functions.ByteArrayToInt(b_array, 216), 2));
+                    //battery_voltage = DS_Functions.ByteArrayToInt(b_array, 218) / 100.0;
+                    //
+                    //reactiveSamples = b_array[220];
+                    //reactiveTimer = DS_Functions.ByteArrayToInt(b_array, 221);
+                    //reactiveTimeDelay = DS_Functions.ByteArrayToInt(b_array, 223);
+                    //reactiveTimeDeviation = DS_Functions.ByteArrayToInt(b_array, 225);
+                    //
+                    //THDVr = DS_Functions.ByteArrayToInt(b_array, 227) / 10.0;
+                    //THDVy = DS_Functions.ByteArrayToInt(b_array, 229) / 10.0;
+                    //THDVb = DS_Functions.ByteArrayToInt(b_array, 231) / 10.0;
+                    //THDIr = DS_Functions.ByteArrayToInt(b_array, 233) / 10.0;
+                    //THDIy = DS_Functions.ByteArrayToInt(b_array, 235) / 10.0;
+                    //THDIb = DS_Functions.ByteArrayToInt(b_array, 237) / 10.0;
+                    //
+                    //EnergyWhTotalFunda = (DS_Functions.ByteArrayToLong(b_array, 239) / 1000.0);
+                    //pulseEnergyWhTotalFunda = b_array[243];
+                    //EnergyWhTotalFunda += QUANTA * (pulseEnergyWhTotalFunda / PULSE);
+                    //EnergyWhTotalFunda += GetPulseWeight[pulseEnergyWhTotalFunda % PULSE];
+                    //LoopCycles = DS_Functions.ByteArrayToLong(b_array, 244);
+                    //tamper_status[7] = b_array[248];
+                    //tamper_status[6] = b_array[249];
+                    //tamper_status[5] = b_array[250];
+                    //tamper_status[4] = b_array[251];
+                    //tamper_status[3] = b_array[252];
+                    //tamper_status[2] = b_array[253];
+                    //tamper_status[1] = b_array[254];
+                    //tamper_status[0] = b_array[255];
+                    //
+                    //if (b_array_len >= 256)
+                    //{
+                    //    MISCData = DS_Functions.Byte_Array_To_ASCII_String(b_array, 256, b_array_len - 256);
+                    //}
+                    //else
+                    //{
+                    //    MISCData = string.Empty;
+                    //}
+
+                    ///* Calculating Error */
+                    //error_act_r = 0; error_act_y = 0; error_act_b = 0; error_act_total = 0;
+                    //error_react_r = 0; error_react_y = 0; error_react_b = 0; error_react_total = 0;
+                    //error_app_r = 0; error_app_y = 0; error_app_b = 0; error_app_total = 0;
+                    //
+                    //if (ical_accuracy == true)
+                    //{
+                    //    if (iwattR != 0)
+                    //    {
+                    //        error_act_r = (WattR - iwattR) * 100 / iwattR;
+                    //    }
+                    //    if (iwattY != 0)
+                    //    {
+                    //        error_act_y = (WattY - iwattY) * 100 / iwattY;
+                    //    }
+                    //    if (iwattB != 0)
+                    //    {
+                    //        error_act_b = (WattB - iwattB) * 100 / iwattB;
+                    //    }
+                    //    if (iwattNet != 0)
+                    //    {
+                    //        error_act_total = (WattNet - iwattNet) * 100 / iwattNet;
+                    //    }
+                    //    if (ivarR != 0)
+                    //    {
+                    //        error_react_r = (VARR - ivarR) * 100 / ivarR;
+                    //    }
+                    //    if (ivarY != 0)
+                    //    {
+                    //        error_react_y = (VARY - ivarY) * 100 / ivarY;
+                    //    }
+                    //    if (ivarB != 0)
+                    //    {
+                    //        error_react_b = (VARB - ivarB) * 100 / ivarB;
+                    //    }
+                    //    if (ivarNet != 0)
+                    //    {
+                    //        error_react_total = (VARNet - ivarNet) * 100 / ivarNet;
+                    //    }
+                    //
+                    //    if (ivaR != 0)
+                    //    {
+                    //        error_app_r = (VAR - ivaR) * 100 / ivaR;
+                    //    }
+                    //    if (ivaY != 0)
+                    //    {
+                    //        error_app_y = (VAY - ivaY) * 100 / ivaY;
+                    //    }
+                    //    if (ivaB != 0)
+                    //    {
+                    //        error_app_b = (VAB - ivaB) * 100 / ivaB;
+                    //    }
+                    //    if (ivaNet != 0)
+                    //    {
+                    //        error_app_total = (VANet - ivaNet) * 100 / ivaNet;
+                    //    }
+                    //}
+
+
+
+                    ///* Data logging */
+                    //if (logData_f == true)
+                    //{
+                    //    string pathName;
+                    //    if (log_to_newfile_f == true)
+                    //    {
+                    //        pathName = "D:\\SerialTools\\" + newlogfileName + ".txt";
+                    //    }
+                    //    else
+                    //    {
+                    //        pathName = "D:\\SerialTools\\" + "SerialToolsLogFile" + ".txt";
+                    //    }
+                    //    string dir = @"D:\SerialTools";
+                    //    if (!Directory.Exists(dir))
+                    //    {
+                    //        Directory.CreateDirectory(dir);
+                    //    }
+                    //    using (StreamWriter sw = File.AppendText(pathName))
+                    //    {
+                    //        sw.Write(metrology_timer.ToString()); sw.Write(tab);
+                    //        sw.Write(Time); sw.Write(tab);
+                    //        sw.Write(VolR.ToString("0.00")); sw.Write(tab);
+                    //        sw.Write(VolY.ToString("0.00")); sw.Write(tab);
+                    //        sw.Write(VolB.ToString("0.00")); sw.Write(tab);
+                    //        sw.Write(VolRdc.ToString()); sw.Write(tab);
+                    //        sw.Write(VolYdc.ToString()); sw.Write(tab);
+                    //        sw.Write(VolBdc.ToString()); sw.Write(tab);
+                    //        sw.Write(CurrR.ToString("0.000")); sw.Write(tab);
+                    //        sw.Write(CurrY.ToString("0.000")); sw.Write(tab);
+                    //        sw.Write(CurrB.ToString("0.000")); sw.Write(tab);
+                    //        sw.Write(CurrN.ToString("0.000")); sw.Write(tab);
+                    //        sw.Write(CurrRdc.ToString()); sw.Write(tab);
+                    //        sw.Write(CurrYdc.ToString()); sw.Write(tab);
+                    //        sw.Write(CurrBdc.ToString()); sw.Write(tab);
+                    //        sw.Write(CurrNdc.ToString()); sw.Write(tab);
+                    //        sw.Write(PFR.ToString("0.000")); sw.Write(tab);
+                    //        sw.Write(PFY.ToString("0.000")); sw.Write(tab);
+                    //        sw.Write(PFB.ToString("0.000")); sw.Write(tab);
+                    //        sw.Write(PFNet.ToString("0.000")); sw.Write(tab);
+                    //        sw.Write(AnglePFR.ToString("0.00")); sw.Write(tab);
+                    //        sw.Write(AnglePFY.ToString("0.00")); sw.Write(tab);
+                    //        sw.Write(AnglePFB.ToString("0.00")); sw.Write(tab);
+                    //        sw.Write(WattR.ToString("0.0")); sw.Write(tab);
+                    //        sw.Write(WattY.ToString("0.0")); sw.Write(tab);
+                    //        sw.Write(WattB.ToString("0.0")); sw.Write(tab);
+                    //        sw.Write(WattNet.ToString("0.0")); sw.Write(tab);
+                    //        sw.Write(VARR.ToString("0.0")); sw.Write(tab);
+                    //        sw.Write(VARY.ToString("0.0")); sw.Write(tab);
+                    //        sw.Write(VARB.ToString("0.0")); sw.Write(tab);
+                    //        sw.Write(VARNet.ToString("0.0")); sw.Write(tab);
+                    //        sw.Write(VAR.ToString("0.0")); sw.Write(tab);
+                    //        sw.Write(VAY.ToString("0.0")); sw.Write(tab);
+                    //        sw.Write(VAB.ToString("0.0")); sw.Write(tab);
+                    //        sw.Write(VANet.ToString("0.0")); sw.Write(tab);
+                    //        sw.Write(FreqR.ToString("0.000")); sw.Write(tab);
+                    //        sw.Write(FreqY.ToString("0.000")); sw.Write(tab);
+                    //        sw.Write(FreqB.ToString("0.000")); sw.Write(tab);
+                    //        sw.Write(FreqNet.ToString("0.000")); sw.Write(tab);
+                    //        sw.Write(QuadrantR.ToString()); sw.Write(tab);
+                    //        sw.Write(QuadrantY.ToString()); sw.Write(tab);
+                    //        sw.Write(QuadrantB.ToString()); sw.Write(tab);
+                    //        sw.Write(QuadrantNet.ToString()); sw.Write(tab);
+                    //        sw.Write(CalAngleActR.ToString("0.00")); sw.Write(tab);
+                    //        sw.Write(CalAngleActY.ToString("0.00")); sw.Write(tab);
+                    //        sw.Write(CalAngleActB.ToString("0.00")); sw.Write(tab);
+                    //        sw.Write(CalAngleReactR.ToString("0.00")); sw.Write(tab);
+                    //        sw.Write(CalAngleReactY.ToString("0.00")); sw.Write(tab);
+                    //        sw.Write(CalAngleReactB.ToString("0.00")); sw.Write(tab);
+                    //        sw.Write(SamplesR.ToString()); sw.Write(tab);
+                    //        sw.Write(SamplesY.ToString()); sw.Write(tab);
+                    //        sw.Write(SamplesB.ToString()); sw.Write(tab);
+                    //        sw.Write(SamplesPerSec.ToString()); sw.Write(tab);
+                    //        sw.Write(SamplesN.ToString()); sw.Write(tab);
+                    //        sw.Write(CurrNVector.ToString("0.000")); sw.Write(tab);
+                    //        sw.Write(AngleNVector.ToString("0.000")); sw.Write(tab);
+                    //        sw.Write(VolRY.ToString("0.00")); sw.Write(tab);
+                    //        sw.Write(VolYB.ToString("0.00")); sw.Write(tab);
+                    //        sw.Write(VolBR.ToString("0.00")); sw.Write(tab);
+                    //        sw.Write(AngleRY.ToString("0.00")); sw.Write(tab);
+                    //        sw.Write(AngleYB.ToString("0.00")); sw.Write(tab);
+                    //        sw.Write(AngleBR.ToString("0.00")); sw.Write(tab);
+                    //        sw.Write(EnergyWhR.ToString("0.0000")); sw.Write(tab);
+                    //        sw.Write(EnergyWhY.ToString("0.0000")); sw.Write(tab);
+                    //        sw.Write(EnergyWhB.ToString("0.0000")); sw.Write(tab);
+                    //        sw.Write(EnergyWhTotal.ToString("0.0000")); sw.Write(tab);
+                    //        sw.Write(EnergyVARhLagTotal.ToString("0.0000")); sw.Write(tab);
+                    //        sw.Write(EnergyVARhLeadTotal.ToString("0.0000")); sw.Write(tab);
+                    //        sw.Write(EnergyVAhTotal.ToString("0.0000")); sw.Write(tab);
+                    //        sw.Write(error_act_r.ToString("0.00")); sw.Write(tab);
+                    //        sw.Write(error_act_y.ToString("0.00")); sw.Write(tab);
+                    //        sw.Write(error_act_b.ToString("0.00")); sw.Write(tab);
+                    //        sw.Write(error_act_total.ToString("0.00")); sw.Write(tab);
+                    //        sw.Write(error_react_r.ToString("0.00")); sw.Write(tab);
+                    //        sw.Write(error_react_y.ToString("0.00")); sw.Write(tab);
+                    //        sw.Write(error_react_b.ToString("0.00")); sw.Write(tab);
+                    //        sw.Write(error_react_total.ToString("0.00")); sw.Write(tab);
+                    //        sw.Write(error_app_r.ToString("0.00")); sw.Write(tab);
+                    //        sw.Write(error_app_y.ToString("0.00")); sw.Write(tab);
+                    //        sw.Write(error_app_b.ToString("0.00")); sw.Write(tab);
+                    //        sw.Write(error_app_total.ToString("0.00")); sw.Write(tab);
+                    //        sw.Write(temperature_tlv.ToString()); sw.Write(tab);
+                    //        sw.Write(battery_voltage.ToString("0.00")); sw.Write(tab);
+                    //        sw.Write(reactiveSamples.ToString()); sw.Write(tab);
+                    //        sw.Write(reactiveTimer.ToString()); sw.Write(tab);
+                    //        sw.Write(reactiveTimeDelay.ToString()); sw.Write(tab);
+                    //        sw.Write(reactiveTimeDeviation.ToString()); sw.Write(tab);
+                    //        sw.Write(THDVr.ToString("0.0")); sw.Write(tab);
+                    //        sw.Write(THDVy.ToString("0.0")); sw.Write(tab);
+                    //        sw.Write(THDVb.ToString("0.0")); sw.Write(tab);
+                    //        sw.Write(THDIr.ToString("0.0")); sw.Write(tab);
+                    //        sw.Write(THDIy.ToString("0.0")); sw.Write(tab);
+                    //        sw.Write(THDIb.ToString("0.0")); sw.Write(tab);
+                    //        sw.Write(EnergyWhTotalFunda.ToString("0.0000")); sw.Write(tab);
+                    //        sw.Write(LoopCycles.ToString()); sw.Write(tab);
+                    //        sw.Write(DS_Functions.Byte_Array_To_HEX_String(tamper_status)); sw.Write(tab);
+                    //        sw.Write(MISCData); sw.Write(tab);
+                    //        sw.Write(newline);
+                    //        sw.Close();
+                    //        sw.Dispose();
+                    //    }
+                    //}
+                }
+            }
         }
     }
 }

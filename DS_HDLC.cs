@@ -7,6 +7,7 @@ namespace Developer_Tools
 {
     class DS_HDLC
     {
+        public static int HdlcLength, HdlcCommandCode;
         /* parameter is hdlc frame length */
         static void fill_hdlc_length(byte[] b_array, int hdlc_frame_len)
         {
@@ -78,6 +79,12 @@ namespace Developer_Tools
                 return false;
             }
             return true;
+        }
+        public static void decode_hdlc_frame(byte[] b_array)
+        {
+            HdlcLength = (b_array[1] & 0x0F) * 256;
+            HdlcLength += b_array[2];
+            HdlcCommandCode = b_array[3];
         }
     }
 }

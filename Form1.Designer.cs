@@ -325,7 +325,7 @@ namespace Developer_Tools
             this.textBox_VARB = new System.Windows.Forms.TextBox();
             this.textBox_WattB = new System.Windows.Forms.TextBox();
             this.textBox_PFB = new System.Windows.Forms.TextBox();
-            this.textBox_CyrrBdc = new System.Windows.Forms.TextBox();
+            this.textBox_CurrBdc = new System.Windows.Forms.TextBox();
             this.textBox_CurrB = new System.Windows.Forms.TextBox();
             this.textBox_VolBdc = new System.Windows.Forms.TextBox();
             this.textBox_VolB = new System.Windows.Forms.TextBox();
@@ -1649,7 +1649,7 @@ namespace Developer_Tools
             this.tabPage11.Controls.Add(this.textBox_VARB);
             this.tabPage11.Controls.Add(this.textBox_WattB);
             this.tabPage11.Controls.Add(this.textBox_PFB);
-            this.tabPage11.Controls.Add(this.textBox_CyrrBdc);
+            this.tabPage11.Controls.Add(this.textBox_CurrBdc);
             this.tabPage11.Controls.Add(this.textBox_CurrB);
             this.tabPage11.Controls.Add(this.textBox_VolBdc);
             this.tabPage11.Controls.Add(this.textBox_VolB);
@@ -3814,15 +3814,15 @@ namespace Developer_Tools
             this.textBox_PFB.Size = new System.Drawing.Size(61, 20);
             this.textBox_PFB.TabIndex = 572;
             // 
-            // textBox_CyrrBdc
+            // textBox_CurrBdc
             // 
-            this.textBox_CyrrBdc.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.textBox_CyrrBdc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_CyrrBdc.Location = new System.Drawing.Point(646, 87);
-            this.textBox_CyrrBdc.Name = "textBox_CyrrBdc";
-            this.textBox_CyrrBdc.ReadOnly = true;
-            this.textBox_CyrrBdc.Size = new System.Drawing.Size(61, 20);
-            this.textBox_CyrrBdc.TabIndex = 571;
+            this.textBox_CurrBdc.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.textBox_CurrBdc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_CurrBdc.Location = new System.Drawing.Point(646, 87);
+            this.textBox_CurrBdc.Name = "textBox_CurrBdc";
+            this.textBox_CurrBdc.ReadOnly = true;
+            this.textBox_CurrBdc.Size = new System.Drawing.Size(61, 20);
+            this.textBox_CurrBdc.TabIndex = 571;
             // 
             // textBox_CurrB
             // 
@@ -6781,7 +6781,7 @@ namespace Developer_Tools
         private System.Windows.Forms.TextBox textBox_VARB;
         private System.Windows.Forms.TextBox textBox_WattB;
         private System.Windows.Forms.TextBox textBox_PFB;
-        private System.Windows.Forms.TextBox textBox_CyrrBdc;
+        private System.Windows.Forms.TextBox textBox_CurrBdc;
         private System.Windows.Forms.TextBox textBox_CurrB;
         private System.Windows.Forms.TextBox textBox_VolBdc;
         private System.Windows.Forms.TextBox textBox_VolB;

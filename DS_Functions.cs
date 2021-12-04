@@ -7,7 +7,20 @@ namespace Developer_Tools
 {
     class DS_Functions
     {
+        public enum ByteSize
+        {
+            Byte_1 = 1,
+            Byte_2,
+            Byte_3,
+            Byte_4,
+            Byte_5,
+            Byte_6,
+            Byte_7,
+            Byte_8
+        }
+        
         public static string[] get_hex_char = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F" };
+
         
         public static Byte ascii_char_to_byte(char character)                          
         {
@@ -261,140 +274,9 @@ namespace Developer_Tools
             return output_string;
         }
 
-        public static double byte_aray_to_double(byte[] byte_array, int loc)
-        {
-            double d_double = 0;
-
-            if (loc == 1)
-            {
-                d_double = byte_array[loc];
-            }
-            else if (loc == 2)
-            {
-                d_double = byte_array[loc] * 256 + byte_array[loc + 1];
-            }
-            else if (loc == 3)
-            {
-                d_double = byte_array[loc] * 65536 + byte_array[loc + 1] * 256 + byte_array[loc + 2];
-            }
-            else if (loc == 4)
-            {
-                d_double = byte_array[loc] * 16777216 + byte_array[loc + 1] * 65536 + byte_array[loc + 2] * 256 + byte_array[loc + 3];
-            }
-            return d_double;
-        }
-
-        public static double byte_aray_to_double(byte[] byte_array, int loc, double divisor)
-        {
-            double d_double;
-            d_double = byte_aray_to_double(byte_array, loc)/ divisor;
-            return d_double;
-        }
-
-        public static long GetTwosComplement(long value, int value_byte)
-        {
-            long temp = 0;
-            if (value_byte == 1)
-            {
-                temp = (0xFF - value + 1);
-            }
-            else if (value_byte == 2)
-            {
-                temp = (0xFFFF - value + 1);
-            }
-            else if (value_byte == 3)
-            {
-                temp = (0xFFFFFF - value + 1);
-            }
-            else if (value_byte == 4)
-            {
-                temp = (0xFFFFFFFF - value + 1);
-            }
-            temp = -temp;
-            return (temp);
-        }
-        public static int GetTwosComplement(int value, int value_byte)
-        {
-            int temp = 0;
-            if (value_byte == 1)
-            {
-                temp = (0xFF - value + 1);
-            }
-            else if (value_byte == 2)
-            {
-                temp = (0xFFFF - value + 1);
-            }
-
-            temp = -temp;
-            return (temp);
-        }
-        public static long CheckForNegativeValue(long value, int value_byte)
-        {
-            long temp_long = value;
-            if (temp_long != 0)
-            {
-                if (value_byte == 1)
-                {
-                    if (temp_long >= 128)
-                    {
-                        temp_long = GetTwosComplement(temp_long, value_byte);
-                    }
-                }
-                else if (value_byte == 2)
-                {
-                    if (temp_long >= 32768)
-                    {
-                        temp_long = GetTwosComplement(temp_long, value_byte);
-                    }
-                }
-                else if (value_byte == 3)
-                {
-                    if (temp_long >= 8388608)
-                    {
-                        temp_long = GetTwosComplement(temp_long, value_byte);
-                    }
-                }
-                else if (value_byte == 4)
-                {
-                    if (temp_long >= 2147483648)
-                    {
-                        temp_long = GetTwosComplement(temp_long, value_byte);
-                    }
-                }
-                else
-                {
-                    temp_long = 0;
-                }
-            }
-            return temp_long;
-        }
-        public static int CheckForNegativeValue(int value, int value_byte)
-        {
-            int temp_int = value;
-            if (temp_int != 0)
-            {
-                if (value_byte == 1)
-                {
-                    if (temp_int >= 128)
-                    {
-                        temp_int = GetTwosComplement(temp_int, value_byte);
-                    }
-                }
-                else if (value_byte == 2)
-                {
-                    if (temp_int >= 32768)
-                    {
-                        temp_int = GetTwosComplement(temp_int, value_byte);
-                    }
-                }
-                else
-                {
-                    temp_int = 0;
-                }
-            }
-            return temp_int;
-        }
-        public static bool checkBit(int num, int check_pos_decimal)
+       
+        
+        public static bool checkBit(int num, byte check_pos_decimal)
         {
             if ((num & check_pos_decimal) == check_pos_decimal)
             {
@@ -405,7 +287,7 @@ namespace Developer_Tools
                 return false;
             }
         }
-        public static bool checkBit(long num, int check_pos_decimal)
+        public static bool checkBit(long num, byte check_pos_decimal)
         {
             if ((num & check_pos_decimal) == check_pos_decimal)
             {
@@ -415,8 +297,18 @@ namespace Developer_Tools
             {
                 return false;
             }
+        }
+        public static string GetHexChar(byte i)
+        {
+            string ret_val = get_hex_char[i];
+            return ret_val;
         }
         public static string GetHexChar(ushort i)
+        {
+            string ret_val = get_hex_char[i];
+            return ret_val;
+        }
+        public static string GetHexChar(uint i)
         {
             string ret_val = get_hex_char[i];
             return ret_val;
@@ -448,5 +340,94 @@ namespace Developer_Tools
             hex_string = hex_string.Replace(" ", ""); 
             return CheckValidHexString(hex_string);
         }
+        /************************************** byte array to number conversion *********************************/
+        public static sbyte ByteToSByte(byte b)
+        {
+            return ((sbyte)b);
+        }
+        public static byte SByteToByte(sbyte b)
+        {
+            return ((byte)b);
+        }
+        public static short ByteArrayToS16(byte[] byte_array, ushort loc)
+        {
+           return (short)(byte_array[loc] * 256 + byte_array[loc + 1]);
+        }
+        public static double ByteArrayToS16(byte[] byte_array, ushort loc, ushort divisor)
+        {
+            return ((double)ByteArrayToS16(byte_array, loc) / divisor);
+        }
+
+        public static ushort ByteArrayToUs16(byte[] byte_array, ushort loc)
+        {
+            return (ushort)(byte_array[loc] * 256 + byte_array[loc + 1]);
+        }
+
+        public static double ByteArrayToUs16(byte[] byte_array, ushort loc, ushort divisor)
+        {
+            return ((double)ByteArrayToUs16(byte_array, loc) / divisor);
+        }
+        public static int ByteArrayToS24(byte[] byte_array, ushort loc)
+        {
+            return (byte_array[loc] * 65536 + byte_array[loc + 1] * 256 + byte_array[loc + 2]);
+        }
+        public static double ByteArrayToS24(byte[] byte_array, ushort loc, ushort divisor)
+        {
+            return ((double)ByteArrayToS24(byte_array, loc) / divisor);
+        }
+        public static uint ByteArrayToUs24(byte[] byte_array, ushort loc)
+        {
+            return ((uint)(byte_array[loc] * 65536 + byte_array[loc + 1] * 256 + byte_array[loc + 2]));
+        }
+        public static double ByteArrayToUs24(byte[] byte_array, ushort loc, ushort divisor)
+        {
+            return ((double)ByteArrayToUs24(byte_array, loc) / divisor);
+        }
+        public static int ByteArrayToS32(byte[] byte_array, ushort loc)
+        {
+            return (byte_array[loc] * 16777216 + byte_array[loc + 1] * 65536 + byte_array[loc + 2] * 256 + byte_array[loc + 3]);
+        }
+        public static double ByteArrayToS32(byte[] byte_array, ushort loc, ushort divisor)
+        {
+            return ((double)ByteArrayToS32(byte_array, loc) / divisor);
+        }
+        public static uint ByteArrayToUs32(byte[] byte_array, ushort loc)
+        {
+            return ((uint)(byte_array[loc] * 16777216 + byte_array[loc + 1] * 65536 + byte_array[loc + 2] * 256 + byte_array[loc + 3]));
+        }
+        public static double ByteArrayToUs32(byte[] byte_array, ushort loc, ushort divisor)
+        {
+            return ((double)ByteArrayToUs32(byte_array, loc) / divisor);
+        }
+
+        public static double byte_aray_to_double(byte[] byte_array, ushort loc)
+        {
+            double d_double = 0;
+
+            if (loc == 1)
+            {
+                d_double = byte_array[loc];
+            }
+            else if (loc == 2)
+            {
+                d_double = byte_array[loc] * 256 + byte_array[loc + 1];
+            }
+            else if (loc == 3)
+            {
+                d_double = byte_array[loc] * 65536 + byte_array[loc + 1] * 256 + byte_array[loc + 2];
+            }
+            else if (loc == 4)
+            {
+                d_double = byte_array[loc] * 16777216 + byte_array[loc + 1] * 65536 + byte_array[loc + 2] * 256 + byte_array[loc + 3];
+            }
+            return d_double;
+        }
+
+        public static double byte_aray_to_double(byte[] byte_array, ushort loc, ushort divisor)
+        {
+            return byte_aray_to_double(byte_array, loc) / divisor;
+        }
+
+        /******************************************* Revisited Functions ****************************************/
     }
 }
