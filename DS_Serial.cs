@@ -161,7 +161,6 @@ namespace Developer_Tools
                         SendRepeatTimer = 0;
                         if (write() == true)
                         {
-                            SendRepeatSentCounter++;
                             Form1.fillTrafficString("<< ", send_buffer, send_buffer_head); 
                         }
                         else
@@ -267,6 +266,10 @@ namespace Developer_Tools
                 try
                 {
                     Write(send_buffer, 0, send_buffer_head);
+                    if(SendRepeatEnable == true)
+                    {
+                        SendRepeatSentCounter++;
+                    }
                     totalTxBytes += send_buffer_head;
                 }
                 catch (Exception ex)
@@ -335,7 +338,6 @@ namespace Developer_Tools
             SendRepeatTimeInMs = SendRepeatTimeInMs1;
             SendRepeatNoOfTimes = SendRepeatNoOfTimes1;
             SendRepeatSentCounter = 0;
-            SendRepeatSentCounter++; 
             if (write(b_array, start_loc, length, sendHDLC) == true)
             {
                 Form1.fillTrafficString("<< ", send_buffer, send_buffer_head);
