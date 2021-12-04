@@ -196,6 +196,10 @@ namespace Developer_Tools
             textBox_ToolsOutputString.Text = String.Empty;
         }
 
+        private void button_SendRepeatStop_Click(object sender, EventArgs e)
+        {
+            serial_port.SendRepeatEnable = false;
+        }
 
         private void buttonStringFilterConvert_Click(object sender, EventArgs e)
         {
@@ -402,6 +406,14 @@ namespace Developer_Tools
             {
                 textBox_SendRepeatTime.Enabled = true;
                 textBox_SendRepeatNoOfTimes.Enabled = true;
+                if(serial_port.SendRepeatEnable == true)
+                {
+                    button_SendRepeatStop.Enabled = true;
+                }
+                else
+                {
+                    button_SendRepeatStop.Enabled = false;
+                }
             }
             else
             {
@@ -438,6 +450,7 @@ namespace Developer_Tools
             {
                 progressBar_connectionStatus.Value = 0;
                 button_Send.Enabled = false;
+                button_SendRepeatStop.Enabled = false;
                 ToolStripMenuItem_Connect.Enabled = true;
                 ToolStripMenuItem_Disconnect.Enabled = false;
             }

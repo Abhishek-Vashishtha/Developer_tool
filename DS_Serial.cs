@@ -144,7 +144,6 @@ namespace Developer_Tools
                     if (SendRepeatTimer >= SendRepeatTimeInMs)
                     {
                         SendRepeatTimer = 0;
-                        SendRepeaSentCounter++;
                         if(write() == false)
                         {
                             SendRepeatEnable = false;
@@ -152,6 +151,7 @@ namespace Developer_Tools
                         }
                         else
                         {
+                            SendRepeaSentCounter++;
                             Form1.fillTrafficString("<< ", send_buffer, send_buffer_head);
                         }
                     }
