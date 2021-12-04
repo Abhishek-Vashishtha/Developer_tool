@@ -315,6 +315,11 @@ namespace Developer_Tools
             }
         }
 
+        private void button_ReadStop_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void buttonWordwrapConvert_Click(object sender, EventArgs e)
         {
             string input_string, output_string = "";
