@@ -180,14 +180,7 @@ namespace Developer_Tools
             Form1.fillTrafficString(">> ", receive_buffer, receive_buffer_head);
 
             /* Handle the received data here */
-
-
-
-
-
-
-
-
+            Form1.ProcessForm1String(receive_buffer, receive_buffer_head);
 
             receive_buffer_head = 0; 
             frame_processed_f = true;

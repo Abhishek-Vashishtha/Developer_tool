@@ -874,5 +874,9 @@ namespace Developer_Tools
                 traffic_string += DS_Functions.byte_array_to_hex_string_spaced(data, length);
             }
         }
+        public static void ProcessForm1String(byte[] b_array, int b_array_len)
+        {
+
+        }
     }
 }
