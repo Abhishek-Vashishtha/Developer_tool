@@ -11,24 +11,30 @@ namespace Developer_Tools
     class DS_Serial : SerialPort
     {
         static string[] PortListNew, PortListOld;
+        public static int totalRxBytes, totalTxBytes;
+        static int RxFrameTimeOut;
         byte[] send_buffer = new byte[550];
         byte[] receive_buffer = new byte[550];
         int receive_buffer_head, send_buffer_head;
-        int receive_frame_timeout;
+        int receive_frame_timeoutTimer;
         bool frame_process_f, frame_processed_f;
         bool frame_receiving_f;
 
         /* send repeat variables */
         public bool SendRepeatEnable;
-        public int SendRepeatTimeInMs, SendRepeatNoOfTimes, SendRepeaSentCounter;
+        public int SendRepeatTimeInMs, SendRepeatNoOfTimes, SendRepeatSentCounter;
         int SendRepeatTimer;
         public DS_Serial()
         {
-            SendRepeaSentCounter = 0;
+            RxFrameTimeOut = 50;
+            SendRepeatSentCounter = 0;
+            SendRepeatNoOfTimes = 0;
+            SendRepeatTimeInMs = 0;
             receive_buffer_head = 0;
             SendRepeatEnable = false;
+
             frame_receiving_f = false;
-            receive_frame_timeout = 0;
+            receive_frame_timeoutTimer = 0;
             frame_processed_f = true;
             frame_process_f = false;
         }
@@ -36,7 +42,8 @@ namespace Developer_Tools
         {
             if (this.IsOpen == true)
             {
-                MessageBox.Show("Serial Port Is Already Open..!");
+                Thread t = new Thread(() => MessageBox.Show("Serial Port Is Already Open..!"));
+                t.Start();
             }
             else
             {
@@ -65,14 +72,15 @@ namespace Developer_Tools
                 this.ReadTimeout = 2000;
                 this.WriteTimeout = 2000;
                 this.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
-                this.DtrEnable = true; 
+                this.DtrEnable = true;
                 try
                 {
                     this.Open();
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error Opening the Serial Port", ex.Message);
+                    Thread t = new Thread(() => MessageBox.Show("Error Opening the Serial Port", ex.Message));
+                    t.Start();
                     return false;
                 }
             }
@@ -82,7 +90,8 @@ namespace Developer_Tools
         {
             if (this.IsOpen == false)
             {
-                MessageBox.Show("Serial Port Is Already Closed..!");
+                Thread t = new Thread(() => MessageBox.Show("Serial Port Is Already Closed..!"));
+                t.Start();
                 return false;
             }
             else
@@ -93,7 +102,8 @@ namespace Developer_Tools
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error Closing the Serial Port", ex.Message);
+                    Thread t = new Thread(() => MessageBox.Show("Error Closing the Serial Port", ex.Message));
+                    t.Start();
                     return false;
                 }
             }
@@ -104,55 +114,62 @@ namespace Developer_Tools
             int bytesToRead = this.BytesToRead;
             if (frame_processed_f == true)
             {
-                for (int index = 0; index < bytesToRead; ++index)
+                for (int index = 0; index < bytesToRead; index++)
                 {
                     receive_buffer[receive_buffer_head++] = (byte)this.ReadByte();
                     if (receive_buffer_head >= 550)
                     {
                         receive_buffer_head = 0;
-                        MessageBox.Show("Receive Buffer overflow", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Thread t = new Thread(() => MessageBox.Show("Receive Buffer overflow", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error));
+                        t.Start();
                     }
                 }
-                receive_frame_timeout = 0;
+                receive_frame_timeoutTimer = 0;
                 frame_receiving_f = true;
-                Form1.total_received_bytes += bytesToRead;
+                totalRxBytes += bytesToRead;
             }
         }
         public void serial_loop_10ms()
         {
+            /***************************** Data Receiving Routines *****************************/
             if (frame_receiving_f == true)
             {
-                receive_frame_timeout += 10;
-                if (receive_frame_timeout >= 50)
+                receive_frame_timeoutTimer += 10;
+                if (receive_frame_timeoutTimer >= RxFrameTimeOut)
                 {
-                    frame_processed_f = false;
-                    frame_process_f = true;
-                    frame_receiving_f = false;
+                    receive_frame_timeoutTimer = 0;
+                    frame_processed_f = false;      /* stops receiving new data */
+                    frame_process_f = true;         /* indicates that frame has been received and now need to process */
+                    frame_receiving_f = false;      /* stops increasing the timeout timer */
                 }
             }
-            if(frame_process_f == true)
+            if (frame_process_f == true)
             {
                 frame_process_f = false;
-                Thread ProcessFrame = new Thread(new ThreadStart(process_frame));
+                Thread ProcessFrame = new Thread(new ThreadStart(process_frame));       /* starting a async thread to process frame */
                 ProcessFrame.Start();
             }
-            if(SendRepeatEnable == true)
+
+            /***************************** Data Transmitting Routines *****************************/
+            if (SendRepeatEnable == true)
             {
-                if (SendRepeaSentCounter < SendRepeatNoOfTimes)
+                if (SendRepeatSentCounter < SendRepeatNoOfTimes)
                 {
                     SendRepeatTimer += 10;
                     if (SendRepeatTimer >= SendRepeatTimeInMs)
                     {
                         SendRepeatTimer = 0;
-                        if(write() == false)
+                        if (write() == true)
                         {
-                            SendRepeatEnable = false;
-                            SendRepeatTimer = 0;
+                            SendRepeatSentCounter++;
+                            Form1.fillTrafficString("<< ", send_buffer, send_buffer_head); 
                         }
                         else
                         {
-                            SendRepeaSentCounter++;
-                            Form1.fillTrafficString("<< ", send_buffer, send_buffer_head);
+                            SendRepeatEnable = false;
+                            SendRepeatTimer = 0;
+                            SendRepeatTimeInMs = 0;
+                            SendRepeatNoOfTimes = 0;
                         }
                     }
                 }
@@ -162,11 +179,12 @@ namespace Developer_Tools
                     SendRepeatTimer = 0;
                 }
             }
-    }
+        }
         public void process_frame()
         {
             Form1.fillTrafficString(">> ", receive_buffer, receive_buffer_head);
 
+            /* Handle the received data here */
 
 
 
@@ -176,9 +194,8 @@ namespace Developer_Tools
 
 
 
-
+            receive_buffer_head = 0; 
             frame_processed_f = true;
-            receive_buffer_head = 0;
         }
         public static void update_port_list()
         {
@@ -230,12 +247,13 @@ namespace Developer_Tools
                         }
                     }
                     PortListOld = PortListNew;
-                    MessageBox.Show(messageString, "Notification");
+                    Thread t = new Thread(() => MessageBox.Show(messageString, "Notification"));
+                    t.Start();
                 }
             }
             PortListOld = PortListNew;
         }
-        public bool write()
+        private bool write()
         {
             if (this.IsOpen == true)
             {
@@ -249,17 +267,19 @@ namespace Developer_Tools
                 try
                 {
                     Write(send_buffer, 0, send_buffer_head);
-                    Form1.total_sent_bytes += send_buffer_head;
+                    totalTxBytes += send_buffer_head;
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error Sending data to Serial Port", ex.Message);
+                    Thread t = new Thread(() => MessageBox.Show("Error Sending To Serial Port..!",ex.Message));
+                    t.Start(); 
                     return false;
                 }
             }
             else
             {
-                MessageBox.Show("Serial Port Is Closed..!"); 
+                Thread t = new Thread(() => MessageBox.Show("Serial Port Is Closed..!"));
+                t.Start();
                 return false;
             }
             return true;
@@ -271,7 +291,7 @@ namespace Developer_Tools
             {
                 if (start_loc + length >= 550 - 6)
                 {
-                    MessageBox.Show("serial tx buffer will overflow");
+                    Thread t = new Thread(() => MessageBox.Show("serial tx buffer will overflow")); t.Start();
                     return false;
                 }
             }
@@ -279,11 +299,12 @@ namespace Developer_Tools
             {
                 if (start_loc + length >= 550)
                 {
-                    MessageBox.Show("serial tx buffer will overflow");
+                    Thread t = new Thread(() => MessageBox.Show("serial tx buffer will overflow")); t.Start();
                     return false;
                 }
             }
 
+            /* filling send buffer and setting send_buffer_head */
             if (sendHDLC == true)
             {
                 DS_HDLC.make_hdlc_frame(this.send_buffer, b_array, start_loc, length);
@@ -297,10 +318,10 @@ namespace Developer_Tools
                 }
                 send_buffer_head = length;
             }
-            
+
             if (write() == true)
             {
-                Form1.fillTrafficString("<< ", send_buffer, send_buffer_head); 
+                Form1.fillTrafficString("<< ", send_buffer, send_buffer_head);
                 return true;
             }
             else
@@ -310,44 +331,13 @@ namespace Developer_Tools
         }
         public bool write(byte[] b_array, int start_loc, int length, bool sendHDLC, bool SendRepeat1, int SendRepeatTimeInMs1, int SendRepeatNoOfTimes1)
         {
-            /* checking length */
-            if (sendHDLC == true)
+            SendRepeatEnable = SendRepeat1;
+            SendRepeatTimeInMs = SendRepeatTimeInMs1;
+            SendRepeatNoOfTimes = SendRepeatNoOfTimes1;
+            SendRepeatSentCounter = 0;
+            SendRepeatSentCounter++; 
+            if (write(b_array, start_loc, length, sendHDLC) == true)
             {
-                if (start_loc + length >= 550 - 6)
-                {
-                    MessageBox.Show("serial tx buffer will overflow");
-                    return false;
-                }
-            }
-            else
-            {
-                if (start_loc + length >= 550)
-                {
-                    MessageBox.Show("serial tx buffer will overflow");
-                    return false;
-                }
-            }
-
-            if (sendHDLC == true)
-            {
-                DS_HDLC.make_hdlc_frame(this.send_buffer, b_array, start_loc, length);
-                send_buffer_head = length + 6;
-            }
-            else
-            {
-                for (int i = 0; i < length; i++)
-                {
-                    send_buffer[i] = b_array[start_loc + i];
-                }
-                send_buffer_head = length;
-            }
-            if (write() == true)
-            {
-                SendRepeatEnable = SendRepeat1;
-                SendRepeatTimeInMs = SendRepeatTimeInMs1;
-                SendRepeatNoOfTimes = SendRepeatNoOfTimes1;
-                SendRepeaSentCounter = 0;
-                SendRepeaSentCounter++;
                 Form1.fillTrafficString("<< ", send_buffer, send_buffer_head);
                 return true;
             }

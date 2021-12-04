@@ -11,8 +11,7 @@ namespace Developer_Tools
         
         public static Byte ascii_char_to_byte(char character)                          
         {
-            Byte byte_val = Convert.ToByte(character);
-            return byte_val;
+            return Convert.ToByte(character);
         }
         public static Byte[] ascii_string_to_byte_array(string ascii_string)   
         {
@@ -40,8 +39,7 @@ namespace Developer_Tools
 
         public static char byte_to_ascii_char(byte b)
         {
-            char c = Convert.ToChar(b);
-            return c;
+            return Convert.ToChar(b);
         }
 
         public static string byte_array_to_ascii_string(byte[] b_array, int b_array_len)

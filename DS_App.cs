@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Developer_Tools
@@ -17,18 +18,19 @@ namespace Developer_Tools
             if (Directory.Exists(pathName) ==  false)
             {
                 Directory.CreateDirectory(pathName);
-                MessageBox.Show("New directory \"DevelopersTool\" created in D drive");
+                Thread t = new Thread(() => MessageBox.Show("New directory \"DevelopersTool\" created in D drive"));
+                t.Start();
             }
 
             /* Communication traffic Log */
-            pathName = "D:\\DevelopersTool\\DevelopersToolTrafficLogFile.txt";
+            pathName = "D:\\DevelopersTool\\DevelopersToolCommunicationTrafficLogFile.txt";
             if(File.Exists(pathName) == false)
             {
                 DS_TextFile.createNewFile(pathName);
             }
 
             /* Instant data logs */
-            pathName = "D:\\DevelopersTool\\DevelopersToolEnergyMeterInstantLogFile.txt";
+            pathName = "D:\\DevelopersTool\\DevelopersToolEnergyMeterInstantDataLogFile.txt";
             if (File.Exists(pathName) == false)
             {
                 DS_TextFile.createNewFile(pathName);

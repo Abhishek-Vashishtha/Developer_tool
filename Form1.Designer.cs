@@ -73,6 +73,7 @@ namespace Developer_Tools
             this.button_SendFrameClear = new System.Windows.Forms.Button();
             this.button_SendFramePaste = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button_SendRepeatStop = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox_SendRepeatSentCounter = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -124,6 +125,10 @@ namespace Developer_Tools
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabControl3 = new System.Windows.Forms.TabControl();
             this.tabPage11 = new System.Windows.Forms.TabPage();
+            this.groupBox22 = new System.Windows.Forms.GroupBox();
+            this.checkBox_LogData = new System.Windows.Forms.CheckBox();
+            this.checkBox_LogToNewFile = new System.Windows.Forms.CheckBox();
+            this.textBox_NewFileName = new System.Windows.Forms.TextBox();
             this.groupBox17 = new System.Windows.Forms.GroupBox();
             this.textBox_TempTLV = new System.Windows.Forms.TextBox();
             this.label68 = new System.Windows.Forms.Label();
@@ -172,13 +177,7 @@ namespace Developer_Tools
             this.textBox_CurrNdc = new System.Windows.Forms.TextBox();
             this.groupBox15 = new System.Windows.Forms.GroupBox();
             this.button_ReadStop = new System.Windows.Forms.Button();
-            this.textBox_NewFileName = new System.Windows.Forms.TextBox();
-            this.checkBox_LogToNewFile = new System.Windows.Forms.CheckBox();
             this.button_Read = new System.Windows.Forms.Button();
-            this.checkBox_AutoRead = new System.Windows.Forms.CheckBox();
-            this.label47 = new System.Windows.Forms.Label();
-            this.checkBox_LogData = new System.Windows.Forms.CheckBox();
-            this.textBox_AutoReadTime = new System.Windows.Forms.TextBox();
             this.textBox_FEnergyWhExportTotal = new System.Windows.Forms.TextBox();
             this.textBox_FEnergyWhExportR = new System.Windows.Forms.TextBox();
             this.textBox_FEnergyWhExportY = new System.Windows.Forms.TextBox();
@@ -573,7 +572,6 @@ namespace Developer_Tools
             this.timer1sec = new System.Windows.Forms.Timer(this.components);
             this.timer500ms = new System.Windows.Forms.Timer(this.components);
             this.timer100ms = new System.Windows.Forms.Timer(this.components);
-            this.button_SendRepeatStop = new System.Windows.Forms.Button();
             this.menuStripMain.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -594,6 +592,7 @@ namespace Developer_Tools
             this.tabPage3.SuspendLayout();
             this.tabControl3.SuspendLayout();
             this.tabPage11.SuspendLayout();
+            this.groupBox22.SuspendLayout();
             this.groupBox17.SuspendLayout();
             this.groupBox21.SuspendLayout();
             this.groupBox18.SuspendLayout();
@@ -1023,6 +1022,17 @@ namespace Developer_Tools
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Send Settings";
+            // 
+            // button_SendRepeatStop
+            // 
+            this.button_SendRepeatStop.Enabled = false;
+            this.button_SendRepeatStop.Location = new System.Drawing.Point(427, 19);
+            this.button_SendRepeatStop.Name = "button_SendRepeatStop";
+            this.button_SendRepeatStop.Size = new System.Drawing.Size(73, 28);
+            this.button_SendRepeatStop.TabIndex = 8;
+            this.button_SendRepeatStop.Text = "Stop";
+            this.button_SendRepeatStop.UseVisualStyleBackColor = true;
+            this.button_SendRepeatStop.Click += new System.EventHandler(this.button_SendRepeatStop_Click);
             // 
             // label5
             // 
@@ -1555,6 +1565,7 @@ namespace Developer_Tools
             // tabPage11
             // 
             this.tabPage11.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.tabPage11.Controls.Add(this.groupBox22);
             this.tabPage11.Controls.Add(this.groupBox17);
             this.tabPage11.Controls.Add(this.textBox_MISCData);
             this.tabPage11.Controls.Add(this.groupBox21);
@@ -1690,6 +1701,52 @@ namespace Developer_Tools
             this.tabPage11.Size = new System.Drawing.Size(1206, 562);
             this.tabPage11.TabIndex = 5;
             this.tabPage11.Text = "Instant data";
+            // 
+            // groupBox22
+            // 
+            this.groupBox22.Controls.Add(this.checkBox_LogData);
+            this.groupBox22.Controls.Add(this.checkBox_LogToNewFile);
+            this.groupBox22.Controls.Add(this.textBox_NewFileName);
+            this.groupBox22.Location = new System.Drawing.Point(6, 452);
+            this.groupBox22.Name = "groupBox22";
+            this.groupBox22.Size = new System.Drawing.Size(399, 49);
+            this.groupBox22.TabIndex = 678;
+            this.groupBox22.TabStop = false;
+            this.groupBox22.Text = "Log Setup";
+            // 
+            // checkBox_LogData
+            // 
+            this.checkBox_LogData.AutoSize = true;
+            this.checkBox_LogData.Checked = true;
+            this.checkBox_LogData.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_LogData.Enabled = false;
+            this.checkBox_LogData.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox_LogData.Location = new System.Drawing.Point(6, 20);
+            this.checkBox_LogData.Name = "checkBox_LogData";
+            this.checkBox_LogData.Size = new System.Drawing.Size(70, 17);
+            this.checkBox_LogData.TabIndex = 304;
+            this.checkBox_LogData.Text = "Log Data";
+            this.checkBox_LogData.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_LogToNewFile
+            // 
+            this.checkBox_LogToNewFile.AutoSize = true;
+            this.checkBox_LogToNewFile.Enabled = false;
+            this.checkBox_LogToNewFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox_LogToNewFile.Location = new System.Drawing.Point(82, 20);
+            this.checkBox_LogToNewFile.Name = "checkBox_LogToNewFile";
+            this.checkBox_LogToNewFile.Size = new System.Drawing.Size(67, 17);
+            this.checkBox_LogToNewFile.TabIndex = 306;
+            this.checkBox_LogToNewFile.Text = "New File";
+            this.checkBox_LogToNewFile.UseVisualStyleBackColor = true;
+            // 
+            // textBox_NewFileName
+            // 
+            this.textBox_NewFileName.Enabled = false;
+            this.textBox_NewFileName.Location = new System.Drawing.Point(149, 17);
+            this.textBox_NewFileName.Name = "textBox_NewFileName";
+            this.textBox_NewFileName.Size = new System.Drawing.Size(239, 23);
+            this.textBox_NewFileName.TabIndex = 307;
             // 
             // groupBox17
             // 
@@ -2167,17 +2224,11 @@ namespace Developer_Tools
             // groupBox15
             // 
             this.groupBox15.Controls.Add(this.button_ReadStop);
-            this.groupBox15.Controls.Add(this.textBox_NewFileName);
-            this.groupBox15.Controls.Add(this.checkBox_LogToNewFile);
             this.groupBox15.Controls.Add(this.button_Read);
-            this.groupBox15.Controls.Add(this.checkBox_AutoRead);
-            this.groupBox15.Controls.Add(this.label47);
-            this.groupBox15.Controls.Add(this.checkBox_LogData);
-            this.groupBox15.Controls.Add(this.textBox_AutoReadTime);
             this.groupBox15.Font = new System.Drawing.Font("Palatino Linotype", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox15.Location = new System.Drawing.Point(6, 379);
             this.groupBox15.Name = "groupBox15";
-            this.groupBox15.Size = new System.Drawing.Size(399, 77);
+            this.groupBox15.Size = new System.Drawing.Size(399, 72);
             this.groupBox15.TabIndex = 660;
             this.groupBox15.TabStop = false;
             this.groupBox15.Text = "Read Setup";
@@ -2186,32 +2237,12 @@ namespace Developer_Tools
             // 
             this.button_ReadStop.Enabled = false;
             this.button_ReadStop.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_ReadStop.Location = new System.Drawing.Point(304, 37);
+            this.button_ReadStop.Location = new System.Drawing.Point(304, 38);
             this.button_ReadStop.Name = "button_ReadStop";
             this.button_ReadStop.Size = new System.Drawing.Size(89, 26);
             this.button_ReadStop.TabIndex = 308;
             this.button_ReadStop.Text = "Stop";
             this.button_ReadStop.UseVisualStyleBackColor = true;
-            // 
-            // textBox_NewFileName
-            // 
-            this.textBox_NewFileName.Enabled = false;
-            this.textBox_NewFileName.Location = new System.Drawing.Point(71, 39);
-            this.textBox_NewFileName.Name = "textBox_NewFileName";
-            this.textBox_NewFileName.Size = new System.Drawing.Size(89, 22);
-            this.textBox_NewFileName.TabIndex = 307;
-            // 
-            // checkBox_LogToNewFile
-            // 
-            this.checkBox_LogToNewFile.AutoSize = true;
-            this.checkBox_LogToNewFile.Enabled = false;
-            this.checkBox_LogToNewFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox_LogToNewFile.Location = new System.Drawing.Point(6, 40);
-            this.checkBox_LogToNewFile.Name = "checkBox_LogToNewFile";
-            this.checkBox_LogToNewFile.Size = new System.Drawing.Size(67, 17);
-            this.checkBox_LogToNewFile.TabIndex = 306;
-            this.checkBox_LogToNewFile.Text = "New File";
-            this.checkBox_LogToNewFile.UseVisualStyleBackColor = true;
             // 
             // button_Read
             // 
@@ -2223,53 +2254,7 @@ namespace Developer_Tools
             this.button_Read.TabIndex = 303;
             this.button_Read.Text = "Read";
             this.button_Read.UseVisualStyleBackColor = true;
-            // 
-            // checkBox_AutoRead
-            // 
-            this.checkBox_AutoRead.AutoSize = true;
-            this.checkBox_AutoRead.Checked = true;
-            this.checkBox_AutoRead.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox_AutoRead.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox_AutoRead.Location = new System.Drawing.Point(221, 19);
-            this.checkBox_AutoRead.Name = "checkBox_AutoRead";
-            this.checkBox_AutoRead.Size = new System.Drawing.Size(77, 17);
-            this.checkBox_AutoRead.TabIndex = 305;
-            this.checkBox_AutoRead.Text = "Auto Read";
-            this.checkBox_AutoRead.UseVisualStyleBackColor = true;
-            // 
-            // label47
-            // 
-            this.label47.AutoSize = true;
-            this.label47.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label47.Location = new System.Drawing.Point(166, 43);
-            this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(84, 13);
-            this.label47.TabIndex = 301;
-            this.label47.Text = "Read Time (ms):";
-            // 
-            // checkBox_LogData
-            // 
-            this.checkBox_LogData.AutoSize = true;
-            this.checkBox_LogData.Checked = true;
-            this.checkBox_LogData.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox_LogData.Enabled = false;
-            this.checkBox_LogData.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox_LogData.Location = new System.Drawing.Point(6, 18);
-            this.checkBox_LogData.Name = "checkBox_LogData";
-            this.checkBox_LogData.Size = new System.Drawing.Size(70, 17);
-            this.checkBox_LogData.TabIndex = 304;
-            this.checkBox_LogData.Text = "Log Data";
-            this.checkBox_LogData.UseVisualStyleBackColor = true;
-            // 
-            // textBox_AutoReadTime
-            // 
-            this.textBox_AutoReadTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_AutoReadTime.Location = new System.Drawing.Point(256, 40);
-            this.textBox_AutoReadTime.Name = "textBox_AutoReadTime";
-            this.textBox_AutoReadTime.Size = new System.Drawing.Size(42, 20);
-            this.textBox_AutoReadTime.TabIndex = 302;
-            this.textBox_AutoReadTime.Text = "750";
-            this.textBox_AutoReadTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.button_Read.Click += new System.EventHandler(this.button_Read_Click);
             // 
             // textBox_FEnergyWhExportTotal
             // 
@@ -6281,17 +6266,6 @@ namespace Developer_Tools
             // 
             this.timer100ms.Tick += new System.EventHandler(this.timer100ms_Tick);
             // 
-            // button_SendRepeatStop
-            // 
-            this.button_SendRepeatStop.Enabled = false;
-            this.button_SendRepeatStop.Location = new System.Drawing.Point(427, 19);
-            this.button_SendRepeatStop.Name = "button_SendRepeatStop";
-            this.button_SendRepeatStop.Size = new System.Drawing.Size(73, 28);
-            this.button_SendRepeatStop.TabIndex = 8;
-            this.button_SendRepeatStop.Text = "Stop";
-            this.button_SendRepeatStop.UseVisualStyleBackColor = true;
-            this.button_SendRepeatStop.Click += new System.EventHandler(this.button_SendRepeatStop_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -6341,6 +6315,8 @@ namespace Developer_Tools
             this.tabControl3.ResumeLayout(false);
             this.tabPage11.ResumeLayout(false);
             this.tabPage11.PerformLayout();
+            this.groupBox22.ResumeLayout(false);
+            this.groupBox22.PerformLayout();
             this.groupBox17.ResumeLayout(false);
             this.groupBox17.PerformLayout();
             this.groupBox21.ResumeLayout(false);
@@ -6350,7 +6326,6 @@ namespace Developer_Tools
             this.groupBox16.ResumeLayout(false);
             this.groupBox16.PerformLayout();
             this.groupBox15.ResumeLayout(false);
-            this.groupBox15.PerformLayout();
             this.groupBox30.ResumeLayout(false);
             this.groupBox30.PerformLayout();
             this.groupBox19.ResumeLayout(false);
@@ -6926,16 +6901,14 @@ namespace Developer_Tools
         private System.Windows.Forms.TextBox textBox_NewFileName;
         private System.Windows.Forms.CheckBox checkBox_LogToNewFile;
         private System.Windows.Forms.Button button_Read;
-        private System.Windows.Forms.CheckBox checkBox_AutoRead;
-        private System.Windows.Forms.Label label47;
         private System.Windows.Forms.CheckBox checkBox_LogData;
-        private System.Windows.Forms.TextBox textBox_AutoReadTime;
         private System.Windows.Forms.Timer timer500ms;
         private System.Windows.Forms.Timer timer100ms;
         private System.Windows.Forms.GroupBox groupBox19;
         private System.Windows.Forms.RadioButton radioButton_InputModeNet;
         private System.Windows.Forms.RadioButton radioButton_InputModeFwd;
         private System.Windows.Forms.Button button_SendRepeatStop;
+        private System.Windows.Forms.GroupBox groupBox22;
     }
 }
 

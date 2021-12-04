@@ -25,7 +25,7 @@ namespace Developer_Tools
         int temp_b_array_length;
         byte[] tx_buffer = new byte[550];
         byte[] rx_buffer = new byte[550];
-        public static int total_sent_bytes, total_received_bytes;
+        
 
         /* Serial Port */
         DS_Serial serial_port = new DS_Serial();
@@ -201,6 +201,33 @@ namespace Developer_Tools
             serial_port.SendRepeatEnable = false;
         }
 
+        private void button_Read_Click(object sender, EventArgs e)
+        {
+            /* Frame Creation */
+            temp_b_array[0] = 0x27;
+            temp_b_array[1] = 0xFF;
+            temp_b_array[2] = 0x01;
+            temp_b_array[3] = 0x00;
+            temp_b_array[4] = 0x00;
+            temp_b_array[5] = 0x00;
+            temp_b_array[6] = 0x00;
+            temp_b_array[7] = 0x00;
+            temp_b_array[8] = 0x00;
+            temp_b_array[9] = 0x00;
+            temp_b_array[10] = DS_CRC.CRC_BCC_XOR(temp_b_array, 1, 9);
+            temp_b_array_length = 11;
+
+            /* Data sending with repeat facility */
+            if (checkBox_SendRepeat.Checked == true)
+            {
+                serial_port.write(temp_b_array, 0, temp_b_array_length, false, true, Convert.ToInt32(textBox_SendRepeatTime.Text), Convert.ToInt32(textBox_SendRepeatNoOfTimes.Text));
+            }
+            else
+            {
+                serial_port.write(temp_b_array, 0, temp_b_array_length, false);
+            }
+        }
+
         private void buttonStringFilterConvert_Click(object sender, EventArgs e)
         {
             string input_ascii_string = String.Empty;
@@ -365,8 +392,8 @@ namespace Developer_Tools
         private void buttonDataTrafficClear_Click(object sender, EventArgs e)
         {
             textBox_DataTraffic.Text = String.Empty;
-            total_received_bytes = 0;
-            total_sent_bytes = 0;
+            DS_Serial.totalRxBytes = 0;
+            DS_Serial.totalTxBytes = 0;
             textBox_DataTrafficTxBytesTotal.Text = "0";
             textBox_DataTrafficRxBytesTotal.Text = "0";
         }
@@ -436,8 +463,8 @@ namespace Developer_Tools
             {
                 connection_status = false;
             }
-            textBox_DataTrafficTxBytesTotal.Text = total_sent_bytes.ToString();
-            textBox_DataTrafficRxBytesTotal.Text = total_received_bytes.ToString();
+            textBox_DataTrafficTxBytesTotal.Text = DS_Serial.totalTxBytes.ToString();
+            textBox_DataTrafficRxBytesTotal.Text = DS_Serial.totalRxBytes.ToString();
 
             if (connection_status == true)                  /* Connected */
             {
@@ -456,7 +483,7 @@ namespace Developer_Tools
             }
             try
             {
-                textBox_SendRepeatSentCounter.Text = serial_port.SendRepeaSentCounter.ToString();
+                textBox_SendRepeatSentCounter.Text = serial_port.SendRepeatSentCounter.ToString();
             }
             catch(Exception ex)
             {
