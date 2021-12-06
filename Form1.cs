@@ -521,6 +521,7 @@ namespace Developer_Tools
                 button_Send.Enabled = true;
                 ToolStripMenuItem_Connect.Enabled = false;
                 ToolStripMenuItem_Disconnect.Enabled = true;
+                button_Read.Enabled = true;
             }
             else                                            /* Disconnected */
             {
@@ -529,6 +530,7 @@ namespace Developer_Tools
                 button_SendRepeatStop.Enabled = false;
                 ToolStripMenuItem_Connect.Enabled = true;
                 ToolStripMenuItem_Disconnect.Enabled = false;
+                button_Read.Enabled = false;
             }
             try
             {
@@ -751,7 +753,7 @@ namespace Developer_Tools
             if (DS_Functions.checkBit(tamper_status[4], 0x10) == true) { TamperStatus += " | Over Current R"; }
             if (DS_Functions.checkBit(tamper_status[4], 0x08) == true) { TamperStatus += " | Abnormal Frequency"; }
             if (DS_Functions.checkBit(tamper_status[4], 0x04) == true) { TamperStatus += " | Two wire"; }
-            if (DS_Functions.checkBit(tamper_status[4], 0x02) == true) { TamperStatus += " | RTC Reading Error"; }
+            if (DS_Functions.checkBit(tamper_status[4], 0x02) == true) { TamperStatus += " | RTC Error"; }
             if (DS_Functions.checkBit(tamper_status[4], 0x01) == true) { TamperStatus += " | bit32"; }
 
             if (DS_Functions.checkBit(tamper_status[3], 0x80) == true) { TamperStatus += " | 35KV/ESD"; }
