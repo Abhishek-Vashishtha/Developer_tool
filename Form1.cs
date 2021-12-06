@@ -41,6 +41,7 @@ namespace Developer_Tools
         /* error calculation */
         public static int ip_avg_samples;
         public static bool cal_accuracy;
+        public static ushort Meter_Const;
 
         /* instant frame variables */
         public static double VolR, VolY, VolB, CurrRSigned, CurrYSigned, CurrBSigned, CurrN, CurrNVector, VolRY, VolYB, VolBR;
@@ -82,14 +83,14 @@ namespace Developer_Tools
         public static string MISCData, TamperStatus;
 
         public static int METER_CONST = 1200, PULSE = 6;
-        public static double QUANTA = 0.005;
-
+        
         public static double error_act_r, error_act_y, error_act_b, error_act_total;
         public static double error_react_r, error_react_y, error_react_b, error_react_total;
         public static double error_app_r, error_app_y, error_app_b, error_app_total;
 
         public static byte[] tamper_status = new byte[8];
-
+        
+        
         public Form1()
         {
             InitializeComponent();
@@ -550,8 +551,7 @@ namespace Developer_Tools
                 traffic_mode = 3;
             }
 
-
-            
+            Meter_Const = Convert.ToUInt16(textBox_InputMeterConst.Text);
         }
         public void update_textboxes()
         {
@@ -1116,6 +1116,9 @@ namespace Developer_Tools
             {
                 ip_ang_n_calculated = 0;
             }
+
+            Meter_Const = Convert.ToUInt16(textBox_InputMeterConst.Text);
+
             /* updating text boxes */
             textBox_InputWattR.Text = ip_watt_r.ToString("0.0");
             textBox_InputWattY.Text = ip_watt_y.ToString("0.0");
@@ -1387,105 +1390,203 @@ namespace Developer_Tools
 
                     /* Handling Misc data */
                     MISCData = DS_Functions.byte_array_to_ascii_string(b_array, b_array_len - 3, arr_ptr);
-                    
+
+                    ushort QUANTA,PULSE;
+                    double[] PulseWeight = new double[6];
                     /* Calculating Energies */
+                    if (Meter_Const == 1200)
+                    {
+                        QUANTA = 5;
+                        PULSE = 6;
+                        PulseWeight[0] = 0.833;
+                        PulseWeight[1] = 1.666;
+                        PulseWeight[2] = 2.500;
+                        PulseWeight[3] = 3.333;
+                        PulseWeight[4] = 4.166;
+                        PulseWeight[5] = 5.000;
+                    }
+                    else if (Meter_Const == 1000)
+                    {
+                        QUANTA = 1;
+                        PULSE = 1;
+                        PulseWeight[0] = 0;
+                        PulseWeight[1] = 1;
+                        PulseWeight[2] = 2;
+                        PulseWeight[3] = 3;
+                        PulseWeight[4] = 4;
+                        PulseWeight[5] = 5;
+                    }
+                    else if (Meter_Const == 600)
+                    {
+                        QUANTA = 5;
+                        PULSE = 3;
+                        PulseWeight[0] = 0;
+                        PulseWeight[1] = 1.666;
+                        PulseWeight[2] = 3.333;
+                        PulseWeight[3] = 5.000;
+                        PulseWeight[4] = 6.666;
+                        PulseWeight[5] = 8.333;
+                    }
+                    else
+                    {
+                        QUANTA = 0;
+                        PULSE = 0;
+                    }
+                    //QUANTA * (pulseEnergyWhR / PULSE)
+                    EnergyWhR_imp += QUANTA *(pulse_EnergyWhR_imp / PULSE);
+                    EnergyWhY_imp += QUANTA *(pulse_EnergyWhY_imp / PULSE);
+                    EnergyWhB_imp += QUANTA *(pulse_EnergyWhB_imp / PULSE);
+                    EnergyWhTotal_imp += QUANTA *(pulse_EnergyWhTotal_imp / PULSE);
+                    EnergyWhR_exp += QUANTA *(pulse_EnergyWhR_exp / PULSE);
+                    EnergyWhY_exp += QUANTA *(pulse_EnergyWhY_exp / PULSE);
+                    EnergyWhB_exp += QUANTA *(pulse_EnergyWhB_exp / PULSE);
+                    EnergyWhTotal_exp += QUANTA *(pulse_EnergyWhTotal_exp / PULSE);
+                    EnergyVARhR_q1 += QUANTA *(pulse_EnergyVARhR_q1 / PULSE);
+                    EnergyVARhY_q1 += QUANTA *(pulse_EnergyVARhY_q1 / PULSE);
+                    EnergyVARhB_q1 += QUANTA *(pulse_EnergyVARhB_q1 / PULSE);
+                    EnergyVARhTotal_q1 += QUANTA *(pulse_EnergyVARhTotal_q1 / PULSE);
+                    EnergyVARhR_q2 += QUANTA *(pulse_EnergyVARhR_q2 / PULSE);
+                    EnergyVARhY_q2 += QUANTA *(pulse_EnergyVARhY_q2 / PULSE);
+                    EnergyVARhB_q2 += QUANTA *(pulse_EnergyVARhB_q2 / PULSE);
+                    EnergyVARhTotal_q2 += QUANTA *(pulse_EnergyVARhTotal_q2 / PULSE);
+                    EnergyVARhR_q3 += QUANTA *(pulse_EnergyVARhR_q3 / PULSE);
+                    EnergyVARhY_q3 += QUANTA *(pulse_EnergyVARhY_q3 / PULSE);
+                    EnergyVARhB_q3 += QUANTA *(pulse_EnergyVARhB_q3 / PULSE);
+                    EnergyVARhTotal_q3 += QUANTA *(pulse_EnergyVARhTotal_q3 / PULSE);
+                    EnergyVARhR_q4 += QUANTA *(pulse_EnergyVARhR_q4 / PULSE);
+                    EnergyVARhY_q4 += QUANTA *(pulse_EnergyVARhY_q4 / PULSE);
+                    EnergyVARhB_q4 += QUANTA *(pulse_EnergyVARhB_q4 / PULSE);
+                    EnergyVARhTotal_q4 += QUANTA *(pulse_EnergyVARhTotal_q4 / PULSE);
+                    EnergyVAhR_imp += QUANTA *(pulse_EnergyVAhR_imp / PULSE);
+                    EnergyVAhY_imp += QUANTA *(pulse_EnergyVAhY_imp / PULSE);
+                    EnergyVAhB_imp += QUANTA *(pulse_EnergyVAhB_imp / PULSE);
+                    EnergyVAhTotal_imp += QUANTA *(pulse_EnergyVAhTotal_imp / PULSE);
+                    EnergyVAhR_exp += QUANTA *(pulse_EnergyVAhR_exp / PULSE);
+                    EnergyVAhY_exp += QUANTA *(pulse_EnergyVAhY_exp / PULSE);
+                    EnergyVAhB_exp += QUANTA *(pulse_EnergyVAhB_exp / PULSE);
+                    EnergyVAhTotal_exp += QUANTA *(pulse_EnergyVAhTotal_exp / PULSE);
+                    EnergyFWhR_imp += QUANTA *(pulse_EnergyFWhR_imp / PULSE);
+                    EnergyFWhY_imp += QUANTA *(pulse_EnergyFWhY_imp / PULSE);
+                    EnergyFWhB_imp += QUANTA *(pulse_EnergyFWhB_imp / PULSE);
+                    EnergyFWhTotal_imp += QUANTA *(pulse_EnergyFWhTotal_imp / PULSE);
+                    EnergyFWhR_exp += QUANTA *(pulse_EnergyFWhR_exp / PULSE);
+                    EnergyFWhY_exp += QUANTA *(pulse_EnergyFWhY_exp / PULSE);
+                    EnergyFWhB_exp += QUANTA *(pulse_EnergyFWhB_exp / PULSE);
+                    EnergyFWhTotal_exp += QUANTA *(pulse_EnergyFWhTotal_exp / PULSE);
 
-                    //EnergyWhR += QUANTA * (pulseEnergyWhR / PULSE);
-                    //EnergyWhY += QUANTA * (pulseEnergyWhY / PULSE);
-                    //EnergyWhB += QUANTA * (pulseEnergyWhB / PULSE);
-                    //EnergyWhTotal += QUANTA * (pulseEnergyWhTotal / PULSE);
-                    //EnergyVARhLagTotal += QUANTA * (pulseEnergyVARhLagTotal / PULSE);
-                    //EnergyVARhLeadTotal += QUANTA * (pulseEnergyVARhLeadTotal / PULSE);
-                    //EnergyVAhTotal += QUANTA * (pulseEnergyVAhTotal / PULSE);
-                    //
-                    //EnergyWhR += GetPulseWeight[pulseEnergyWhR % PULSE];
-                    //EnergyWhY += GetPulseWeight[pulseEnergyWhY % PULSE];
-                    //EnergyWhB += GetPulseWeight[pulseEnergyWhB % PULSE];
-                    //EnergyWhTotal += GetPulseWeight[pulseEnergyWhTotal % PULSE];
-                    //EnergyVARhLagTotal += GetPulseWeight[pulseEnergyVARhLagTotal % PULSE];
-                    //EnergyVARhLeadTotal += GetPulseWeight[pulseEnergyVARhLeadTotal % PULSE];
-                    //EnergyVAhTotal += GetPulseWeight[pulseEnergyVAhTotal % PULSE];
-                    //
+                    EnergyWhR_imp += PulseWeight[pulse_EnergyWhR_imp % PULSE];
+                    EnergyWhY_imp += PulseWeight[pulse_EnergyWhY_imp % PULSE];
+                    EnergyWhB_imp += PulseWeight[pulse_EnergyWhB_imp % PULSE];
+                    EnergyWhTotal_imp += PulseWeight[pulse_EnergyWhTotal_imp % PULSE];
+                    EnergyWhR_exp += PulseWeight[pulse_EnergyWhR_exp % PULSE];
+                    EnergyWhY_exp += PulseWeight[pulse_EnergyWhY_exp % PULSE];
+                    EnergyWhB_exp += PulseWeight[pulse_EnergyWhB_exp % PULSE];
+                    EnergyWhTotal_exp += PulseWeight[pulse_EnergyWhTotal_exp % PULSE];
+                    EnergyVARhR_q1 += PulseWeight[pulse_EnergyVARhR_q1 % PULSE];
+                    EnergyVARhY_q1 += PulseWeight[pulse_EnergyVARhY_q1 % PULSE];
+                    EnergyVARhB_q1 += PulseWeight[pulse_EnergyVARhB_q1 % PULSE];
+                    EnergyVARhTotal_q1 += PulseWeight[pulse_EnergyVARhTotal_q1 % PULSE];
+                    EnergyVARhR_q2 += PulseWeight[pulse_EnergyVARhR_q2 % PULSE];
+                    EnergyVARhY_q2 += PulseWeight[pulse_EnergyVARhY_q2 % PULSE];
+                    EnergyVARhB_q2 += PulseWeight[pulse_EnergyVARhB_q2 % PULSE];
+                    EnergyVARhTotal_q2 += PulseWeight[pulse_EnergyVARhTotal_q2 % PULSE];
+                    EnergyVARhR_q3 += PulseWeight[pulse_EnergyVARhR_q3 % PULSE];
+                    EnergyVARhY_q3 += PulseWeight[pulse_EnergyVARhY_q3 % PULSE];
+                    EnergyVARhB_q3 += PulseWeight[pulse_EnergyVARhB_q3 % PULSE];
+                    EnergyVARhTotal_q3 += PulseWeight[pulse_EnergyVARhTotal_q3 % PULSE];
+                    EnergyVARhR_q4 += PulseWeight[pulse_EnergyVARhR_q4 % PULSE];
+                    EnergyVARhY_q4 += PulseWeight[pulse_EnergyVARhY_q4 % PULSE];
+                    EnergyVARhB_q4 += PulseWeight[pulse_EnergyVARhB_q4 % PULSE];
+                    EnergyVARhTotal_q4 += PulseWeight[pulse_EnergyVARhTotal_q4 % PULSE];
+                    EnergyVAhR_imp += PulseWeight[pulse_EnergyVAhR_imp % PULSE];
+                    EnergyVAhY_imp += PulseWeight[pulse_EnergyVAhY_imp % PULSE];
+                    EnergyVAhB_imp += PulseWeight[pulse_EnergyVAhB_imp % PULSE];
+                    EnergyVAhTotal_imp += PulseWeight[pulse_EnergyVAhTotal_imp % PULSE];
+                    EnergyVAhR_exp += PulseWeight[pulse_EnergyVAhR_exp % PULSE];
+                    EnergyVAhY_exp += PulseWeight[pulse_EnergyVAhY_exp % PULSE];
+                    EnergyVAhB_exp += PulseWeight[pulse_EnergyVAhB_exp % PULSE];
+                    EnergyVAhTotal_exp += PulseWeight[pulse_EnergyVAhTotal_exp % PULSE];
+                    EnergyFWhR_imp += PulseWeight[pulse_EnergyFWhR_imp % PULSE];
+                    EnergyFWhY_imp += PulseWeight[pulse_EnergyFWhY_imp % PULSE];
+                    EnergyFWhB_imp += PulseWeight[pulse_EnergyFWhB_imp % PULSE];
+                    EnergyFWhTotal_imp += PulseWeight[pulse_EnergyFWhTotal_imp % PULSE];
+                    EnergyFWhR_exp += PulseWeight[pulse_EnergyFWhR_exp % PULSE];
+                    EnergyFWhY_exp += PulseWeight[pulse_EnergyFWhY_exp % PULSE];
+                    EnergyFWhB_exp += PulseWeight[pulse_EnergyFWhB_exp % PULSE];
+                    EnergyFWhTotal_exp += PulseWeight[pulse_EnergyFWhTotal_exp % PULSE];
+                    
 
-                    //
-                    //
-
-                    //EnergyWhTotalFunda = (DS_Functions.ByteArrayToLong(b_array, 239) / 1000.0);
-                    //pulseEnergyWhTotalFunda = b_array[243];
-                    //EnergyWhTotalFunda += QUANTA * (pulseEnergyWhTotalFunda / PULSE);
-                    //EnergyWhTotalFunda += GetPulseWeight[pulseEnergyWhTotalFunda % PULSE];
-
-
-                    //
-                    //if (b_array_len >= 256)
-                    //{
-                    //    MISCData = DS_Functions.Byte_Array_To_ASCII_String(b_array, 256, b_array_len - 256);
-                    //}
-                    //else
-                    //{
-                    //    MISCData = string.Empty;
-                    //}
-
-                    ///* Calculating Error */
-                    //error_act_r = 0; error_act_y = 0; error_act_b = 0; error_act_total = 0;
-                    //error_react_r = 0; error_react_y = 0; error_react_b = 0; error_react_total = 0;
-                    //error_app_r = 0; error_app_y = 0; error_app_b = 0; error_app_total = 0;
-                    //
-                    //if (ical_accuracy == true)
-                    //{
-                    //    if (iwattR != 0)
-                    //    {
-                    //        error_act_r = (WattR - iwattR) * 100 / iwattR;
-                    //    }
-                    //    if (iwattY != 0)
-                    //    {
-                    //        error_act_y = (WattY - iwattY) * 100 / iwattY;
-                    //    }
-                    //    if (iwattB != 0)
-                    //    {
-                    //        error_act_b = (WattB - iwattB) * 100 / iwattB;
-                    //    }
-                    //    if (iwattNet != 0)
-                    //    {
-                    //        error_act_total = (WattNet - iwattNet) * 100 / iwattNet;
-                    //    }
-                    //    if (ivarR != 0)
-                    //    {
-                    //        error_react_r = (VARR - ivarR) * 100 / ivarR;
-                    //    }
-                    //    if (ivarY != 0)
-                    //    {
-                    //        error_react_y = (VARY - ivarY) * 100 / ivarY;
-                    //    }
-                    //    if (ivarB != 0)
-                    //    {
-                    //        error_react_b = (VARB - ivarB) * 100 / ivarB;
-                    //    }
-                    //    if (ivarNet != 0)
-                    //    {
-                    //        error_react_total = (VARNet - ivarNet) * 100 / ivarNet;
-                    //    }
-                    //
-                    //    if (ivaR != 0)
-                    //    {
-                    //        error_app_r = (VAR - ivaR) * 100 / ivaR;
-                    //    }
-                    //    if (ivaY != 0)
-                    //    {
-                    //        error_app_y = (VAY - ivaY) * 100 / ivaY;
-                    //    }
-                    //    if (ivaB != 0)
-                    //    {
-                    //        error_app_b = (VAB - ivaB) * 100 / ivaB;
-                    //    }
-                    //    if (ivaNet != 0)
-                    //    {
-                    //        error_app_total = (VANet - ivaNet) * 100 / ivaNet;
-                    //    }
-                    //}
-
-
-
+                    /* Calculating Error */
+                    if (cal_accuracy == true)
+                    {
+                        if (ip_watt_r != 0)
+                        {
+                            error_act_r = (ip_watt_r - WattR) * 100 / ip_watt_r;
+                        }
+                        if (ip_watt_y != 0)
+                        {
+                            error_act_y = (ip_watt_y - WattY) * 100 / ip_watt_y;
+                        }
+                        if (ip_watt_b != 0)
+                        {
+                            error_act_b = (ip_watt_b - WattB) * 100 / ip_watt_b;
+                        }
+                        if (ip_var_r != 0)
+                        {
+                            error_react_r = (ip_var_r - VARR) * 100 / ip_var_r;
+                        }
+                        if (ip_var_y != 0)
+                        {
+                            error_react_y = (ip_var_y - VARY) * 100 / ip_var_y;
+                        }
+                        if (ip_var_b != 0)
+                        {
+                            error_react_b = (ip_var_b - VARB) * 100 / ip_var_b;
+                        }
+                        if (ip_va_r != 0)
+                        {
+                            error_app_r = (ip_va_r - VAR) * 100 / ip_va_r;
+                        }
+                        if (ip_va_y != 0)
+                        {
+                            error_app_y = (ip_va_y - VAY) * 100 / ip_va_y;
+                        }
+                        if (ip_va_b != 0)
+                        {
+                            error_app_b = (ip_va_b - VAB) * 100 / ip_va_b;
+                        }
+                        if (metering_mode == 1)  /* Forwarded */
+                        {
+                            if (ip_watt_total_fwd != 0)
+                            {
+                                error_act_total = (ip_watt_total_fwd - WattNet) * 100 / ip_watt_total_fwd;
+                            }
+                            if (ip_var_total_fwd != 0)
+                            {
+                                error_react_total = (ip_var_total_fwd - VARNet) * 100 / ip_var_total_fwd;
+                            }
+                            if (ip_va_total_fwd != 0)
+                            {
+                                error_app_total = (ip_va_total_fwd - VANet) * 100 / ip_va_total_fwd;
+                            }
+                        }
+                        else if (metering_mode == 2) /* Net */
+                        {
+                            if (ip_watt_total_net != 0)
+                            {
+                                error_act_total = (ip_watt_total_fwd - WattNet) * 100 / ip_watt_total_net;
+                            }
+                            if (ip_var_total_net != 0)
+                            {
+                                error_react_total = (ip_var_total_fwd - VARNet) * 100 / ip_var_total_net;
+                            }
+                            if (ip_va_total_net != 0)
+                            {
+                                error_app_total = (ip_va_total_net - VANet) * 100 / ip_va_total_net;
+                            }
+                        }
+                    }
+            
                     ///* Data logging */
                     //if (logData_f == true)
                     //{

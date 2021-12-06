@@ -228,6 +228,8 @@ namespace Developer_Tools
             this.label45 = new System.Windows.Forms.Label();
             this.textBox_TamperStatus = new System.Windows.Forms.TextBox();
             this.groupBox30 = new System.Windows.Forms.GroupBox();
+            this.label47 = new System.Windows.Forms.Label();
+            this.textBox_InputMeterConst = new System.Windows.Forms.TextBox();
             this.groupBox19 = new System.Windows.Forms.GroupBox();
             this.radioButton_InputModeNet = new System.Windows.Forms.RadioButton();
             this.radioButton_InputModeFwd = new System.Windows.Forms.RadioButton();
@@ -2755,6 +2757,8 @@ namespace Developer_Tools
             // 
             // groupBox30
             // 
+            this.groupBox30.Controls.Add(this.label47);
+            this.groupBox30.Controls.Add(this.textBox_InputMeterConst);
             this.groupBox30.Controls.Add(this.groupBox19);
             this.groupBox30.Controls.Add(this.groupBox31);
             this.groupBox30.Controls.Add(this.textBox_InputPFFwd);
@@ -2819,6 +2823,27 @@ namespace Developer_Tools
             this.groupBox30.TabIndex = 600;
             this.groupBox30.TabStop = false;
             this.groupBox30.Text = "Accuracy Calculation";
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label47.Location = new System.Drawing.Point(141, 246);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(67, 13);
+            this.label47.TabIndex = 536;
+            this.label47.Text = "Meter Const:";
+            // 
+            // textBox_InputMeterConst
+            // 
+            this.textBox_InputMeterConst.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_InputMeterConst.Location = new System.Drawing.Point(212, 243);
+            this.textBox_InputMeterConst.Name = "textBox_InputMeterConst";
+            this.textBox_InputMeterConst.ReadOnly = true;
+            this.textBox_InputMeterConst.Size = new System.Drawing.Size(61, 20);
+            this.textBox_InputMeterConst.TabIndex = 535;
+            this.textBox_InputMeterConst.Text = "1200";
+            this.textBox_InputMeterConst.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // groupBox19
             // 
@@ -6999,6 +7024,8 @@ namespace Developer_Tools
         private System.Windows.Forms.RadioButton radioButton_InputModeNet;
         private System.Windows.Forms.RadioButton radioButton_InputModeFwd;
         private System.Windows.Forms.Button button_SendRepeatStop;
+        private System.Windows.Forms.Label label47;
+        private System.Windows.Forms.TextBox textBox_InputMeterConst;
     }
 }
 
