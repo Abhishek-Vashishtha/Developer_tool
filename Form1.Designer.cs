@@ -129,7 +129,7 @@ namespace Developer_Tools
             this.checkBox_LogToNewFile = new System.Windows.Forms.CheckBox();
             this.textBox_NewFileName = new System.Windows.Forms.TextBox();
             this.groupBox17 = new System.Windows.Forms.GroupBox();
-            this.textBox_TempTLV = new System.Windows.Forms.TextBox();
+            this.textBox_Temperature = new System.Windows.Forms.TextBox();
             this.label68 = new System.Windows.Forms.Label();
             this.label67 = new System.Windows.Forms.Label();
             this.textBox_BatteryVoltageRTC = new System.Windows.Forms.TextBox();
@@ -319,7 +319,7 @@ namespace Developer_Tools
             this.textBox_SamplesY = new System.Windows.Forms.TextBox();
             this.textBox_SamplesR = new System.Windows.Forms.TextBox();
             this.label135 = new System.Windows.Forms.Label();
-            this.textBox_Quadb = new System.Windows.Forms.TextBox();
+            this.textBox_QuadB = new System.Windows.Forms.TextBox();
             this.textBox_FreqB = new System.Windows.Forms.TextBox();
             this.textBox_VAB = new System.Windows.Forms.TextBox();
             this.textBox_VARB = new System.Windows.Forms.TextBox();
@@ -329,7 +329,7 @@ namespace Developer_Tools
             this.textBox_CurrB = new System.Windows.Forms.TextBox();
             this.textBox_VolBdc = new System.Windows.Forms.TextBox();
             this.textBox_VolB = new System.Windows.Forms.TextBox();
-            this.textBox_Quady = new System.Windows.Forms.TextBox();
+            this.textBox_QuadY = new System.Windows.Forms.TextBox();
             this.textBox_FreqY = new System.Windows.Forms.TextBox();
             this.textBox_VAY = new System.Windows.Forms.TextBox();
             this.textBox_VARY = new System.Windows.Forms.TextBox();
@@ -339,7 +339,7 @@ namespace Developer_Tools
             this.textBox_CurrY = new System.Windows.Forms.TextBox();
             this.textBox_VolYdc = new System.Windows.Forms.TextBox();
             this.textBox_VolY = new System.Windows.Forms.TextBox();
-            this.textBox_QuadnET = new System.Windows.Forms.TextBox();
+            this.textBox_QuadNet = new System.Windows.Forms.TextBox();
             this.textBox_FreqNet = new System.Windows.Forms.TextBox();
             this.textBox_VANet = new System.Windows.Forms.TextBox();
             this.textBox_VARNet = new System.Windows.Forms.TextBox();
@@ -1643,7 +1643,7 @@ namespace Developer_Tools
             this.tabPage11.Controls.Add(this.textBox_SamplesY);
             this.tabPage11.Controls.Add(this.textBox_SamplesR);
             this.tabPage11.Controls.Add(this.label135);
-            this.tabPage11.Controls.Add(this.textBox_Quadb);
+            this.tabPage11.Controls.Add(this.textBox_QuadB);
             this.tabPage11.Controls.Add(this.textBox_FreqB);
             this.tabPage11.Controls.Add(this.textBox_VAB);
             this.tabPage11.Controls.Add(this.textBox_VARB);
@@ -1653,7 +1653,7 @@ namespace Developer_Tools
             this.tabPage11.Controls.Add(this.textBox_CurrB);
             this.tabPage11.Controls.Add(this.textBox_VolBdc);
             this.tabPage11.Controls.Add(this.textBox_VolB);
-            this.tabPage11.Controls.Add(this.textBox_Quady);
+            this.tabPage11.Controls.Add(this.textBox_QuadY);
             this.tabPage11.Controls.Add(this.textBox_FreqY);
             this.tabPage11.Controls.Add(this.textBox_VAY);
             this.tabPage11.Controls.Add(this.textBox_VARY);
@@ -1663,7 +1663,7 @@ namespace Developer_Tools
             this.tabPage11.Controls.Add(this.textBox_CurrY);
             this.tabPage11.Controls.Add(this.textBox_VolYdc);
             this.tabPage11.Controls.Add(this.textBox_VolY);
-            this.tabPage11.Controls.Add(this.textBox_QuadnET);
+            this.tabPage11.Controls.Add(this.textBox_QuadNet);
             this.tabPage11.Controls.Add(this.textBox_FreqNet);
             this.tabPage11.Controls.Add(this.textBox_VANet);
             this.tabPage11.Controls.Add(this.textBox_VARNet);
@@ -1736,7 +1736,7 @@ namespace Developer_Tools
             // 
             // groupBox17
             // 
-            this.groupBox17.Controls.Add(this.textBox_TempTLV);
+            this.groupBox17.Controls.Add(this.textBox_Temperature);
             this.groupBox17.Controls.Add(this.label68);
             this.groupBox17.Controls.Add(this.label67);
             this.groupBox17.Controls.Add(this.textBox_BatteryVoltageRTC);
@@ -1752,14 +1752,14 @@ namespace Developer_Tools
             this.groupBox17.TabStop = false;
             this.groupBox17.Text = "MISC";
             // 
-            // textBox_TempTLV
+            // textBox_Temperature
             // 
-            this.textBox_TempTLV.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_TempTLV.Location = new System.Drawing.Point(94, 15);
-            this.textBox_TempTLV.Name = "textBox_TempTLV";
-            this.textBox_TempTLV.ReadOnly = true;
-            this.textBox_TempTLV.Size = new System.Drawing.Size(63, 20);
-            this.textBox_TempTLV.TabIndex = 667;
+            this.textBox_Temperature.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_Temperature.Location = new System.Drawing.Point(94, 15);
+            this.textBox_Temperature.Name = "textBox_Temperature";
+            this.textBox_Temperature.ReadOnly = true;
+            this.textBox_Temperature.Size = new System.Drawing.Size(63, 20);
+            this.textBox_Temperature.TabIndex = 667;
             // 
             // label68
             // 
@@ -3754,15 +3754,15 @@ namespace Developer_Tools
             this.label135.TabIndex = 583;
             this.label135.Text = "Samples:";
             // 
-            // textBox_Quadb
+            // textBox_QuadB
             // 
-            this.textBox_Quadb.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.textBox_Quadb.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_Quadb.Location = new System.Drawing.Point(646, 235);
-            this.textBox_Quadb.Name = "textBox_Quadb";
-            this.textBox_Quadb.ReadOnly = true;
-            this.textBox_Quadb.Size = new System.Drawing.Size(61, 20);
-            this.textBox_Quadb.TabIndex = 578;
+            this.textBox_QuadB.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.textBox_QuadB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_QuadB.Location = new System.Drawing.Point(646, 235);
+            this.textBox_QuadB.Name = "textBox_QuadB";
+            this.textBox_QuadB.ReadOnly = true;
+            this.textBox_QuadB.Size = new System.Drawing.Size(61, 20);
+            this.textBox_QuadB.TabIndex = 578;
             // 
             // textBox_FreqB
             // 
@@ -3854,15 +3854,15 @@ namespace Developer_Tools
             this.textBox_VolB.Size = new System.Drawing.Size(61, 20);
             this.textBox_VolB.TabIndex = 568;
             // 
-            // textBox_Quady
+            // textBox_QuadY
             // 
-            this.textBox_Quady.BackColor = System.Drawing.Color.LightGoldenrodYellow;
-            this.textBox_Quady.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_Quady.Location = new System.Drawing.Point(570, 235);
-            this.textBox_Quady.Name = "textBox_Quady";
-            this.textBox_Quady.ReadOnly = true;
-            this.textBox_Quady.Size = new System.Drawing.Size(61, 20);
-            this.textBox_Quady.TabIndex = 567;
+            this.textBox_QuadY.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.textBox_QuadY.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_QuadY.Location = new System.Drawing.Point(570, 235);
+            this.textBox_QuadY.Name = "textBox_QuadY";
+            this.textBox_QuadY.ReadOnly = true;
+            this.textBox_QuadY.Size = new System.Drawing.Size(61, 20);
+            this.textBox_QuadY.TabIndex = 567;
             // 
             // textBox_FreqY
             // 
@@ -3954,14 +3954,14 @@ namespace Developer_Tools
             this.textBox_VolY.Size = new System.Drawing.Size(61, 20);
             this.textBox_VolY.TabIndex = 557;
             // 
-            // textBox_QuadnET
+            // textBox_QuadNet
             // 
-            this.textBox_QuadnET.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_QuadnET.Location = new System.Drawing.Point(717, 236);
-            this.textBox_QuadnET.Name = "textBox_QuadnET";
-            this.textBox_QuadnET.ReadOnly = true;
-            this.textBox_QuadnET.Size = new System.Drawing.Size(61, 20);
-            this.textBox_QuadnET.TabIndex = 556;
+            this.textBox_QuadNet.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_QuadNet.Location = new System.Drawing.Point(717, 236);
+            this.textBox_QuadNet.Name = "textBox_QuadNet";
+            this.textBox_QuadNet.ReadOnly = true;
+            this.textBox_QuadNet.Size = new System.Drawing.Size(61, 20);
+            this.textBox_QuadNet.TabIndex = 556;
             // 
             // textBox_FreqNet
             // 
@@ -6775,7 +6775,7 @@ namespace Developer_Tools
         private System.Windows.Forms.TextBox textBox_SamplesY;
         private System.Windows.Forms.TextBox textBox_SamplesR;
         private System.Windows.Forms.Label label135;
-        private System.Windows.Forms.TextBox textBox_Quadb;
+        private System.Windows.Forms.TextBox textBox_QuadB;
         private System.Windows.Forms.TextBox textBox_FreqB;
         private System.Windows.Forms.TextBox textBox_VAB;
         private System.Windows.Forms.TextBox textBox_VARB;
@@ -6785,7 +6785,7 @@ namespace Developer_Tools
         private System.Windows.Forms.TextBox textBox_CurrB;
         private System.Windows.Forms.TextBox textBox_VolBdc;
         private System.Windows.Forms.TextBox textBox_VolB;
-        private System.Windows.Forms.TextBox textBox_Quady;
+        private System.Windows.Forms.TextBox textBox_QuadY;
         private System.Windows.Forms.TextBox textBox_FreqY;
         private System.Windows.Forms.TextBox textBox_VAY;
         private System.Windows.Forms.TextBox textBox_VARY;
@@ -6795,7 +6795,7 @@ namespace Developer_Tools
         private System.Windows.Forms.TextBox textBox_CurrY;
         private System.Windows.Forms.TextBox textBox_VolYdc;
         private System.Windows.Forms.TextBox textBox_VolY;
-        private System.Windows.Forms.TextBox textBox_QuadnET;
+        private System.Windows.Forms.TextBox textBox_QuadNet;
         private System.Windows.Forms.TextBox textBox_FreqNet;
         private System.Windows.Forms.TextBox textBox_VANet;
         private System.Windows.Forms.TextBox textBox_VARNet;
@@ -6826,7 +6826,7 @@ namespace Developer_Tools
         private System.Windows.Forms.Label label149;
         private System.Windows.Forms.Label label150;
         private System.Windows.Forms.GroupBox groupBox17;
-        private System.Windows.Forms.TextBox textBox_TempTLV;
+        private System.Windows.Forms.TextBox textBox_Temperature;
         private System.Windows.Forms.Label label68;
         private System.Windows.Forms.Label label67;
         private System.Windows.Forms.TextBox textBox_BatteryVoltageRTC;

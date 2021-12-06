@@ -274,8 +274,18 @@ namespace Developer_Tools
             return output_string;
         }
 
-       
-        
+        public static bool checkBit(byte num, byte check_pos_decimal)
+        {
+            if ((num & check_pos_decimal) == check_pos_decimal)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public static bool checkBit(int num, byte check_pos_decimal)
         {
             if ((num & check_pos_decimal) == check_pos_decimal)

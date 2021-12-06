@@ -84,6 +84,11 @@ namespace Developer_Tools
         public static int METER_CONST = 1200, PULSE = 6;
         public double QUANTA = 0.005;
 
+        public double error_act_r, error_act_y, error_act_b, error_act_total;
+        public double error_react_r, error_react_y, error_react_b, error_react_total;
+        public double error_app_r, error_app_y, error_app_b, error_app_total;
+
+        byte[] tamper_status = new byte[8];
 
         public Form1()
         {
@@ -570,186 +575,213 @@ namespace Developer_Tools
             textBox_CurrBdc.Text = CurrBdc.ToString();
             textBox_CurrNdc.Text = CurrNdc.ToString();
 
-            //textBox_PFR.Text = PFR.ToString("0.000");
-            //textBox_PFY.Text = PFY.ToString("0.000");
-            //textBox_PFB.Text = PFB.ToString("0.000");
-            //textBox_PFNet.Text = PFNet.ToString("0.000");
-            //
-            //textBox_AnglePFRph.Text = AnglePFR.ToString("0.00");
-            //textBox_AnglePFYph.Text = AnglePFY.ToString("0.00");
-            //textBox_AnglePFBph.Text = AnglePFB.ToString("0.00");
-            //
-            //textBox_WattR.Text = WattR.ToString("0.0");
-            //textBox_WattY.Text = WattY.ToString("0.0");
-            //textBox_WattB.Text = WattB.ToString("0.0");
-            //textBox_WattNet.Text = WattNet.ToString("0.0");
-            //
-            //textBox_VARR.Text = VARR.ToString("0.0");
-            //textBox_VARY.Text = VARY.ToString("0.0");
-            //textBox_VARB.Text = VARB.ToString("0.0");
-            //textBox_VARNet.Text = VARNet.ToString("0.0");
-            //
-            //textBox_VAR.Text = VAR.ToString("0.0");
-            //textBox_VAY.Text = VAY.ToString("0.0");
-            //textBox_VAB.Text = VAB.ToString("0.0");
-            //textBox_VANet.Text = VANet.ToString("0.0");
-            //
-            //textBox_FreqR.Text = FreqR.ToString("0.000");
-            //textBox_FreqY.Text = FreqY.ToString("0.000");
-            //textBox_FreqB.Text = FreqB.ToString("0.000");
-            //textBox_FreqNet.Text = FreqNet.ToString("0.000");
-            //
-            //textBox_QuadR.Text = QuadrantR.ToString();
-            //textBox_QuadY.Text = QuadrantY.ToString();
-            //textBox_QuadB.Text = QuadrantB.ToString();
-            //textBox_QuadNet.Text = QuadrantNet.ToString();
-            //
-            //textBox_CalAngleActR.Text = CalAngleActR.ToString("0.00");
-            //textBox_CalAngleActY.Text = CalAngleActY.ToString("0.00");
-            //textBox_CalAngleActB.Text = CalAngleActB.ToString("0.00");
-            //
-            //textBox_CalAngleReactR.Text = CalAngleReactR.ToString("0.00");
-            //textBox_CalAngleReactY.Text = CalAngleReactY.ToString("0.00");
-            //textBox_CalAngleReactB.Text = CalAngleReactB.ToString("0.00");
-            //
-            //textBox_SamplesR.Text = SamplesR.ToString();
-            //textBox_SamplesY.Text = SamplesY.ToString();
-            //textBox_SamplesB.Text = SamplesB.ToString();
-            //textBox_SamplesPerSec.Text = SamplesPerSec.ToString();
-            //textBox_SamplesN.Text = SamplesN.ToString();
-            //
-            //textBox_CurrNeuVector.Text = CurrNVector.ToString("0.000");
-            //textBox_AngleNeuVector.Text = AngleNVector.ToString("0.00");
-            //
-            //textBox_Time.Text = Time;
-            //
-            //textBox_VolRY.Text = VolRY.ToString("0.00");
-            //textBox_VolYB.Text = VolYB.ToString("0.00");
-            //textBox_VolBR.Text = VolBR.ToString("0.00");
-            //
-            //textBox_AngleRY.Text = AngleRY.ToString("0.00");
-            //textBox_AngleYB.Text = AngleYB.ToString("0.00");
-            //textBox_AngleBR.Text = AngleBR.ToString("0.00");
-            //
-            //textBox_EnergyWhR.Text = EnergyWhR.ToString("0.0000");
-            //textBox_EnergyWhY.Text = EnergyWhY.ToString("0.0000");
-            //textBox_EnergyWhB.Text = EnergyWhB.ToString("0.0000");
-            //textBox_EnergyWhTotal.Text = EnergyWhTotal.ToString("0.0000");
-            //textBox_EnergyVARhLagTotal.Text = EnergyVARhLagTotal.ToString("0.0000");
-            //textBox_EnergyVARhLeadTotal.Text = EnergyVARhLeadTotal.ToString("0.0000");
-            //textBox_EnergyVAhTotal.Text = EnergyVAhTotal.ToString("0.0000");
-            //
-            //labelMetrologyTimer.Text = metrology_timer.ToString();
-            //
-            //textBox_ErrorActR.Text = error_act_r.ToString("0.00");
-            //textBox_ErrorActY.Text = error_act_y.ToString("0.00");
-            //textBox_ErrorActB.Text = error_act_b.ToString("0.00");
-            //textBox_ErrorActTotal.Text = error_act_total.ToString("0.00");
-            //
-            //textBox_ErrorReactR.Text = error_react_r.ToString("0.00");
-            //textBox_ErrorReactY.Text = error_react_y.ToString("0.00");
-            //textBox_ErrorReactB.Text = error_react_b.ToString("0.00");
-            //textBox_ErrorReactTotal.Text = error_react_total.ToString("0.00");
-            //
-            //textBox_ErrorAppR.Text = error_app_r.ToString("0.00");
-            //textBox_ErrorAppY.Text = error_app_y.ToString("0.00");
-            //textBox_ErrorAppB.Text = error_app_b.ToString("0.00");
-            //textBox_ErrorAppTotal.Text = error_app_total.ToString("0.00");
-            //
-            //textBox_TempTLV.Text = temperature_tlv.ToString();
-            //textBox_BatteryVoltage.Text = battery_voltage.ToString("0.00");
-            //
-            //textBox_ReactiveSamples.Text = reactiveSamples.ToString();
-            //textBox_ReactiveTimer.Text = reactiveTimer.ToString();
-            //textBox_ReactiveTimeDelay.Text = reactiveTimeDelay.ToString();
-            //textBox_ReactiveTimeDeviation.Text = reactiveTimeDeviation.ToString();
-            //
-            //textBox_THDVr.Text = THDVr.ToString("0.0");
-            //textBox_THDVy.Text = THDVy.ToString("0.0");
-            //textBox_THDVb.Text = THDVb.ToString("0.0");
-            //textBox_THDIr.Text = THDIr.ToString("0.0");
-            //textBox_THDIy.Text = THDIy.ToString("0.0");
-            //textBox_THDIb.Text = THDIb.ToString("0.0");
-            //
-            //textBox_EnergyWhTotalFunda.Text = EnergyWhTotalFunda.ToString("0.0000");
-            //textBox_LoopCycles.Text = LoopCycles.ToString();
-            //
-            //textBox_TamperStatus.Text = "";
-            //if (DS_Functions.checkBit(tamper_status[7], 0x80) == true) { textBox_TamperStatus.Text += " | bit63"; }
-            //if (DS_Functions.checkBit(tamper_status[7], 0x40) == true) { textBox_TamperStatus.Text += " | bit62"; }
-            //if (DS_Functions.checkBit(tamper_status[7], 0x20) == true) { textBox_TamperStatus.Text += " | bit61"; }
-            //if (DS_Functions.checkBit(tamper_status[7], 0x10) == true) { textBox_TamperStatus.Text += " | bit60"; }
-            //if (DS_Functions.checkBit(tamper_status[7], 0x08) == true) { textBox_TamperStatus.Text += " | bit59"; }
-            //if (DS_Functions.checkBit(tamper_status[7], 0x04) == true) { textBox_TamperStatus.Text += " | bit58"; }
-            //if (DS_Functions.checkBit(tamper_status[7], 0x02) == true) { textBox_TamperStatus.Text += " | bit57"; }
-            //if (DS_Functions.checkBit(tamper_status[7], 0x01) == true) { textBox_TamperStatus.Text += " | bit56"; }
-            //
-            //if (DS_Functions.checkBit(tamper_status[6], 0x80) == true) { textBox_TamperStatus.Text += " | bit55"; }
-            //if (DS_Functions.checkBit(tamper_status[6], 0x40) == true) { textBox_TamperStatus.Text += " | bit54"; }
-            //if (DS_Functions.checkBit(tamper_status[6], 0x20) == true) { textBox_TamperStatus.Text += " | bit53"; }
-            //if (DS_Functions.checkBit(tamper_status[6], 0x10) == true) { textBox_TamperStatus.Text += " | bit52"; }
-            //if (DS_Functions.checkBit(tamper_status[6], 0x08) == true) { textBox_TamperStatus.Text += " | bit51"; }
-            //if (DS_Functions.checkBit(tamper_status[6], 0x04) == true) { textBox_TamperStatus.Text += " | bit50"; }
-            //if (DS_Functions.checkBit(tamper_status[6], 0x02) == true) { textBox_TamperStatus.Text += " | bit49"; }
-            //if (DS_Functions.checkBit(tamper_status[6], 0x01) == true) { textBox_TamperStatus.Text += " | bit48"; }
-            //
-            //if (DS_Functions.checkBit(tamper_status[5], 0x80) == true) { textBox_TamperStatus.Text += " | bit47"; }
-            //if (DS_Functions.checkBit(tamper_status[5], 0x40) == true) { textBox_TamperStatus.Text += " | bit46"; }
-            //if (DS_Functions.checkBit(tamper_status[5], 0x20) == true) { textBox_TamperStatus.Text += " | bit45"; }
-            //if (DS_Functions.checkBit(tamper_status[5], 0x10) == true) { textBox_TamperStatus.Text += " | bit44"; }
-            //if (DS_Functions.checkBit(tamper_status[5], 0x08) == true) { textBox_TamperStatus.Text += " | bit43"; }
-            //if (DS_Functions.checkBit(tamper_status[5], 0x04) == true) { textBox_TamperStatus.Text += " | bit42"; }
-            //if (DS_Functions.checkBit(tamper_status[5], 0x02) == true) { textBox_TamperStatus.Text += " | bit41"; }
-            //if (DS_Functions.checkBit(tamper_status[5], 0x01) == true) { textBox_TamperStatus.Text += " | Faulty Capacitor"; }
-            //
-            //if (DS_Functions.checkBit(tamper_status[4], 0x80) == true) { textBox_TamperStatus.Text += " | RTC Battery Low"; }
-            //if (DS_Functions.checkBit(tamper_status[4], 0x40) == true) { textBox_TamperStatus.Text += " | Over Cureent B"; }
-            //if (DS_Functions.checkBit(tamper_status[4], 0x20) == true) { textBox_TamperStatus.Text += " | Over Current Y"; }
-            //if (DS_Functions.checkBit(tamper_status[4], 0x10) == true) { textBox_TamperStatus.Text += " | Over Current R"; }
-            //if (DS_Functions.checkBit(tamper_status[4], 0x08) == true) { textBox_TamperStatus.Text += " | Abnormal Frequency"; }
-            //if (DS_Functions.checkBit(tamper_status[4], 0x04) == true) { textBox_TamperStatus.Text += " | Two wire"; }
-            //if (DS_Functions.checkBit(tamper_status[4], 0x02) == true) { textBox_TamperStatus.Text += " | RTC Reading Error"; }
-            //if (DS_Functions.checkBit(tamper_status[4], 0x01) == true) { textBox_TamperStatus.Text += " | bit32"; }
-            //
-            //if (DS_Functions.checkBit(tamper_status[3], 0x80) == true) { textBox_TamperStatus.Text += " | 35KV/ESD"; }
-            //if (DS_Functions.checkBit(tamper_status[3], 0x40) == true) { textBox_TamperStatus.Text += " | Invalid phase association"; }
-            //if (DS_Functions.checkBit(tamper_status[3], 0x20) == true) { textBox_TamperStatus.Text += " | Invalid voltage"; }
-            //if (DS_Functions.checkBit(tamper_status[3], 0x10) == true) { textBox_TamperStatus.Text += " | High Neutral Current"; }
-            //if (DS_Functions.checkBit(tamper_status[3], 0x08) == true) { textBox_TamperStatus.Text += " | Wrong connection"; }
-            //if (DS_Functions.checkBit(tamper_status[3], 0x04) == true) { textBox_TamperStatus.Text += " | Main battery low"; }
-            //if (DS_Functions.checkBit(tamper_status[3], 0x02) == true) { textBox_TamperStatus.Text += " | Low Load"; }
-            //if (DS_Functions.checkBit(tamper_status[3], 0x01) == true) { textBox_TamperStatus.Text += " | Over Load"; }
-            //
-            //if (DS_Functions.checkBit(tamper_status[2], 0x80) == true) { textBox_TamperStatus.Text += " | EEPROM Fail"; }
-            //if (DS_Functions.checkBit(tamper_status[2], 0x40) == true) { textBox_TamperStatus.Text += " | B Phase Active Export"; }
-            //if (DS_Functions.checkBit(tamper_status[2], 0x20) == true) { textBox_TamperStatus.Text += " | Y Phase Active Export"; }
-            //if (DS_Functions.checkBit(tamper_status[2], 0x10) == true) { textBox_TamperStatus.Text += " | R Phase Active Export"; }
-            //if (DS_Functions.checkBit(tamper_status[2], 0x08) == true) { textBox_TamperStatus.Text += " | Phase sequence reverse"; }
-            //if (DS_Functions.checkBit(tamper_status[2], 0x04) == true) { textBox_TamperStatus.Text += " | Top Cover"; }
-            //if (DS_Functions.checkBit(tamper_status[2], 0x02) == true) { textBox_TamperStatus.Text += " | Low PF"; }
-            //if (DS_Functions.checkBit(tamper_status[2], 0x01) == true) { textBox_TamperStatus.Text += " | Neutral Disturb"; }
-            //
-            //if (DS_Functions.checkBit(tamper_status[1], 0x80) == true) { textBox_TamperStatus.Text += " | Magnet"; }
-            //if (DS_Functions.checkBit(tamper_status[1], 0x40) == true) { textBox_TamperStatus.Text += " | Over Current"; }
-            //if (DS_Functions.checkBit(tamper_status[1], 0x20) == true) { textBox_TamperStatus.Text += " | CT Bypass"; }
-            //if (DS_Functions.checkBit(tamper_status[1], 0x10) == true) { textBox_TamperStatus.Text += " | Current Unbalance"; }
-            //if (DS_Functions.checkBit(tamper_status[1], 0x08) == true) { textBox_TamperStatus.Text += " | CY Open B"; }
-            //if (DS_Functions.checkBit(tamper_status[1], 0x04) == true) { textBox_TamperStatus.Text += " | CT Open Y"; }
-            //if (DS_Functions.checkBit(tamper_status[1], 0x02) == true) { textBox_TamperStatus.Text += " | CT Open R"; }
-            //if (DS_Functions.checkBit(tamper_status[1], 0x01) == true) { textBox_TamperStatus.Text += " | CT Reverse B"; }
-            //
-            //if (DS_Functions.checkBit(tamper_status[0], 0x80) == true) { textBox_TamperStatus.Text += " | CT Reverse Y"; }
-            //if (DS_Functions.checkBit(tamper_status[0], 0x40) == true) { textBox_TamperStatus.Text += " | CT Reverse R"; }
-            //if (DS_Functions.checkBit(tamper_status[0], 0x20) == true) { textBox_TamperStatus.Text += " | Vol Unbalance"; }
-            //if (DS_Functions.checkBit(tamper_status[0], 0x10) == true) { textBox_TamperStatus.Text += " | Vol Low"; }
-            //if (DS_Functions.checkBit(tamper_status[0], 0x08) == true) { textBox_TamperStatus.Text += " | Vol High"; }
-            //if (DS_Functions.checkBit(tamper_status[0], 0x04) == true) { textBox_TamperStatus.Text += " | Vol Miss B"; }
-            //if (DS_Functions.checkBit(tamper_status[0], 0x02) == true) { textBox_TamperStatus.Text += " | Vol Miss Y"; }
-            //if (DS_Functions.checkBit(tamper_status[0], 0x01) == true) { textBox_TamperStatus.Text += " | Vol Miss R"; }
-            //
-            //
-            //textBox_MISCData.Text = MISCData;
-            //
+            textBox_PFR.Text = PFR.ToString("0.000");
+            textBox_PFY.Text = PFY.ToString("0.000");
+            textBox_PFB.Text = PFB.ToString("0.000");
+            textBox_PFNet.Text = PFNet.ToString("0.000");
+           
+            textBox_AnglePFRph.Text = AnglePFR.ToString("0.00");
+            textBox_AnglePFYph.Text = AnglePFY.ToString("0.00");
+            textBox_AnglePFBph.Text = AnglePFB.ToString("0.00");
+            
+            textBox_WattR.Text = WattR.ToString("0.0");
+            textBox_WattY.Text = WattY.ToString("0.0");
+            textBox_WattB.Text = WattB.ToString("0.0");
+            textBox_WattNet.Text = WattNet.ToString("0.0");
+            
+            textBox_VARR.Text = VARR.ToString("0.0");
+            textBox_VARY.Text = VARY.ToString("0.0");
+            textBox_VARB.Text = VARB.ToString("0.0");
+            textBox_VARNet.Text = VARNet.ToString("0.0");
+            
+            textBox_VAR.Text = VAR.ToString("0.0");
+            textBox_VAY.Text = VAY.ToString("0.0");
+            textBox_VAB.Text = VAB.ToString("0.0");
+            textBox_VANet.Text = VANet.ToString("0.0");
+            
+            textBox_FreqR.Text = FreqR.ToString("0.000");
+            textBox_FreqY.Text = FreqY.ToString("0.000");
+            textBox_FreqB.Text = FreqB.ToString("0.000");
+            textBox_FreqNet.Text = FreqNet.ToString("0.000");
+            
+            textBox_QuadR.Text = QuadrantR.ToString();
+            textBox_QuadY.Text = QuadrantY.ToString();
+            textBox_QuadB.Text = QuadrantB.ToString();
+            textBox_QuadNet.Text = QuadrantNet.ToString();
+            
+            textBox_SamplesR.Text = SamplesR.ToString();
+            textBox_SamplesY.Text = SamplesY.ToString();
+            textBox_SamplesB.Text = SamplesB.ToString();
+            textBox_SamplesPerSec.Text = SamplesPerSec.ToString();
+            textBox_SamplesN.Text = SamplesN.ToString();
+
+            textBox_THDVr.Text = THDVr.ToString("0.0");
+            textBox_THDVy.Text = THDVy.ToString("0.0");
+            textBox_THDVb.Text = THDVb.ToString("0.0");
+            textBox_THDIr.Text = THDIr.ToString("0.0");
+            textBox_THDIy.Text = THDIy.ToString("0.0");
+            textBox_THDIb.Text = THDIb.ToString("0.0");
+
+            textBox_EnergyWhImportR.Text = EnergyWhR_imp.ToString("0.000");
+            textBox_EnergyWhImportY.Text = EnergyWhY_imp.ToString("0.000");
+            textBox_EnergyWhImportB.Text = EnergyWhB_imp.ToString("0.000");
+            textBox_EnergyWhImportTotal.Text = EnergyWhTotal_imp.ToString("0.000");
+            textBox_EnergyWhExportR.Text = EnergyWhR_exp.ToString("0.000");
+            textBox_EnergyWhExportY.Text = EnergyWhY_exp.ToString("0.000");
+            textBox_EnergyWhExportB.Text = EnergyWhB_exp.ToString("0.000");
+            textBox_EnergyWhExportTotal.Text = EnergyWhTotal_exp.ToString("0.000");
+
+            textBox_EnergyVARhQ1R.Text = EnergyVARhR_q1.ToString("0.000");
+            textBox_EnergyVARhQ1Y.Text = EnergyVARhY_q1.ToString("0.000");
+            textBox_EnergyVARhQ1B.Text = EnergyVARhB_q1.ToString("0.000");
+            textBox_EnergyVARhQ1Total.Text = EnergyVARhTotal_q1.ToString("0.000");
+            textBox_EnergyVARhQ2R.Text = EnergyVARhR_q2.ToString("0.000");
+            textBox_EnergyVARhQ2Y.Text = EnergyVARhY_q2.ToString("0.000");
+            textBox_EnergyVARhQ2B.Text = EnergyVARhB_q2.ToString("0.000");
+            textBox_EnergyVARhQ2Total.Text = EnergyVARhTotal_q2.ToString("0.000");
+            textBox_EnergyVARhQ3R.Text = EnergyVARhR_q3.ToString("0.000");
+            textBox_EnergyVARhQ3Y.Text = EnergyVARhY_q3.ToString("0.000");
+            textBox_EnergyVARhQ3B.Text = EnergyVARhB_q3.ToString("0.000");
+            textBox_EnergyVARhQ3Total.Text = EnergyVARhTotal_q3.ToString("0.000"); 
+            textBox_EnergyVARhQ4R.Text = EnergyVARhR_q4.ToString("0.000");
+            textBox_EnergyVARhQ4Y.Text = EnergyVARhY_q4.ToString("0.000");
+            textBox_EnergyVARhQ4B.Text = EnergyVARhB_q4.ToString("0.000");
+            textBox_EnergyVARhQ4Total.Text = EnergyVARhTotal_q4.ToString("0.000");
+
+            textBox_EnergyVAhImportR.Text = EnergyVAhR_imp.ToString("0.000");
+            textBox_EnergyVAhImportY.Text = EnergyVAhY_imp.ToString("0.000");
+            textBox_EnergyVAhImportB.Text = EnergyVAhB_imp.ToString("0.000");
+            textBox_EnergyVAhImportTotal.Text = EnergyVAhTotal_imp.ToString("0.000");
+            textBox_EnergyVAhExportR.Text = EnergyVAhR_exp.ToString("0.000");
+            textBox_EnergyVAhExportY.Text = EnergyVAhY_exp.ToString("0.000");
+            textBox_EnergyVAhExportB.Text = EnergyVAhB_exp.ToString("0.000");
+            textBox_EnergyVAhExportTotal.Text = EnergyVAhTotal_exp.ToString("0.000");
+
+            textBox_FEnergyWhImportR.Text = EnergyFWhR_imp.ToString("0.000");
+            textBox_FEnergyWhImportY.Text = EnergyFWhY_imp.ToString("0.000");
+            textBox_FEnergyWhImportB.Text = EnergyFWhB_imp.ToString("0.000");
+            textBox_FEnergyWhImportTotal.Text = EnergyFWhTotal_imp.ToString("0.000");
+            textBox_FEnergyWhExportR.Text = EnergyFWhR_exp.ToString("0.000");
+            textBox_FEnergyWhExportY.Text = EnergyFWhY_exp.ToString("0.000");
+            textBox_FEnergyWhExportB.Text = EnergyFWhB_exp.ToString("0.000");
+            textBox_FEnergyWhExportTotal.Text = EnergyFWhTotal_exp.ToString("0.000");
+
+            textBox_ErrorActR.Text = error_act_r.ToString("0.00");
+            textBox_ErrorActY.Text = error_act_y.ToString("0.00");
+            textBox_ErrorActB.Text = error_act_b.ToString("0.00");
+            textBox_ErrorActTotal.Text = error_act_total.ToString("0.00");
+            
+            textBox_ErrorReactR.Text = error_react_r.ToString("0.00");
+            textBox_ErrorReactY.Text = error_react_y.ToString("0.00");
+            textBox_ErrorReactB.Text = error_react_b.ToString("0.00");
+            textBox_ErrorReactTotal.Text = error_react_total.ToString("0.00");
+            
+            textBox_ErrorAppR.Text = error_app_r.ToString("0.00");
+            textBox_ErrorAppY.Text = error_app_y.ToString("0.00");
+            textBox_ErrorAppB.Text = error_app_b.ToString("0.00");
+            textBox_ErrorAppTotal.Text = error_app_total.ToString("0.00");
+
+
+            textBox_CurrNeuVector.Text = CurrNVector.ToString("0.000");
+            textBox_AngleNeuVector.Text = AngleNVector.ToString("0.00");
+            
+            textBox_Time.Text = Time;
+            textBox_MetrologyTimer.Text = powerUpSec.ToString();
+
+            textBox_VolRY.Text = VolRY.ToString("0.00");
+            textBox_VolYB.Text = VolYB.ToString("0.00");
+            textBox_VolBR.Text = VolBR.ToString("0.00");
+            
+            textBox_AngleRY.Text = AngleRY.ToString("0.00");
+            textBox_AngleYB.Text = AngleYB.ToString("0.00");
+            textBox_AngleBR.Text = AngleBR.ToString("0.00");
+
+            textBox_Temperature.Text = temperature_tlv.ToString();
+            textBox_BatteryVoltage.Text = battery_voltage.ToString("0.00");
+            textBox_BatteryVoltageRTC.Text = battery_voltage_rtc.ToString("0.00");
+            textBox_LoopCycles.Text = LoopCycles.ToString();
+
+            textBox_ReactiveSamples.Text = reactiveSamples.ToString();
+            textBox_ReactiveTimer.Text = reactiveTimer.ToString();
+            textBox_ReactiveTimeDelay.Text = reactiveTimeDelay.ToString();
+            textBox_ReactiveTimeDeviation.Text = reactiveTimeDeviation.ToString();
+            
+
+            textBox_TamperStatus.Text = "";
+            if (DS_Functions.checkBit(tamper_status[7], 0x80) == true) { textBox_TamperStatus.Text += " | bit63"; }
+            if (DS_Functions.checkBit(tamper_status[7], 0x40) == true) { textBox_TamperStatus.Text += " | bit62"; }
+            if (DS_Functions.checkBit(tamper_status[7], 0x20) == true) { textBox_TamperStatus.Text += " | bit61"; }
+            if (DS_Functions.checkBit(tamper_status[7], 0x10) == true) { textBox_TamperStatus.Text += " | bit60"; }
+            if (DS_Functions.checkBit(tamper_status[7], 0x08) == true) { textBox_TamperStatus.Text += " | bit59"; }
+            if (DS_Functions.checkBit(tamper_status[7], 0x04) == true) { textBox_TamperStatus.Text += " | bit58"; }
+            if (DS_Functions.checkBit(tamper_status[7], 0x02) == true) { textBox_TamperStatus.Text += " | bit57"; }
+            if (DS_Functions.checkBit(tamper_status[7], 0x01) == true) { textBox_TamperStatus.Text += " | bit56"; }
+            
+            if (DS_Functions.checkBit(tamper_status[6], 0x80) == true) { textBox_TamperStatus.Text += " | bit55"; }
+            if (DS_Functions.checkBit(tamper_status[6], 0x40) == true) { textBox_TamperStatus.Text += " | bit54"; }
+            if (DS_Functions.checkBit(tamper_status[6], 0x20) == true) { textBox_TamperStatus.Text += " | bit53"; }
+            if (DS_Functions.checkBit(tamper_status[6], 0x10) == true) { textBox_TamperStatus.Text += " | bit52"; }
+            if (DS_Functions.checkBit(tamper_status[6], 0x08) == true) { textBox_TamperStatus.Text += " | bit51"; }
+            if (DS_Functions.checkBit(tamper_status[6], 0x04) == true) { textBox_TamperStatus.Text += " | bit50"; }
+            if (DS_Functions.checkBit(tamper_status[6], 0x02) == true) { textBox_TamperStatus.Text += " | bit49"; }
+            if (DS_Functions.checkBit(tamper_status[6], 0x01) == true) { textBox_TamperStatus.Text += " | bit48"; }
+            
+            if (DS_Functions.checkBit(tamper_status[5], 0x80) == true) { textBox_TamperStatus.Text += " | bit47"; }
+            if (DS_Functions.checkBit(tamper_status[5], 0x40) == true) { textBox_TamperStatus.Text += " | bit46"; }
+            if (DS_Functions.checkBit(tamper_status[5], 0x20) == true) { textBox_TamperStatus.Text += " | bit45"; }
+            if (DS_Functions.checkBit(tamper_status[5], 0x10) == true) { textBox_TamperStatus.Text += " | bit44"; }
+            if (DS_Functions.checkBit(tamper_status[5], 0x08) == true) { textBox_TamperStatus.Text += " | bit43"; }
+            if (DS_Functions.checkBit(tamper_status[5], 0x04) == true) { textBox_TamperStatus.Text += " | bit42"; }
+            if (DS_Functions.checkBit(tamper_status[5], 0x02) == true) { textBox_TamperStatus.Text += " | bit41"; }
+            if (DS_Functions.checkBit(tamper_status[5], 0x01) == true) { textBox_TamperStatus.Text += " | Faulty Capacitor"; }
+            
+            if (DS_Functions.checkBit(tamper_status[4], 0x80) == true) { textBox_TamperStatus.Text += " | RTC Battery Low"; }
+            if (DS_Functions.checkBit(tamper_status[4], 0x40) == true) { textBox_TamperStatus.Text += " | Over Cureent B"; }
+            if (DS_Functions.checkBit(tamper_status[4], 0x20) == true) { textBox_TamperStatus.Text += " | Over Current Y"; }
+            if (DS_Functions.checkBit(tamper_status[4], 0x10) == true) { textBox_TamperStatus.Text += " | Over Current R"; }
+            if (DS_Functions.checkBit(tamper_status[4], 0x08) == true) { textBox_TamperStatus.Text += " | Abnormal Frequency"; }
+            if (DS_Functions.checkBit(tamper_status[4], 0x04) == true) { textBox_TamperStatus.Text += " | Two wire"; }
+            if (DS_Functions.checkBit(tamper_status[4], 0x02) == true) { textBox_TamperStatus.Text += " | RTC Reading Error"; }
+            if (DS_Functions.checkBit(tamper_status[4], 0x01) == true) { textBox_TamperStatus.Text += " | bit32"; }
+            
+            if (DS_Functions.checkBit(tamper_status[3], 0x80) == true) { textBox_TamperStatus.Text += " | 35KV/ESD"; }
+            if (DS_Functions.checkBit(tamper_status[3], 0x40) == true) { textBox_TamperStatus.Text += " | Invalid phase association"; }
+            if (DS_Functions.checkBit(tamper_status[3], 0x20) == true) { textBox_TamperStatus.Text += " | Invalid voltage"; }
+            if (DS_Functions.checkBit(tamper_status[3], 0x10) == true) { textBox_TamperStatus.Text += " | High Neutral Current"; }
+            if (DS_Functions.checkBit(tamper_status[3], 0x08) == true) { textBox_TamperStatus.Text += " | Wrong connection"; }
+            if (DS_Functions.checkBit(tamper_status[3], 0x04) == true) { textBox_TamperStatus.Text += " | Main battery low"; }
+            if (DS_Functions.checkBit(tamper_status[3], 0x02) == true) { textBox_TamperStatus.Text += " | Low Load"; }
+            if (DS_Functions.checkBit(tamper_status[3], 0x01) == true) { textBox_TamperStatus.Text += " | Over Load"; }
+            
+            if (DS_Functions.checkBit(tamper_status[2], 0x80) == true) { textBox_TamperStatus.Text += " | EEPROM Fail"; }
+            if (DS_Functions.checkBit(tamper_status[2], 0x40) == true) { textBox_TamperStatus.Text += " | B Phase Active Export"; }
+            if (DS_Functions.checkBit(tamper_status[2], 0x20) == true) { textBox_TamperStatus.Text += " | Y Phase Active Export"; }
+            if (DS_Functions.checkBit(tamper_status[2], 0x10) == true) { textBox_TamperStatus.Text += " | R Phase Active Export"; }
+            if (DS_Functions.checkBit(tamper_status[2], 0x08) == true) { textBox_TamperStatus.Text += " | Phase sequence reverse"; }
+            if (DS_Functions.checkBit(tamper_status[2], 0x04) == true) { textBox_TamperStatus.Text += " | Top Cover"; }
+            if (DS_Functions.checkBit(tamper_status[2], 0x02) == true) { textBox_TamperStatus.Text += " | Low PF"; }
+            if (DS_Functions.checkBit(tamper_status[2], 0x01) == true) { textBox_TamperStatus.Text += " | Neutral Disturb"; }
+            
+            if (DS_Functions.checkBit(tamper_status[1], 0x80) == true) { textBox_TamperStatus.Text += " | Magnet"; }
+            if (DS_Functions.checkBit(tamper_status[1], 0x40) == true) { textBox_TamperStatus.Text += " | Over Current"; }
+            if (DS_Functions.checkBit(tamper_status[1], 0x20) == true) { textBox_TamperStatus.Text += " | CT Bypass"; }
+            if (DS_Functions.checkBit(tamper_status[1], 0x10) == true) { textBox_TamperStatus.Text += " | Current Unbalance"; }
+            if (DS_Functions.checkBit(tamper_status[1], 0x08) == true) { textBox_TamperStatus.Text += " | CY Open B"; }
+            if (DS_Functions.checkBit(tamper_status[1], 0x04) == true) { textBox_TamperStatus.Text += " | CT Open Y"; }
+            if (DS_Functions.checkBit(tamper_status[1], 0x02) == true) { textBox_TamperStatus.Text += " | CT Open R"; }
+            if (DS_Functions.checkBit(tamper_status[1], 0x01) == true) { textBox_TamperStatus.Text += " | CT Reverse B"; }
+            
+            if (DS_Functions.checkBit(tamper_status[0], 0x80) == true) { textBox_TamperStatus.Text += " | CT Reverse Y"; }
+            if (DS_Functions.checkBit(tamper_status[0], 0x40) == true) { textBox_TamperStatus.Text += " | CT Reverse R"; }
+            if (DS_Functions.checkBit(tamper_status[0], 0x20) == true) { textBox_TamperStatus.Text += " | Vol Unbalance"; }
+            if (DS_Functions.checkBit(tamper_status[0], 0x10) == true) { textBox_TamperStatus.Text += " | Vol Low"; }
+            if (DS_Functions.checkBit(tamper_status[0], 0x08) == true) { textBox_TamperStatus.Text += " | Vol High"; }
+            if (DS_Functions.checkBit(tamper_status[0], 0x04) == true) { textBox_TamperStatus.Text += " | Vol Miss B"; }
+            if (DS_Functions.checkBit(tamper_status[0], 0x02) == true) { textBox_TamperStatus.Text += " | Vol Miss Y"; }
+            if (DS_Functions.checkBit(tamper_status[0], 0x01) == true) { textBox_TamperStatus.Text += " | Vol Miss R"; }
+            
+            textBox_MISCData.Text = MISCData;
+            
             ///* Vector Diagram Display */
             //if (ShowVectorDiag == true)
             //{
