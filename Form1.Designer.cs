@@ -125,6 +125,7 @@ namespace Developer_Tools
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabControl3 = new System.Windows.Forms.TabControl();
             this.tabPage11 = new System.Windows.Forms.TabPage();
+            this.label69 = new System.Windows.Forms.Label();
             this.groupBox17 = new System.Windows.Forms.GroupBox();
             this.textBox_Temperature = new System.Windows.Forms.TextBox();
             this.label68 = new System.Windows.Forms.Label();
@@ -571,6 +572,10 @@ namespace Developer_Tools
             this.openJSONFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.timer500ms = new System.Windows.Forms.Timer(this.components);
             this.timer100ms = new System.Windows.Forms.Timer(this.components);
+            this.textBox_MeteringMode = new System.Windows.Forms.TextBox();
+            this.groupBox22 = new System.Windows.Forms.GroupBox();
+            this.label70 = new System.Windows.Forms.Label();
+            this.textBox_FgFlag = new System.Windows.Forms.TextBox();
             this.menuStripMain.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -615,6 +620,7 @@ namespace Developer_Tools
             this.groupBox10.SuspendLayout();
             this.groupBox9.SuspendLayout();
             this.groupBox8.SuspendLayout();
+            this.groupBox22.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStripMain
@@ -1565,6 +1571,7 @@ namespace Developer_Tools
             // tabPage11
             // 
             this.tabPage11.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.tabPage11.Controls.Add(this.groupBox22);
             this.tabPage11.Controls.Add(this.groupBox17);
             this.tabPage11.Controls.Add(this.textBox_MISCData);
             this.tabPage11.Controls.Add(this.groupBox21);
@@ -1701,6 +1708,16 @@ namespace Developer_Tools
             this.tabPage11.TabIndex = 5;
             this.tabPage11.Text = "Instant data";
             // 
+            // label69
+            // 
+            this.label69.AutoSize = true;
+            this.label69.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label69.Location = new System.Drawing.Point(6, 18);
+            this.label69.Name = "label69";
+            this.label69.Size = new System.Drawing.Size(106, 17);
+            this.label69.TabIndex = 678;
+            this.label69.Text = "Metering Mode:";
+            // 
             // groupBox17
             // 
             this.groupBox17.Controls.Add(this.textBox_Temperature);
@@ -1714,7 +1731,7 @@ namespace Developer_Tools
             this.groupBox17.Font = new System.Drawing.Font("Palatino Linotype", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox17.Location = new System.Drawing.Point(872, 68);
             this.groupBox17.Name = "groupBox17";
-            this.groupBox17.Size = new System.Drawing.Size(163, 241);
+            this.groupBox17.Size = new System.Drawing.Size(163, 124);
             this.groupBox17.TabIndex = 677;
             this.groupBox17.TabStop = false;
             this.groupBox17.Text = "MISC";
@@ -6385,6 +6402,49 @@ namespace Developer_Tools
             // 
             this.timer100ms.Tick += new System.EventHandler(this.timer100ms_Tick);
             // 
+            // textBox_MeteringMode
+            // 
+            this.textBox_MeteringMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_MeteringMode.Location = new System.Drawing.Point(115, 18);
+            this.textBox_MeteringMode.Name = "textBox_MeteringMode";
+            this.textBox_MeteringMode.ReadOnly = true;
+            this.textBox_MeteringMode.Size = new System.Drawing.Size(40, 20);
+            this.textBox_MeteringMode.TabIndex = 677;
+            this.textBox_MeteringMode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // groupBox22
+            // 
+            this.groupBox22.Controls.Add(this.label70);
+            this.groupBox22.Controls.Add(this.textBox_FgFlag);
+            this.groupBox22.Controls.Add(this.label69);
+            this.groupBox22.Controls.Add(this.textBox_MeteringMode);
+            this.groupBox22.Location = new System.Drawing.Point(873, 193);
+            this.groupBox22.Name = "groupBox22";
+            this.groupBox22.Size = new System.Drawing.Size(161, 117);
+            this.groupBox22.TabIndex = 679;
+            this.groupBox22.TabStop = false;
+            this.groupBox22.Text = "Diag Data";
+            // 
+            // label70
+            // 
+            this.label70.AutoSize = true;
+            this.label70.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label70.Location = new System.Drawing.Point(49, 41);
+            this.label70.Name = "label70";
+            this.label70.Size = new System.Drawing.Size(62, 17);
+            this.label70.TabIndex = 680;
+            this.label70.Text = "FG Flag:";
+            // 
+            // textBox_FgFlag
+            // 
+            this.textBox_FgFlag.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_FgFlag.Location = new System.Drawing.Point(115, 40);
+            this.textBox_FgFlag.Name = "textBox_FgFlag";
+            this.textBox_FgFlag.ReadOnly = true;
+            this.textBox_FgFlag.Size = new System.Drawing.Size(40, 20);
+            this.textBox_FgFlag.TabIndex = 679;
+            this.textBox_FgFlag.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -6479,6 +6539,8 @@ namespace Developer_Tools
             this.groupBox9.ResumeLayout(false);
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
+            this.groupBox22.ResumeLayout(false);
+            this.groupBox22.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -7026,6 +7088,11 @@ namespace Developer_Tools
         private System.Windows.Forms.Button button_SendRepeatStop;
         private System.Windows.Forms.Label label47;
         private System.Windows.Forms.TextBox textBox_InputMeterConst;
+        private System.Windows.Forms.Label label69;
+        private System.Windows.Forms.GroupBox groupBox22;
+        private System.Windows.Forms.Label label70;
+        private System.Windows.Forms.TextBox textBox_FgFlag;
+        private System.Windows.Forms.TextBox textBox_MeteringMode;
     }
 }
 

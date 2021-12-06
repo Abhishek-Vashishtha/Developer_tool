@@ -37,7 +37,7 @@ namespace Developer_Tools
         public static double ip_freq;
         public static double ip_watt_r, ip_watt_y, ip_watt_b, ip_watt_total_fwd, ip_watt_total_net, ip_var_r, ip_var_y, ip_var_b, ip_var_total_fwd, ip_var_total_net, ip_va_r, ip_va_y, ip_va_b, ip_va_total_fwd, ip_va_total_net;
         public static double ip_pf_r, ip_pf_y, ip_pf_b, ip_pf_fwd, ip_pf_net;
-        public static int metering_mode;
+        public static int ip_metering_mode;
         /* error calculation */
         public static int ip_avg_samples;
         public static bool cal_accuracy;
@@ -81,7 +81,7 @@ namespace Developer_Tools
         public static long LoopCycles;
         public static double battery_voltage, battery_voltage_rtc, temperature_tlv;
         public static string MISCData, TamperStatus;
-
+        public static byte MeteringMode, fg_flag;
         public static int METER_CONST = 1200, PULSE = 6;
         
         public static double error_act_r, error_act_y, error_act_b, error_act_total;
@@ -793,6 +793,11 @@ namespace Developer_Tools
             if (DS_Functions.checkBit(tamper_status[0], 0x01) == true) { TamperStatus += " | Vol Miss R"; }
 
             textBox_TamperStatus.Text = TamperStatus;
+            if (MeteringMode == 0)
+                textBox_MeteringMode.Text = "Fwd";
+            else
+                textBox_MeteringMode.Text = "Net";
+            textBox_FgFlag.Text = fg_flag.ToString();
             textBox_MISCData.Text = MISCData;
 
             ///* Vector Diagram Display */
@@ -964,15 +969,11 @@ namespace Developer_Tools
 
             if (radioButton_InputModeFwd.Checked == true)
             {
-                metering_mode = 1;                                          /* Forwarded Metering */
-            }
-            else if (radioButton_InputModeNet.Checked == true)
-            {
-                metering_mode = 2;                                          /* Net Metering */
+                ip_metering_mode = 0;                                          /* Forwarded Metering */
             }
             else
             {
-                metering_mode = 0;
+                ip_metering_mode = 1;                                          /* Net Metering */
             }
 
             cal_accuracy = checkBox_ErrorCalculateEnable.Checked;
@@ -1385,7 +1386,20 @@ namespace Developer_Tools
                     tamper_status[1] = b_array[arr_ptr++];
                     tamper_status[0] = b_array[arr_ptr++];
 
-                    // Reserved diag string of 8 bytes
+                    /* Reserved diag string of 8 bytes */
+                    /* byte 0 - b7 b6 b5 b4 b3 b2 b1_FG_Flag b0_MeteringMode
+                     * byte 1 - b7 b6 b5 b4 b3 b2 b1 b0
+                     * byte 2 - b7 b6 b5 b4 b3 b2 b1 b0
+                     * byte 3 - b7 b6 b5 b4 b3 b2 b1 b0
+                     * byte 4 - b7 b6 b5 b4 b3 b2 b1 b0
+                     * byte 5 - b7 b6 b5 b4 b3 b2 b1 b0
+                     * byte 6 - b7 b6 b5 b4 b3 b2 b1 b0
+                     * byte 7 - b7 b6 b5 b4 b3 b2 b1 b0
+                     */
+                    /* byte 0 */
+                    MeteringMode = (byte)(b_array[arr_ptr] & 0x01);
+                    fg_flag = (byte)((b_array[arr_ptr] >> 1) & 0x01);   
+
                     arr_ptr += 8;
                     // Reserved byte array of 8 bytes
                     arr_ptr += 8;
@@ -1557,7 +1571,7 @@ namespace Developer_Tools
                         {
                             error_app_b = (ip_va_b - VAB) * 100 / ip_va_b;
                         }
-                        if (metering_mode == 1)  /* Forwarded */
+                        if (ip_metering_mode == 1)  /* Forwarded */
                         {
                             if (ip_watt_total_fwd != 0)
                             {
@@ -1572,7 +1586,7 @@ namespace Developer_Tools
                                 error_app_total = (ip_va_total_fwd - VANet) * 100 / ip_va_total_fwd;
                             }
                         }
-                        else if (metering_mode == 2) /* Net */
+                        else if (ip_metering_mode == 2) /* Net */
                         {
                             if (ip_watt_total_net != 0)
                             {
