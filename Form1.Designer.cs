@@ -1725,6 +1725,7 @@ namespace Developer_Tools
             this.textBox_Temperature.ReadOnly = true;
             this.textBox_Temperature.Size = new System.Drawing.Size(63, 20);
             this.textBox_Temperature.TabIndex = 667;
+            this.textBox_Temperature.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label68
             // 
@@ -1754,6 +1755,7 @@ namespace Developer_Tools
             this.textBox_BatteryVoltageRTC.ReadOnly = true;
             this.textBox_BatteryVoltageRTC.Size = new System.Drawing.Size(63, 20);
             this.textBox_BatteryVoltageRTC.TabIndex = 676;
+            this.textBox_BatteryVoltageRTC.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_LoopCycles
             // 
@@ -1763,6 +1765,7 @@ namespace Developer_Tools
             this.textBox_LoopCycles.ReadOnly = true;
             this.textBox_LoopCycles.Size = new System.Drawing.Size(63, 20);
             this.textBox_LoopCycles.TabIndex = 672;
+            this.textBox_LoopCycles.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label117
             // 
@@ -1792,6 +1795,7 @@ namespace Developer_Tools
             this.textBox_BatteryVoltage.ReadOnly = true;
             this.textBox_BatteryVoltage.Size = new System.Drawing.Size(63, 20);
             this.textBox_BatteryVoltage.TabIndex = 669;
+            this.textBox_BatteryVoltage.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_MISCData
             // 
@@ -1827,6 +1831,7 @@ namespace Developer_Tools
             this.textBox_ReactiveTimeDeviation.Name = "textBox_ReactiveTimeDeviation";
             this.textBox_ReactiveTimeDeviation.Size = new System.Drawing.Size(62, 22);
             this.textBox_ReactiveTimeDeviation.TabIndex = 7;
+            this.textBox_ReactiveTimeDeviation.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label112
             // 
@@ -1845,6 +1850,7 @@ namespace Developer_Tools
             this.textBox_ReactiveTimeDelay.Name = "textBox_ReactiveTimeDelay";
             this.textBox_ReactiveTimeDelay.Size = new System.Drawing.Size(62, 22);
             this.textBox_ReactiveTimeDelay.TabIndex = 5;
+            this.textBox_ReactiveTimeDelay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label111
             // 
@@ -1863,6 +1869,7 @@ namespace Developer_Tools
             this.textBox_ReactiveTimer.Name = "textBox_ReactiveTimer";
             this.textBox_ReactiveTimer.Size = new System.Drawing.Size(62, 22);
             this.textBox_ReactiveTimer.TabIndex = 3;
+            this.textBox_ReactiveTimer.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_ReactiveSamples
             // 
@@ -1871,6 +1878,7 @@ namespace Developer_Tools
             this.textBox_ReactiveSamples.Name = "textBox_ReactiveSamples";
             this.textBox_ReactiveSamples.Size = new System.Drawing.Size(62, 22);
             this.textBox_ReactiveSamples.TabIndex = 2;
+            this.textBox_ReactiveSamples.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label110
             // 
@@ -1941,6 +1949,7 @@ namespace Developer_Tools
             this.textBox_VolRY.ReadOnly = true;
             this.textBox_VolRY.Size = new System.Drawing.Size(50, 20);
             this.textBox_VolRY.TabIndex = 457;
+            this.textBox_VolRY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label58
             // 
@@ -1972,6 +1981,7 @@ namespace Developer_Tools
             this.textBox_AngleBR.ReadOnly = true;
             this.textBox_AngleBR.Size = new System.Drawing.Size(50, 20);
             this.textBox_AngleBR.TabIndex = 462;
+            this.textBox_AngleBR.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_VolBR
             // 
@@ -1981,6 +1991,7 @@ namespace Developer_Tools
             this.textBox_VolBR.ReadOnly = true;
             this.textBox_VolBR.Size = new System.Drawing.Size(50, 20);
             this.textBox_VolBR.TabIndex = 461;
+            this.textBox_VolBR.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_AngleYB
             // 
@@ -1990,6 +2001,7 @@ namespace Developer_Tools
             this.textBox_AngleYB.ReadOnly = true;
             this.textBox_AngleYB.Size = new System.Drawing.Size(50, 20);
             this.textBox_AngleYB.TabIndex = 460;
+            this.textBox_AngleYB.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_VolYB
             // 
@@ -1999,6 +2011,7 @@ namespace Developer_Tools
             this.textBox_VolYB.ReadOnly = true;
             this.textBox_VolYB.Size = new System.Drawing.Size(50, 20);
             this.textBox_VolYB.TabIndex = 459;
+            this.textBox_VolYB.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_AngleRY
             // 
@@ -2008,6 +2021,7 @@ namespace Developer_Tools
             this.textBox_AngleRY.ReadOnly = true;
             this.textBox_AngleRY.Size = new System.Drawing.Size(50, 20);
             this.textBox_AngleRY.TabIndex = 458;
+            this.textBox_AngleRY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label59
             // 
@@ -2038,6 +2052,7 @@ namespace Developer_Tools
             this.textBox_MetrologyTimer.ReadOnly = true;
             this.textBox_MetrologyTimer.Size = new System.Drawing.Size(84, 23);
             this.textBox_MetrologyTimer.TabIndex = 665;
+            this.textBox_MetrologyTimer.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label55
             // 
@@ -2097,6 +2112,7 @@ namespace Developer_Tools
             this.textBox_AngleNeuVector.ReadOnly = true;
             this.textBox_AngleNeuVector.Size = new System.Drawing.Size(61, 20);
             this.textBox_AngleNeuVector.TabIndex = 421;
+            this.textBox_AngleNeuVector.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label62
             // 
@@ -2116,6 +2132,7 @@ namespace Developer_Tools
             this.textBox_CurrNeuVector.ReadOnly = true;
             this.textBox_CurrNeuVector.Size = new System.Drawing.Size(61, 20);
             this.textBox_CurrNeuVector.TabIndex = 419;
+            this.textBox_CurrNeuVector.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label63
             // 
@@ -2135,6 +2152,7 @@ namespace Developer_Tools
             this.textBox_SamplesN.ReadOnly = true;
             this.textBox_SamplesN.Size = new System.Drawing.Size(61, 20);
             this.textBox_SamplesN.TabIndex = 417;
+            this.textBox_SamplesN.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label64
             // 
@@ -2164,6 +2182,7 @@ namespace Developer_Tools
             this.textBox_CurrN.ReadOnly = true;
             this.textBox_CurrN.Size = new System.Drawing.Size(61, 20);
             this.textBox_CurrN.TabIndex = 365;
+            this.textBox_CurrN.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_CurrNdc
             // 
@@ -2173,6 +2192,7 @@ namespace Developer_Tools
             this.textBox_CurrNdc.ReadOnly = true;
             this.textBox_CurrNdc.Size = new System.Drawing.Size(61, 20);
             this.textBox_CurrNdc.TabIndex = 366;
+            this.textBox_CurrNdc.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // groupBox15
             // 
@@ -2866,6 +2886,7 @@ namespace Developer_Tools
             this.textBox_ErrorAppB.ReadOnly = true;
             this.textBox_ErrorAppB.Size = new System.Drawing.Size(61, 20);
             this.textBox_ErrorAppB.TabIndex = 521;
+            this.textBox_ErrorAppB.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_ErrorAppY
             // 
@@ -2876,6 +2897,7 @@ namespace Developer_Tools
             this.textBox_ErrorAppY.ReadOnly = true;
             this.textBox_ErrorAppY.Size = new System.Drawing.Size(61, 20);
             this.textBox_ErrorAppY.TabIndex = 520;
+            this.textBox_ErrorAppY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_ErrorAppTotal
             // 
@@ -2885,6 +2907,7 @@ namespace Developer_Tools
             this.textBox_ErrorAppTotal.ReadOnly = true;
             this.textBox_ErrorAppTotal.Size = new System.Drawing.Size(61, 20);
             this.textBox_ErrorAppTotal.TabIndex = 519;
+            this.textBox_ErrorAppTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_ErrorAppR
             // 
@@ -2895,6 +2918,7 @@ namespace Developer_Tools
             this.textBox_ErrorAppR.ReadOnly = true;
             this.textBox_ErrorAppR.Size = new System.Drawing.Size(61, 20);
             this.textBox_ErrorAppR.TabIndex = 518;
+            this.textBox_ErrorAppR.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_ErrorReactB
             // 
@@ -2905,6 +2929,7 @@ namespace Developer_Tools
             this.textBox_ErrorReactB.ReadOnly = true;
             this.textBox_ErrorReactB.Size = new System.Drawing.Size(61, 20);
             this.textBox_ErrorReactB.TabIndex = 517;
+            this.textBox_ErrorReactB.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_ErrorReactY
             // 
@@ -2915,6 +2940,7 @@ namespace Developer_Tools
             this.textBox_ErrorReactY.ReadOnly = true;
             this.textBox_ErrorReactY.Size = new System.Drawing.Size(61, 20);
             this.textBox_ErrorReactY.TabIndex = 516;
+            this.textBox_ErrorReactY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_ErrorReactTotal
             // 
@@ -2924,6 +2950,7 @@ namespace Developer_Tools
             this.textBox_ErrorReactTotal.ReadOnly = true;
             this.textBox_ErrorReactTotal.Size = new System.Drawing.Size(61, 20);
             this.textBox_ErrorReactTotal.TabIndex = 515;
+            this.textBox_ErrorReactTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_ErrorReactR
             // 
@@ -2934,6 +2961,7 @@ namespace Developer_Tools
             this.textBox_ErrorReactR.ReadOnly = true;
             this.textBox_ErrorReactR.Size = new System.Drawing.Size(61, 20);
             this.textBox_ErrorReactR.TabIndex = 514;
+            this.textBox_ErrorReactR.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_ErrorActB
             // 
@@ -2944,6 +2972,7 @@ namespace Developer_Tools
             this.textBox_ErrorActB.ReadOnly = true;
             this.textBox_ErrorActB.Size = new System.Drawing.Size(61, 20);
             this.textBox_ErrorActB.TabIndex = 513;
+            this.textBox_ErrorActB.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_ErrorActY
             // 
@@ -2954,6 +2983,7 @@ namespace Developer_Tools
             this.textBox_ErrorActY.ReadOnly = true;
             this.textBox_ErrorActY.Size = new System.Drawing.Size(61, 20);
             this.textBox_ErrorActY.TabIndex = 512;
+            this.textBox_ErrorActY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_ErrorActTotal
             // 
@@ -2963,6 +2993,7 @@ namespace Developer_Tools
             this.textBox_ErrorActTotal.ReadOnly = true;
             this.textBox_ErrorActTotal.Size = new System.Drawing.Size(61, 20);
             this.textBox_ErrorActTotal.TabIndex = 511;
+            this.textBox_ErrorActTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label171
             // 
@@ -2983,6 +3014,7 @@ namespace Developer_Tools
             this.textBox_ErrorActR.ReadOnly = true;
             this.textBox_ErrorActR.Size = new System.Drawing.Size(61, 20);
             this.textBox_ErrorActR.TabIndex = 510;
+            this.textBox_ErrorActR.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label172
             // 
@@ -3635,6 +3667,7 @@ namespace Developer_Tools
             this.textBox_THDIb.ReadOnly = true;
             this.textBox_THDIb.Size = new System.Drawing.Size(61, 20);
             this.textBox_THDIb.TabIndex = 599;
+            this.textBox_THDIb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_THDIy
             // 
@@ -3645,6 +3678,7 @@ namespace Developer_Tools
             this.textBox_THDIy.ReadOnly = true;
             this.textBox_THDIy.Size = new System.Drawing.Size(61, 20);
             this.textBox_THDIy.TabIndex = 598;
+            this.textBox_THDIy.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_THDIr
             // 
@@ -3655,6 +3689,7 @@ namespace Developer_Tools
             this.textBox_THDIr.ReadOnly = true;
             this.textBox_THDIr.Size = new System.Drawing.Size(61, 20);
             this.textBox_THDIr.TabIndex = 597;
+            this.textBox_THDIr.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label126
             // 
@@ -3675,6 +3710,7 @@ namespace Developer_Tools
             this.textBox_THDVb.ReadOnly = true;
             this.textBox_THDVb.Size = new System.Drawing.Size(61, 20);
             this.textBox_THDVb.TabIndex = 595;
+            this.textBox_THDVb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_THDVy
             // 
@@ -3685,6 +3721,7 @@ namespace Developer_Tools
             this.textBox_THDVy.ReadOnly = true;
             this.textBox_THDVy.Size = new System.Drawing.Size(61, 20);
             this.textBox_THDVy.TabIndex = 594;
+            this.textBox_THDVy.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_THDVr
             // 
@@ -3695,6 +3732,7 @@ namespace Developer_Tools
             this.textBox_THDVr.ReadOnly = true;
             this.textBox_THDVr.Size = new System.Drawing.Size(61, 20);
             this.textBox_THDVr.TabIndex = 593;
+            this.textBox_THDVr.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label133
             // 
@@ -3715,6 +3753,7 @@ namespace Developer_Tools
             this.textBox_SamplesPerSec.ReadOnly = true;
             this.textBox_SamplesPerSec.Size = new System.Drawing.Size(61, 20);
             this.textBox_SamplesPerSec.TabIndex = 591;
+            this.textBox_SamplesPerSec.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_AnglePFBph
             // 
@@ -3725,6 +3764,7 @@ namespace Developer_Tools
             this.textBox_AnglePFBph.ReadOnly = true;
             this.textBox_AnglePFBph.Size = new System.Drawing.Size(61, 20);
             this.textBox_AnglePFBph.TabIndex = 590;
+            this.textBox_AnglePFBph.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_AnglePFYph
             // 
@@ -3735,6 +3775,7 @@ namespace Developer_Tools
             this.textBox_AnglePFYph.ReadOnly = true;
             this.textBox_AnglePFYph.Size = new System.Drawing.Size(61, 20);
             this.textBox_AnglePFYph.TabIndex = 589;
+            this.textBox_AnglePFYph.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_AnglePFRph
             // 
@@ -3745,6 +3786,7 @@ namespace Developer_Tools
             this.textBox_AnglePFRph.ReadOnly = true;
             this.textBox_AnglePFRph.Size = new System.Drawing.Size(61, 20);
             this.textBox_AnglePFRph.TabIndex = 588;
+            this.textBox_AnglePFRph.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label134
             // 
@@ -3765,6 +3807,7 @@ namespace Developer_Tools
             this.textBox_SamplesB.ReadOnly = true;
             this.textBox_SamplesB.Size = new System.Drawing.Size(61, 20);
             this.textBox_SamplesB.TabIndex = 586;
+            this.textBox_SamplesB.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_SamplesY
             // 
@@ -3775,6 +3818,7 @@ namespace Developer_Tools
             this.textBox_SamplesY.ReadOnly = true;
             this.textBox_SamplesY.Size = new System.Drawing.Size(61, 20);
             this.textBox_SamplesY.TabIndex = 585;
+            this.textBox_SamplesY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_SamplesR
             // 
@@ -3785,6 +3829,7 @@ namespace Developer_Tools
             this.textBox_SamplesR.ReadOnly = true;
             this.textBox_SamplesR.Size = new System.Drawing.Size(61, 20);
             this.textBox_SamplesR.TabIndex = 584;
+            this.textBox_SamplesR.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label135
             // 
@@ -3805,6 +3850,7 @@ namespace Developer_Tools
             this.textBox_QuadB.ReadOnly = true;
             this.textBox_QuadB.Size = new System.Drawing.Size(61, 20);
             this.textBox_QuadB.TabIndex = 578;
+            this.textBox_QuadB.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_FreqB
             // 
@@ -3815,6 +3861,7 @@ namespace Developer_Tools
             this.textBox_FreqB.ReadOnly = true;
             this.textBox_FreqB.Size = new System.Drawing.Size(61, 20);
             this.textBox_FreqB.TabIndex = 577;
+            this.textBox_FreqB.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_VAB
             // 
@@ -3825,6 +3872,7 @@ namespace Developer_Tools
             this.textBox_VAB.ReadOnly = true;
             this.textBox_VAB.Size = new System.Drawing.Size(61, 20);
             this.textBox_VAB.TabIndex = 576;
+            this.textBox_VAB.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_VARB
             // 
@@ -3835,6 +3883,7 @@ namespace Developer_Tools
             this.textBox_VARB.ReadOnly = true;
             this.textBox_VARB.Size = new System.Drawing.Size(61, 20);
             this.textBox_VARB.TabIndex = 575;
+            this.textBox_VARB.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_WattB
             // 
@@ -3845,6 +3894,7 @@ namespace Developer_Tools
             this.textBox_WattB.ReadOnly = true;
             this.textBox_WattB.Size = new System.Drawing.Size(61, 20);
             this.textBox_WattB.TabIndex = 574;
+            this.textBox_WattB.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_PFB
             // 
@@ -3855,6 +3905,7 @@ namespace Developer_Tools
             this.textBox_PFB.ReadOnly = true;
             this.textBox_PFB.Size = new System.Drawing.Size(61, 20);
             this.textBox_PFB.TabIndex = 572;
+            this.textBox_PFB.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_CurrBdc
             // 
@@ -3865,6 +3916,7 @@ namespace Developer_Tools
             this.textBox_CurrBdc.ReadOnly = true;
             this.textBox_CurrBdc.Size = new System.Drawing.Size(61, 20);
             this.textBox_CurrBdc.TabIndex = 571;
+            this.textBox_CurrBdc.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_CurrB
             // 
@@ -3875,6 +3927,7 @@ namespace Developer_Tools
             this.textBox_CurrB.ReadOnly = true;
             this.textBox_CurrB.Size = new System.Drawing.Size(61, 20);
             this.textBox_CurrB.TabIndex = 570;
+            this.textBox_CurrB.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_VolBdc
             // 
@@ -3885,6 +3938,7 @@ namespace Developer_Tools
             this.textBox_VolBdc.ReadOnly = true;
             this.textBox_VolBdc.Size = new System.Drawing.Size(61, 20);
             this.textBox_VolBdc.TabIndex = 569;
+            this.textBox_VolBdc.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_VolB
             // 
@@ -3895,6 +3949,7 @@ namespace Developer_Tools
             this.textBox_VolB.ReadOnly = true;
             this.textBox_VolB.Size = new System.Drawing.Size(61, 20);
             this.textBox_VolB.TabIndex = 568;
+            this.textBox_VolB.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_QuadY
             // 
@@ -3905,6 +3960,7 @@ namespace Developer_Tools
             this.textBox_QuadY.ReadOnly = true;
             this.textBox_QuadY.Size = new System.Drawing.Size(61, 20);
             this.textBox_QuadY.TabIndex = 567;
+            this.textBox_QuadY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_FreqY
             // 
@@ -3915,6 +3971,7 @@ namespace Developer_Tools
             this.textBox_FreqY.ReadOnly = true;
             this.textBox_FreqY.Size = new System.Drawing.Size(61, 20);
             this.textBox_FreqY.TabIndex = 566;
+            this.textBox_FreqY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_VAY
             // 
@@ -3925,6 +3982,7 @@ namespace Developer_Tools
             this.textBox_VAY.ReadOnly = true;
             this.textBox_VAY.Size = new System.Drawing.Size(61, 20);
             this.textBox_VAY.TabIndex = 565;
+            this.textBox_VAY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_VARY
             // 
@@ -3935,6 +3993,7 @@ namespace Developer_Tools
             this.textBox_VARY.ReadOnly = true;
             this.textBox_VARY.Size = new System.Drawing.Size(61, 20);
             this.textBox_VARY.TabIndex = 564;
+            this.textBox_VARY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_WattY
             // 
@@ -3945,6 +4004,7 @@ namespace Developer_Tools
             this.textBox_WattY.ReadOnly = true;
             this.textBox_WattY.Size = new System.Drawing.Size(61, 20);
             this.textBox_WattY.TabIndex = 563;
+            this.textBox_WattY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_PFY
             // 
@@ -3955,6 +4015,7 @@ namespace Developer_Tools
             this.textBox_PFY.ReadOnly = true;
             this.textBox_PFY.Size = new System.Drawing.Size(61, 20);
             this.textBox_PFY.TabIndex = 561;
+            this.textBox_PFY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_CurrYdc
             // 
@@ -3965,6 +4026,7 @@ namespace Developer_Tools
             this.textBox_CurrYdc.ReadOnly = true;
             this.textBox_CurrYdc.Size = new System.Drawing.Size(61, 20);
             this.textBox_CurrYdc.TabIndex = 560;
+            this.textBox_CurrYdc.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_CurrY
             // 
@@ -3975,6 +4037,7 @@ namespace Developer_Tools
             this.textBox_CurrY.ReadOnly = true;
             this.textBox_CurrY.Size = new System.Drawing.Size(61, 20);
             this.textBox_CurrY.TabIndex = 559;
+            this.textBox_CurrY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_VolYdc
             // 
@@ -3985,6 +4048,7 @@ namespace Developer_Tools
             this.textBox_VolYdc.ReadOnly = true;
             this.textBox_VolYdc.Size = new System.Drawing.Size(61, 20);
             this.textBox_VolYdc.TabIndex = 558;
+            this.textBox_VolYdc.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_VolY
             // 
@@ -3995,6 +4059,7 @@ namespace Developer_Tools
             this.textBox_VolY.ReadOnly = true;
             this.textBox_VolY.Size = new System.Drawing.Size(61, 20);
             this.textBox_VolY.TabIndex = 557;
+            this.textBox_VolY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_QuadNet
             // 
@@ -4004,6 +4069,7 @@ namespace Developer_Tools
             this.textBox_QuadNet.ReadOnly = true;
             this.textBox_QuadNet.Size = new System.Drawing.Size(61, 20);
             this.textBox_QuadNet.TabIndex = 556;
+            this.textBox_QuadNet.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_FreqNet
             // 
@@ -4013,6 +4079,7 @@ namespace Developer_Tools
             this.textBox_FreqNet.ReadOnly = true;
             this.textBox_FreqNet.Size = new System.Drawing.Size(61, 20);
             this.textBox_FreqNet.TabIndex = 555;
+            this.textBox_FreqNet.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_VANet
             // 
@@ -4022,6 +4089,7 @@ namespace Developer_Tools
             this.textBox_VANet.ReadOnly = true;
             this.textBox_VANet.Size = new System.Drawing.Size(61, 20);
             this.textBox_VANet.TabIndex = 554;
+            this.textBox_VANet.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_VARNet
             // 
@@ -4031,6 +4099,7 @@ namespace Developer_Tools
             this.textBox_VARNet.ReadOnly = true;
             this.textBox_VARNet.Size = new System.Drawing.Size(61, 20);
             this.textBox_VARNet.TabIndex = 553;
+            this.textBox_VARNet.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_WattNet
             // 
@@ -4040,6 +4109,7 @@ namespace Developer_Tools
             this.textBox_WattNet.ReadOnly = true;
             this.textBox_WattNet.Size = new System.Drawing.Size(61, 20);
             this.textBox_WattNet.TabIndex = 552;
+            this.textBox_WattNet.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_PFNet
             // 
@@ -4049,6 +4119,7 @@ namespace Developer_Tools
             this.textBox_PFNet.ReadOnly = true;
             this.textBox_PFNet.Size = new System.Drawing.Size(61, 20);
             this.textBox_PFNet.TabIndex = 551;
+            this.textBox_PFNet.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_QuadR
             // 
@@ -4059,6 +4130,7 @@ namespace Developer_Tools
             this.textBox_QuadR.ReadOnly = true;
             this.textBox_QuadR.Size = new System.Drawing.Size(61, 20);
             this.textBox_QuadR.TabIndex = 550;
+            this.textBox_QuadR.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_FreqR
             // 
@@ -4069,6 +4141,7 @@ namespace Developer_Tools
             this.textBox_FreqR.ReadOnly = true;
             this.textBox_FreqR.Size = new System.Drawing.Size(61, 20);
             this.textBox_FreqR.TabIndex = 549;
+            this.textBox_FreqR.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_VAR
             // 
@@ -4079,6 +4152,7 @@ namespace Developer_Tools
             this.textBox_VAR.ReadOnly = true;
             this.textBox_VAR.Size = new System.Drawing.Size(61, 20);
             this.textBox_VAR.TabIndex = 548;
+            this.textBox_VAR.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_VARR
             // 
@@ -4089,6 +4163,7 @@ namespace Developer_Tools
             this.textBox_VARR.ReadOnly = true;
             this.textBox_VARR.Size = new System.Drawing.Size(61, 20);
             this.textBox_VARR.TabIndex = 547;
+            this.textBox_VARR.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_WattR
             // 
@@ -4099,6 +4174,7 @@ namespace Developer_Tools
             this.textBox_WattR.ReadOnly = true;
             this.textBox_WattR.Size = new System.Drawing.Size(61, 20);
             this.textBox_WattR.TabIndex = 546;
+            this.textBox_WattR.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_PFR
             // 
@@ -4109,6 +4185,7 @@ namespace Developer_Tools
             this.textBox_PFR.ReadOnly = true;
             this.textBox_PFR.Size = new System.Drawing.Size(61, 20);
             this.textBox_PFR.TabIndex = 544;
+            this.textBox_PFR.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_CurrRdc
             // 
@@ -4119,6 +4196,7 @@ namespace Developer_Tools
             this.textBox_CurrRdc.ReadOnly = true;
             this.textBox_CurrRdc.Size = new System.Drawing.Size(61, 20);
             this.textBox_CurrRdc.TabIndex = 543;
+            this.textBox_CurrRdc.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_CurrR
             // 
@@ -4129,6 +4207,7 @@ namespace Developer_Tools
             this.textBox_CurrR.ReadOnly = true;
             this.textBox_CurrR.Size = new System.Drawing.Size(61, 20);
             this.textBox_CurrR.TabIndex = 542;
+            this.textBox_CurrR.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_VolRdc
             // 
@@ -4139,6 +4218,7 @@ namespace Developer_Tools
             this.textBox_VolRdc.ReadOnly = true;
             this.textBox_VolRdc.Size = new System.Drawing.Size(61, 20);
             this.textBox_VolRdc.TabIndex = 541;
+            this.textBox_VolRdc.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_VolR
             // 
@@ -4149,6 +4229,7 @@ namespace Developer_Tools
             this.textBox_VolR.ReadOnly = true;
             this.textBox_VolR.Size = new System.Drawing.Size(61, 20);
             this.textBox_VolR.TabIndex = 540;
+            this.textBox_VolR.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label137
             // 
