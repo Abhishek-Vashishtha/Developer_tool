@@ -20,7 +20,7 @@ namespace Developer_Tools
         }
         
         public static string[] get_hex_char = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F" };
-
+        public static string[] get_day_of_week = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
         
         public static Byte ascii_char_to_byte(char character)                          
         {

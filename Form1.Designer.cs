@@ -125,9 +125,6 @@ namespace Developer_Tools
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabControl3 = new System.Windows.Forms.TabControl();
             this.tabPage11 = new System.Windows.Forms.TabPage();
-            this.checkBox_LogData = new System.Windows.Forms.CheckBox();
-            this.checkBox_LogToNewFile = new System.Windows.Forms.CheckBox();
-            this.textBox_NewFileName = new System.Windows.Forms.TextBox();
             this.groupBox17 = new System.Windows.Forms.GroupBox();
             this.textBox_Temperature = new System.Windows.Forms.TextBox();
             this.label68 = new System.Windows.Forms.Label();
@@ -175,6 +172,9 @@ namespace Developer_Tools
             this.textBox_CurrN = new System.Windows.Forms.TextBox();
             this.textBox_CurrNdc = new System.Windows.Forms.TextBox();
             this.groupBox15 = new System.Windows.Forms.GroupBox();
+            this.textBox_NewFileName = new System.Windows.Forms.TextBox();
+            this.checkBox_LogToNewFile = new System.Windows.Forms.CheckBox();
+            this.checkBox_LogData = new System.Windows.Forms.CheckBox();
             this.button_Read = new System.Windows.Forms.Button();
             this.textBox_FEnergyWhExportTotal = new System.Windows.Forms.TextBox();
             this.textBox_FEnergyWhExportR = new System.Windows.Forms.TextBox();
@@ -567,7 +567,6 @@ namespace Developer_Tools
             this.label10 = new System.Windows.Forms.Label();
             this.saveJSONFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.openJSONFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.timer1sec = new System.Windows.Forms.Timer(this.components);
             this.timer500ms = new System.Windows.Forms.Timer(this.components);
             this.timer100ms = new System.Windows.Forms.Timer(this.components);
             this.menuStripMain.SuspendLayout();
@@ -1700,40 +1699,6 @@ namespace Developer_Tools
             this.tabPage11.TabIndex = 5;
             this.tabPage11.Text = "Instant data";
             // 
-            // checkBox_LogData
-            // 
-            this.checkBox_LogData.AutoSize = true;
-            this.checkBox_LogData.Checked = true;
-            this.checkBox_LogData.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox_LogData.Enabled = false;
-            this.checkBox_LogData.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox_LogData.Location = new System.Drawing.Point(6, 19);
-            this.checkBox_LogData.Name = "checkBox_LogData";
-            this.checkBox_LogData.Size = new System.Drawing.Size(70, 17);
-            this.checkBox_LogData.TabIndex = 304;
-            this.checkBox_LogData.Text = "Log Data";
-            this.checkBox_LogData.UseVisualStyleBackColor = true;
-            // 
-            // checkBox_LogToNewFile
-            // 
-            this.checkBox_LogToNewFile.AutoSize = true;
-            this.checkBox_LogToNewFile.Enabled = false;
-            this.checkBox_LogToNewFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox_LogToNewFile.Location = new System.Drawing.Point(82, 19);
-            this.checkBox_LogToNewFile.Name = "checkBox_LogToNewFile";
-            this.checkBox_LogToNewFile.Size = new System.Drawing.Size(67, 17);
-            this.checkBox_LogToNewFile.TabIndex = 306;
-            this.checkBox_LogToNewFile.Text = "New File";
-            this.checkBox_LogToNewFile.UseVisualStyleBackColor = true;
-            // 
-            // textBox_NewFileName
-            // 
-            this.textBox_NewFileName.Enabled = false;
-            this.textBox_NewFileName.Location = new System.Drawing.Point(5, 38);
-            this.textBox_NewFileName.Name = "textBox_NewFileName";
-            this.textBox_NewFileName.Size = new System.Drawing.Size(239, 22);
-            this.textBox_NewFileName.TabIndex = 307;
-            // 
             // groupBox17
             // 
             this.groupBox17.Controls.Add(this.textBox_Temperature);
@@ -1830,10 +1795,11 @@ namespace Developer_Tools
             // 
             // textBox_MISCData
             // 
-            this.textBox_MISCData.Location = new System.Drawing.Point(819, 428);
+            this.textBox_MISCData.Location = new System.Drawing.Point(818, 406);
             this.textBox_MISCData.Multiline = true;
             this.textBox_MISCData.Name = "textBox_MISCData";
-            this.textBox_MISCData.Size = new System.Drawing.Size(381, 67);
+            this.textBox_MISCData.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox_MISCData.Size = new System.Drawing.Size(379, 67);
             this.textBox_MISCData.TabIndex = 673;
             // 
             // groupBox21
@@ -2077,7 +2043,7 @@ namespace Developer_Tools
             // 
             this.label55.AutoSize = true;
             this.label55.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label55.Location = new System.Drawing.Point(1008, 12);
+            this.label55.Location = new System.Drawing.Point(955, 12);
             this.label55.Name = "label55";
             this.label55.Size = new System.Drawing.Size(43, 17);
             this.label55.TabIndex = 662;
@@ -2086,11 +2052,12 @@ namespace Developer_Tools
             // textBox_Time
             // 
             this.textBox_Time.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_Time.Location = new System.Drawing.Point(1064, 9);
+            this.textBox_Time.Location = new System.Drawing.Point(1004, 9);
             this.textBox_Time.Name = "textBox_Time";
             this.textBox_Time.ReadOnly = true;
-            this.textBox_Time.Size = new System.Drawing.Size(133, 23);
+            this.textBox_Time.Size = new System.Drawing.Size(193, 23);
             this.textBox_Time.TabIndex = 663;
+            this.textBox_Time.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // groupBox16
             // 
@@ -2221,6 +2188,40 @@ namespace Developer_Tools
             this.groupBox15.TabStop = false;
             this.groupBox15.Text = "Read Setup";
             // 
+            // textBox_NewFileName
+            // 
+            this.textBox_NewFileName.Enabled = false;
+            this.textBox_NewFileName.Location = new System.Drawing.Point(5, 38);
+            this.textBox_NewFileName.Name = "textBox_NewFileName";
+            this.textBox_NewFileName.Size = new System.Drawing.Size(239, 22);
+            this.textBox_NewFileName.TabIndex = 307;
+            // 
+            // checkBox_LogToNewFile
+            // 
+            this.checkBox_LogToNewFile.AutoSize = true;
+            this.checkBox_LogToNewFile.Enabled = false;
+            this.checkBox_LogToNewFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox_LogToNewFile.Location = new System.Drawing.Point(82, 19);
+            this.checkBox_LogToNewFile.Name = "checkBox_LogToNewFile";
+            this.checkBox_LogToNewFile.Size = new System.Drawing.Size(67, 17);
+            this.checkBox_LogToNewFile.TabIndex = 306;
+            this.checkBox_LogToNewFile.Text = "New File";
+            this.checkBox_LogToNewFile.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_LogData
+            // 
+            this.checkBox_LogData.AutoSize = true;
+            this.checkBox_LogData.Checked = true;
+            this.checkBox_LogData.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_LogData.Enabled = false;
+            this.checkBox_LogData.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox_LogData.Location = new System.Drawing.Point(6, 19);
+            this.checkBox_LogData.Name = "checkBox_LogData";
+            this.checkBox_LogData.Size = new System.Drawing.Size(70, 17);
+            this.checkBox_LogData.TabIndex = 304;
+            this.checkBox_LogData.Text = "Log Data";
+            this.checkBox_LogData.UseVisualStyleBackColor = true;
+            // 
             // button_Read
             // 
             this.button_Read.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -2239,6 +2240,7 @@ namespace Developer_Tools
             this.textBox_FEnergyWhExportTotal.Name = "textBox_FEnergyWhExportTotal";
             this.textBox_FEnergyWhExportTotal.Size = new System.Drawing.Size(78, 20);
             this.textBox_FEnergyWhExportTotal.TabIndex = 659;
+            this.textBox_FEnergyWhExportTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox_FEnergyWhExportR
             // 
@@ -2248,6 +2250,7 @@ namespace Developer_Tools
             this.textBox_FEnergyWhExportR.Name = "textBox_FEnergyWhExportR";
             this.textBox_FEnergyWhExportR.Size = new System.Drawing.Size(78, 20);
             this.textBox_FEnergyWhExportR.TabIndex = 656;
+            this.textBox_FEnergyWhExportR.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox_FEnergyWhExportY
             // 
@@ -2257,6 +2260,7 @@ namespace Developer_Tools
             this.textBox_FEnergyWhExportY.Name = "textBox_FEnergyWhExportY";
             this.textBox_FEnergyWhExportY.Size = new System.Drawing.Size(78, 20);
             this.textBox_FEnergyWhExportY.TabIndex = 657;
+            this.textBox_FEnergyWhExportY.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox_FEnergyWhExportB
             // 
@@ -2266,6 +2270,7 @@ namespace Developer_Tools
             this.textBox_FEnergyWhExportB.Name = "textBox_FEnergyWhExportB";
             this.textBox_FEnergyWhExportB.Size = new System.Drawing.Size(78, 20);
             this.textBox_FEnergyWhExportB.TabIndex = 658;
+            this.textBox_FEnergyWhExportB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label44
             // 
@@ -2285,6 +2290,7 @@ namespace Developer_Tools
             this.textBox_FEnergyWhImportR.Name = "textBox_FEnergyWhImportR";
             this.textBox_FEnergyWhImportR.Size = new System.Drawing.Size(78, 20);
             this.textBox_FEnergyWhImportR.TabIndex = 651;
+            this.textBox_FEnergyWhImportR.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox_FEnergyWhImportY
             // 
@@ -2294,6 +2300,7 @@ namespace Developer_Tools
             this.textBox_FEnergyWhImportY.Name = "textBox_FEnergyWhImportY";
             this.textBox_FEnergyWhImportY.Size = new System.Drawing.Size(78, 20);
             this.textBox_FEnergyWhImportY.TabIndex = 653;
+            this.textBox_FEnergyWhImportY.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox_FEnergyWhImportB
             // 
@@ -2303,6 +2310,7 @@ namespace Developer_Tools
             this.textBox_FEnergyWhImportB.Name = "textBox_FEnergyWhImportB";
             this.textBox_FEnergyWhImportB.Size = new System.Drawing.Size(78, 20);
             this.textBox_FEnergyWhImportB.TabIndex = 654;
+            this.textBox_FEnergyWhImportB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox_FEnergyWhImportTotal
             // 
@@ -2311,6 +2319,7 @@ namespace Developer_Tools
             this.textBox_FEnergyWhImportTotal.Name = "textBox_FEnergyWhImportTotal";
             this.textBox_FEnergyWhImportTotal.Size = new System.Drawing.Size(78, 20);
             this.textBox_FEnergyWhImportTotal.TabIndex = 652;
+            this.textBox_FEnergyWhImportTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label46
             // 
@@ -2329,6 +2338,7 @@ namespace Developer_Tools
             this.textBox_EnergyVAhExportTotal.Name = "textBox_EnergyVAhExportTotal";
             this.textBox_EnergyVAhExportTotal.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyVAhExportTotal.TabIndex = 649;
+            this.textBox_EnergyVAhExportTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox_EnergyVAhExportR
             // 
@@ -2338,6 +2348,7 @@ namespace Developer_Tools
             this.textBox_EnergyVAhExportR.Name = "textBox_EnergyVAhExportR";
             this.textBox_EnergyVAhExportR.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyVAhExportR.TabIndex = 646;
+            this.textBox_EnergyVAhExportR.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox_EnergyVAhExportY
             // 
@@ -2347,6 +2358,7 @@ namespace Developer_Tools
             this.textBox_EnergyVAhExportY.Name = "textBox_EnergyVAhExportY";
             this.textBox_EnergyVAhExportY.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyVAhExportY.TabIndex = 647;
+            this.textBox_EnergyVAhExportY.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox_EnergyVAhExportB
             // 
@@ -2356,6 +2368,7 @@ namespace Developer_Tools
             this.textBox_EnergyVAhExportB.Name = "textBox_EnergyVAhExportB";
             this.textBox_EnergyVAhExportB.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyVAhExportB.TabIndex = 648;
+            this.textBox_EnergyVAhExportB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox_EnergyVAhImportTotal
             // 
@@ -2364,6 +2377,7 @@ namespace Developer_Tools
             this.textBox_EnergyVAhImportTotal.Name = "textBox_EnergyVAhImportTotal";
             this.textBox_EnergyVAhImportTotal.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyVAhImportTotal.TabIndex = 645;
+            this.textBox_EnergyVAhImportTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox_EnergyVAhImportR
             // 
@@ -2373,6 +2387,7 @@ namespace Developer_Tools
             this.textBox_EnergyVAhImportR.Name = "textBox_EnergyVAhImportR";
             this.textBox_EnergyVAhImportR.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyVAhImportR.TabIndex = 642;
+            this.textBox_EnergyVAhImportR.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox_EnergyVAhImportY
             // 
@@ -2382,6 +2397,7 @@ namespace Developer_Tools
             this.textBox_EnergyVAhImportY.Name = "textBox_EnergyVAhImportY";
             this.textBox_EnergyVAhImportY.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyVAhImportY.TabIndex = 643;
+            this.textBox_EnergyVAhImportY.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox_EnergyVAhImportB
             // 
@@ -2391,6 +2407,7 @@ namespace Developer_Tools
             this.textBox_EnergyVAhImportB.Name = "textBox_EnergyVAhImportB";
             this.textBox_EnergyVAhImportB.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyVAhImportB.TabIndex = 644;
+            this.textBox_EnergyVAhImportB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox_EnergyVARhQ4Total
             // 
@@ -2399,6 +2416,7 @@ namespace Developer_Tools
             this.textBox_EnergyVARhQ4Total.Name = "textBox_EnergyVARhQ4Total";
             this.textBox_EnergyVARhQ4Total.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyVARhQ4Total.TabIndex = 641;
+            this.textBox_EnergyVARhQ4Total.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox_EnergyVARhQ4R
             // 
@@ -2408,6 +2426,7 @@ namespace Developer_Tools
             this.textBox_EnergyVARhQ4R.Name = "textBox_EnergyVARhQ4R";
             this.textBox_EnergyVARhQ4R.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyVARhQ4R.TabIndex = 638;
+            this.textBox_EnergyVARhQ4R.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox_EnergyVARhQ4Y
             // 
@@ -2417,6 +2436,7 @@ namespace Developer_Tools
             this.textBox_EnergyVARhQ4Y.Name = "textBox_EnergyVARhQ4Y";
             this.textBox_EnergyVARhQ4Y.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyVARhQ4Y.TabIndex = 639;
+            this.textBox_EnergyVARhQ4Y.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox_EnergyVARhQ4B
             // 
@@ -2426,6 +2446,7 @@ namespace Developer_Tools
             this.textBox_EnergyVARhQ4B.Name = "textBox_EnergyVARhQ4B";
             this.textBox_EnergyVARhQ4B.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyVARhQ4B.TabIndex = 640;
+            this.textBox_EnergyVARhQ4B.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox_EnergyVARhQ3Total
             // 
@@ -2434,6 +2455,7 @@ namespace Developer_Tools
             this.textBox_EnergyVARhQ3Total.Name = "textBox_EnergyVARhQ3Total";
             this.textBox_EnergyVARhQ3Total.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyVARhQ3Total.TabIndex = 637;
+            this.textBox_EnergyVARhQ3Total.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox_EnergyVARhQ3R
             // 
@@ -2443,6 +2465,7 @@ namespace Developer_Tools
             this.textBox_EnergyVARhQ3R.Name = "textBox_EnergyVARhQ3R";
             this.textBox_EnergyVARhQ3R.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyVARhQ3R.TabIndex = 634;
+            this.textBox_EnergyVARhQ3R.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox_EnergyVARhQ3Y
             // 
@@ -2452,6 +2475,7 @@ namespace Developer_Tools
             this.textBox_EnergyVARhQ3Y.Name = "textBox_EnergyVARhQ3Y";
             this.textBox_EnergyVARhQ3Y.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyVARhQ3Y.TabIndex = 635;
+            this.textBox_EnergyVARhQ3Y.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox_EnergyVARhQ3B
             // 
@@ -2461,6 +2485,7 @@ namespace Developer_Tools
             this.textBox_EnergyVARhQ3B.Name = "textBox_EnergyVARhQ3B";
             this.textBox_EnergyVARhQ3B.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyVARhQ3B.TabIndex = 636;
+            this.textBox_EnergyVARhQ3B.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox_EnergyVARhQ2Total
             // 
@@ -2469,6 +2494,7 @@ namespace Developer_Tools
             this.textBox_EnergyVARhQ2Total.Name = "textBox_EnergyVARhQ2Total";
             this.textBox_EnergyVARhQ2Total.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyVARhQ2Total.TabIndex = 633;
+            this.textBox_EnergyVARhQ2Total.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox_EnergyVARhQ2R
             // 
@@ -2478,6 +2504,7 @@ namespace Developer_Tools
             this.textBox_EnergyVARhQ2R.Name = "textBox_EnergyVARhQ2R";
             this.textBox_EnergyVARhQ2R.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyVARhQ2R.TabIndex = 630;
+            this.textBox_EnergyVARhQ2R.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox_EnergyVARhQ2Y
             // 
@@ -2487,6 +2514,7 @@ namespace Developer_Tools
             this.textBox_EnergyVARhQ2Y.Name = "textBox_EnergyVARhQ2Y";
             this.textBox_EnergyVARhQ2Y.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyVARhQ2Y.TabIndex = 631;
+            this.textBox_EnergyVARhQ2Y.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox_EnergyVARhQ2B
             // 
@@ -2496,6 +2524,7 @@ namespace Developer_Tools
             this.textBox_EnergyVARhQ2B.Name = "textBox_EnergyVARhQ2B";
             this.textBox_EnergyVARhQ2B.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyVARhQ2B.TabIndex = 632;
+            this.textBox_EnergyVARhQ2B.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox_EnergyVARhQ1Total
             // 
@@ -2504,6 +2533,7 @@ namespace Developer_Tools
             this.textBox_EnergyVARhQ1Total.Name = "textBox_EnergyVARhQ1Total";
             this.textBox_EnergyVARhQ1Total.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyVARhQ1Total.TabIndex = 629;
+            this.textBox_EnergyVARhQ1Total.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox_EnergyVARhQ1R
             // 
@@ -2513,6 +2543,7 @@ namespace Developer_Tools
             this.textBox_EnergyVARhQ1R.Name = "textBox_EnergyVARhQ1R";
             this.textBox_EnergyVARhQ1R.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyVARhQ1R.TabIndex = 626;
+            this.textBox_EnergyVARhQ1R.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox_EnergyVARhQ1Y
             // 
@@ -2522,6 +2553,7 @@ namespace Developer_Tools
             this.textBox_EnergyVARhQ1Y.Name = "textBox_EnergyVARhQ1Y";
             this.textBox_EnergyVARhQ1Y.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyVARhQ1Y.TabIndex = 627;
+            this.textBox_EnergyVARhQ1Y.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox_EnergyVARhQ1B
             // 
@@ -2531,6 +2563,7 @@ namespace Developer_Tools
             this.textBox_EnergyVARhQ1B.Name = "textBox_EnergyVARhQ1B";
             this.textBox_EnergyVARhQ1B.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyVARhQ1B.TabIndex = 628;
+            this.textBox_EnergyVARhQ1B.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox_EnergyWhExportTotal
             // 
@@ -2539,6 +2572,7 @@ namespace Developer_Tools
             this.textBox_EnergyWhExportTotal.Name = "textBox_EnergyWhExportTotal";
             this.textBox_EnergyWhExportTotal.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyWhExportTotal.TabIndex = 625;
+            this.textBox_EnergyWhExportTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox_EnergyWhExportR
             // 
@@ -2548,6 +2582,7 @@ namespace Developer_Tools
             this.textBox_EnergyWhExportR.Name = "textBox_EnergyWhExportR";
             this.textBox_EnergyWhExportR.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyWhExportR.TabIndex = 621;
+            this.textBox_EnergyWhExportR.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox_EnergyWhExportY
             // 
@@ -2557,6 +2592,7 @@ namespace Developer_Tools
             this.textBox_EnergyWhExportY.Name = "textBox_EnergyWhExportY";
             this.textBox_EnergyWhExportY.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyWhExportY.TabIndex = 623;
+            this.textBox_EnergyWhExportY.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox_EnergyWhExportB
             // 
@@ -2566,6 +2602,7 @@ namespace Developer_Tools
             this.textBox_EnergyWhExportB.Name = "textBox_EnergyWhExportB";
             this.textBox_EnergyWhExportB.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyWhExportB.TabIndex = 624;
+            this.textBox_EnergyWhExportB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label61
             // 
@@ -2645,6 +2682,7 @@ namespace Developer_Tools
             this.textBox_EnergyWhImportR.Name = "textBox_EnergyWhImportR";
             this.textBox_EnergyWhImportR.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyWhImportR.TabIndex = 602;
+            this.textBox_EnergyWhImportR.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox_EnergyWhImportY
             // 
@@ -2654,6 +2692,7 @@ namespace Developer_Tools
             this.textBox_EnergyWhImportY.Name = "textBox_EnergyWhImportY";
             this.textBox_EnergyWhImportY.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyWhImportY.TabIndex = 604;
+            this.textBox_EnergyWhImportY.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox_EnergyWhImportB
             // 
@@ -2663,6 +2702,7 @@ namespace Developer_Tools
             this.textBox_EnergyWhImportB.Name = "textBox_EnergyWhImportB";
             this.textBox_EnergyWhImportB.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyWhImportB.TabIndex = 605;
+            this.textBox_EnergyWhImportB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox_EnergyWhImportTotal
             // 
@@ -2671,6 +2711,7 @@ namespace Developer_Tools
             this.textBox_EnergyWhImportTotal.Name = "textBox_EnergyWhImportTotal";
             this.textBox_EnergyWhImportTotal.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyWhImportTotal.TabIndex = 603;
+            this.textBox_EnergyWhImportTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label45
             // 
@@ -2684,11 +2725,12 @@ namespace Developer_Tools
             // 
             // textBox_TamperStatus
             // 
-            this.textBox_TamperStatus.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.textBox_TamperStatus.Location = new System.Drawing.Point(819, 501);
+            this.textBox_TamperStatus.BackColor = System.Drawing.Color.LightCoral;
+            this.textBox_TamperStatus.Location = new System.Drawing.Point(818, 477);
             this.textBox_TamperStatus.Multiline = true;
             this.textBox_TamperStatus.Name = "textBox_TamperStatus";
-            this.textBox_TamperStatus.Size = new System.Drawing.Size(381, 55);
+            this.textBox_TamperStatus.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox_TamperStatus.Size = new System.Drawing.Size(381, 79);
             this.textBox_TamperStatus.TabIndex = 406;
             // 
             // groupBox30
@@ -6228,15 +6270,10 @@ namespace Developer_Tools
             this.label10.TabIndex = 0;
             this.label10.Text = "Bootloader";
             // 
-            // timer1sec
-            // 
-            this.timer1sec.Interval = 1000;
-            this.timer1sec.Tick += new System.EventHandler(this.timer1sec_Tick);
-            // 
             // timer500ms
             // 
             this.timer500ms.Interval = 500;
-            this.timer500ms.Tick += new System.EventHandler(this.timerText500ms_Tick);
+            this.timer500ms.Tick += new System.EventHandler(this.timer500ms_Tick);
             // 
             // timer100ms
             // 
@@ -6614,7 +6651,6 @@ namespace Developer_Tools
         private System.Windows.Forms.ToolStripMenuItem miscelleToolStripMenuItem;
         private System.Windows.Forms.RadioButton radioButton_SendFrameFormatASCII;
         private System.Windows.Forms.RadioButton radioButton_SendFrameFormatHex;
-        private System.Windows.Forms.Timer timer1sec;
         private System.Windows.Forms.GroupBox groupBox25;
         private System.Windows.Forms.Label label113;
         private System.Windows.Forms.Label label4;

@@ -82,13 +82,13 @@ namespace Developer_Tools
         public static string MISCData, TamperStatus;
 
         public static int METER_CONST = 1200, PULSE = 6;
-        public double QUANTA = 0.005;
+        public static double QUANTA = 0.005;
 
-        public double error_act_r, error_act_y, error_act_b, error_act_total;
-        public double error_react_r, error_react_y, error_react_b, error_react_total;
-        public double error_app_r, error_app_y, error_app_b, error_app_total;
+        public static double error_act_r, error_act_y, error_act_b, error_act_total;
+        public static double error_react_r, error_react_y, error_react_b, error_react_total;
+        public static double error_app_r, error_app_y, error_app_b, error_app_total;
 
-        byte[] tamper_status = new byte[8];
+        public static byte[] tamper_status = new byte[8];
 
         public Form1()
         {
@@ -106,7 +106,6 @@ namespace Developer_Tools
             /* Loading data from JSON */
             DS_App.loadParametersFromJson();
 
-            timer1sec.Enabled = true;
             timer10ms.Enabled = true;
             timer500ms.Enabled = true;
             timer100ms.Enabled = true;
@@ -473,12 +472,8 @@ namespace Developer_Tools
                 }
             }
         }
-        private void timer1sec_Tick(object sender, EventArgs e)
-        {
 
-        }
-
-        private void timerText500ms_Tick(object sender, EventArgs e)
+        private void timer500ms_Tick(object sender, EventArgs e)
         {
             bool connection_status;
 
@@ -517,8 +512,7 @@ namespace Developer_Tools
             {
                 connection_status = false;
             }
-            textBox_DataTrafficTxBytesTotal.Text = DS_Serial.totalTxBytes.ToString();
-            textBox_DataTrafficRxBytesTotal.Text = DS_Serial.totalRxBytes.ToString();
+           
 
             if (connection_status == true)                  /* Connected */
             {
@@ -557,7 +551,24 @@ namespace Developer_Tools
             }
 
 
-            /* Metrology Data */
+            
+        }
+        public void update_textboxes()
+        {
+            /* Communication traffic textbox update */
+            string s = String.Empty;
+            if (traffic_string.Length != 0)
+            {
+                s = traffic_string;
+                traffic_string = String.Empty;
+            }
+            textBox_DataTraffic.AppendText(s);
+            traffic_string = String.Empty; 
+            
+            textBox_DataTrafficTxBytesTotal.Text = DS_Serial.totalTxBytes.ToString();
+            textBox_DataTrafficRxBytesTotal.Text = DS_Serial.totalRxBytes.ToString();
+            
+            /* Metrology Data text box update*/
             textBox_VolR.Text = VolR.ToString("0.00");
             textBox_VolY.Text = VolY.ToString("0.00");
             textBox_VolB.Text = VolB.ToString("0.00");
@@ -579,36 +590,36 @@ namespace Developer_Tools
             textBox_PFY.Text = PFY.ToString("0.000");
             textBox_PFB.Text = PFB.ToString("0.000");
             textBox_PFNet.Text = PFNet.ToString("0.000");
-           
+
             textBox_AnglePFRph.Text = AnglePFR.ToString("0.00");
             textBox_AnglePFYph.Text = AnglePFY.ToString("0.00");
             textBox_AnglePFBph.Text = AnglePFB.ToString("0.00");
-            
+
             textBox_WattR.Text = WattR.ToString("0.0");
             textBox_WattY.Text = WattY.ToString("0.0");
             textBox_WattB.Text = WattB.ToString("0.0");
             textBox_WattNet.Text = WattNet.ToString("0.0");
-            
+
             textBox_VARR.Text = VARR.ToString("0.0");
             textBox_VARY.Text = VARY.ToString("0.0");
             textBox_VARB.Text = VARB.ToString("0.0");
             textBox_VARNet.Text = VARNet.ToString("0.0");
-            
+
             textBox_VAR.Text = VAR.ToString("0.0");
             textBox_VAY.Text = VAY.ToString("0.0");
             textBox_VAB.Text = VAB.ToString("0.0");
             textBox_VANet.Text = VANet.ToString("0.0");
-            
+
             textBox_FreqR.Text = FreqR.ToString("0.000");
             textBox_FreqY.Text = FreqY.ToString("0.000");
             textBox_FreqB.Text = FreqB.ToString("0.000");
             textBox_FreqNet.Text = FreqNet.ToString("0.000");
-            
+
             textBox_QuadR.Text = QuadrantR.ToString();
             textBox_QuadY.Text = QuadrantY.ToString();
             textBox_QuadB.Text = QuadrantB.ToString();
             textBox_QuadNet.Text = QuadrantNet.ToString();
-            
+
             textBox_SamplesR.Text = SamplesR.ToString();
             textBox_SamplesY.Text = SamplesY.ToString();
             textBox_SamplesB.Text = SamplesB.ToString();
@@ -642,7 +653,7 @@ namespace Developer_Tools
             textBox_EnergyVARhQ3R.Text = EnergyVARhR_q3.ToString("0.000");
             textBox_EnergyVARhQ3Y.Text = EnergyVARhY_q3.ToString("0.000");
             textBox_EnergyVARhQ3B.Text = EnergyVARhB_q3.ToString("0.000");
-            textBox_EnergyVARhQ3Total.Text = EnergyVARhTotal_q3.ToString("0.000"); 
+            textBox_EnergyVARhQ3Total.Text = EnergyVARhTotal_q3.ToString("0.000");
             textBox_EnergyVARhQ4R.Text = EnergyVARhR_q4.ToString("0.000");
             textBox_EnergyVARhQ4Y.Text = EnergyVARhY_q4.ToString("0.000");
             textBox_EnergyVARhQ4B.Text = EnergyVARhB_q4.ToString("0.000");
@@ -670,12 +681,12 @@ namespace Developer_Tools
             textBox_ErrorActY.Text = error_act_y.ToString("0.00");
             textBox_ErrorActB.Text = error_act_b.ToString("0.00");
             textBox_ErrorActTotal.Text = error_act_total.ToString("0.00");
-            
+
             textBox_ErrorReactR.Text = error_react_r.ToString("0.00");
             textBox_ErrorReactY.Text = error_react_y.ToString("0.00");
             textBox_ErrorReactB.Text = error_react_b.ToString("0.00");
             textBox_ErrorReactTotal.Text = error_react_total.ToString("0.00");
-            
+
             textBox_ErrorAppR.Text = error_app_r.ToString("0.00");
             textBox_ErrorAppY.Text = error_app_y.ToString("0.00");
             textBox_ErrorAppB.Text = error_app_b.ToString("0.00");
@@ -684,14 +695,14 @@ namespace Developer_Tools
 
             textBox_CurrNeuVector.Text = CurrNVector.ToString("0.000");
             textBox_AngleNeuVector.Text = AngleNVector.ToString("0.00");
-            
+
             textBox_Time.Text = Time;
             textBox_MetrologyTimer.Text = powerUpSec.ToString();
 
             textBox_VolRY.Text = VolRY.ToString("0.00");
             textBox_VolYB.Text = VolYB.ToString("0.00");
             textBox_VolBR.Text = VolBR.ToString("0.00");
-            
+
             textBox_AngleRY.Text = AngleRY.ToString("0.00");
             textBox_AngleYB.Text = AngleYB.ToString("0.00");
             textBox_AngleBR.Text = AngleBR.ToString("0.00");
@@ -705,83 +716,83 @@ namespace Developer_Tools
             textBox_ReactiveTimer.Text = reactiveTimer.ToString();
             textBox_ReactiveTimeDelay.Text = reactiveTimeDelay.ToString();
             textBox_ReactiveTimeDeviation.Text = reactiveTimeDeviation.ToString();
-            
 
-            textBox_TamperStatus.Text = "";
-            if (DS_Functions.checkBit(tamper_status[7], 0x80) == true) { textBox_TamperStatus.Text += " | bit63"; }
-            if (DS_Functions.checkBit(tamper_status[7], 0x40) == true) { textBox_TamperStatus.Text += " | bit62"; }
-            if (DS_Functions.checkBit(tamper_status[7], 0x20) == true) { textBox_TamperStatus.Text += " | bit61"; }
-            if (DS_Functions.checkBit(tamper_status[7], 0x10) == true) { textBox_TamperStatus.Text += " | bit60"; }
-            if (DS_Functions.checkBit(tamper_status[7], 0x08) == true) { textBox_TamperStatus.Text += " | bit59"; }
-            if (DS_Functions.checkBit(tamper_status[7], 0x04) == true) { textBox_TamperStatus.Text += " | bit58"; }
-            if (DS_Functions.checkBit(tamper_status[7], 0x02) == true) { textBox_TamperStatus.Text += " | bit57"; }
-            if (DS_Functions.checkBit(tamper_status[7], 0x01) == true) { textBox_TamperStatus.Text += " | bit56"; }
-            
-            if (DS_Functions.checkBit(tamper_status[6], 0x80) == true) { textBox_TamperStatus.Text += " | bit55"; }
-            if (DS_Functions.checkBit(tamper_status[6], 0x40) == true) { textBox_TamperStatus.Text += " | bit54"; }
-            if (DS_Functions.checkBit(tamper_status[6], 0x20) == true) { textBox_TamperStatus.Text += " | bit53"; }
-            if (DS_Functions.checkBit(tamper_status[6], 0x10) == true) { textBox_TamperStatus.Text += " | bit52"; }
-            if (DS_Functions.checkBit(tamper_status[6], 0x08) == true) { textBox_TamperStatus.Text += " | bit51"; }
-            if (DS_Functions.checkBit(tamper_status[6], 0x04) == true) { textBox_TamperStatus.Text += " | bit50"; }
-            if (DS_Functions.checkBit(tamper_status[6], 0x02) == true) { textBox_TamperStatus.Text += " | bit49"; }
-            if (DS_Functions.checkBit(tamper_status[6], 0x01) == true) { textBox_TamperStatus.Text += " | bit48"; }
-            
-            if (DS_Functions.checkBit(tamper_status[5], 0x80) == true) { textBox_TamperStatus.Text += " | bit47"; }
-            if (DS_Functions.checkBit(tamper_status[5], 0x40) == true) { textBox_TamperStatus.Text += " | bit46"; }
-            if (DS_Functions.checkBit(tamper_status[5], 0x20) == true) { textBox_TamperStatus.Text += " | bit45"; }
-            if (DS_Functions.checkBit(tamper_status[5], 0x10) == true) { textBox_TamperStatus.Text += " | bit44"; }
-            if (DS_Functions.checkBit(tamper_status[5], 0x08) == true) { textBox_TamperStatus.Text += " | bit43"; }
-            if (DS_Functions.checkBit(tamper_status[5], 0x04) == true) { textBox_TamperStatus.Text += " | bit42"; }
-            if (DS_Functions.checkBit(tamper_status[5], 0x02) == true) { textBox_TamperStatus.Text += " | bit41"; }
-            if (DS_Functions.checkBit(tamper_status[5], 0x01) == true) { textBox_TamperStatus.Text += " | Faulty Capacitor"; }
-            
-            if (DS_Functions.checkBit(tamper_status[4], 0x80) == true) { textBox_TamperStatus.Text += " | RTC Battery Low"; }
-            if (DS_Functions.checkBit(tamper_status[4], 0x40) == true) { textBox_TamperStatus.Text += " | Over Cureent B"; }
-            if (DS_Functions.checkBit(tamper_status[4], 0x20) == true) { textBox_TamperStatus.Text += " | Over Current Y"; }
-            if (DS_Functions.checkBit(tamper_status[4], 0x10) == true) { textBox_TamperStatus.Text += " | Over Current R"; }
-            if (DS_Functions.checkBit(tamper_status[4], 0x08) == true) { textBox_TamperStatus.Text += " | Abnormal Frequency"; }
-            if (DS_Functions.checkBit(tamper_status[4], 0x04) == true) { textBox_TamperStatus.Text += " | Two wire"; }
-            if (DS_Functions.checkBit(tamper_status[4], 0x02) == true) { textBox_TamperStatus.Text += " | RTC Reading Error"; }
-            if (DS_Functions.checkBit(tamper_status[4], 0x01) == true) { textBox_TamperStatus.Text += " | bit32"; }
-            
-            if (DS_Functions.checkBit(tamper_status[3], 0x80) == true) { textBox_TamperStatus.Text += " | 35KV/ESD"; }
-            if (DS_Functions.checkBit(tamper_status[3], 0x40) == true) { textBox_TamperStatus.Text += " | Invalid phase association"; }
-            if (DS_Functions.checkBit(tamper_status[3], 0x20) == true) { textBox_TamperStatus.Text += " | Invalid voltage"; }
-            if (DS_Functions.checkBit(tamper_status[3], 0x10) == true) { textBox_TamperStatus.Text += " | High Neutral Current"; }
-            if (DS_Functions.checkBit(tamper_status[3], 0x08) == true) { textBox_TamperStatus.Text += " | Wrong connection"; }
-            if (DS_Functions.checkBit(tamper_status[3], 0x04) == true) { textBox_TamperStatus.Text += " | Main battery low"; }
-            if (DS_Functions.checkBit(tamper_status[3], 0x02) == true) { textBox_TamperStatus.Text += " | Low Load"; }
-            if (DS_Functions.checkBit(tamper_status[3], 0x01) == true) { textBox_TamperStatus.Text += " | Over Load"; }
-            
-            if (DS_Functions.checkBit(tamper_status[2], 0x80) == true) { textBox_TamperStatus.Text += " | EEPROM Fail"; }
-            if (DS_Functions.checkBit(tamper_status[2], 0x40) == true) { textBox_TamperStatus.Text += " | B Phase Active Export"; }
-            if (DS_Functions.checkBit(tamper_status[2], 0x20) == true) { textBox_TamperStatus.Text += " | Y Phase Active Export"; }
-            if (DS_Functions.checkBit(tamper_status[2], 0x10) == true) { textBox_TamperStatus.Text += " | R Phase Active Export"; }
-            if (DS_Functions.checkBit(tamper_status[2], 0x08) == true) { textBox_TamperStatus.Text += " | Phase sequence reverse"; }
-            if (DS_Functions.checkBit(tamper_status[2], 0x04) == true) { textBox_TamperStatus.Text += " | Top Cover"; }
-            if (DS_Functions.checkBit(tamper_status[2], 0x02) == true) { textBox_TamperStatus.Text += " | Low PF"; }
-            if (DS_Functions.checkBit(tamper_status[2], 0x01) == true) { textBox_TamperStatus.Text += " | Neutral Disturb"; }
-            
-            if (DS_Functions.checkBit(tamper_status[1], 0x80) == true) { textBox_TamperStatus.Text += " | Magnet"; }
-            if (DS_Functions.checkBit(tamper_status[1], 0x40) == true) { textBox_TamperStatus.Text += " | Over Current"; }
-            if (DS_Functions.checkBit(tamper_status[1], 0x20) == true) { textBox_TamperStatus.Text += " | CT Bypass"; }
-            if (DS_Functions.checkBit(tamper_status[1], 0x10) == true) { textBox_TamperStatus.Text += " | Current Unbalance"; }
-            if (DS_Functions.checkBit(tamper_status[1], 0x08) == true) { textBox_TamperStatus.Text += " | CY Open B"; }
-            if (DS_Functions.checkBit(tamper_status[1], 0x04) == true) { textBox_TamperStatus.Text += " | CT Open Y"; }
-            if (DS_Functions.checkBit(tamper_status[1], 0x02) == true) { textBox_TamperStatus.Text += " | CT Open R"; }
-            if (DS_Functions.checkBit(tamper_status[1], 0x01) == true) { textBox_TamperStatus.Text += " | CT Reverse B"; }
-            
-            if (DS_Functions.checkBit(tamper_status[0], 0x80) == true) { textBox_TamperStatus.Text += " | CT Reverse Y"; }
-            if (DS_Functions.checkBit(tamper_status[0], 0x40) == true) { textBox_TamperStatus.Text += " | CT Reverse R"; }
-            if (DS_Functions.checkBit(tamper_status[0], 0x20) == true) { textBox_TamperStatus.Text += " | Vol Unbalance"; }
-            if (DS_Functions.checkBit(tamper_status[0], 0x10) == true) { textBox_TamperStatus.Text += " | Vol Low"; }
-            if (DS_Functions.checkBit(tamper_status[0], 0x08) == true) { textBox_TamperStatus.Text += " | Vol High"; }
-            if (DS_Functions.checkBit(tamper_status[0], 0x04) == true) { textBox_TamperStatus.Text += " | Vol Miss B"; }
-            if (DS_Functions.checkBit(tamper_status[0], 0x02) == true) { textBox_TamperStatus.Text += " | Vol Miss Y"; }
-            if (DS_Functions.checkBit(tamper_status[0], 0x01) == true) { textBox_TamperStatus.Text += " | Vol Miss R"; }
-            
+            TamperStatus = String.Empty;
+            if (DS_Functions.checkBit(tamper_status[7], 0x80) == true) { TamperStatus += " | bit63"; }
+            if (DS_Functions.checkBit(tamper_status[7], 0x40) == true) { TamperStatus += " | bit62"; }
+            if (DS_Functions.checkBit(tamper_status[7], 0x20) == true) { TamperStatus += " | bit61"; }
+            if (DS_Functions.checkBit(tamper_status[7], 0x10) == true) { TamperStatus += " | bit60"; }
+            if (DS_Functions.checkBit(tamper_status[7], 0x08) == true) { TamperStatus += " | bit59"; }
+            if (DS_Functions.checkBit(tamper_status[7], 0x04) == true) { TamperStatus += " | bit58"; }
+            if (DS_Functions.checkBit(tamper_status[7], 0x02) == true) { TamperStatus += " | bit57"; }
+            if (DS_Functions.checkBit(tamper_status[7], 0x01) == true) { TamperStatus += " | bit56"; }
+
+            if (DS_Functions.checkBit(tamper_status[6], 0x80) == true) { TamperStatus += " | bit55"; }
+            if (DS_Functions.checkBit(tamper_status[6], 0x40) == true) { TamperStatus += " | bit54"; }
+            if (DS_Functions.checkBit(tamper_status[6], 0x20) == true) { TamperStatus += " | bit53"; }
+            if (DS_Functions.checkBit(tamper_status[6], 0x10) == true) { TamperStatus += " | bit52"; }
+            if (DS_Functions.checkBit(tamper_status[6], 0x08) == true) { TamperStatus += " | bit51"; }
+            if (DS_Functions.checkBit(tamper_status[6], 0x04) == true) { TamperStatus += " | bit50"; }
+            if (DS_Functions.checkBit(tamper_status[6], 0x02) == true) { TamperStatus += " | bit49"; }
+            if (DS_Functions.checkBit(tamper_status[6], 0x01) == true) { TamperStatus += " | bit48"; }
+
+            if (DS_Functions.checkBit(tamper_status[5], 0x80) == true) { TamperStatus += " | bit47"; }
+            if (DS_Functions.checkBit(tamper_status[5], 0x40) == true) { TamperStatus += " | bit46"; }
+            if (DS_Functions.checkBit(tamper_status[5], 0x20) == true) { TamperStatus += " | bit45"; }
+            if (DS_Functions.checkBit(tamper_status[5], 0x10) == true) { TamperStatus += " | bit44"; }
+            if (DS_Functions.checkBit(tamper_status[5], 0x08) == true) { TamperStatus += " | bit43"; }
+            if (DS_Functions.checkBit(tamper_status[5], 0x04) == true) { TamperStatus += " | bit42"; }
+            if (DS_Functions.checkBit(tamper_status[5], 0x02) == true) { TamperStatus += " | bit41"; }
+            if (DS_Functions.checkBit(tamper_status[5], 0x01) == true) { TamperStatus += " | Faulty Capacitor"; }
+
+            if (DS_Functions.checkBit(tamper_status[4], 0x80) == true) { TamperStatus += " | RTC Battery Low"; }
+            if (DS_Functions.checkBit(tamper_status[4], 0x40) == true) { TamperStatus += " | Over Cureent B"; }
+            if (DS_Functions.checkBit(tamper_status[4], 0x20) == true) { TamperStatus += " | Over Current Y"; }
+            if (DS_Functions.checkBit(tamper_status[4], 0x10) == true) { TamperStatus += " | Over Current R"; }
+            if (DS_Functions.checkBit(tamper_status[4], 0x08) == true) { TamperStatus += " | Abnormal Frequency"; }
+            if (DS_Functions.checkBit(tamper_status[4], 0x04) == true) { TamperStatus += " | Two wire"; }
+            if (DS_Functions.checkBit(tamper_status[4], 0x02) == true) { TamperStatus += " | RTC Reading Error"; }
+            if (DS_Functions.checkBit(tamper_status[4], 0x01) == true) { TamperStatus += " | bit32"; }
+
+            if (DS_Functions.checkBit(tamper_status[3], 0x80) == true) { TamperStatus += " | 35KV/ESD"; }
+            if (DS_Functions.checkBit(tamper_status[3], 0x40) == true) { TamperStatus += " | Invalid phase association"; }
+            if (DS_Functions.checkBit(tamper_status[3], 0x20) == true) { TamperStatus += " | Invalid voltage"; }
+            if (DS_Functions.checkBit(tamper_status[3], 0x10) == true) { TamperStatus += " | High Neutral Current"; }
+            if (DS_Functions.checkBit(tamper_status[3], 0x08) == true) { TamperStatus += " | Wrong connection"; }
+            if (DS_Functions.checkBit(tamper_status[3], 0x04) == true) { TamperStatus += " | Main battery low"; }
+            if (DS_Functions.checkBit(tamper_status[3], 0x02) == true) { TamperStatus += " | Low Load"; }
+            if (DS_Functions.checkBit(tamper_status[3], 0x01) == true) { TamperStatus += " | Over Load"; }
+
+            if (DS_Functions.checkBit(tamper_status[2], 0x80) == true) { TamperStatus += " | EEPROM Fail"; }
+            if (DS_Functions.checkBit(tamper_status[2], 0x40) == true) { TamperStatus += " | B Phase Active Export"; }
+            if (DS_Functions.checkBit(tamper_status[2], 0x20) == true) { TamperStatus += " | Y Phase Active Export"; }
+            if (DS_Functions.checkBit(tamper_status[2], 0x10) == true) { TamperStatus += " | R Phase Active Export"; }
+            if (DS_Functions.checkBit(tamper_status[2], 0x08) == true) { TamperStatus += " | Phase sequence reverse"; }
+            if (DS_Functions.checkBit(tamper_status[2], 0x04) == true) { TamperStatus += " | Top Cover"; }
+            if (DS_Functions.checkBit(tamper_status[2], 0x02) == true) { TamperStatus += " | Low PF"; }
+            if (DS_Functions.checkBit(tamper_status[2], 0x01) == true) { TamperStatus += " | Neutral Disturb"; }
+
+            if (DS_Functions.checkBit(tamper_status[1], 0x80) == true) { TamperStatus += " | Magnet"; }
+            if (DS_Functions.checkBit(tamper_status[1], 0x40) == true) { TamperStatus += " | Over Current"; }
+            if (DS_Functions.checkBit(tamper_status[1], 0x20) == true) { TamperStatus += " | CT Bypass"; }
+            if (DS_Functions.checkBit(tamper_status[1], 0x10) == true) { TamperStatus += " | Current Unbalance"; }
+            if (DS_Functions.checkBit(tamper_status[1], 0x08) == true) { TamperStatus += " | CY Open B"; }
+            if (DS_Functions.checkBit(tamper_status[1], 0x04) == true) { TamperStatus += " | CT Open Y"; }
+            if (DS_Functions.checkBit(tamper_status[1], 0x02) == true) { TamperStatus += " | CT Open R"; }
+            if (DS_Functions.checkBit(tamper_status[1], 0x01) == true) { TamperStatus += " | CT Reverse B"; }
+
+            if (DS_Functions.checkBit(tamper_status[0], 0x80) == true) { TamperStatus += " | CT Reverse Y"; }
+            if (DS_Functions.checkBit(tamper_status[0], 0x40) == true) { TamperStatus += " | CT Reverse R"; }
+            if (DS_Functions.checkBit(tamper_status[0], 0x20) == true) { TamperStatus += " | Vol Unbalance"; }
+            if (DS_Functions.checkBit(tamper_status[0], 0x10) == true) { TamperStatus += " | Vol Low"; }
+            if (DS_Functions.checkBit(tamper_status[0], 0x08) == true) { TamperStatus += " | Vol High"; }
+            if (DS_Functions.checkBit(tamper_status[0], 0x04) == true) { TamperStatus += " | Vol Miss B"; }
+            if (DS_Functions.checkBit(tamper_status[0], 0x02) == true) { TamperStatus += " | Vol Miss Y"; }
+            if (DS_Functions.checkBit(tamper_status[0], 0x01) == true) { TamperStatus += " | Vol Miss R"; }
+
+            textBox_TamperStatus.Text = TamperStatus;
             textBox_MISCData.Text = MISCData;
-            
+
             ///* Vector Diagram Display */
             //if (ShowVectorDiag == true)
             //{
@@ -794,7 +805,6 @@ namespace Developer_Tools
             //    v_diag.Refresh();     // Combines Invalidate() and Update()
             //}
         }
-
         private void comboBox_SerialSingleCOMPORT_Click(object sender, EventArgs e)
         {
             comboBox_SerialSingleCOMPORT.Items.Clear();
@@ -871,14 +881,7 @@ namespace Developer_Tools
 
         private void timer100ms_Tick(object sender, EventArgs e)
         {
-            string s = String.Empty;// traffic_string;
-            if (traffic_string.Length != 0)
-            {
-                s = traffic_string;
-                traffic_string = String.Empty;
-            }
-            textBox_DataTraffic.AppendText(s);
-            traffic_string = String.Empty;
+            update_textboxes();     /* make it as a thread and do the operation */
         }
 
         private void textBox_InputVr_Click(object sender, EventArgs e)
@@ -1205,84 +1208,188 @@ namespace Developer_Tools
                     CurrBdc = DS_Functions.ByteArrayToS32(b_array, arr_ptr, 1000); arr_ptr += 4;
                     CurrNdc = DS_Functions.ByteArrayToS32(b_array, arr_ptr, 1000); arr_ptr += 4;
 
-                    //PFR = (DS_Functions.CheckForNegativeValue(DS_Functions.ByteArrayToInt(b_array, 59), 2) / 1000.0);
-                    //PFY = (DS_Functions.CheckForNegativeValue(DS_Functions.ByteArrayToInt(b_array, 61), 2) / 1000.0);
-                    //PFB = (DS_Functions.CheckForNegativeValue(DS_Functions.ByteArrayToInt(b_array, 63), 2) / 1000.0);
-                    //PFNet = (DS_Functions.CheckForNegativeValue(DS_Functions.ByteArrayToInt(b_array, 65), 2) / 1000.0);
-                    //
-                    //AnglePFR = (DS_Functions.CheckForNegativeValue(DS_Functions.ByteArrayToInt(b_array, 67), 2) / 100.0);
-                    //AnglePFY = (DS_Functions.CheckForNegativeValue(DS_Functions.ByteArrayToInt(b_array, 69), 2) / 100.0);
-                    //AnglePFB = (DS_Functions.CheckForNegativeValue(DS_Functions.ByteArrayToInt(b_array, 71), 2) / 100.0);
-                    //
-                    //WattR = (DS_Functions.CheckForNegativeValue(DS_Functions.ByteArrayToLong(b_array, 73), 4) / 10.0);
-                    //WattY = (DS_Functions.CheckForNegativeValue(DS_Functions.ByteArrayToLong(b_array, 77), 4) / 10.0);
-                    //WattB = (DS_Functions.CheckForNegativeValue(DS_Functions.ByteArrayToLong(b_array, 81), 4) / 10.0);
-                    //WattNet = (DS_Functions.CheckForNegativeValue(DS_Functions.ByteArrayToLong(b_array, 85), 4) / 10.0);
-                    //
-                    //VARR = (DS_Functions.CheckForNegativeValue(DS_Functions.ByteArrayToLong(b_array, 89), 4) / 10.0);
-                    //VARY = (DS_Functions.CheckForNegativeValue(DS_Functions.ByteArrayToLong(b_array, 93), 4) / 10.0);
-                    //VARB = (DS_Functions.CheckForNegativeValue(DS_Functions.ByteArrayToLong(b_array, 97), 4) / 10.0);
-                    //VARNet = (DS_Functions.CheckForNegativeValue(DS_Functions.ByteArrayToLong(b_array, 101), 4) / 10.0);
-                    //
-                    //VAR = (DS_Functions.CheckForNegativeValue(DS_Functions.ByteArrayToLong(b_array, 105), 4) / 10.0);
-                    //VAY = (DS_Functions.CheckForNegativeValue(DS_Functions.ByteArrayToLong(b_array, 109), 4) / 10.0);
-                    //VAB = (DS_Functions.CheckForNegativeValue(DS_Functions.ByteArrayToLong(b_array, 113), 4) / 10.0);
-                    //VANet = (DS_Functions.CheckForNegativeValue(DS_Functions.ByteArrayToLong(b_array, 117), 4) / 10.0);
-                    //
-                    //FreqR = (DS_Functions.ByteArrayToInt(b_array, 121) / 1000.0);
-                    //FreqY = (DS_Functions.ByteArrayToInt(b_array, 123) / 1000.0);
-                    //FreqB = (DS_Functions.ByteArrayToInt(b_array, 125) / 1000.0);
-                    //FreqNet = (DS_Functions.ByteArrayToInt(b_array, 127) / 1000.0);
-                    //
-                    //QuadrantR = b_array[129];
-                    //QuadrantY = b_array[130];
-                    //QuadrantB = b_array[131];
-                    //QuadrantNet = b_array[132];
-                    //
-                    //CalAngleActR = (DS_Functions.CheckForNegativeValue(DS_Functions.ByteArrayToInt(b_array, 131), 2) / 100.0);
-                    //CalAngleActY = (DS_Functions.CheckForNegativeValue(DS_Functions.ByteArrayToInt(b_array, 135), 2) / 100.0);
-                    //CalAngleActB = (DS_Functions.CheckForNegativeValue(DS_Functions.ByteArrayToInt(b_array, 137), 2) / 100.0);
-                    //
-                    //CalAngleReactR = (DS_Functions.CheckForNegativeValue(DS_Functions.ByteArrayToInt(b_array, 139), 2) / 100.0);
-                    //CalAngleReactY = (DS_Functions.CheckForNegativeValue(DS_Functions.ByteArrayToInt(b_array, 141), 2) / 100.0);
-                    //CalAngleReactB = (DS_Functions.CheckForNegativeValue(DS_Functions.ByteArrayToInt(b_array, 143), 2) / 100.0);
-                    //
-                    //SamplesR = DS_Functions.ByteArrayToInt(b_array, 145);
-                    //SamplesY = DS_Functions.ByteArrayToInt(b_array, 147);
-                    //SamplesB = DS_Functions.ByteArrayToInt(b_array, 149);
-                    //SamplesPerSec = DS_Functions.ByteArrayToInt(b_array, 151);
-                    //SamplesN = DS_Functions.ByteArrayToInt(b_array, 153);
-                    //
-                    //CurrNVector = (DS_Functions.CheckForNegativeValue(DS_Functions.ByteArrayToLong(b_array, 155), 4) / 1000.0);
-                    //AngleNVector = (DS_Functions.CheckForNegativeValue(DS_Functions.ByteArrayToInt(b_array, 159), 2) / 100.0);
-                    //
-                    //Time = receive_data[161].ToString("D2") + ":" + receive_data[162].ToString("D2") + ":" + receive_data[163].ToString("D2") + " " +
-                    //    receive_data[164].ToString("D2") + "/" + receive_data[165].ToString("D2") + "/" + receive_data[166].ToString("D2");
-                    //
-                    //VolRY = (DS_Functions.ByteArrayToInt(b_array, 167) / 100.0);
-                    //VolYB = (DS_Functions.ByteArrayToInt(b_array, 169) / 100.0);
-                    //VolBR = (DS_Functions.ByteArrayToInt(b_array, 171) / 100.0);
-                    //
-                    //AngleRY = DS_Functions.ByteArrayToInt(b_array, 173) / 100.0;
-                    //AngleYB = DS_Functions.ByteArrayToInt(b_array, 175) / 100.0;
-                    //AngleBR = DS_Functions.ByteArrayToInt(b_array, 177) / 100.0;
-                    //
-                    //EnergyWhR = (DS_Functions.ByteArrayToLong(b_array, 179) / 1000.0);
-                    //EnergyWhY = (DS_Functions.ByteArrayToLong(b_array, 183) / 1000.0);
-                    //EnergyWhB = (DS_Functions.ByteArrayToLong(b_array, 187) / 1000.0);
-                    //EnergyWhTotal = (DS_Functions.ByteArrayToLong(b_array, 191) / 1000.0);
-                    //EnergyVARhLagTotal = (DS_Functions.ByteArrayToLong(b_array, 195) / 1000.0);
-                    //EnergyVARhLeadTotal = (DS_Functions.ByteArrayToLong(b_array, 199) / 1000.0);
-                    //EnergyVAhTotal = (DS_Functions.ByteArrayToLong(b_array, 203) / 1000.0);
-                    //
-                    //pulseEnergyWhR = b_array[207];
-                    //pulseEnergyWhY = b_array[208];
-                    //pulseEnergyWhB = b_array[209];
-                    //pulseEnergyWhTotal = b_array[210];
-                    //pulseEnergyVARhLagTotal = b_array[211];
-                    //pulseEnergyVARhLeadTotal = b_array[212];
-                    //pulseEnergyVAhTotal = b_array[213];
-                    //
+                    PFR = DS_Functions.ByteArrayToS16(b_array, arr_ptr, 1000); arr_ptr += 2;
+                    PFY = DS_Functions.ByteArrayToS16(b_array, arr_ptr, 1000); arr_ptr += 2;
+                    PFB = DS_Functions.ByteArrayToS16(b_array, arr_ptr, 1000); arr_ptr += 2;
+                    PFNet = DS_Functions.ByteArrayToS16(b_array, arr_ptr, 1000); arr_ptr += 2;
+
+                    AnglePFR = DS_Functions.ByteArrayToS16(b_array, arr_ptr, 1000); arr_ptr += 2;
+                    AnglePFY = DS_Functions.ByteArrayToS16(b_array, arr_ptr, 1000); arr_ptr += 2;
+                    AnglePFB = DS_Functions.ByteArrayToS16(b_array, arr_ptr, 1000); arr_ptr += 2;
+
+                    WattR = DS_Functions.ByteArrayToS32(b_array, arr_ptr, 10); arr_ptr += 4;
+                    WattY = DS_Functions.ByteArrayToS32(b_array, arr_ptr, 10); arr_ptr += 4;
+                    WattB = DS_Functions.ByteArrayToS32(b_array, arr_ptr, 10); arr_ptr += 4;
+                    WattNet = DS_Functions.ByteArrayToS32(b_array, arr_ptr, 10); arr_ptr += 4;
+
+                    VARR = DS_Functions.ByteArrayToS32(b_array, arr_ptr, 10); arr_ptr += 4;
+                    VARY = DS_Functions.ByteArrayToS32(b_array, arr_ptr, 10); arr_ptr += 4;
+                    VARB = DS_Functions.ByteArrayToS32(b_array, arr_ptr, 10); arr_ptr += 4;
+                    VARNet = DS_Functions.ByteArrayToS32(b_array, arr_ptr, 10); arr_ptr += 4;
+
+                    VAR = DS_Functions.ByteArrayToS32(b_array, arr_ptr, 10); arr_ptr += 4;
+                    VAY = DS_Functions.ByteArrayToS32(b_array, arr_ptr, 10); arr_ptr += 4;
+                    VAB = DS_Functions.ByteArrayToS32(b_array, arr_ptr, 10); arr_ptr += 4;
+                    VANet = DS_Functions.ByteArrayToS32(b_array, arr_ptr, 10); arr_ptr += 4;
+
+                    FreqR = DS_Functions.ByteArrayToUs16(b_array, arr_ptr, 1000); arr_ptr += 2;
+                    FreqY = DS_Functions.ByteArrayToUs16(b_array, arr_ptr, 1000); arr_ptr += 2;
+                    FreqB = DS_Functions.ByteArrayToUs16(b_array, arr_ptr, 1000); arr_ptr += 2;
+                    FreqNet = DS_Functions.ByteArrayToUs16(b_array, arr_ptr, 1000); arr_ptr += 2;
+
+                    QuadrantR = b_array[arr_ptr++];
+                    QuadrantY = b_array[arr_ptr++];
+                    QuadrantB = b_array[arr_ptr++];
+                    QuadrantNet = b_array[arr_ptr++];
+
+                    SamplesR = DS_Functions.ByteArrayToUs16(b_array, arr_ptr); arr_ptr += 2;
+                    SamplesY = DS_Functions.ByteArrayToUs16(b_array, arr_ptr); arr_ptr += 2;
+                    SamplesB = DS_Functions.ByteArrayToUs16(b_array, arr_ptr); arr_ptr += 2;
+                    SamplesPerSec = DS_Functions.ByteArrayToUs16(b_array, arr_ptr); arr_ptr += 2;
+                    SamplesN = DS_Functions.ByteArrayToUs16(b_array, arr_ptr); arr_ptr += 2;
+
+                    THDVr = DS_Functions.ByteArrayToUs16(b_array, arr_ptr, 10); arr_ptr += 2;
+                    THDVy = DS_Functions.ByteArrayToUs16(b_array, arr_ptr, 10); arr_ptr += 2;
+                    THDVb = DS_Functions.ByteArrayToUs16(b_array, arr_ptr, 10); arr_ptr += 2;
+                    THDIr = DS_Functions.ByteArrayToUs16(b_array, arr_ptr, 10); arr_ptr += 2;
+                    THDIy = DS_Functions.ByteArrayToUs16(b_array, arr_ptr, 10); arr_ptr += 2;
+                    THDIb = DS_Functions.ByteArrayToUs16(b_array, arr_ptr, 10); arr_ptr += 2;
+
+                    EnergyWhR_imp = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
+                    EnergyWhY_imp = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
+                    EnergyWhY_imp = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
+                    EnergyWhTotal_imp = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
+                    EnergyWhR_exp = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
+                    EnergyWhY_exp = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
+                    EnergyWhY_exp = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
+                    EnergyWhTotal_exp = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
+                    EnergyVARhR_q1 = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
+                    EnergyVARhY_q1 = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
+                    EnergyVARhY_q1 = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
+                    EnergyVARhTotal_q1 = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
+                    EnergyVARhR_q2 = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
+                    EnergyVARhY_q2 = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
+                    EnergyVARhY_q2 = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
+                    EnergyVARhTotal_q2 = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
+                    EnergyVARhR_q3 = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
+                    EnergyVARhY_q3 = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
+                    EnergyVARhY_q3 = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
+                    EnergyVARhTotal_q3 = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
+                    EnergyVARhR_q4 = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
+                    EnergyVARhY_q4 = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
+                    EnergyVARhY_q4 = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
+                    EnergyVARhTotal_q4 = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
+                    EnergyVAhR_imp = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
+                    EnergyVAhY_imp = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
+                    EnergyVAhY_imp = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
+                    EnergyVAhTotal_imp = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
+                    EnergyVAhR_exp = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
+                    EnergyVAhY_exp = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
+                    EnergyVAhY_exp = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
+                    EnergyVAhTotal_exp = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
+                    EnergyFWhR_imp = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
+                    EnergyFWhY_imp = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
+                    EnergyFWhY_imp = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
+                    EnergyFWhTotal_imp = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
+                    EnergyFWhR_exp = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
+                    EnergyFWhY_exp = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
+                    EnergyFWhY_exp = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
+                    EnergyFWhTotal_exp = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
+
+                    pulse_EnergyWhR_imp = b_array[arr_ptr++];
+                    pulse_EnergyWhY_imp = b_array[arr_ptr++];
+                    pulse_EnergyWhB_imp = b_array[arr_ptr++];
+                    pulse_EnergyWhTotal_imp = b_array[arr_ptr++];
+                    pulse_EnergyWhR_exp = b_array[arr_ptr++];
+                    pulse_EnergyWhY_exp = b_array[arr_ptr++];
+                    pulse_EnergyWhB_exp = b_array[arr_ptr++];
+                    pulse_EnergyWhTotal_exp = b_array[arr_ptr++];
+                    pulse_EnergyVARhR_q1 = b_array[arr_ptr++];
+                    pulse_EnergyVARhY_q1 = b_array[arr_ptr++];
+                    pulse_EnergyVARhB_q1 = b_array[arr_ptr++];
+                    pulse_EnergyVARhTotal_q1 = b_array[arr_ptr++];
+                    pulse_EnergyVARhR_q2 = b_array[arr_ptr++];
+                    pulse_EnergyVARhY_q2 = b_array[arr_ptr++];
+                    pulse_EnergyVARhB_q2 = b_array[arr_ptr++];
+                    pulse_EnergyVARhTotal_q2 = b_array[arr_ptr++];
+                    pulse_EnergyVARhR_q3 = b_array[arr_ptr++];
+                    pulse_EnergyVARhY_q3 = b_array[arr_ptr++];
+                    pulse_EnergyVARhB_q3 = b_array[arr_ptr++];
+                    pulse_EnergyVARhTotal_q3 = b_array[arr_ptr++];
+                    pulse_EnergyVARhR_q4 = b_array[arr_ptr++];
+                    pulse_EnergyVARhY_q4 = b_array[arr_ptr++];
+                    pulse_EnergyVARhB_q4 = b_array[arr_ptr++];
+                    pulse_EnergyVARhTotal_q4 = b_array[arr_ptr++];
+                    pulse_EnergyVAhR_imp = b_array[arr_ptr++];
+                    pulse_EnergyVAhY_imp = b_array[arr_ptr++];
+                    pulse_EnergyVAhB_imp = b_array[arr_ptr++];
+                    pulse_EnergyVAhTotal_imp = b_array[arr_ptr++];
+                    pulse_EnergyVAhR_exp = b_array[arr_ptr++];
+                    pulse_EnergyVAhY_exp = b_array[arr_ptr++];
+                    pulse_EnergyVAhB_exp = b_array[arr_ptr++];
+                    pulse_EnergyVAhTotal_exp = b_array[arr_ptr++];
+                    pulse_EnergyFWhR_imp = b_array[arr_ptr++];
+                    pulse_EnergyFWhY_imp = b_array[arr_ptr++];
+                    pulse_EnergyFWhB_imp = b_array[arr_ptr++];
+                    pulse_EnergyFWhTotal_imp = b_array[arr_ptr++];
+                    pulse_EnergyFWhR_exp = b_array[arr_ptr++];
+                    pulse_EnergyFWhY_exp = b_array[arr_ptr++];
+                    pulse_EnergyFWhB_exp = b_array[arr_ptr++];
+                    pulse_EnergyFWhTotal_exp = b_array[arr_ptr++];
+
+                    Time = String.Empty;
+
+                    Time += b_array[arr_ptr++].ToString("D2") + ":";  // hh
+                    Time += b_array[arr_ptr++].ToString("D2") + ":";  // mm
+                    Time += b_array[arr_ptr++].ToString("D2") + " ";  // ss
+                    Time += b_array[arr_ptr++].ToString("D2") + "/";  // date
+                    Time += b_array[arr_ptr++].ToString("D2") + "/";  // month
+                    Time += b_array[arr_ptr++].ToString("D2") + " ";  // year
+                    Time += DS_Functions.get_day_of_week[b_array[arr_ptr++]];  // day of week
+
+                    powerUpSec = DS_Functions.ByteArrayToUs16(b_array, arr_ptr); arr_ptr += 2;
+
+                    CurrNVector = DS_Functions.ByteArrayToS32(b_array, arr_ptr, 1000); arr_ptr += 4;
+                    AngleNVector = DS_Functions.ByteArrayToS32(b_array, arr_ptr, 100); arr_ptr += 2;
+
+
+                    temperature_tlv = DS_Functions.ByteArrayToUs16(b_array, arr_ptr, 100); arr_ptr += 2;
+                    LoopCycles = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
+                    battery_voltage = DS_Functions.ByteArrayToUs16(b_array, arr_ptr, 100); arr_ptr += 2;
+                    battery_voltage_rtc = DS_Functions.ByteArrayToUs16(b_array, arr_ptr, 100); arr_ptr += 2;
+
+                    VolRY = DS_Functions.ByteArrayToUs32(b_array, arr_ptr, 100); arr_ptr += 4;
+                    VolYB = DS_Functions.ByteArrayToUs32(b_array, arr_ptr, 100); arr_ptr += 4;
+                    VolBR = DS_Functions.ByteArrayToUs32(b_array, arr_ptr, 100); arr_ptr += 4;
+
+                    AngleRY = DS_Functions.ByteArrayToS16(b_array, arr_ptr, 100); arr_ptr += 2;
+                    AngleYB = DS_Functions.ByteArrayToS16(b_array, arr_ptr, 100); arr_ptr += 2;
+                    AngleBR = DS_Functions.ByteArrayToS16(b_array, arr_ptr, 100); arr_ptr += 2;
+
+                    reactiveSamples = b_array[arr_ptr++];
+                    reactiveTimer = DS_Functions.ByteArrayToS16(b_array, arr_ptr); arr_ptr += 2;
+                    reactiveTimeDelay = DS_Functions.ByteArrayToS16(b_array, arr_ptr); arr_ptr += 2;
+                    reactiveTimeDeviation = DS_Functions.ByteArrayToS16(b_array, arr_ptr); arr_ptr += 2;
+
+                    tamper_status[7] = b_array[arr_ptr++];
+                    tamper_status[6] = b_array[arr_ptr++];
+                    tamper_status[5] = b_array[arr_ptr++];
+                    tamper_status[4] = b_array[arr_ptr++];
+                    tamper_status[3] = b_array[arr_ptr++];
+                    tamper_status[2] = b_array[arr_ptr++];
+                    tamper_status[1] = b_array[arr_ptr++];
+                    tamper_status[0] = b_array[arr_ptr++];
+
+                    // Reserved diag string of 8 bytes
+                    arr_ptr += 8;
+                    // Reserved byte array of 8 bytes
+                    arr_ptr += 8;
+
+                    /* Handling Misc data */
+                    MISCData = DS_Functions.byte_array_to_ascii_string(b_array, b_array_len - 3, arr_ptr);
+                    
+                    /* Calculating Energies */
+
                     //EnergyWhR += QUANTA * (pulseEnergyWhR / PULSE);
                     //EnergyWhY += QUANTA * (pulseEnergyWhY / PULSE);
                     //EnergyWhB += QUANTA * (pulseEnergyWhB / PULSE);
@@ -1299,36 +1406,16 @@ namespace Developer_Tools
                     //EnergyVARhLeadTotal += GetPulseWeight[pulseEnergyVARhLeadTotal % PULSE];
                     //EnergyVAhTotal += GetPulseWeight[pulseEnergyVAhTotal % PULSE];
                     //
-                    //metrology_timer = DS_Functions.ByteArrayToInt(b_array, 214);
+
                     //
-                    //temperature_tlv = (DS_Functions.CheckForNegativeValue(DS_Functions.ByteArrayToInt(b_array, 216), 2));
-                    //battery_voltage = DS_Functions.ByteArrayToInt(b_array, 218) / 100.0;
                     //
-                    //reactiveSamples = b_array[220];
-                    //reactiveTimer = DS_Functions.ByteArrayToInt(b_array, 221);
-                    //reactiveTimeDelay = DS_Functions.ByteArrayToInt(b_array, 223);
-                    //reactiveTimeDeviation = DS_Functions.ByteArrayToInt(b_array, 225);
-                    //
-                    //THDVr = DS_Functions.ByteArrayToInt(b_array, 227) / 10.0;
-                    //THDVy = DS_Functions.ByteArrayToInt(b_array, 229) / 10.0;
-                    //THDVb = DS_Functions.ByteArrayToInt(b_array, 231) / 10.0;
-                    //THDIr = DS_Functions.ByteArrayToInt(b_array, 233) / 10.0;
-                    //THDIy = DS_Functions.ByteArrayToInt(b_array, 235) / 10.0;
-                    //THDIb = DS_Functions.ByteArrayToInt(b_array, 237) / 10.0;
-                    //
+
                     //EnergyWhTotalFunda = (DS_Functions.ByteArrayToLong(b_array, 239) / 1000.0);
                     //pulseEnergyWhTotalFunda = b_array[243];
                     //EnergyWhTotalFunda += QUANTA * (pulseEnergyWhTotalFunda / PULSE);
                     //EnergyWhTotalFunda += GetPulseWeight[pulseEnergyWhTotalFunda % PULSE];
-                    //LoopCycles = DS_Functions.ByteArrayToLong(b_array, 244);
-                    //tamper_status[7] = b_array[248];
-                    //tamper_status[6] = b_array[249];
-                    //tamper_status[5] = b_array[250];
-                    //tamper_status[4] = b_array[251];
-                    //tamper_status[3] = b_array[252];
-                    //tamper_status[2] = b_array[253];
-                    //tamper_status[1] = b_array[254];
-                    //tamper_status[0] = b_array[255];
+
+
                     //
                     //if (b_array_len >= 256)
                     //{
