@@ -1276,43 +1276,43 @@ namespace Developer_Tools
 
                     EnergyWhR_imp = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
                     EnergyWhY_imp = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
-                    EnergyWhY_imp = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
+                    EnergyWhB_imp = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
                     EnergyWhTotal_imp = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
                     EnergyWhR_exp = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
                     EnergyWhY_exp = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
-                    EnergyWhY_exp = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
+                    EnergyWhB_exp = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
                     EnergyWhTotal_exp = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
                     EnergyVARhR_q1 = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
                     EnergyVARhY_q1 = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
-                    EnergyVARhY_q1 = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
+                    EnergyVARhB_q1 = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
                     EnergyVARhTotal_q1 = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
                     EnergyVARhR_q2 = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
                     EnergyVARhY_q2 = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
-                    EnergyVARhY_q2 = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
+                    EnergyVARhB_q2 = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
                     EnergyVARhTotal_q2 = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
                     EnergyVARhR_q3 = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
                     EnergyVARhY_q3 = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
-                    EnergyVARhY_q3 = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
+                    EnergyVARhB_q3 = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
                     EnergyVARhTotal_q3 = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
                     EnergyVARhR_q4 = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
                     EnergyVARhY_q4 = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
-                    EnergyVARhY_q4 = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
+                    EnergyVARhB_q4 = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
                     EnergyVARhTotal_q4 = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
                     EnergyVAhR_imp = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
                     EnergyVAhY_imp = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
-                    EnergyVAhY_imp = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
+                    EnergyVAhB_imp = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
                     EnergyVAhTotal_imp = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
                     EnergyVAhR_exp = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
                     EnergyVAhY_exp = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
-                    EnergyVAhY_exp = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
+                    EnergyVAhB_exp = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
                     EnergyVAhTotal_exp = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
                     EnergyFWhR_imp = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
                     EnergyFWhY_imp = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
-                    EnergyFWhY_imp = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
+                    EnergyFWhB_imp = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
                     EnergyFWhTotal_imp = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
                     EnergyFWhR_exp = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
                     EnergyFWhY_exp = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
-                    EnergyFWhY_exp = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
+                    EnergyFWhB_exp = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
                     EnergyFWhTotal_exp = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
 
                     pulse_EnergyWhR_imp = b_array[arr_ptr++];
@@ -1421,18 +1421,19 @@ namespace Developer_Tools
                     MISCData = DS_Functions.byte_array_to_ascii_string(b_array, b_array_len - 3, arr_ptr);
 
                     ushort QUANTA,PULSE;
-                    double[] PulseWeight = new double[6];
+                    double[] PulseWeight = new double[7];
                     /* Calculating Energies */
                     if (Meter_Const == 1200)
                     {
                         QUANTA = 5;
                         PULSE = 6;
-                        PulseWeight[0] = 0.833;
-                        PulseWeight[1] = 1.666;
-                        PulseWeight[2] = 2.500;
-                        PulseWeight[3] = 3.333;
-                        PulseWeight[4] = 4.166;
-                        PulseWeight[5] = 5.000;
+                        PulseWeight[0] = 0;
+                        PulseWeight[1] = 0.833;
+                        PulseWeight[2] = 1.666;
+                        PulseWeight[3] = 2.500;
+                        PulseWeight[4] = 3.333;
+                        PulseWeight[5] = 4.166;
+                        PulseWeight[6] = 5.000;
                     }
                     else if (Meter_Const == 1000)
                     {
@@ -1444,6 +1445,7 @@ namespace Developer_Tools
                         PulseWeight[3] = 3;
                         PulseWeight[4] = 4;
                         PulseWeight[5] = 5;
+                        PulseWeight[6] = 6;
                     }
                     else if (Meter_Const == 600)
                     {
@@ -1455,6 +1457,7 @@ namespace Developer_Tools
                         PulseWeight[3] = 5.000;
                         PulseWeight[4] = 6.666;
                         PulseWeight[5] = 8.333;
+                        PulseWeight[6] = 10;
                     }
                     else
                     {
