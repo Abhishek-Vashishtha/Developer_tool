@@ -125,7 +125,11 @@ namespace Developer_Tools
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabControl3 = new System.Windows.Forms.TabControl();
             this.tabPage11 = new System.Windows.Forms.TabPage();
+            this.groupBox22 = new System.Windows.Forms.GroupBox();
+            this.label70 = new System.Windows.Forms.Label();
+            this.textBox_FgFlag = new System.Windows.Forms.TextBox();
             this.label69 = new System.Windows.Forms.Label();
+            this.textBox_MeteringMode = new System.Windows.Forms.TextBox();
             this.groupBox17 = new System.Windows.Forms.GroupBox();
             this.textBox_Temperature = new System.Windows.Forms.TextBox();
             this.label68 = new System.Windows.Forms.Label();
@@ -546,6 +550,10 @@ namespace Developer_Tools
             this.button_WFCapture = new System.Windows.Forms.Button();
             this.pictureBoxWaveform = new System.Windows.Forms.PictureBox();
             this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.groupBox23 = new System.Windows.Forms.GroupBox();
+            this.button_CommandDumpLoadSurvey = new System.Windows.Forms.Button();
+            this.button_CommandFG = new System.Windows.Forms.Button();
+            this.button_CommandMemoryFF = new System.Windows.Forms.Button();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.textBoxRTCOUTTime = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -572,10 +580,15 @@ namespace Developer_Tools
             this.openJSONFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.timer500ms = new System.Windows.Forms.Timer(this.components);
             this.timer100ms = new System.Windows.Forms.Timer(this.components);
-            this.textBox_MeteringMode = new System.Windows.Forms.TextBox();
-            this.groupBox22 = new System.Windows.Forms.GroupBox();
-            this.label70 = new System.Windows.Forms.Label();
-            this.textBox_FgFlag = new System.Windows.Forms.TextBox();
+            this.label71 = new System.Windows.Forms.Label();
+            this.label72 = new System.Windows.Forms.Label();
+            this.label73 = new System.Windows.Forms.Label();
+            this.label74 = new System.Windows.Forms.Label();
+            this.textBox_WattBFunda = new System.Windows.Forms.TextBox();
+            this.textBox_WattYFunda = new System.Windows.Forms.TextBox();
+            this.textBox_WattNetFunda = new System.Windows.Forms.TextBox();
+            this.textBox_WattRFunda = new System.Windows.Forms.TextBox();
+            this.label75 = new System.Windows.Forms.Label();
             this.menuStripMain.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -596,6 +609,7 @@ namespace Developer_Tools
             this.tabPage3.SuspendLayout();
             this.tabControl3.SuspendLayout();
             this.tabPage11.SuspendLayout();
+            this.groupBox22.SuspendLayout();
             this.groupBox17.SuspendLayout();
             this.groupBox21.SuspendLayout();
             this.groupBox18.SuspendLayout();
@@ -617,10 +631,10 @@ namespace Developer_Tools
             this.groupBox24.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWaveform)).BeginInit();
             this.tabPage8.SuspendLayout();
+            this.groupBox23.SuspendLayout();
             this.groupBox10.SuspendLayout();
             this.groupBox9.SuspendLayout();
             this.groupBox8.SuspendLayout();
-            this.groupBox22.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStripMain
@@ -1571,6 +1585,15 @@ namespace Developer_Tools
             // tabPage11
             // 
             this.tabPage11.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.tabPage11.Controls.Add(this.textBox_WattBFunda);
+            this.tabPage11.Controls.Add(this.textBox_WattYFunda);
+            this.tabPage11.Controls.Add(this.textBox_WattNetFunda);
+            this.tabPage11.Controls.Add(this.textBox_WattRFunda);
+            this.tabPage11.Controls.Add(this.label75);
+            this.tabPage11.Controls.Add(this.label71);
+            this.tabPage11.Controls.Add(this.label72);
+            this.tabPage11.Controls.Add(this.label73);
+            this.tabPage11.Controls.Add(this.label74);
             this.tabPage11.Controls.Add(this.groupBox22);
             this.tabPage11.Controls.Add(this.groupBox17);
             this.tabPage11.Controls.Add(this.textBox_MISCData);
@@ -1708,6 +1731,39 @@ namespace Developer_Tools
             this.tabPage11.TabIndex = 5;
             this.tabPage11.Text = "Instant data";
             // 
+            // groupBox22
+            // 
+            this.groupBox22.Controls.Add(this.label70);
+            this.groupBox22.Controls.Add(this.textBox_FgFlag);
+            this.groupBox22.Controls.Add(this.label69);
+            this.groupBox22.Controls.Add(this.textBox_MeteringMode);
+            this.groupBox22.Location = new System.Drawing.Point(873, 193);
+            this.groupBox22.Name = "groupBox22";
+            this.groupBox22.Size = new System.Drawing.Size(161, 117);
+            this.groupBox22.TabIndex = 679;
+            this.groupBox22.TabStop = false;
+            this.groupBox22.Text = "Diag Data";
+            // 
+            // label70
+            // 
+            this.label70.AutoSize = true;
+            this.label70.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label70.Location = new System.Drawing.Point(49, 41);
+            this.label70.Name = "label70";
+            this.label70.Size = new System.Drawing.Size(62, 17);
+            this.label70.TabIndex = 680;
+            this.label70.Text = "FG Flag:";
+            // 
+            // textBox_FgFlag
+            // 
+            this.textBox_FgFlag.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_FgFlag.Location = new System.Drawing.Point(115, 40);
+            this.textBox_FgFlag.Name = "textBox_FgFlag";
+            this.textBox_FgFlag.ReadOnly = true;
+            this.textBox_FgFlag.Size = new System.Drawing.Size(40, 20);
+            this.textBox_FgFlag.TabIndex = 679;
+            this.textBox_FgFlag.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // label69
             // 
             this.label69.AutoSize = true;
@@ -1717,6 +1773,16 @@ namespace Developer_Tools
             this.label69.Size = new System.Drawing.Size(106, 17);
             this.label69.TabIndex = 678;
             this.label69.Text = "Metering Mode:";
+            // 
+            // textBox_MeteringMode
+            // 
+            this.textBox_MeteringMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_MeteringMode.Location = new System.Drawing.Point(115, 18);
+            this.textBox_MeteringMode.Name = "textBox_MeteringMode";
+            this.textBox_MeteringMode.ReadOnly = true;
+            this.textBox_MeteringMode.Size = new System.Drawing.Size(40, 20);
+            this.textBox_MeteringMode.TabIndex = 677;
+            this.textBox_MeteringMode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // groupBox17
             // 
@@ -2275,9 +2341,9 @@ namespace Developer_Tools
             // textBox_FEnergyWhExportTotal
             // 
             this.textBox_FEnergyWhExportTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_FEnergyWhExportTotal.Location = new System.Drawing.Point(734, 519);
+            this.textBox_FEnergyWhExportTotal.Location = new System.Drawing.Point(322, 520);
             this.textBox_FEnergyWhExportTotal.Name = "textBox_FEnergyWhExportTotal";
-            this.textBox_FEnergyWhExportTotal.Size = new System.Drawing.Size(78, 20);
+            this.textBox_FEnergyWhExportTotal.Size = new System.Drawing.Size(69, 20);
             this.textBox_FEnergyWhExportTotal.TabIndex = 659;
             this.textBox_FEnergyWhExportTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -2285,9 +2351,9 @@ namespace Developer_Tools
             // 
             this.textBox_FEnergyWhExportR.BackColor = System.Drawing.Color.LightCoral;
             this.textBox_FEnergyWhExportR.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_FEnergyWhExportR.Location = new System.Drawing.Point(486, 519);
+            this.textBox_FEnergyWhExportR.Location = new System.Drawing.Point(85, 520);
             this.textBox_FEnergyWhExportR.Name = "textBox_FEnergyWhExportR";
-            this.textBox_FEnergyWhExportR.Size = new System.Drawing.Size(78, 20);
+            this.textBox_FEnergyWhExportR.Size = new System.Drawing.Size(69, 20);
             this.textBox_FEnergyWhExportR.TabIndex = 656;
             this.textBox_FEnergyWhExportR.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -2295,9 +2361,9 @@ namespace Developer_Tools
             // 
             this.textBox_FEnergyWhExportY.BackColor = System.Drawing.Color.LightGoldenrodYellow;
             this.textBox_FEnergyWhExportY.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_FEnergyWhExportY.Location = new System.Drawing.Point(568, 519);
+            this.textBox_FEnergyWhExportY.Location = new System.Drawing.Point(163, 520);
             this.textBox_FEnergyWhExportY.Name = "textBox_FEnergyWhExportY";
-            this.textBox_FEnergyWhExportY.Size = new System.Drawing.Size(78, 20);
+            this.textBox_FEnergyWhExportY.Size = new System.Drawing.Size(69, 20);
             this.textBox_FEnergyWhExportY.TabIndex = 657;
             this.textBox_FEnergyWhExportY.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -2305,9 +2371,9 @@ namespace Developer_Tools
             // 
             this.textBox_FEnergyWhExportB.BackColor = System.Drawing.Color.CornflowerBlue;
             this.textBox_FEnergyWhExportB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_FEnergyWhExportB.Location = new System.Drawing.Point(652, 519);
+            this.textBox_FEnergyWhExportB.Location = new System.Drawing.Point(245, 520);
             this.textBox_FEnergyWhExportB.Name = "textBox_FEnergyWhExportB";
-            this.textBox_FEnergyWhExportB.Size = new System.Drawing.Size(78, 20);
+            this.textBox_FEnergyWhExportB.Size = new System.Drawing.Size(69, 20);
             this.textBox_FEnergyWhExportB.TabIndex = 658;
             this.textBox_FEnergyWhExportB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -2315,7 +2381,7 @@ namespace Developer_Tools
             // 
             this.label44.AutoSize = true;
             this.label44.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label44.Location = new System.Drawing.Point(405, 518);
+            this.label44.Location = new System.Drawing.Point(4, 522);
             this.label44.Name = "label44";
             this.label44.Size = new System.Drawing.Size(79, 13);
             this.label44.TabIndex = 655;
@@ -2325,9 +2391,9 @@ namespace Developer_Tools
             // 
             this.textBox_FEnergyWhImportR.BackColor = System.Drawing.Color.LightCoral;
             this.textBox_FEnergyWhImportR.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_FEnergyWhImportR.Location = new System.Drawing.Point(486, 496);
+            this.textBox_FEnergyWhImportR.Location = new System.Drawing.Point(85, 497);
             this.textBox_FEnergyWhImportR.Name = "textBox_FEnergyWhImportR";
-            this.textBox_FEnergyWhImportR.Size = new System.Drawing.Size(78, 20);
+            this.textBox_FEnergyWhImportR.Size = new System.Drawing.Size(69, 20);
             this.textBox_FEnergyWhImportR.TabIndex = 651;
             this.textBox_FEnergyWhImportR.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -2335,9 +2401,9 @@ namespace Developer_Tools
             // 
             this.textBox_FEnergyWhImportY.BackColor = System.Drawing.Color.LightGoldenrodYellow;
             this.textBox_FEnergyWhImportY.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_FEnergyWhImportY.Location = new System.Drawing.Point(568, 496);
+            this.textBox_FEnergyWhImportY.Location = new System.Drawing.Point(163, 497);
             this.textBox_FEnergyWhImportY.Name = "textBox_FEnergyWhImportY";
-            this.textBox_FEnergyWhImportY.Size = new System.Drawing.Size(78, 20);
+            this.textBox_FEnergyWhImportY.Size = new System.Drawing.Size(69, 20);
             this.textBox_FEnergyWhImportY.TabIndex = 653;
             this.textBox_FEnergyWhImportY.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -2345,18 +2411,18 @@ namespace Developer_Tools
             // 
             this.textBox_FEnergyWhImportB.BackColor = System.Drawing.Color.CornflowerBlue;
             this.textBox_FEnergyWhImportB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_FEnergyWhImportB.Location = new System.Drawing.Point(652, 496);
+            this.textBox_FEnergyWhImportB.Location = new System.Drawing.Point(245, 497);
             this.textBox_FEnergyWhImportB.Name = "textBox_FEnergyWhImportB";
-            this.textBox_FEnergyWhImportB.Size = new System.Drawing.Size(78, 20);
+            this.textBox_FEnergyWhImportB.Size = new System.Drawing.Size(69, 20);
             this.textBox_FEnergyWhImportB.TabIndex = 654;
             this.textBox_FEnergyWhImportB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox_FEnergyWhImportTotal
             // 
             this.textBox_FEnergyWhImportTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_FEnergyWhImportTotal.Location = new System.Drawing.Point(734, 496);
+            this.textBox_FEnergyWhImportTotal.Location = new System.Drawing.Point(322, 497);
             this.textBox_FEnergyWhImportTotal.Name = "textBox_FEnergyWhImportTotal";
-            this.textBox_FEnergyWhImportTotal.Size = new System.Drawing.Size(78, 20);
+            this.textBox_FEnergyWhImportTotal.Size = new System.Drawing.Size(69, 20);
             this.textBox_FEnergyWhImportTotal.TabIndex = 652;
             this.textBox_FEnergyWhImportTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -2364,7 +2430,7 @@ namespace Developer_Tools
             // 
             this.label46.AutoSize = true;
             this.label46.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label46.Location = new System.Drawing.Point(404, 496);
+            this.label46.Location = new System.Drawing.Point(4, 500);
             this.label46.Name = "label46";
             this.label46.Size = new System.Drawing.Size(79, 13);
             this.label46.TabIndex = 650;
@@ -6164,6 +6230,7 @@ namespace Developer_Tools
             // tabPage8
             // 
             this.tabPage8.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.tabPage8.Controls.Add(this.groupBox23);
             this.tabPage8.Controls.Add(this.groupBox10);
             this.tabPage8.Controls.Add(this.groupBox9);
             this.tabPage8.Controls.Add(this.groupBox8);
@@ -6174,6 +6241,45 @@ namespace Developer_Tools
             this.tabPage8.TabIndex = 3;
             this.tabPage8.Text = "Meter tools";
             // 
+            // groupBox23
+            // 
+            this.groupBox23.Controls.Add(this.button_CommandDumpLoadSurvey);
+            this.groupBox23.Controls.Add(this.button_CommandFG);
+            this.groupBox23.Controls.Add(this.button_CommandMemoryFF);
+            this.groupBox23.Location = new System.Drawing.Point(5, 183);
+            this.groupBox23.Name = "groupBox23";
+            this.groupBox23.Size = new System.Drawing.Size(356, 96);
+            this.groupBox23.TabIndex = 16;
+            this.groupBox23.TabStop = false;
+            this.groupBox23.Text = "Commands";
+            // 
+            // button_CommandDumpLoadSurvey
+            // 
+            this.button_CommandDumpLoadSurvey.Location = new System.Drawing.Point(8, 67);
+            this.button_CommandDumpLoadSurvey.Name = "button_CommandDumpLoadSurvey";
+            this.button_CommandDumpLoadSurvey.Size = new System.Drawing.Size(136, 23);
+            this.button_CommandDumpLoadSurvey.TabIndex = 8;
+            this.button_CommandDumpLoadSurvey.Text = "Load Survey Dump";
+            this.button_CommandDumpLoadSurvey.UseVisualStyleBackColor = true;
+            // 
+            // button_CommandFG
+            // 
+            this.button_CommandFG.Location = new System.Drawing.Point(8, 44);
+            this.button_CommandFG.Name = "button_CommandFG";
+            this.button_CommandFG.Size = new System.Drawing.Size(136, 23);
+            this.button_CommandFG.TabIndex = 7;
+            this.button_CommandFG.Text = "FG Trigger";
+            this.button_CommandFG.UseVisualStyleBackColor = true;
+            // 
+            // button_CommandMemoryFF
+            // 
+            this.button_CommandMemoryFF.Location = new System.Drawing.Point(8, 22);
+            this.button_CommandMemoryFF.Name = "button_CommandMemoryFF";
+            this.button_CommandMemoryFF.Size = new System.Drawing.Size(136, 23);
+            this.button_CommandMemoryFF.TabIndex = 6;
+            this.button_CommandMemoryFF.Text = "Memory FF";
+            this.button_CommandMemoryFF.UseVisualStyleBackColor = true;
+            // 
             // groupBox10
             // 
             this.groupBox10.Controls.Add(this.textBoxRTCOUTTime);
@@ -6182,9 +6288,9 @@ namespace Developer_Tools
             this.groupBox10.Controls.Add(this.buttonRTCCalibration);
             this.groupBox10.Controls.Add(this.label12);
             this.groupBox10.Controls.Add(this.textBoxPPM);
-            this.groupBox10.Location = new System.Drawing.Point(180, 87);
+            this.groupBox10.Location = new System.Drawing.Point(162, 87);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(202, 72);
+            this.groupBox10.Size = new System.Drawing.Size(199, 93);
             this.groupBox10.TabIndex = 15;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "RTC";
@@ -6211,7 +6317,7 @@ namespace Developer_Tools
             // 
             this.buttonRTCOUT.Location = new System.Drawing.Point(87, 45);
             this.buttonRTCOUT.Name = "buttonRTCOUT";
-            this.buttonRTCOUT.Size = new System.Drawing.Size(104, 23);
+            this.buttonRTCOUT.Size = new System.Drawing.Size(104, 42);
             this.buttonRTCOUT.TabIndex = 3;
             this.buttonRTCOUT.Text = "RTCOUT";
             this.buttonRTCOUT.UseVisualStyleBackColor = true;
@@ -6220,7 +6326,7 @@ namespace Developer_Tools
             // 
             this.buttonRTCCalibration.Location = new System.Drawing.Point(6, 45);
             this.buttonRTCCalibration.Name = "buttonRTCCalibration";
-            this.buttonRTCCalibration.Size = new System.Drawing.Size(75, 23);
+            this.buttonRTCCalibration.Size = new System.Drawing.Size(75, 42);
             this.buttonRTCCalibration.TabIndex = 2;
             this.buttonRTCCalibration.Text = "Calibrate";
             this.buttonRTCCalibration.UseVisualStyleBackColor = true;
@@ -6253,16 +6359,16 @@ namespace Developer_Tools
             this.groupBox9.Controls.Add(this.buttonEvenComEvenSeg);
             this.groupBox9.Location = new System.Drawing.Point(6, 87);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(168, 93);
+            this.groupBox9.Size = new System.Drawing.Size(150, 93);
             this.groupBox9.TabIndex = 14;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "LCD Test";
             // 
             // buttonDisableLCDTest
             // 
-            this.buttonDisableLCDTest.Location = new System.Drawing.Point(89, 67);
+            this.buttonDisableLCDTest.Location = new System.Drawing.Point(83, 67);
             this.buttonDisableLCDTest.Name = "buttonDisableLCDTest";
-            this.buttonDisableLCDTest.Size = new System.Drawing.Size(75, 23);
+            this.buttonDisableLCDTest.Size = new System.Drawing.Size(60, 23);
             this.buttonDisableLCDTest.TabIndex = 5;
             this.buttonDisableLCDTest.Text = "Disable";
             this.buttonDisableLCDTest.UseVisualStyleBackColor = true;
@@ -6271,25 +6377,25 @@ namespace Developer_Tools
             // 
             this.buttonAllSeg.Location = new System.Drawing.Point(7, 66);
             this.buttonAllSeg.Name = "buttonAllSeg";
-            this.buttonAllSeg.Size = new System.Drawing.Size(75, 23);
+            this.buttonAllSeg.Size = new System.Drawing.Size(65, 23);
             this.buttonAllSeg.TabIndex = 4;
             this.buttonAllSeg.Text = "All Segment";
             this.buttonAllSeg.UseVisualStyleBackColor = true;
             // 
             // buttonOddComOddSeg
             // 
-            this.buttonOddComOddSeg.Location = new System.Drawing.Point(89, 42);
+            this.buttonOddComOddSeg.Location = new System.Drawing.Point(83, 42);
             this.buttonOddComOddSeg.Name = "buttonOddComOddSeg";
-            this.buttonOddComOddSeg.Size = new System.Drawing.Size(75, 23);
+            this.buttonOddComOddSeg.Size = new System.Drawing.Size(60, 23);
             this.buttonOddComOddSeg.TabIndex = 3;
             this.buttonOddComOddSeg.Text = "OCOS";
             this.buttonOddComOddSeg.UseVisualStyleBackColor = true;
             // 
             // buttonEvenComOddSeg
             // 
-            this.buttonEvenComOddSeg.Location = new System.Drawing.Point(89, 18);
+            this.buttonEvenComOddSeg.Location = new System.Drawing.Point(83, 18);
             this.buttonEvenComOddSeg.Name = "buttonEvenComOddSeg";
-            this.buttonEvenComOddSeg.Size = new System.Drawing.Size(75, 23);
+            this.buttonEvenComOddSeg.Size = new System.Drawing.Size(60, 23);
             this.buttonEvenComOddSeg.TabIndex = 2;
             this.buttonEvenComOddSeg.Text = "ECOS";
             this.buttonEvenComOddSeg.UseVisualStyleBackColor = true;
@@ -6298,7 +6404,7 @@ namespace Developer_Tools
             // 
             this.buttonOddComEvenSeg.Location = new System.Drawing.Point(7, 42);
             this.buttonOddComEvenSeg.Name = "buttonOddComEvenSeg";
-            this.buttonOddComEvenSeg.Size = new System.Drawing.Size(75, 23);
+            this.buttonOddComEvenSeg.Size = new System.Drawing.Size(65, 23);
             this.buttonOddComEvenSeg.TabIndex = 1;
             this.buttonOddComEvenSeg.Text = "OCES";
             this.buttonOddComEvenSeg.UseVisualStyleBackColor = true;
@@ -6307,7 +6413,7 @@ namespace Developer_Tools
             // 
             this.buttonEvenComEvenSeg.Location = new System.Drawing.Point(7, 18);
             this.buttonEvenComEvenSeg.Name = "buttonEvenComEvenSeg";
-            this.buttonEvenComEvenSeg.Size = new System.Drawing.Size(75, 23);
+            this.buttonEvenComEvenSeg.Size = new System.Drawing.Size(65, 23);
             this.buttonEvenComEvenSeg.TabIndex = 0;
             this.buttonEvenComEvenSeg.Text = "ECES";
             this.buttonEvenComEvenSeg.UseVisualStyleBackColor = true;
@@ -6323,7 +6429,7 @@ namespace Developer_Tools
             this.groupBox8.Controls.Add(this.label10);
             this.groupBox8.Location = new System.Drawing.Point(4, 6);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(365, 75);
+            this.groupBox8.Size = new System.Drawing.Size(357, 75);
             this.groupBox8.TabIndex = 2;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Boot File Creator";
@@ -6368,9 +6474,9 @@ namespace Developer_Tools
             // 
             // buttonBootCreate
             // 
-            this.buttonBootCreate.Location = new System.Drawing.Point(282, 20);
+            this.buttonBootCreate.Location = new System.Drawing.Point(265, 20);
             this.buttonBootCreate.Name = "buttonBootCreate";
-            this.buttonBootCreate.Size = new System.Drawing.Size(75, 49);
+            this.buttonBootCreate.Size = new System.Drawing.Size(84, 49);
             this.buttonBootCreate.TabIndex = 4;
             this.buttonBootCreate.Text = "Create";
             this.buttonBootCreate.UseVisualStyleBackColor = true;
@@ -6402,48 +6508,101 @@ namespace Developer_Tools
             // 
             this.timer100ms.Tick += new System.EventHandler(this.timer100ms_Tick);
             // 
-            // textBox_MeteringMode
+            // label71
             // 
-            this.textBox_MeteringMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_MeteringMode.Location = new System.Drawing.Point(115, 18);
-            this.textBox_MeteringMode.Name = "textBox_MeteringMode";
-            this.textBox_MeteringMode.ReadOnly = true;
-            this.textBox_MeteringMode.Size = new System.Drawing.Size(40, 20);
-            this.textBox_MeteringMode.TabIndex = 677;
-            this.textBox_MeteringMode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.label71.AutoSize = true;
+            this.label71.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label71.Location = new System.Drawing.Point(325, 453);
+            this.label71.Name = "label71";
+            this.label71.Size = new System.Drawing.Size(62, 13);
+            this.label71.TabIndex = 683;
+            this.label71.Text = "Net/Total";
             // 
-            // groupBox22
+            // label72
             // 
-            this.groupBox22.Controls.Add(this.label70);
-            this.groupBox22.Controls.Add(this.textBox_FgFlag);
-            this.groupBox22.Controls.Add(this.label69);
-            this.groupBox22.Controls.Add(this.textBox_MeteringMode);
-            this.groupBox22.Location = new System.Drawing.Point(873, 193);
-            this.groupBox22.Name = "groupBox22";
-            this.groupBox22.Size = new System.Drawing.Size(161, 117);
-            this.groupBox22.TabIndex = 679;
-            this.groupBox22.TabStop = false;
-            this.groupBox22.Text = "Diag Data";
+            this.label72.AutoSize = true;
+            this.label72.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label72.ForeColor = System.Drawing.Color.Red;
+            this.label72.Location = new System.Drawing.Point(92, 453);
+            this.label72.Name = "label72";
+            this.label72.Size = new System.Drawing.Size(55, 13);
+            this.label72.TabIndex = 680;
+            this.label72.Text = "R Phase";
             // 
-            // label70
+            // label73
             // 
-            this.label70.AutoSize = true;
-            this.label70.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label70.Location = new System.Drawing.Point(49, 41);
-            this.label70.Name = "label70";
-            this.label70.Size = new System.Drawing.Size(62, 17);
-            this.label70.TabIndex = 680;
-            this.label70.Text = "FG Flag:";
+            this.label73.AutoSize = true;
+            this.label73.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label73.ForeColor = System.Drawing.Color.Yellow;
+            this.label73.Location = new System.Drawing.Point(170, 453);
+            this.label73.Name = "label73";
+            this.label73.Size = new System.Drawing.Size(54, 13);
+            this.label73.TabIndex = 681;
+            this.label73.Text = "Y Phase";
             // 
-            // textBox_FgFlag
+            // label74
             // 
-            this.textBox_FgFlag.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_FgFlag.Location = new System.Drawing.Point(115, 40);
-            this.textBox_FgFlag.Name = "textBox_FgFlag";
-            this.textBox_FgFlag.ReadOnly = true;
-            this.textBox_FgFlag.Size = new System.Drawing.Size(40, 20);
-            this.textBox_FgFlag.TabIndex = 679;
-            this.textBox_FgFlag.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.label74.AutoSize = true;
+            this.label74.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label74.ForeColor = System.Drawing.Color.Blue;
+            this.label74.Location = new System.Drawing.Point(252, 453);
+            this.label74.Name = "label74";
+            this.label74.Size = new System.Drawing.Size(54, 13);
+            this.label74.TabIndex = 682;
+            this.label74.Text = "B Phase";
+            // 
+            // textBox_WattBFunda
+            // 
+            this.textBox_WattBFunda.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.textBox_WattBFunda.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_WattBFunda.Location = new System.Drawing.Point(249, 473);
+            this.textBox_WattBFunda.Name = "textBox_WattBFunda";
+            this.textBox_WattBFunda.ReadOnly = true;
+            this.textBox_WattBFunda.Size = new System.Drawing.Size(61, 20);
+            this.textBox_WattBFunda.TabIndex = 688;
+            this.textBox_WattBFunda.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox_WattYFunda
+            // 
+            this.textBox_WattYFunda.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.textBox_WattYFunda.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_WattYFunda.Location = new System.Drawing.Point(167, 474);
+            this.textBox_WattYFunda.Name = "textBox_WattYFunda";
+            this.textBox_WattYFunda.ReadOnly = true;
+            this.textBox_WattYFunda.Size = new System.Drawing.Size(61, 20);
+            this.textBox_WattYFunda.TabIndex = 687;
+            this.textBox_WattYFunda.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox_WattNetFunda
+            // 
+            this.textBox_WattNetFunda.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_WattNetFunda.Location = new System.Drawing.Point(326, 474);
+            this.textBox_WattNetFunda.Name = "textBox_WattNetFunda";
+            this.textBox_WattNetFunda.ReadOnly = true;
+            this.textBox_WattNetFunda.Size = new System.Drawing.Size(61, 20);
+            this.textBox_WattNetFunda.TabIndex = 686;
+            this.textBox_WattNetFunda.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox_WattRFunda
+            // 
+            this.textBox_WattRFunda.BackColor = System.Drawing.Color.LightCoral;
+            this.textBox_WattRFunda.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_WattRFunda.Location = new System.Drawing.Point(89, 473);
+            this.textBox_WattRFunda.Name = "textBox_WattRFunda";
+            this.textBox_WattRFunda.ReadOnly = true;
+            this.textBox_WattRFunda.Size = new System.Drawing.Size(61, 20);
+            this.textBox_WattRFunda.TabIndex = 685;
+            this.textBox_WattRFunda.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label75
+            // 
+            this.label75.AutoSize = true;
+            this.label75.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label75.Location = new System.Drawing.Point(20, 477);
+            this.label75.Name = "label75";
+            this.label75.Size = new System.Drawing.Size(66, 13);
+            this.label75.TabIndex = 684;
+            this.label75.Text = "FPower (W):";
             // 
             // Form1
             // 
@@ -6494,6 +6653,8 @@ namespace Developer_Tools
             this.tabControl3.ResumeLayout(false);
             this.tabPage11.ResumeLayout(false);
             this.tabPage11.PerformLayout();
+            this.groupBox22.ResumeLayout(false);
+            this.groupBox22.PerformLayout();
             this.groupBox17.ResumeLayout(false);
             this.groupBox17.PerformLayout();
             this.groupBox21.ResumeLayout(false);
@@ -6534,13 +6695,12 @@ namespace Developer_Tools
             this.groupBox24.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWaveform)).EndInit();
             this.tabPage8.ResumeLayout(false);
+            this.groupBox23.ResumeLayout(false);
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
             this.groupBox9.ResumeLayout(false);
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
-            this.groupBox22.ResumeLayout(false);
-            this.groupBox22.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -7093,6 +7253,19 @@ namespace Developer_Tools
         private System.Windows.Forms.Label label70;
         private System.Windows.Forms.TextBox textBox_FgFlag;
         private System.Windows.Forms.TextBox textBox_MeteringMode;
+        private System.Windows.Forms.GroupBox groupBox23;
+        private System.Windows.Forms.Button button_CommandMemoryFF;
+        private System.Windows.Forms.Button button_CommandDumpLoadSurvey;
+        private System.Windows.Forms.Button button_CommandFG;
+        private System.Windows.Forms.TextBox textBox_WattBFunda;
+        private System.Windows.Forms.TextBox textBox_WattYFunda;
+        private System.Windows.Forms.TextBox textBox_WattNetFunda;
+        private System.Windows.Forms.TextBox textBox_WattRFunda;
+        private System.Windows.Forms.Label label75;
+        private System.Windows.Forms.Label label71;
+        private System.Windows.Forms.Label label72;
+        private System.Windows.Forms.Label label73;
+        private System.Windows.Forms.Label label74;
     }
 }
 

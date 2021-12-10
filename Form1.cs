@@ -49,6 +49,7 @@ namespace Developer_Tools
         public static double PFR, PFY, PFB, PFNet;
         public static double AnglePFR, AnglePFY, AnglePFB, AngleNVector, AngleRY, AngleYB, AngleBR;
         public static double WattR, WattY, WattB, WattNet;
+        public static double WattRFunda, WattYFunda, WattBFunda, WattNetFunda;
         public static double VARR, VARY, VARB, VARNet;
         public static double VAR, VAY, VAB, VANet;
         public static double FreqR, FreqY, FreqB, FreqNet;
@@ -486,10 +487,12 @@ namespace Developer_Tools
                 if (serial_port.SendRepeatEnable == true)
                 {
                     button_SendRepeatStop.Enabled = true;
+                    button_Send.Enabled = false;
                 }
                 else
                 {
                     button_SendRepeatStop.Enabled = false;
+                    button_Send.Enabled = true;
                 }
             }
             else
@@ -497,7 +500,7 @@ namespace Developer_Tools
                 textBox_SendRepeatTime.Enabled = false;
                 textBox_SendRepeatTime.Text = "1000";
                 textBox_SendRepeatNoOfTimes.Enabled = false;
-                textBox_SendRepeatNoOfTimes.Text = "100";
+                textBox_SendRepeatNoOfTimes.Text = "86400";
             }
 
             /* pop up notification when a port is connected or disconnected */
@@ -601,6 +604,11 @@ namespace Developer_Tools
             textBox_WattY.Text = WattY.ToString("0.0");
             textBox_WattB.Text = WattB.ToString("0.0");
             textBox_WattNet.Text = WattNet.ToString("0.0");
+
+            textBox_WattRFunda.Text = WattRFunda.ToString("0.0");
+            textBox_WattYFunda.Text = WattYFunda.ToString("0.0");
+            textBox_WattBFunda.Text = WattBFunda.ToString("0.0");
+            textBox_WattNetFunda.Text = WattNetFunda.ToString("0.0");
 
             textBox_VARR.Text = VARR.ToString("0.0");
             textBox_VARY.Text = VARY.ToString("0.0");
@@ -1228,6 +1236,11 @@ namespace Developer_Tools
                     WattB = DS_Functions.ByteArrayToS32(b_array, arr_ptr, 10); arr_ptr += 4;
                     WattNet = DS_Functions.ByteArrayToS32(b_array, arr_ptr, 10); arr_ptr += 4;
 
+                    WattRFunda = DS_Functions.ByteArrayToS32(b_array, arr_ptr, 10); arr_ptr += 4;
+                    WattYFunda = DS_Functions.ByteArrayToS32(b_array, arr_ptr, 10); arr_ptr += 4;
+                    WattBFunda = DS_Functions.ByteArrayToS32(b_array, arr_ptr, 10); arr_ptr += 4;
+                    WattNetFunda = DS_Functions.ByteArrayToS32(b_array, arr_ptr, 10); arr_ptr += 4;
+
                     VARR = DS_Functions.ByteArrayToS32(b_array, arr_ptr, 10); arr_ptr += 4;
                     VARY = DS_Functions.ByteArrayToS32(b_array, arr_ptr, 10); arr_ptr += 4;
                     VARB = DS_Functions.ByteArrayToS32(b_array, arr_ptr, 10); arr_ptr += 4;
@@ -1729,3 +1742,5 @@ namespace Developer_Tools
         }
     }
 }
+
+
