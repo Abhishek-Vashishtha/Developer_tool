@@ -172,6 +172,70 @@ namespace Developer_Tools
             }
         }
 
+        private void button_CommandMemoryFF_Click(object sender, EventArgs e)
+        {
+            /* Frame Creation */
+            temp_b_array[0] = 0x27;
+            temp_b_array[1] = 0xAA;
+            temp_b_array[2] = 0x00;
+            temp_b_array[3] = 0x00;
+            temp_b_array[4] = 0x00;
+            temp_b_array[5] = 0x05;
+            temp_b_array[6] = 0x00;
+            temp_b_array[7] = DS_CRC.CRC_BCC_XOR(temp_b_array, 1, 6);
+            temp_b_array_length = 8;
+
+            serial_port.write(temp_b_array, 0, temp_b_array_length, false);
+        }
+
+        private void button_CommandFGTrigger_Click(object sender, EventArgs e)
+        {
+            /* Frame Creation */
+            temp_b_array[0] = 0x27;
+            temp_b_array[1] = 0xAA;
+            temp_b_array[2] = 0x00;
+            temp_b_array[3] = 0x00;
+            temp_b_array[4] = 0x00;
+            temp_b_array[5] = 0x06;
+            temp_b_array[6] = 0x00;
+            temp_b_array[7] = DS_CRC.CRC_BCC_XOR(temp_b_array, 1, 6);
+            temp_b_array_length = 8;
+
+            serial_port.write(temp_b_array, 0, temp_b_array_length, false);
+        }
+
+        private void button_CommandDumpLoadSurvey_Click(object sender, EventArgs e)
+        {
+            /* Frame Creation */
+            temp_b_array[0] = 0x27;
+            temp_b_array[1] = 0xAA;
+            temp_b_array[2] = 0x00;
+            temp_b_array[3] = 0x00;
+            temp_b_array[4] = 0x00;
+            temp_b_array[5] = 0x03;
+            temp_b_array[6] = 0x00;
+            temp_b_array[7] = DS_CRC.CRC_BCC_XOR(temp_b_array, 1, 6);
+            temp_b_array_length = 8;
+
+            serial_port.write(temp_b_array, 0, temp_b_array_length, false);
+        }
+
+        private void button_CommandDumpEEPROM_Click(object sender, EventArgs e)
+        {
+            /* Frame Creation */
+            temp_b_array[0] = 0x27;
+            temp_b_array[1] = 0xAA;
+            temp_b_array[2] = 0x00;
+            temp_b_array[3] = 0x00;
+            temp_b_array[4] = 0x00;
+            temp_b_array[5] = 0x04;
+            temp_b_array[6] = 0x00;
+            temp_b_array[7] = DS_CRC.CRC_BCC_XOR(temp_b_array, 1, 6);
+            temp_b_array_length = 8;
+
+            serial_port.write(temp_b_array, 0, temp_b_array_length, false);
+        }
+
         private void buttonEvenComOddSeg_Click(object sender, EventArgs e)
         {
             /* Frame Creation */

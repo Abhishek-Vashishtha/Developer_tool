@@ -6411,6 +6411,7 @@ namespace Developer_Tools
             this.button_CommandDumpLoadSurvey.TabIndex = 8;
             this.button_CommandDumpLoadSurvey.Text = "Load Survey Dump";
             this.button_CommandDumpLoadSurvey.UseVisualStyleBackColor = true;
+            this.button_CommandDumpLoadSurvey.Click += new System.EventHandler(this.button_CommandDumpLoadSurvey_Click);
             // 
             // button_CommandFGTrigger
             // 
@@ -6420,6 +6421,7 @@ namespace Developer_Tools
             this.button_CommandFGTrigger.TabIndex = 7;
             this.button_CommandFGTrigger.Text = "FG Trigger";
             this.button_CommandFGTrigger.UseVisualStyleBackColor = true;
+            this.button_CommandFGTrigger.Click += new System.EventHandler(this.button_CommandFGTrigger_Click);
             // 
             // button_CommandMemoryFF
             // 
@@ -6429,6 +6431,7 @@ namespace Developer_Tools
             this.button_CommandMemoryFF.TabIndex = 6;
             this.button_CommandMemoryFF.Text = "Memory FF";
             this.button_CommandMemoryFF.UseVisualStyleBackColor = true;
+            this.button_CommandMemoryFF.Click += new System.EventHandler(this.button_CommandMemoryFF_Click);
             // 
             // groupBox10
             // 
@@ -6674,6 +6677,7 @@ namespace Developer_Tools
             this.button_CommandDumpEEPROM.TabIndex = 9;
             this.button_CommandDumpEEPROM.Text = "Dump All Memory";
             this.button_CommandDumpEEPROM.UseVisualStyleBackColor = true;
+            this.button_CommandDumpEEPROM.Click += new System.EventHandler(this.button_CommandDumpEEPROM_Click);
             // 
             // Form1
             // 
