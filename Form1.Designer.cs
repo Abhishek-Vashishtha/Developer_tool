@@ -125,6 +125,19 @@ namespace Developer_Tools
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabControl3 = new System.Windows.Forms.TabControl();
             this.tabPage11 = new System.Windows.Forms.TabPage();
+            this.textBox_VAB_vi = new System.Windows.Forms.TextBox();
+            this.textBox_VAY_vi = new System.Windows.Forms.TextBox();
+            this.textBox_VAR_vi = new System.Windows.Forms.TextBox();
+            this.label76 = new System.Windows.Forms.Label();
+            this.textBox_WattBFunda = new System.Windows.Forms.TextBox();
+            this.textBox_WattYFunda = new System.Windows.Forms.TextBox();
+            this.textBox_WattNetFunda = new System.Windows.Forms.TextBox();
+            this.textBox_WattRFunda = new System.Windows.Forms.TextBox();
+            this.label75 = new System.Windows.Forms.Label();
+            this.label71 = new System.Windows.Forms.Label();
+            this.label72 = new System.Windows.Forms.Label();
+            this.label73 = new System.Windows.Forms.Label();
+            this.label74 = new System.Windows.Forms.Label();
             this.groupBox22 = new System.Windows.Forms.GroupBox();
             this.label70 = new System.Windows.Forms.Label();
             this.textBox_FgFlag = new System.Windows.Forms.TextBox();
@@ -552,15 +565,15 @@ namespace Developer_Tools
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.groupBox23 = new System.Windows.Forms.GroupBox();
             this.button_CommandDumpLoadSurvey = new System.Windows.Forms.Button();
-            this.button_CommandFG = new System.Windows.Forms.Button();
+            this.button_CommandFGTrigger = new System.Windows.Forms.Button();
             this.button_CommandMemoryFF = new System.Windows.Forms.Button();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.textBoxRTCOUTTime = new System.Windows.Forms.TextBox();
+            this.textBoxRTCOUTTimeSeconds = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.buttonRTCOUT = new System.Windows.Forms.Button();
             this.buttonRTCCalibration = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
-            this.textBoxPPM = new System.Windows.Forms.TextBox();
+            this.textBoxRTCPPM = new System.Windows.Forms.TextBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.buttonDisableLCDTest = new System.Windows.Forms.Button();
             this.buttonAllSeg = new System.Windows.Forms.Button();
@@ -580,15 +593,7 @@ namespace Developer_Tools
             this.openJSONFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.timer500ms = new System.Windows.Forms.Timer(this.components);
             this.timer100ms = new System.Windows.Forms.Timer(this.components);
-            this.label71 = new System.Windows.Forms.Label();
-            this.label72 = new System.Windows.Forms.Label();
-            this.label73 = new System.Windows.Forms.Label();
-            this.label74 = new System.Windows.Forms.Label();
-            this.textBox_WattBFunda = new System.Windows.Forms.TextBox();
-            this.textBox_WattYFunda = new System.Windows.Forms.TextBox();
-            this.textBox_WattNetFunda = new System.Windows.Forms.TextBox();
-            this.textBox_WattRFunda = new System.Windows.Forms.TextBox();
-            this.label75 = new System.Windows.Forms.Label();
+            this.button_CommandDumpEEPROM = new System.Windows.Forms.Button();
             this.menuStripMain.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -1585,6 +1590,10 @@ namespace Developer_Tools
             // tabPage11
             // 
             this.tabPage11.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.tabPage11.Controls.Add(this.textBox_VAB_vi);
+            this.tabPage11.Controls.Add(this.textBox_VAY_vi);
+            this.tabPage11.Controls.Add(this.textBox_VAR_vi);
+            this.tabPage11.Controls.Add(this.label76);
             this.tabPage11.Controls.Add(this.textBox_WattBFunda);
             this.tabPage11.Controls.Add(this.textBox_WattYFunda);
             this.tabPage11.Controls.Add(this.textBox_WattNetFunda);
@@ -1730,6 +1739,146 @@ namespace Developer_Tools
             this.tabPage11.Size = new System.Drawing.Size(1206, 562);
             this.tabPage11.TabIndex = 5;
             this.tabPage11.Text = "Instant data";
+            this.tabPage11.Click += new System.EventHandler(this.tabPage11_Click);
+            // 
+            // textBox_VAB_vi
+            // 
+            this.textBox_VAB_vi.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.textBox_VAB_vi.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_VAB_vi.Location = new System.Drawing.Point(646, 216);
+            this.textBox_VAB_vi.Name = "textBox_VAB_vi";
+            this.textBox_VAB_vi.ReadOnly = true;
+            this.textBox_VAB_vi.Size = new System.Drawing.Size(61, 20);
+            this.textBox_VAB_vi.TabIndex = 693;
+            this.textBox_VAB_vi.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox_VAY_vi
+            // 
+            this.textBox_VAY_vi.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.textBox_VAY_vi.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_VAY_vi.Location = new System.Drawing.Point(570, 216);
+            this.textBox_VAY_vi.Name = "textBox_VAY_vi";
+            this.textBox_VAY_vi.ReadOnly = true;
+            this.textBox_VAY_vi.Size = new System.Drawing.Size(61, 20);
+            this.textBox_VAY_vi.TabIndex = 692;
+            this.textBox_VAY_vi.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox_VAR_vi
+            // 
+            this.textBox_VAR_vi.BackColor = System.Drawing.Color.LightCoral;
+            this.textBox_VAR_vi.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_VAR_vi.Location = new System.Drawing.Point(489, 213);
+            this.textBox_VAR_vi.Name = "textBox_VAR_vi";
+            this.textBox_VAR_vi.ReadOnly = true;
+            this.textBox_VAR_vi.Size = new System.Drawing.Size(61, 20);
+            this.textBox_VAR_vi.TabIndex = 690;
+            this.textBox_VAR_vi.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label76
+            // 
+            this.label76.AutoSize = true;
+            this.label76.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label76.Location = new System.Drawing.Point(411, 216);
+            this.label76.Name = "label76";
+            this.label76.Size = new System.Drawing.Size(74, 13);
+            this.label76.TabIndex = 689;
+            this.label76.Text = "Power (VA-vi):";
+            // 
+            // textBox_WattBFunda
+            // 
+            this.textBox_WattBFunda.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.textBox_WattBFunda.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_WattBFunda.Location = new System.Drawing.Point(249, 473);
+            this.textBox_WattBFunda.Name = "textBox_WattBFunda";
+            this.textBox_WattBFunda.ReadOnly = true;
+            this.textBox_WattBFunda.Size = new System.Drawing.Size(61, 20);
+            this.textBox_WattBFunda.TabIndex = 688;
+            this.textBox_WattBFunda.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox_WattYFunda
+            // 
+            this.textBox_WattYFunda.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.textBox_WattYFunda.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_WattYFunda.Location = new System.Drawing.Point(167, 474);
+            this.textBox_WattYFunda.Name = "textBox_WattYFunda";
+            this.textBox_WattYFunda.ReadOnly = true;
+            this.textBox_WattYFunda.Size = new System.Drawing.Size(61, 20);
+            this.textBox_WattYFunda.TabIndex = 687;
+            this.textBox_WattYFunda.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox_WattNetFunda
+            // 
+            this.textBox_WattNetFunda.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_WattNetFunda.Location = new System.Drawing.Point(326, 474);
+            this.textBox_WattNetFunda.Name = "textBox_WattNetFunda";
+            this.textBox_WattNetFunda.ReadOnly = true;
+            this.textBox_WattNetFunda.Size = new System.Drawing.Size(61, 20);
+            this.textBox_WattNetFunda.TabIndex = 686;
+            this.textBox_WattNetFunda.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox_WattRFunda
+            // 
+            this.textBox_WattRFunda.BackColor = System.Drawing.Color.LightCoral;
+            this.textBox_WattRFunda.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_WattRFunda.Location = new System.Drawing.Point(89, 473);
+            this.textBox_WattRFunda.Name = "textBox_WattRFunda";
+            this.textBox_WattRFunda.ReadOnly = true;
+            this.textBox_WattRFunda.Size = new System.Drawing.Size(61, 20);
+            this.textBox_WattRFunda.TabIndex = 685;
+            this.textBox_WattRFunda.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label75
+            // 
+            this.label75.AutoSize = true;
+            this.label75.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label75.Location = new System.Drawing.Point(20, 477);
+            this.label75.Name = "label75";
+            this.label75.Size = new System.Drawing.Size(66, 13);
+            this.label75.TabIndex = 684;
+            this.label75.Text = "FPower (W):";
+            // 
+            // label71
+            // 
+            this.label71.AutoSize = true;
+            this.label71.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label71.Location = new System.Drawing.Point(325, 453);
+            this.label71.Name = "label71";
+            this.label71.Size = new System.Drawing.Size(62, 13);
+            this.label71.TabIndex = 683;
+            this.label71.Text = "Net/Total";
+            // 
+            // label72
+            // 
+            this.label72.AutoSize = true;
+            this.label72.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label72.ForeColor = System.Drawing.Color.Red;
+            this.label72.Location = new System.Drawing.Point(92, 453);
+            this.label72.Name = "label72";
+            this.label72.Size = new System.Drawing.Size(55, 13);
+            this.label72.TabIndex = 680;
+            this.label72.Text = "R Phase";
+            // 
+            // label73
+            // 
+            this.label73.AutoSize = true;
+            this.label73.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label73.ForeColor = System.Drawing.Color.Yellow;
+            this.label73.Location = new System.Drawing.Point(170, 453);
+            this.label73.Name = "label73";
+            this.label73.Size = new System.Drawing.Size(54, 13);
+            this.label73.TabIndex = 681;
+            this.label73.Text = "Y Phase";
+            // 
+            // label74
+            // 
+            this.label74.AutoSize = true;
+            this.label74.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label74.ForeColor = System.Drawing.Color.Blue;
+            this.label74.Location = new System.Drawing.Point(252, 453);
+            this.label74.Name = "label74";
+            this.label74.Size = new System.Drawing.Size(54, 13);
+            this.label74.TabIndex = 682;
+            this.label74.Text = "B Phase";
             // 
             // groupBox22
             // 
@@ -2439,7 +2588,7 @@ namespace Developer_Tools
             // textBox_EnergyVAhExportTotal
             // 
             this.textBox_EnergyVAhExportTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_EnergyVAhExportTotal.Location = new System.Drawing.Point(735, 474);
+            this.textBox_EnergyVAhExportTotal.Location = new System.Drawing.Point(735, 498);
             this.textBox_EnergyVAhExportTotal.Name = "textBox_EnergyVAhExportTotal";
             this.textBox_EnergyVAhExportTotal.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyVAhExportTotal.TabIndex = 649;
@@ -2449,7 +2598,7 @@ namespace Developer_Tools
             // 
             this.textBox_EnergyVAhExportR.BackColor = System.Drawing.Color.LightCoral;
             this.textBox_EnergyVAhExportR.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_EnergyVAhExportR.Location = new System.Drawing.Point(487, 474);
+            this.textBox_EnergyVAhExportR.Location = new System.Drawing.Point(487, 498);
             this.textBox_EnergyVAhExportR.Name = "textBox_EnergyVAhExportR";
             this.textBox_EnergyVAhExportR.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyVAhExportR.TabIndex = 646;
@@ -2459,7 +2608,7 @@ namespace Developer_Tools
             // 
             this.textBox_EnergyVAhExportY.BackColor = System.Drawing.Color.LightGoldenrodYellow;
             this.textBox_EnergyVAhExportY.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_EnergyVAhExportY.Location = new System.Drawing.Point(569, 474);
+            this.textBox_EnergyVAhExportY.Location = new System.Drawing.Point(569, 498);
             this.textBox_EnergyVAhExportY.Name = "textBox_EnergyVAhExportY";
             this.textBox_EnergyVAhExportY.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyVAhExportY.TabIndex = 647;
@@ -2469,7 +2618,7 @@ namespace Developer_Tools
             // 
             this.textBox_EnergyVAhExportB.BackColor = System.Drawing.Color.CornflowerBlue;
             this.textBox_EnergyVAhExportB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_EnergyVAhExportB.Location = new System.Drawing.Point(653, 474);
+            this.textBox_EnergyVAhExportB.Location = new System.Drawing.Point(653, 498);
             this.textBox_EnergyVAhExportB.Name = "textBox_EnergyVAhExportB";
             this.textBox_EnergyVAhExportB.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyVAhExportB.TabIndex = 648;
@@ -2478,7 +2627,7 @@ namespace Developer_Tools
             // textBox_EnergyVAhImportTotal
             // 
             this.textBox_EnergyVAhImportTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_EnergyVAhImportTotal.Location = new System.Drawing.Point(735, 453);
+            this.textBox_EnergyVAhImportTotal.Location = new System.Drawing.Point(735, 477);
             this.textBox_EnergyVAhImportTotal.Name = "textBox_EnergyVAhImportTotal";
             this.textBox_EnergyVAhImportTotal.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyVAhImportTotal.TabIndex = 645;
@@ -2488,7 +2637,7 @@ namespace Developer_Tools
             // 
             this.textBox_EnergyVAhImportR.BackColor = System.Drawing.Color.LightCoral;
             this.textBox_EnergyVAhImportR.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_EnergyVAhImportR.Location = new System.Drawing.Point(487, 453);
+            this.textBox_EnergyVAhImportR.Location = new System.Drawing.Point(487, 477);
             this.textBox_EnergyVAhImportR.Name = "textBox_EnergyVAhImportR";
             this.textBox_EnergyVAhImportR.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyVAhImportR.TabIndex = 642;
@@ -2498,7 +2647,7 @@ namespace Developer_Tools
             // 
             this.textBox_EnergyVAhImportY.BackColor = System.Drawing.Color.LightGoldenrodYellow;
             this.textBox_EnergyVAhImportY.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_EnergyVAhImportY.Location = new System.Drawing.Point(569, 453);
+            this.textBox_EnergyVAhImportY.Location = new System.Drawing.Point(569, 477);
             this.textBox_EnergyVAhImportY.Name = "textBox_EnergyVAhImportY";
             this.textBox_EnergyVAhImportY.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyVAhImportY.TabIndex = 643;
@@ -2508,7 +2657,7 @@ namespace Developer_Tools
             // 
             this.textBox_EnergyVAhImportB.BackColor = System.Drawing.Color.CornflowerBlue;
             this.textBox_EnergyVAhImportB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_EnergyVAhImportB.Location = new System.Drawing.Point(653, 453);
+            this.textBox_EnergyVAhImportB.Location = new System.Drawing.Point(653, 477);
             this.textBox_EnergyVAhImportB.Name = "textBox_EnergyVAhImportB";
             this.textBox_EnergyVAhImportB.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyVAhImportB.TabIndex = 644;
@@ -2517,7 +2666,7 @@ namespace Developer_Tools
             // textBox_EnergyVARhQ4Total
             // 
             this.textBox_EnergyVARhQ4Total.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_EnergyVARhQ4Total.Location = new System.Drawing.Point(736, 431);
+            this.textBox_EnergyVARhQ4Total.Location = new System.Drawing.Point(736, 455);
             this.textBox_EnergyVARhQ4Total.Name = "textBox_EnergyVARhQ4Total";
             this.textBox_EnergyVARhQ4Total.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyVARhQ4Total.TabIndex = 641;
@@ -2527,7 +2676,7 @@ namespace Developer_Tools
             // 
             this.textBox_EnergyVARhQ4R.BackColor = System.Drawing.Color.LightCoral;
             this.textBox_EnergyVARhQ4R.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_EnergyVARhQ4R.Location = new System.Drawing.Point(488, 431);
+            this.textBox_EnergyVARhQ4R.Location = new System.Drawing.Point(488, 455);
             this.textBox_EnergyVARhQ4R.Name = "textBox_EnergyVARhQ4R";
             this.textBox_EnergyVARhQ4R.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyVARhQ4R.TabIndex = 638;
@@ -2537,7 +2686,7 @@ namespace Developer_Tools
             // 
             this.textBox_EnergyVARhQ4Y.BackColor = System.Drawing.Color.LightGoldenrodYellow;
             this.textBox_EnergyVARhQ4Y.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_EnergyVARhQ4Y.Location = new System.Drawing.Point(570, 431);
+            this.textBox_EnergyVARhQ4Y.Location = new System.Drawing.Point(570, 455);
             this.textBox_EnergyVARhQ4Y.Name = "textBox_EnergyVARhQ4Y";
             this.textBox_EnergyVARhQ4Y.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyVARhQ4Y.TabIndex = 639;
@@ -2547,7 +2696,7 @@ namespace Developer_Tools
             // 
             this.textBox_EnergyVARhQ4B.BackColor = System.Drawing.Color.CornflowerBlue;
             this.textBox_EnergyVARhQ4B.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_EnergyVARhQ4B.Location = new System.Drawing.Point(654, 431);
+            this.textBox_EnergyVARhQ4B.Location = new System.Drawing.Point(654, 455);
             this.textBox_EnergyVARhQ4B.Name = "textBox_EnergyVARhQ4B";
             this.textBox_EnergyVARhQ4B.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyVARhQ4B.TabIndex = 640;
@@ -2556,7 +2705,7 @@ namespace Developer_Tools
             // textBox_EnergyVARhQ3Total
             // 
             this.textBox_EnergyVARhQ3Total.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_EnergyVARhQ3Total.Location = new System.Drawing.Point(736, 410);
+            this.textBox_EnergyVARhQ3Total.Location = new System.Drawing.Point(736, 434);
             this.textBox_EnergyVARhQ3Total.Name = "textBox_EnergyVARhQ3Total";
             this.textBox_EnergyVARhQ3Total.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyVARhQ3Total.TabIndex = 637;
@@ -2566,7 +2715,7 @@ namespace Developer_Tools
             // 
             this.textBox_EnergyVARhQ3R.BackColor = System.Drawing.Color.LightCoral;
             this.textBox_EnergyVARhQ3R.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_EnergyVARhQ3R.Location = new System.Drawing.Point(488, 410);
+            this.textBox_EnergyVARhQ3R.Location = new System.Drawing.Point(488, 434);
             this.textBox_EnergyVARhQ3R.Name = "textBox_EnergyVARhQ3R";
             this.textBox_EnergyVARhQ3R.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyVARhQ3R.TabIndex = 634;
@@ -2576,7 +2725,7 @@ namespace Developer_Tools
             // 
             this.textBox_EnergyVARhQ3Y.BackColor = System.Drawing.Color.LightGoldenrodYellow;
             this.textBox_EnergyVARhQ3Y.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_EnergyVARhQ3Y.Location = new System.Drawing.Point(570, 410);
+            this.textBox_EnergyVARhQ3Y.Location = new System.Drawing.Point(570, 434);
             this.textBox_EnergyVARhQ3Y.Name = "textBox_EnergyVARhQ3Y";
             this.textBox_EnergyVARhQ3Y.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyVARhQ3Y.TabIndex = 635;
@@ -2586,7 +2735,7 @@ namespace Developer_Tools
             // 
             this.textBox_EnergyVARhQ3B.BackColor = System.Drawing.Color.CornflowerBlue;
             this.textBox_EnergyVARhQ3B.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_EnergyVARhQ3B.Location = new System.Drawing.Point(654, 410);
+            this.textBox_EnergyVARhQ3B.Location = new System.Drawing.Point(654, 434);
             this.textBox_EnergyVARhQ3B.Name = "textBox_EnergyVARhQ3B";
             this.textBox_EnergyVARhQ3B.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyVARhQ3B.TabIndex = 636;
@@ -2595,7 +2744,7 @@ namespace Developer_Tools
             // textBox_EnergyVARhQ2Total
             // 
             this.textBox_EnergyVARhQ2Total.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_EnergyVARhQ2Total.Location = new System.Drawing.Point(736, 388);
+            this.textBox_EnergyVARhQ2Total.Location = new System.Drawing.Point(736, 412);
             this.textBox_EnergyVARhQ2Total.Name = "textBox_EnergyVARhQ2Total";
             this.textBox_EnergyVARhQ2Total.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyVARhQ2Total.TabIndex = 633;
@@ -2605,7 +2754,7 @@ namespace Developer_Tools
             // 
             this.textBox_EnergyVARhQ2R.BackColor = System.Drawing.Color.LightCoral;
             this.textBox_EnergyVARhQ2R.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_EnergyVARhQ2R.Location = new System.Drawing.Point(488, 388);
+            this.textBox_EnergyVARhQ2R.Location = new System.Drawing.Point(488, 412);
             this.textBox_EnergyVARhQ2R.Name = "textBox_EnergyVARhQ2R";
             this.textBox_EnergyVARhQ2R.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyVARhQ2R.TabIndex = 630;
@@ -2615,7 +2764,7 @@ namespace Developer_Tools
             // 
             this.textBox_EnergyVARhQ2Y.BackColor = System.Drawing.Color.LightGoldenrodYellow;
             this.textBox_EnergyVARhQ2Y.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_EnergyVARhQ2Y.Location = new System.Drawing.Point(570, 388);
+            this.textBox_EnergyVARhQ2Y.Location = new System.Drawing.Point(570, 412);
             this.textBox_EnergyVARhQ2Y.Name = "textBox_EnergyVARhQ2Y";
             this.textBox_EnergyVARhQ2Y.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyVARhQ2Y.TabIndex = 631;
@@ -2625,7 +2774,7 @@ namespace Developer_Tools
             // 
             this.textBox_EnergyVARhQ2B.BackColor = System.Drawing.Color.CornflowerBlue;
             this.textBox_EnergyVARhQ2B.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_EnergyVARhQ2B.Location = new System.Drawing.Point(654, 388);
+            this.textBox_EnergyVARhQ2B.Location = new System.Drawing.Point(654, 412);
             this.textBox_EnergyVARhQ2B.Name = "textBox_EnergyVARhQ2B";
             this.textBox_EnergyVARhQ2B.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyVARhQ2B.TabIndex = 632;
@@ -2634,7 +2783,7 @@ namespace Developer_Tools
             // textBox_EnergyVARhQ1Total
             // 
             this.textBox_EnergyVARhQ1Total.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_EnergyVARhQ1Total.Location = new System.Drawing.Point(736, 365);
+            this.textBox_EnergyVARhQ1Total.Location = new System.Drawing.Point(736, 389);
             this.textBox_EnergyVARhQ1Total.Name = "textBox_EnergyVARhQ1Total";
             this.textBox_EnergyVARhQ1Total.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyVARhQ1Total.TabIndex = 629;
@@ -2644,7 +2793,7 @@ namespace Developer_Tools
             // 
             this.textBox_EnergyVARhQ1R.BackColor = System.Drawing.Color.LightCoral;
             this.textBox_EnergyVARhQ1R.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_EnergyVARhQ1R.Location = new System.Drawing.Point(488, 365);
+            this.textBox_EnergyVARhQ1R.Location = new System.Drawing.Point(488, 389);
             this.textBox_EnergyVARhQ1R.Name = "textBox_EnergyVARhQ1R";
             this.textBox_EnergyVARhQ1R.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyVARhQ1R.TabIndex = 626;
@@ -2654,7 +2803,7 @@ namespace Developer_Tools
             // 
             this.textBox_EnergyVARhQ1Y.BackColor = System.Drawing.Color.LightGoldenrodYellow;
             this.textBox_EnergyVARhQ1Y.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_EnergyVARhQ1Y.Location = new System.Drawing.Point(570, 365);
+            this.textBox_EnergyVARhQ1Y.Location = new System.Drawing.Point(570, 389);
             this.textBox_EnergyVARhQ1Y.Name = "textBox_EnergyVARhQ1Y";
             this.textBox_EnergyVARhQ1Y.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyVARhQ1Y.TabIndex = 627;
@@ -2664,7 +2813,7 @@ namespace Developer_Tools
             // 
             this.textBox_EnergyVARhQ1B.BackColor = System.Drawing.Color.CornflowerBlue;
             this.textBox_EnergyVARhQ1B.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_EnergyVARhQ1B.Location = new System.Drawing.Point(654, 365);
+            this.textBox_EnergyVARhQ1B.Location = new System.Drawing.Point(654, 389);
             this.textBox_EnergyVARhQ1B.Name = "textBox_EnergyVARhQ1B";
             this.textBox_EnergyVARhQ1B.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyVARhQ1B.TabIndex = 628;
@@ -2673,7 +2822,7 @@ namespace Developer_Tools
             // textBox_EnergyWhExportTotal
             // 
             this.textBox_EnergyWhExportTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_EnergyWhExportTotal.Location = new System.Drawing.Point(736, 343);
+            this.textBox_EnergyWhExportTotal.Location = new System.Drawing.Point(736, 367);
             this.textBox_EnergyWhExportTotal.Name = "textBox_EnergyWhExportTotal";
             this.textBox_EnergyWhExportTotal.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyWhExportTotal.TabIndex = 625;
@@ -2683,7 +2832,7 @@ namespace Developer_Tools
             // 
             this.textBox_EnergyWhExportR.BackColor = System.Drawing.Color.LightCoral;
             this.textBox_EnergyWhExportR.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_EnergyWhExportR.Location = new System.Drawing.Point(488, 343);
+            this.textBox_EnergyWhExportR.Location = new System.Drawing.Point(488, 367);
             this.textBox_EnergyWhExportR.Name = "textBox_EnergyWhExportR";
             this.textBox_EnergyWhExportR.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyWhExportR.TabIndex = 621;
@@ -2693,7 +2842,7 @@ namespace Developer_Tools
             // 
             this.textBox_EnergyWhExportY.BackColor = System.Drawing.Color.LightGoldenrodYellow;
             this.textBox_EnergyWhExportY.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_EnergyWhExportY.Location = new System.Drawing.Point(570, 343);
+            this.textBox_EnergyWhExportY.Location = new System.Drawing.Point(570, 367);
             this.textBox_EnergyWhExportY.Name = "textBox_EnergyWhExportY";
             this.textBox_EnergyWhExportY.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyWhExportY.TabIndex = 623;
@@ -2703,7 +2852,7 @@ namespace Developer_Tools
             // 
             this.textBox_EnergyWhExportB.BackColor = System.Drawing.Color.CornflowerBlue;
             this.textBox_EnergyWhExportB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_EnergyWhExportB.Location = new System.Drawing.Point(654, 343);
+            this.textBox_EnergyWhExportB.Location = new System.Drawing.Point(654, 367);
             this.textBox_EnergyWhExportB.Name = "textBox_EnergyWhExportB";
             this.textBox_EnergyWhExportB.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyWhExportB.TabIndex = 624;
@@ -2713,7 +2862,7 @@ namespace Developer_Tools
             // 
             this.label61.AutoSize = true;
             this.label61.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label61.Location = new System.Drawing.Point(401, 473);
+            this.label61.Location = new System.Drawing.Point(401, 497);
             this.label61.Name = "label61";
             this.label61.Size = new System.Drawing.Size(79, 13);
             this.label61.TabIndex = 620;
@@ -2723,7 +2872,7 @@ namespace Developer_Tools
             // 
             this.label54.AutoSize = true;
             this.label54.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label54.Location = new System.Drawing.Point(407, 452);
+            this.label54.Location = new System.Drawing.Point(407, 476);
             this.label54.Name = "label54";
             this.label54.Size = new System.Drawing.Size(73, 13);
             this.label54.TabIndex = 619;
@@ -2733,7 +2882,7 @@ namespace Developer_Tools
             // 
             this.label53.AutoSize = true;
             this.label53.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label53.Location = new System.Drawing.Point(407, 430);
+            this.label53.Location = new System.Drawing.Point(407, 454);
             this.label53.Name = "label53";
             this.label53.Size = new System.Drawing.Size(73, 13);
             this.label53.TabIndex = 618;
@@ -2743,7 +2892,7 @@ namespace Developer_Tools
             // 
             this.label52.AutoSize = true;
             this.label52.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label52.Location = new System.Drawing.Point(407, 409);
+            this.label52.Location = new System.Drawing.Point(407, 433);
             this.label52.Name = "label52";
             this.label52.Size = new System.Drawing.Size(73, 13);
             this.label52.TabIndex = 617;
@@ -2753,7 +2902,7 @@ namespace Developer_Tools
             // 
             this.label51.AutoSize = true;
             this.label51.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label51.Location = new System.Drawing.Point(407, 387);
+            this.label51.Location = new System.Drawing.Point(407, 411);
             this.label51.Name = "label51";
             this.label51.Size = new System.Drawing.Size(73, 13);
             this.label51.TabIndex = 616;
@@ -2763,7 +2912,7 @@ namespace Developer_Tools
             // 
             this.label50.AutoSize = true;
             this.label50.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label50.Location = new System.Drawing.Point(407, 364);
+            this.label50.Location = new System.Drawing.Point(407, 388);
             this.label50.Name = "label50";
             this.label50.Size = new System.Drawing.Size(73, 13);
             this.label50.TabIndex = 615;
@@ -2773,7 +2922,7 @@ namespace Developer_Tools
             // 
             this.label49.AutoSize = true;
             this.label49.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label49.Location = new System.Drawing.Point(407, 342);
+            this.label49.Location = new System.Drawing.Point(407, 366);
             this.label49.Name = "label49";
             this.label49.Size = new System.Drawing.Size(73, 13);
             this.label49.TabIndex = 614;
@@ -2783,7 +2932,7 @@ namespace Developer_Tools
             // 
             this.textBox_EnergyWhImportR.BackColor = System.Drawing.Color.LightCoral;
             this.textBox_EnergyWhImportR.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_EnergyWhImportR.Location = new System.Drawing.Point(488, 321);
+            this.textBox_EnergyWhImportR.Location = new System.Drawing.Point(488, 345);
             this.textBox_EnergyWhImportR.Name = "textBox_EnergyWhImportR";
             this.textBox_EnergyWhImportR.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyWhImportR.TabIndex = 602;
@@ -2793,7 +2942,7 @@ namespace Developer_Tools
             // 
             this.textBox_EnergyWhImportY.BackColor = System.Drawing.Color.LightGoldenrodYellow;
             this.textBox_EnergyWhImportY.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_EnergyWhImportY.Location = new System.Drawing.Point(570, 321);
+            this.textBox_EnergyWhImportY.Location = new System.Drawing.Point(570, 345);
             this.textBox_EnergyWhImportY.Name = "textBox_EnergyWhImportY";
             this.textBox_EnergyWhImportY.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyWhImportY.TabIndex = 604;
@@ -2803,7 +2952,7 @@ namespace Developer_Tools
             // 
             this.textBox_EnergyWhImportB.BackColor = System.Drawing.Color.CornflowerBlue;
             this.textBox_EnergyWhImportB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_EnergyWhImportB.Location = new System.Drawing.Point(654, 321);
+            this.textBox_EnergyWhImportB.Location = new System.Drawing.Point(654, 345);
             this.textBox_EnergyWhImportB.Name = "textBox_EnergyWhImportB";
             this.textBox_EnergyWhImportB.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyWhImportB.TabIndex = 605;
@@ -2812,7 +2961,7 @@ namespace Developer_Tools
             // textBox_EnergyWhImportTotal
             // 
             this.textBox_EnergyWhImportTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_EnergyWhImportTotal.Location = new System.Drawing.Point(736, 321);
+            this.textBox_EnergyWhImportTotal.Location = new System.Drawing.Point(736, 345);
             this.textBox_EnergyWhImportTotal.Name = "textBox_EnergyWhImportTotal";
             this.textBox_EnergyWhImportTotal.Size = new System.Drawing.Size(78, 20);
             this.textBox_EnergyWhImportTotal.TabIndex = 603;
@@ -2822,7 +2971,7 @@ namespace Developer_Tools
             // 
             this.label45.AutoSize = true;
             this.label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label45.Location = new System.Drawing.Point(409, 321);
+            this.label45.Location = new System.Drawing.Point(409, 345);
             this.label45.Name = "label45";
             this.label45.Size = new System.Drawing.Size(73, 13);
             this.label45.TabIndex = 601;
@@ -3770,7 +3919,7 @@ namespace Developer_Tools
             // 
             this.textBox_THDIb.BackColor = System.Drawing.Color.CornflowerBlue;
             this.textBox_THDIb.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_THDIb.Location = new System.Drawing.Point(646, 299);
+            this.textBox_THDIb.Location = new System.Drawing.Point(646, 323);
             this.textBox_THDIb.Name = "textBox_THDIb";
             this.textBox_THDIb.ReadOnly = true;
             this.textBox_THDIb.Size = new System.Drawing.Size(61, 20);
@@ -3781,7 +3930,7 @@ namespace Developer_Tools
             // 
             this.textBox_THDIy.BackColor = System.Drawing.Color.LightGoldenrodYellow;
             this.textBox_THDIy.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_THDIy.Location = new System.Drawing.Point(570, 299);
+            this.textBox_THDIy.Location = new System.Drawing.Point(570, 323);
             this.textBox_THDIy.Name = "textBox_THDIy";
             this.textBox_THDIy.ReadOnly = true;
             this.textBox_THDIy.Size = new System.Drawing.Size(61, 20);
@@ -3792,7 +3941,7 @@ namespace Developer_Tools
             // 
             this.textBox_THDIr.BackColor = System.Drawing.Color.LightCoral;
             this.textBox_THDIr.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_THDIr.Location = new System.Drawing.Point(489, 299);
+            this.textBox_THDIr.Location = new System.Drawing.Point(489, 323);
             this.textBox_THDIr.Name = "textBox_THDIr";
             this.textBox_THDIr.ReadOnly = true;
             this.textBox_THDIr.Size = new System.Drawing.Size(61, 20);
@@ -3803,7 +3952,7 @@ namespace Developer_Tools
             // 
             this.label126.AutoSize = true;
             this.label126.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label126.Location = new System.Drawing.Point(426, 296);
+            this.label126.Location = new System.Drawing.Point(426, 320);
             this.label126.Name = "label126";
             this.label126.Size = new System.Drawing.Size(58, 13);
             this.label126.TabIndex = 596;
@@ -3813,7 +3962,7 @@ namespace Developer_Tools
             // 
             this.textBox_THDVb.BackColor = System.Drawing.Color.CornflowerBlue;
             this.textBox_THDVb.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_THDVb.Location = new System.Drawing.Point(646, 278);
+            this.textBox_THDVb.Location = new System.Drawing.Point(646, 302);
             this.textBox_THDVb.Name = "textBox_THDVb";
             this.textBox_THDVb.ReadOnly = true;
             this.textBox_THDVb.Size = new System.Drawing.Size(61, 20);
@@ -3824,7 +3973,7 @@ namespace Developer_Tools
             // 
             this.textBox_THDVy.BackColor = System.Drawing.Color.LightGoldenrodYellow;
             this.textBox_THDVy.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_THDVy.Location = new System.Drawing.Point(570, 278);
+            this.textBox_THDVy.Location = new System.Drawing.Point(570, 302);
             this.textBox_THDVy.Name = "textBox_THDVy";
             this.textBox_THDVy.ReadOnly = true;
             this.textBox_THDVy.Size = new System.Drawing.Size(61, 20);
@@ -3835,7 +3984,7 @@ namespace Developer_Tools
             // 
             this.textBox_THDVr.BackColor = System.Drawing.Color.LightCoral;
             this.textBox_THDVr.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_THDVr.Location = new System.Drawing.Point(489, 278);
+            this.textBox_THDVr.Location = new System.Drawing.Point(489, 302);
             this.textBox_THDVr.Name = "textBox_THDVr";
             this.textBox_THDVr.ReadOnly = true;
             this.textBox_THDVr.Size = new System.Drawing.Size(61, 20);
@@ -3846,7 +3995,7 @@ namespace Developer_Tools
             // 
             this.label133.AutoSize = true;
             this.label133.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label133.Location = new System.Drawing.Point(430, 276);
+            this.label133.Location = new System.Drawing.Point(430, 300);
             this.label133.Name = "label133";
             this.label133.Size = new System.Drawing.Size(54, 13);
             this.label133.TabIndex = 592;
@@ -3856,7 +4005,7 @@ namespace Developer_Tools
             // 
             this.textBox_SamplesPerSec.BackColor = System.Drawing.Color.White;
             this.textBox_SamplesPerSec.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_SamplesPerSec.Location = new System.Drawing.Point(717, 258);
+            this.textBox_SamplesPerSec.Location = new System.Drawing.Point(717, 282);
             this.textBox_SamplesPerSec.Name = "textBox_SamplesPerSec";
             this.textBox_SamplesPerSec.ReadOnly = true;
             this.textBox_SamplesPerSec.Size = new System.Drawing.Size(61, 20);
@@ -3910,7 +4059,7 @@ namespace Developer_Tools
             // 
             this.textBox_SamplesB.BackColor = System.Drawing.Color.CornflowerBlue;
             this.textBox_SamplesB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_SamplesB.Location = new System.Drawing.Point(646, 257);
+            this.textBox_SamplesB.Location = new System.Drawing.Point(646, 281);
             this.textBox_SamplesB.Name = "textBox_SamplesB";
             this.textBox_SamplesB.ReadOnly = true;
             this.textBox_SamplesB.Size = new System.Drawing.Size(61, 20);
@@ -3921,7 +4070,7 @@ namespace Developer_Tools
             // 
             this.textBox_SamplesY.BackColor = System.Drawing.Color.LightGoldenrodYellow;
             this.textBox_SamplesY.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_SamplesY.Location = new System.Drawing.Point(570, 257);
+            this.textBox_SamplesY.Location = new System.Drawing.Point(570, 281);
             this.textBox_SamplesY.Name = "textBox_SamplesY";
             this.textBox_SamplesY.ReadOnly = true;
             this.textBox_SamplesY.Size = new System.Drawing.Size(61, 20);
@@ -3932,7 +4081,7 @@ namespace Developer_Tools
             // 
             this.textBox_SamplesR.BackColor = System.Drawing.Color.LightCoral;
             this.textBox_SamplesR.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_SamplesR.Location = new System.Drawing.Point(489, 257);
+            this.textBox_SamplesR.Location = new System.Drawing.Point(489, 281);
             this.textBox_SamplesR.Name = "textBox_SamplesR";
             this.textBox_SamplesR.ReadOnly = true;
             this.textBox_SamplesR.Size = new System.Drawing.Size(61, 20);
@@ -3943,7 +4092,7 @@ namespace Developer_Tools
             // 
             this.label135.AutoSize = true;
             this.label135.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label135.Location = new System.Drawing.Point(434, 254);
+            this.label135.Location = new System.Drawing.Point(434, 278);
             this.label135.Name = "label135";
             this.label135.Size = new System.Drawing.Size(50, 13);
             this.label135.TabIndex = 583;
@@ -3953,7 +4102,7 @@ namespace Developer_Tools
             // 
             this.textBox_QuadB.BackColor = System.Drawing.Color.CornflowerBlue;
             this.textBox_QuadB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_QuadB.Location = new System.Drawing.Point(646, 235);
+            this.textBox_QuadB.Location = new System.Drawing.Point(646, 259);
             this.textBox_QuadB.Name = "textBox_QuadB";
             this.textBox_QuadB.ReadOnly = true;
             this.textBox_QuadB.Size = new System.Drawing.Size(61, 20);
@@ -3964,7 +4113,7 @@ namespace Developer_Tools
             // 
             this.textBox_FreqB.BackColor = System.Drawing.Color.CornflowerBlue;
             this.textBox_FreqB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_FreqB.Location = new System.Drawing.Point(646, 214);
+            this.textBox_FreqB.Location = new System.Drawing.Point(646, 238);
             this.textBox_FreqB.Name = "textBox_FreqB";
             this.textBox_FreqB.ReadOnly = true;
             this.textBox_FreqB.Size = new System.Drawing.Size(61, 20);
@@ -4063,7 +4212,7 @@ namespace Developer_Tools
             // 
             this.textBox_QuadY.BackColor = System.Drawing.Color.LightGoldenrodYellow;
             this.textBox_QuadY.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_QuadY.Location = new System.Drawing.Point(570, 235);
+            this.textBox_QuadY.Location = new System.Drawing.Point(570, 259);
             this.textBox_QuadY.Name = "textBox_QuadY";
             this.textBox_QuadY.ReadOnly = true;
             this.textBox_QuadY.Size = new System.Drawing.Size(61, 20);
@@ -4074,7 +4223,7 @@ namespace Developer_Tools
             // 
             this.textBox_FreqY.BackColor = System.Drawing.Color.LightGoldenrodYellow;
             this.textBox_FreqY.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_FreqY.Location = new System.Drawing.Point(570, 214);
+            this.textBox_FreqY.Location = new System.Drawing.Point(570, 238);
             this.textBox_FreqY.Name = "textBox_FreqY";
             this.textBox_FreqY.ReadOnly = true;
             this.textBox_FreqY.Size = new System.Drawing.Size(61, 20);
@@ -4172,7 +4321,7 @@ namespace Developer_Tools
             // textBox_QuadNet
             // 
             this.textBox_QuadNet.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_QuadNet.Location = new System.Drawing.Point(717, 236);
+            this.textBox_QuadNet.Location = new System.Drawing.Point(717, 260);
             this.textBox_QuadNet.Name = "textBox_QuadNet";
             this.textBox_QuadNet.ReadOnly = true;
             this.textBox_QuadNet.Size = new System.Drawing.Size(61, 20);
@@ -4182,7 +4331,7 @@ namespace Developer_Tools
             // textBox_FreqNet
             // 
             this.textBox_FreqNet.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_FreqNet.Location = new System.Drawing.Point(717, 215);
+            this.textBox_FreqNet.Location = new System.Drawing.Point(717, 239);
             this.textBox_FreqNet.Name = "textBox_FreqNet";
             this.textBox_FreqNet.ReadOnly = true;
             this.textBox_FreqNet.Size = new System.Drawing.Size(61, 20);
@@ -4233,7 +4382,7 @@ namespace Developer_Tools
             // 
             this.textBox_QuadR.BackColor = System.Drawing.Color.LightCoral;
             this.textBox_QuadR.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_QuadR.Location = new System.Drawing.Point(489, 232);
+            this.textBox_QuadR.Location = new System.Drawing.Point(489, 256);
             this.textBox_QuadR.Name = "textBox_QuadR";
             this.textBox_QuadR.ReadOnly = true;
             this.textBox_QuadR.Size = new System.Drawing.Size(61, 20);
@@ -4244,7 +4393,7 @@ namespace Developer_Tools
             // 
             this.textBox_FreqR.BackColor = System.Drawing.Color.LightCoral;
             this.textBox_FreqR.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_FreqR.Location = new System.Drawing.Point(489, 211);
+            this.textBox_FreqR.Location = new System.Drawing.Point(489, 235);
             this.textBox_FreqR.Name = "textBox_FreqR";
             this.textBox_FreqR.ReadOnly = true;
             this.textBox_FreqR.Size = new System.Drawing.Size(61, 20);
@@ -4343,7 +4492,7 @@ namespace Developer_Tools
             // 
             this.label137.AutoSize = true;
             this.label137.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label137.Location = new System.Drawing.Point(430, 235);
+            this.label137.Location = new System.Drawing.Point(430, 259);
             this.label137.Name = "label137";
             this.label137.Size = new System.Drawing.Size(54, 13);
             this.label137.TabIndex = 539;
@@ -4353,7 +4502,7 @@ namespace Developer_Tools
             // 
             this.label138.AutoSize = true;
             this.label138.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label138.Location = new System.Drawing.Point(431, 214);
+            this.label138.Location = new System.Drawing.Point(431, 238);
             this.label138.Name = "label138";
             this.label138.Size = new System.Drawing.Size(53, 13);
             this.label138.TabIndex = 538;
@@ -4466,7 +4615,7 @@ namespace Developer_Tools
             // 
             this.label149.AutoSize = true;
             this.label149.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label149.Location = new System.Drawing.Point(413, 170);
+            this.label149.Location = new System.Drawing.Point(413, 172);
             this.label149.Name = "label149";
             this.label149.Size = new System.Drawing.Size(71, 13);
             this.label149.TabIndex = 529;
@@ -6243,51 +6392,52 @@ namespace Developer_Tools
             // 
             // groupBox23
             // 
+            this.groupBox23.Controls.Add(this.button_CommandDumpEEPROM);
             this.groupBox23.Controls.Add(this.button_CommandDumpLoadSurvey);
-            this.groupBox23.Controls.Add(this.button_CommandFG);
+            this.groupBox23.Controls.Add(this.button_CommandFGTrigger);
             this.groupBox23.Controls.Add(this.button_CommandMemoryFF);
             this.groupBox23.Location = new System.Drawing.Point(5, 183);
             this.groupBox23.Name = "groupBox23";
-            this.groupBox23.Size = new System.Drawing.Size(356, 96);
+            this.groupBox23.Size = new System.Drawing.Size(356, 106);
             this.groupBox23.TabIndex = 16;
             this.groupBox23.TabStop = false;
             this.groupBox23.Text = "Commands";
             // 
             // button_CommandDumpLoadSurvey
             // 
-            this.button_CommandDumpLoadSurvey.Location = new System.Drawing.Point(8, 67);
+            this.button_CommandDumpLoadSurvey.Location = new System.Drawing.Point(8, 74);
             this.button_CommandDumpLoadSurvey.Name = "button_CommandDumpLoadSurvey";
-            this.button_CommandDumpLoadSurvey.Size = new System.Drawing.Size(136, 23);
+            this.button_CommandDumpLoadSurvey.Size = new System.Drawing.Size(136, 26);
             this.button_CommandDumpLoadSurvey.TabIndex = 8;
             this.button_CommandDumpLoadSurvey.Text = "Load Survey Dump";
             this.button_CommandDumpLoadSurvey.UseVisualStyleBackColor = true;
             // 
-            // button_CommandFG
+            // button_CommandFGTrigger
             // 
-            this.button_CommandFG.Location = new System.Drawing.Point(8, 44);
-            this.button_CommandFG.Name = "button_CommandFG";
-            this.button_CommandFG.Size = new System.Drawing.Size(136, 23);
-            this.button_CommandFG.TabIndex = 7;
-            this.button_CommandFG.Text = "FG Trigger";
-            this.button_CommandFG.UseVisualStyleBackColor = true;
+            this.button_CommandFGTrigger.Location = new System.Drawing.Point(8, 49);
+            this.button_CommandFGTrigger.Name = "button_CommandFGTrigger";
+            this.button_CommandFGTrigger.Size = new System.Drawing.Size(136, 26);
+            this.button_CommandFGTrigger.TabIndex = 7;
+            this.button_CommandFGTrigger.Text = "FG Trigger";
+            this.button_CommandFGTrigger.UseVisualStyleBackColor = true;
             // 
             // button_CommandMemoryFF
             // 
             this.button_CommandMemoryFF.Location = new System.Drawing.Point(8, 22);
             this.button_CommandMemoryFF.Name = "button_CommandMemoryFF";
-            this.button_CommandMemoryFF.Size = new System.Drawing.Size(136, 23);
+            this.button_CommandMemoryFF.Size = new System.Drawing.Size(136, 28);
             this.button_CommandMemoryFF.TabIndex = 6;
             this.button_CommandMemoryFF.Text = "Memory FF";
             this.button_CommandMemoryFF.UseVisualStyleBackColor = true;
             // 
             // groupBox10
             // 
-            this.groupBox10.Controls.Add(this.textBoxRTCOUTTime);
+            this.groupBox10.Controls.Add(this.textBoxRTCOUTTimeSeconds);
             this.groupBox10.Controls.Add(this.label11);
             this.groupBox10.Controls.Add(this.buttonRTCOUT);
             this.groupBox10.Controls.Add(this.buttonRTCCalibration);
             this.groupBox10.Controls.Add(this.label12);
-            this.groupBox10.Controls.Add(this.textBoxPPM);
+            this.groupBox10.Controls.Add(this.textBoxRTCPPM);
             this.groupBox10.Location = new System.Drawing.Point(162, 87);
             this.groupBox10.Name = "groupBox10";
             this.groupBox10.Size = new System.Drawing.Size(199, 93);
@@ -6295,14 +6445,14 @@ namespace Developer_Tools
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "RTC";
             // 
-            // textBoxRTCOUTTime
+            // textBoxRTCOUTTimeSeconds
             // 
-            this.textBoxRTCOUTTime.Location = new System.Drawing.Point(149, 20);
-            this.textBoxRTCOUTTime.Name = "textBoxRTCOUTTime";
-            this.textBoxRTCOUTTime.Size = new System.Drawing.Size(42, 23);
-            this.textBoxRTCOUTTime.TabIndex = 5;
-            this.textBoxRTCOUTTime.Text = "300";
-            this.textBoxRTCOUTTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxRTCOUTTimeSeconds.Location = new System.Drawing.Point(149, 20);
+            this.textBoxRTCOUTTimeSeconds.Name = "textBoxRTCOUTTimeSeconds";
+            this.textBoxRTCOUTTimeSeconds.Size = new System.Drawing.Size(42, 23);
+            this.textBoxRTCOUTTimeSeconds.TabIndex = 5;
+            this.textBoxRTCOUTTimeSeconds.Text = "300";
+            this.textBoxRTCOUTTimeSeconds.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label11
             // 
@@ -6321,6 +6471,7 @@ namespace Developer_Tools
             this.buttonRTCOUT.TabIndex = 3;
             this.buttonRTCOUT.Text = "RTCOUT";
             this.buttonRTCOUT.UseVisualStyleBackColor = true;
+            this.buttonRTCOUT.Click += new System.EventHandler(this.buttonRTCOUT_Click);
             // 
             // buttonRTCCalibration
             // 
@@ -6330,6 +6481,7 @@ namespace Developer_Tools
             this.buttonRTCCalibration.TabIndex = 2;
             this.buttonRTCCalibration.Text = "Calibrate";
             this.buttonRTCCalibration.UseVisualStyleBackColor = true;
+            this.buttonRTCCalibration.Click += new System.EventHandler(this.buttonRTCCalibration_Click);
             // 
             // label12
             // 
@@ -6340,14 +6492,14 @@ namespace Developer_Tools
             this.label12.TabIndex = 1;
             this.label12.Text = "PPM";
             // 
-            // textBoxPPM
+            // textBoxRTCPPM
             // 
-            this.textBoxPPM.Location = new System.Drawing.Point(42, 19);
-            this.textBoxPPM.Name = "textBoxPPM";
-            this.textBoxPPM.Size = new System.Drawing.Size(39, 23);
-            this.textBoxPPM.TabIndex = 0;
-            this.textBoxPPM.Text = "0";
-            this.textBoxPPM.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxRTCPPM.Location = new System.Drawing.Point(42, 19);
+            this.textBoxRTCPPM.Name = "textBoxRTCPPM";
+            this.textBoxRTCPPM.Size = new System.Drawing.Size(39, 23);
+            this.textBoxRTCPPM.TabIndex = 0;
+            this.textBoxRTCPPM.Text = "0";
+            this.textBoxRTCPPM.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // groupBox9
             // 
@@ -6372,6 +6524,7 @@ namespace Developer_Tools
             this.buttonDisableLCDTest.TabIndex = 5;
             this.buttonDisableLCDTest.Text = "Disable";
             this.buttonDisableLCDTest.UseVisualStyleBackColor = true;
+            this.buttonDisableLCDTest.Click += new System.EventHandler(this.buttonDisableLCDTest_Click);
             // 
             // buttonAllSeg
             // 
@@ -6381,6 +6534,7 @@ namespace Developer_Tools
             this.buttonAllSeg.TabIndex = 4;
             this.buttonAllSeg.Text = "All Segment";
             this.buttonAllSeg.UseVisualStyleBackColor = true;
+            this.buttonAllSeg.Click += new System.EventHandler(this.buttonAllSeg_Click);
             // 
             // buttonOddComOddSeg
             // 
@@ -6390,6 +6544,7 @@ namespace Developer_Tools
             this.buttonOddComOddSeg.TabIndex = 3;
             this.buttonOddComOddSeg.Text = "OCOS";
             this.buttonOddComOddSeg.UseVisualStyleBackColor = true;
+            this.buttonOddComOddSeg.Click += new System.EventHandler(this.buttonOddComOddSeg_Click);
             // 
             // buttonEvenComOddSeg
             // 
@@ -6399,6 +6554,7 @@ namespace Developer_Tools
             this.buttonEvenComOddSeg.TabIndex = 2;
             this.buttonEvenComOddSeg.Text = "ECOS";
             this.buttonEvenComOddSeg.UseVisualStyleBackColor = true;
+            this.buttonEvenComOddSeg.Click += new System.EventHandler(this.buttonEvenComOddSeg_Click);
             // 
             // buttonOddComEvenSeg
             // 
@@ -6408,6 +6564,7 @@ namespace Developer_Tools
             this.buttonOddComEvenSeg.TabIndex = 1;
             this.buttonOddComEvenSeg.Text = "OCES";
             this.buttonOddComEvenSeg.UseVisualStyleBackColor = true;
+            this.buttonOddComEvenSeg.Click += new System.EventHandler(this.buttonOddComEvenSeg_Click);
             // 
             // buttonEvenComEvenSeg
             // 
@@ -6417,6 +6574,7 @@ namespace Developer_Tools
             this.buttonEvenComEvenSeg.TabIndex = 0;
             this.buttonEvenComEvenSeg.Text = "ECES";
             this.buttonEvenComEvenSeg.UseVisualStyleBackColor = true;
+            this.buttonEvenComEvenSeg.Click += new System.EventHandler(this.buttonEvenComEvenSeg_Click);
             // 
             // groupBox8
             // 
@@ -6508,101 +6666,14 @@ namespace Developer_Tools
             // 
             this.timer100ms.Tick += new System.EventHandler(this.timer100ms_Tick);
             // 
-            // label71
+            // button_CommandDumpEEPROM
             // 
-            this.label71.AutoSize = true;
-            this.label71.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label71.Location = new System.Drawing.Point(325, 453);
-            this.label71.Name = "label71";
-            this.label71.Size = new System.Drawing.Size(62, 13);
-            this.label71.TabIndex = 683;
-            this.label71.Text = "Net/Total";
-            // 
-            // label72
-            // 
-            this.label72.AutoSize = true;
-            this.label72.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label72.ForeColor = System.Drawing.Color.Red;
-            this.label72.Location = new System.Drawing.Point(92, 453);
-            this.label72.Name = "label72";
-            this.label72.Size = new System.Drawing.Size(55, 13);
-            this.label72.TabIndex = 680;
-            this.label72.Text = "R Phase";
-            // 
-            // label73
-            // 
-            this.label73.AutoSize = true;
-            this.label73.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label73.ForeColor = System.Drawing.Color.Yellow;
-            this.label73.Location = new System.Drawing.Point(170, 453);
-            this.label73.Name = "label73";
-            this.label73.Size = new System.Drawing.Size(54, 13);
-            this.label73.TabIndex = 681;
-            this.label73.Text = "Y Phase";
-            // 
-            // label74
-            // 
-            this.label74.AutoSize = true;
-            this.label74.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label74.ForeColor = System.Drawing.Color.Blue;
-            this.label74.Location = new System.Drawing.Point(252, 453);
-            this.label74.Name = "label74";
-            this.label74.Size = new System.Drawing.Size(54, 13);
-            this.label74.TabIndex = 682;
-            this.label74.Text = "B Phase";
-            // 
-            // textBox_WattBFunda
-            // 
-            this.textBox_WattBFunda.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.textBox_WattBFunda.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_WattBFunda.Location = new System.Drawing.Point(249, 473);
-            this.textBox_WattBFunda.Name = "textBox_WattBFunda";
-            this.textBox_WattBFunda.ReadOnly = true;
-            this.textBox_WattBFunda.Size = new System.Drawing.Size(61, 20);
-            this.textBox_WattBFunda.TabIndex = 688;
-            this.textBox_WattBFunda.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox_WattYFunda
-            // 
-            this.textBox_WattYFunda.BackColor = System.Drawing.Color.LightGoldenrodYellow;
-            this.textBox_WattYFunda.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_WattYFunda.Location = new System.Drawing.Point(167, 474);
-            this.textBox_WattYFunda.Name = "textBox_WattYFunda";
-            this.textBox_WattYFunda.ReadOnly = true;
-            this.textBox_WattYFunda.Size = new System.Drawing.Size(61, 20);
-            this.textBox_WattYFunda.TabIndex = 687;
-            this.textBox_WattYFunda.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox_WattNetFunda
-            // 
-            this.textBox_WattNetFunda.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_WattNetFunda.Location = new System.Drawing.Point(326, 474);
-            this.textBox_WattNetFunda.Name = "textBox_WattNetFunda";
-            this.textBox_WattNetFunda.ReadOnly = true;
-            this.textBox_WattNetFunda.Size = new System.Drawing.Size(61, 20);
-            this.textBox_WattNetFunda.TabIndex = 686;
-            this.textBox_WattNetFunda.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox_WattRFunda
-            // 
-            this.textBox_WattRFunda.BackColor = System.Drawing.Color.LightCoral;
-            this.textBox_WattRFunda.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_WattRFunda.Location = new System.Drawing.Point(89, 473);
-            this.textBox_WattRFunda.Name = "textBox_WattRFunda";
-            this.textBox_WattRFunda.ReadOnly = true;
-            this.textBox_WattRFunda.Size = new System.Drawing.Size(61, 20);
-            this.textBox_WattRFunda.TabIndex = 685;
-            this.textBox_WattRFunda.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label75
-            // 
-            this.label75.AutoSize = true;
-            this.label75.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label75.Location = new System.Drawing.Point(20, 477);
-            this.label75.Name = "label75";
-            this.label75.Size = new System.Drawing.Size(66, 13);
-            this.label75.TabIndex = 684;
-            this.label75.Text = "FPower (W):";
+            this.button_CommandDumpEEPROM.Location = new System.Drawing.Point(143, 22);
+            this.button_CommandDumpEEPROM.Name = "button_CommandDumpEEPROM";
+            this.button_CommandDumpEEPROM.Size = new System.Drawing.Size(136, 28);
+            this.button_CommandDumpEEPROM.TabIndex = 9;
+            this.button_CommandDumpEEPROM.Text = "Dump All Memory";
+            this.button_CommandDumpEEPROM.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -6959,12 +7030,12 @@ namespace Developer_Tools
         private System.Windows.Forms.Button button_WFDecode;
         private System.Windows.Forms.Button button_WFCapture;
         private System.Windows.Forms.GroupBox groupBox10;
-        private System.Windows.Forms.TextBox textBoxRTCOUTTime;
+        private System.Windows.Forms.TextBox textBoxRTCOUTTimeSeconds;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button buttonRTCOUT;
         private System.Windows.Forms.Button buttonRTCCalibration;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBoxPPM;
+        private System.Windows.Forms.TextBox textBoxRTCPPM;
         private System.Windows.Forms.GroupBox groupBox9;
         private System.Windows.Forms.Button buttonDisableLCDTest;
         private System.Windows.Forms.Button buttonAllSeg;
@@ -7256,7 +7327,7 @@ namespace Developer_Tools
         private System.Windows.Forms.GroupBox groupBox23;
         private System.Windows.Forms.Button button_CommandMemoryFF;
         private System.Windows.Forms.Button button_CommandDumpLoadSurvey;
-        private System.Windows.Forms.Button button_CommandFG;
+        private System.Windows.Forms.Button button_CommandFGTrigger;
         private System.Windows.Forms.TextBox textBox_WattBFunda;
         private System.Windows.Forms.TextBox textBox_WattYFunda;
         private System.Windows.Forms.TextBox textBox_WattNetFunda;
@@ -7266,6 +7337,11 @@ namespace Developer_Tools
         private System.Windows.Forms.Label label72;
         private System.Windows.Forms.Label label73;
         private System.Windows.Forms.Label label74;
+        private System.Windows.Forms.TextBox textBox_VAB_vi;
+        private System.Windows.Forms.TextBox textBox_VAY_vi;
+        private System.Windows.Forms.TextBox textBox_VAR_vi;
+        private System.Windows.Forms.Label label76;
+        private System.Windows.Forms.Button button_CommandDumpEEPROM;
     }
 }
 

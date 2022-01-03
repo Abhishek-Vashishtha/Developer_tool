@@ -56,6 +56,159 @@ namespace Developer_Tools
         public static int QuadrantR, QuadrantY, QuadrantB, QuadrantNet;
         public static int SamplesR, SamplesY, SamplesB, SamplesN, SamplesPerSec;
         public static double THDVr, THDVy, THDVb, THDIr, THDIy, THDIb;
+
+        private void buttonOddComEvenSeg_Click(object sender, EventArgs e)
+        {
+            /* Frame Creation */
+            temp_b_array[0] = 0x27;
+            temp_b_array[1] = 0x58;
+            temp_b_array[2] = 0x00;
+            temp_b_array[3] = 0x00;
+            temp_b_array[4] = 0x00;
+            temp_b_array[5] = 0x03;
+            temp_b_array[6] = 0x00;
+            temp_b_array[7] = DS_CRC.CRC_BCC_XOR(temp_b_array, 1, 6);
+            temp_b_array_length = 8;
+
+            serial_port.write(temp_b_array, 0, temp_b_array_length, false);
+        }
+
+        private void buttonOddComOddSeg_Click(object sender, EventArgs e)
+        {
+            /* Frame Creation */
+            temp_b_array[0] = 0x27;
+            temp_b_array[1] = 0x58;
+            temp_b_array[2] = 0x00;
+            temp_b_array[3] = 0x00;
+            temp_b_array[4] = 0x00;
+            temp_b_array[5] = 0x04;
+            temp_b_array[6] = 0x00;
+            temp_b_array[7] = DS_CRC.CRC_BCC_XOR(temp_b_array, 1, 6);
+            temp_b_array_length = 8;
+
+            serial_port.write(temp_b_array, 0, temp_b_array_length, false);
+        }
+
+        private void buttonAllSeg_Click(object sender, EventArgs e)
+        {
+            /* Frame Creation */
+            temp_b_array[0] = 0x27;
+            temp_b_array[1] = 0x58;
+            temp_b_array[2] = 0x00;
+            temp_b_array[3] = 0x00;
+            temp_b_array[4] = 0x00;
+            temp_b_array[5] = 0x00;
+            temp_b_array[6] = 0x00;
+            temp_b_array[7] = DS_CRC.CRC_BCC_XOR(temp_b_array, 1, 6);
+            temp_b_array_length = 8;
+
+            serial_port.write(temp_b_array, 0, temp_b_array_length, false);
+        }
+
+        private void buttonDisableLCDTest_Click(object sender, EventArgs e)
+        {
+            /* Frame Creation */
+            temp_b_array[0] = 0x27;
+            temp_b_array[1] = 0x58;
+            temp_b_array[2] = 0x00;
+            temp_b_array[3] = 0x00;
+            temp_b_array[4] = 0xFF;
+            temp_b_array[5] = 0xFF;
+            temp_b_array[6] = 0x00;
+            temp_b_array[7] = DS_CRC.CRC_BCC_XOR(temp_b_array, 1, 6);
+            temp_b_array_length = 8;
+
+            serial_port.write(temp_b_array, 0, temp_b_array_length, false);
+        }
+
+        private void buttonRTCCalibration_Click(object sender, EventArgs e)
+        {
+            int ppm;
+            ppm = Convert.ToInt16(textBoxRTCPPM.Text);
+
+            /* Frame Creation */
+            temp_b_array[0] = 0x27;
+            temp_b_array[1] = 0x57;
+            temp_b_array[2] = 0x00;
+            temp_b_array[3] = 0x00;
+            if (ppm >= 0)
+            {
+                temp_b_array[4] = 0x00;            /* sign */
+                temp_b_array[5] = (byte)ppm;       /* ppm */
+            }
+            else
+            {
+                temp_b_array[4] = 0x01;            /* sign */
+                temp_b_array[5] = (byte)-ppm;      /* ppm */
+            }
+            temp_b_array[6] = 0x00;
+            temp_b_array[7] = DS_CRC.CRC_BCC_XOR(temp_b_array, 1, 6);
+            temp_b_array_length = 8;
+
+            serial_port.write(temp_b_array, 0, temp_b_array_length, false);
+        }
+
+        private void buttonRTCOUT_Click(object sender, EventArgs e)
+        {
+            int rtcout_time;
+            rtcout_time = Convert.ToInt16(textBoxRTCOUTTimeSeconds.Text);
+            if (rtcout_time != 0 && rtcout_time <= 300)
+            {
+                rtcout_time *= 200;
+                temp_b_array[0] = 0x27;
+                temp_b_array[1] = 0x5A;
+                temp_b_array[2] = 0x00;
+                temp_b_array[3] = 0x00;
+                temp_b_array[4] = (byte)(rtcout_time / 256);                /* time */
+                temp_b_array[5] = (byte)(rtcout_time % 256);                /* time */
+                temp_b_array[6] = 0x00;
+                temp_b_array[7] = DS_CRC.CRC_BCC_XOR(temp_b_array, 1, 6);                /* checksum from 1 to 6 */
+                temp_b_array_length = 8; 
+                serial_port.write(temp_b_array, 0, temp_b_array_length, false);
+            }
+            else
+            {
+                MessageBox.Show("Invalid Time..");
+            }
+        }
+
+        private void buttonEvenComOddSeg_Click(object sender, EventArgs e)
+        {
+            /* Frame Creation */
+            temp_b_array[0] = 0x27;
+            temp_b_array[1] = 0x58;
+            temp_b_array[2] = 0x00;
+            temp_b_array[3] = 0x00;
+            temp_b_array[4] = 0x00;
+            temp_b_array[5] = 0x02;
+            temp_b_array[6] = 0x00;
+            temp_b_array[7] = DS_CRC.CRC_BCC_XOR(temp_b_array, 1, 6);
+            temp_b_array_length = 8;
+
+            serial_port.write(temp_b_array, 0, temp_b_array_length, false);
+        }
+
+        private void buttonEvenComEvenSeg_Click(object sender, EventArgs e)
+        {
+            /* Frame Creation */
+            temp_b_array[0] = 0x27;
+            temp_b_array[1] = 0x58;
+            temp_b_array[2] = 0x00;
+            temp_b_array[3] = 0x00;
+            temp_b_array[4] = 0x00;
+            temp_b_array[5] = 0x01;
+            temp_b_array[6] = 0x00;
+            temp_b_array[7] = DS_CRC.CRC_BCC_XOR(temp_b_array, 1, 6);
+            temp_b_array_length = 8;
+
+            serial_port.write(temp_b_array, 0, temp_b_array_length, false);
+        }
+
+        private void tabPage11_Click(object sender, EventArgs e)
+        {
+
+        }
+
         public static double EnergyWhR_imp, EnergyWhY_imp, EnergyWhB_imp, EnergyWhTotal_imp;
         public static double EnergyWhR_exp, EnergyWhY_exp, EnergyWhB_exp, EnergyWhTotal_exp;
         public static double EnergyVARhR_q1, EnergyVARhY_q1, EnergyVARhB_q1, EnergyVARhTotal_q1;
@@ -619,6 +772,10 @@ namespace Developer_Tools
             textBox_VAY.Text = VAY.ToString("0.0");
             textBox_VAB.Text = VAB.ToString("0.0");
             textBox_VANet.Text = VANet.ToString("0.0");
+
+            textBox_VAR_vi.Text = (VolR * Math.Abs(CurrRSigned)).ToString("0.0");
+            textBox_VAY_vi.Text = (VolY * Math.Abs(CurrYSigned)).ToString("0.0");
+            textBox_VAB_vi.Text = (VolB * Math.Abs(CurrBSigned)).ToString("0.0");
 
             textBox_FreqR.Text = FreqR.ToString("0.000");
             textBox_FreqY.Text = FreqY.ToString("0.000");
