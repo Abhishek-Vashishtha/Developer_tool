@@ -243,6 +243,52 @@ namespace Developer_Tools
             serial_port.write(temp_b_array, 0, temp_b_array_length, false);
         }
 
+        private void textBoxBootloaderPath_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog open_file1 = new OpenFileDialog();
+            open_file1.Title = "Browse Bootloader Bin File";
+            open_file1.Filter = "bin files (*.bin)|*.bin|All files (*.*)|*.*";
+            open_file1.ShowDialog();
+            textBoxBootloaderPath.Text = open_file1.FileName; 
+            try
+            {
+                FileStream file = new FileStream(open_file1.FileName, FileMode.Open);
+                labelBootloaderFileSize.Text = file.Length.ToString() + " bytes";
+                if (file.Length != 4096)
+                {
+                    MessageBox.Show("Invalid size of the file");
+                }
+                file.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void textBoxFirmwarePath_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog open_file1 = new OpenFileDialog();
+            open_file1.Title = "Browse Firmware Bin File";
+            open_file1.Filter = "bin files (*.bin)|*.bin|All files (*.*)|*.*";
+            open_file1.ShowDialog();
+            textBoxFirmwarePath.Text = open_file1.FileName;
+            try
+            {
+                FileStream file = new FileStream(open_file1.FileName, FileMode.Open);
+                labelBootloaderFileSize.Text = file.Length.ToString() + " bytes";
+                if (file.Length != 262144)
+                {
+                    MessageBox.Show("Invalid size of the file");
+                }
+                file.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         private void buttonEvenComOddSeg_Click(object sender, EventArgs e)
         {
             /* Frame Creation */

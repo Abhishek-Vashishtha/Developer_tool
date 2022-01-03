@@ -594,6 +594,7 @@ namespace Developer_Tools
             this.timer500ms = new System.Windows.Forms.Timer(this.components);
             this.timer100ms = new System.Windows.Forms.Timer(this.components);
             this.button_CommandDumpEEPROM = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.menuStripMain.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -6396,7 +6397,7 @@ namespace Developer_Tools
             this.groupBox23.Controls.Add(this.button_CommandDumpLoadSurvey);
             this.groupBox23.Controls.Add(this.button_CommandFGTrigger);
             this.groupBox23.Controls.Add(this.button_CommandMemoryFF);
-            this.groupBox23.Location = new System.Drawing.Point(5, 183);
+            this.groupBox23.Location = new System.Drawing.Point(5, 221);
             this.groupBox23.Name = "groupBox23";
             this.groupBox23.Size = new System.Drawing.Size(356, 106);
             this.groupBox23.TabIndex = 16;
@@ -6441,7 +6442,7 @@ namespace Developer_Tools
             this.groupBox10.Controls.Add(this.buttonRTCCalibration);
             this.groupBox10.Controls.Add(this.label12);
             this.groupBox10.Controls.Add(this.textBoxRTCPPM);
-            this.groupBox10.Location = new System.Drawing.Point(162, 87);
+            this.groupBox10.Location = new System.Drawing.Point(162, 125);
             this.groupBox10.Name = "groupBox10";
             this.groupBox10.Size = new System.Drawing.Size(199, 93);
             this.groupBox10.TabIndex = 15;
@@ -6512,7 +6513,7 @@ namespace Developer_Tools
             this.groupBox9.Controls.Add(this.buttonEvenComOddSeg);
             this.groupBox9.Controls.Add(this.buttonOddComEvenSeg);
             this.groupBox9.Controls.Add(this.buttonEvenComEvenSeg);
-            this.groupBox9.Location = new System.Drawing.Point(6, 87);
+            this.groupBox9.Location = new System.Drawing.Point(6, 125);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Size = new System.Drawing.Size(150, 93);
             this.groupBox9.TabIndex = 14;
@@ -6590,7 +6591,7 @@ namespace Developer_Tools
             this.groupBox8.Controls.Add(this.label10);
             this.groupBox8.Location = new System.Drawing.Point(4, 6);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(357, 75);
+            this.groupBox8.Size = new System.Drawing.Size(357, 113);
             this.groupBox8.TabIndex = 2;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Boot File Creator";
@@ -6598,7 +6599,7 @@ namespace Developer_Tools
             // labelFirmwareFileSize
             // 
             this.labelFirmwareFileSize.AutoSize = true;
-            this.labelFirmwareFileSize.Location = new System.Drawing.Point(205, 49);
+            this.labelFirmwareFileSize.Location = new System.Drawing.Point(293, 49);
             this.labelFirmwareFileSize.Name = "labelFirmwareFileSize";
             this.labelFirmwareFileSize.Size = new System.Drawing.Size(54, 17);
             this.labelFirmwareFileSize.TabIndex = 8;
@@ -6607,7 +6608,7 @@ namespace Developer_Tools
             // labelBootloaderFileSize
             // 
             this.labelBootloaderFileSize.AutoSize = true;
-            this.labelBootloaderFileSize.Location = new System.Drawing.Point(205, 24);
+            this.labelBootloaderFileSize.Location = new System.Drawing.Point(294, 22);
             this.labelBootloaderFileSize.Name = "labelBootloaderFileSize";
             this.labelBootloaderFileSize.Size = new System.Drawing.Size(54, 17);
             this.labelBootloaderFileSize.TabIndex = 7;
@@ -6618,26 +6619,30 @@ namespace Developer_Tools
             this.textBoxFirmwarePath.Cursor = System.Windows.Forms.Cursors.Default;
             this.textBoxFirmwarePath.Location = new System.Drawing.Point(81, 46);
             this.textBoxFirmwarePath.Name = "textBoxFirmwarePath";
-            this.textBoxFirmwarePath.Size = new System.Drawing.Size(116, 23);
+            this.textBoxFirmwarePath.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.textBoxFirmwarePath.Size = new System.Drawing.Size(206, 23);
             this.textBoxFirmwarePath.TabIndex = 6;
-            this.textBoxFirmwarePath.Text = "double click";
+            this.textBoxFirmwarePath.Text = "Click to browse";
             this.textBoxFirmwarePath.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxFirmwarePath.Click += new System.EventHandler(this.textBoxFirmwarePath_Click);
             // 
             // textBoxBootloaderPath
             // 
             this.textBoxBootloaderPath.Cursor = System.Windows.Forms.Cursors.Default;
             this.textBoxBootloaderPath.Location = new System.Drawing.Point(81, 20);
             this.textBoxBootloaderPath.Name = "textBoxBootloaderPath";
-            this.textBoxBootloaderPath.Size = new System.Drawing.Size(116, 23);
+            this.textBoxBootloaderPath.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.textBoxBootloaderPath.Size = new System.Drawing.Size(206, 23);
             this.textBoxBootloaderPath.TabIndex = 5;
-            this.textBoxBootloaderPath.Text = "double click";
+            this.textBoxBootloaderPath.Text = "Click to browse";
             this.textBoxBootloaderPath.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxBootloaderPath.Click += new System.EventHandler(this.textBoxBootloaderPath_Click);
             // 
             // buttonBootCreate
             // 
-            this.buttonBootCreate.Location = new System.Drawing.Point(265, 20);
+            this.buttonBootCreate.Location = new System.Drawing.Point(8, 75);
             this.buttonBootCreate.Name = "buttonBootCreate";
-            this.buttonBootCreate.Size = new System.Drawing.Size(84, 49);
+            this.buttonBootCreate.Size = new System.Drawing.Size(339, 33);
             this.buttonBootCreate.TabIndex = 4;
             this.buttonBootCreate.Text = "Create";
             this.buttonBootCreate.UseVisualStyleBackColor = true;
@@ -6678,6 +6683,10 @@ namespace Developer_Tools
             this.button_CommandDumpEEPROM.Text = "Dump All Memory";
             this.button_CommandDumpEEPROM.UseVisualStyleBackColor = true;
             this.button_CommandDumpEEPROM.Click += new System.EventHandler(this.button_CommandDumpEEPROM_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // Form1
             // 
@@ -7346,6 +7355,7 @@ namespace Developer_Tools
         private System.Windows.Forms.TextBox textBox_VAR_vi;
         private System.Windows.Forms.Label label76;
         private System.Windows.Forms.Button button_CommandDumpEEPROM;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 
