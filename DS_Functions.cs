@@ -438,6 +438,16 @@ namespace Developer_Tools
             return byte_aray_to_double(byte_array, loc) / divisor;
         }
 
+        public static int CalcStringLines(string text)
+        {
+            int count = 1;
+            for (int i = 0; i < text.Length; i++)
+            {
+                if (text[i] == '\n') count++;
+            }
+
+            return count;
+        }
         /******************************************* Revisited Functions ****************************************/
     }
 }

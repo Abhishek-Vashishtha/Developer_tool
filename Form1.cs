@@ -4,13 +4,14 @@ using System.Windows.Forms;
 using System.IO;
 using Newtonsoft.Json.Linq;
 using System.Windows;
+using Point = System.Drawing.Point;
 
 namespace Developer_Tools
 {
     public partial class Form1 : Form
     {
         /* global variables */
-        string newline = Environment.NewLine;
+        public static string newline = Environment.NewLine;
         public static bool login_success = false;
 
         /* communication traffic */
@@ -30,6 +31,12 @@ namespace Developer_Tools
         /* Serial Port */
         DS_Serial serial_port = new DS_Serial();
 
+        /* textbox update */
+        static string debug_string_for_textbox, debug_string_for_textbox1;
+        static Boolean update_wf_capture_info, update_decode_info;
+
+        /* WF Plotting */
+        Bitmap WaveForm;
         /******************************** Energy Meter Variables ********************************/
         /* input signal */
         public static double ip_vol_r, ip_vol_y, ip_vol_b, ip_curr_r, ip_curr_y, ip_curr_b, ip_curr_n_calculated;
@@ -263,6 +270,7 @@ namespace Developer_Tools
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                textBoxBootloaderPath.Text = "Click to Browse";
             }
         }
 
@@ -276,7 +284,7 @@ namespace Developer_Tools
             try
             {
                 FileStream file = new FileStream(open_file1.FileName, FileMode.Open);
-                labelBootloaderFileSize.Text = file.Length.ToString() + " bytes";
+                labelFirmwareFileSize.Text = file.Length.ToString() + " bytes";
                 if (file.Length != 262144)
                 {
                     MessageBox.Show("Invalid size of the file");
@@ -286,7 +294,351 @@ namespace Developer_Tools
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                textBoxFirmwarePath.Text = "Click to Browse";
             }
+        }
+
+        private void buttonBootCreate_Click(object sender, EventArgs e)
+        {
+            if (textBoxBootloaderPath.Text != string.Empty && textBoxFirmwarePath.Text != string.Empty)
+            {
+                FileStream bootloader_bin_file, fw_bin_file;
+                byte[] temp_byte_array = new byte[1024];
+                string temp_hex_String = string.Empty;
+                string boot_file_name = string.Empty;
+
+                bootloader_bin_file = new FileStream(textBoxBootloaderPath.Text, FileMode.Open, FileAccess.Read);
+                fw_bin_file = new FileStream(textBoxFirmwarePath.Text, FileMode.Open, FileAccess.Read);
+
+                if (bootloader_bin_file.Length != 4096 && fw_bin_file.Length != 262144)
+                {
+                    MessageBox.Show("Invalid size of the file");
+                }
+                else
+                {
+                    /* creating the combined boot file */
+                    boot_file_name = fw_bin_file.Name.Replace(".bin", "_boot.txt");
+                    StreamWriter boot_file = new StreamWriter(boot_file_name);
+
+                    /* Clearing the boot file if already exists*/
+                    if (boot_file.BaseStream.Length != 0)
+                    {
+                        boot_file.Flush();
+                    }
+
+
+                    /* copying bootloader file into boot file */
+                    for (int i = 0; i < 4; i++)
+                    {
+                        /* reading 1024 bytes */
+                        bootloader_bin_file.Read(temp_byte_array, 0, 1024);
+
+                        /* converting byte array to hex string */
+                        temp_hex_String = DS_Functions.byte_array_to_hex_string_spaced(temp_byte_array,1024);
+
+                        /* Writing 1024 bytes */
+                        boot_file.Write(temp_hex_String, temp_hex_String.Length);
+                    }
+
+                    /* copying FW file into boot file */
+                    for (int i = 0; i < 256; i++)
+                    {
+                        /* reading 1024 bytes */
+                        fw_bin_file.Read(temp_byte_array, 0, 1024);
+
+                        /* converting byte array to hex string */
+                        temp_hex_String = DS_Functions.byte_array_to_hex_string_spaced(temp_byte_array, 1024);
+
+                        /* Writing 1024 bytes */
+                        boot_file.Write(temp_hex_String, temp_hex_String.Length);
+                    }
+                    boot_file.Close();
+                    MessageBox.Show("Operation finished");
+                }
+                bootloader_bin_file.Close();
+                fw_bin_file.Close();
+            }
+            else
+            {
+                MessageBox.Show("Browse bootloader files...");
+            }
+        }
+
+        private void button_WFCapture_Click(object sender, EventArgs e)
+        {
+            byte wf_samples, byte2, byte3, byte4, byte5, byte6, byte7, byte8, byte9;
+            byte ch0_sel, ch1_sel, ch2_sel, ch3_sel, ch4_sel, ch5_sel, ch6_sel;
+            Boolean ch0_type, ch1_type, ch2_type, ch3_type, ch4_type, ch5_type, ch6_type;
+
+            if (checkBox_WFCh0TypeSel.Checked == true) ch0_type = false; else ch0_type = true;
+            if (checkBox_WFCh1TypeSel.Checked == true) ch1_type = false; else ch1_type = true;
+            if (checkBox_WFCh2TypeSel.Checked == true) ch2_type = false; else ch2_type = true;
+            if (checkBox_WFCh3TypeSel.Checked == true) ch3_type = false; else ch3_type = true;
+            if (checkBox_WFCh4TypeSel.Checked == true) ch4_type = false; else ch4_type = true;
+            if (checkBox_WFCh5TypeSel.Checked == true) ch5_type = false; else ch5_type = true;
+            if (checkBox_WFCh6TypeSel.Checked == true) ch6_type = false; else ch6_type = true;
+
+            wf_samples = Convert.ToByte(textBox_WFNoOfSamples.Text);
+
+            ch0_sel = 0;
+            ch1_sel = 0;
+            ch2_sel = 0;
+            ch3_sel = 0;
+            ch4_sel = 0;
+            ch5_sel = 0;
+            ch6_sel = 0;
+
+            if (comboBox_WFSelChannel0.SelectedIndex != -1 && comboBox_WFSelChannel0.SelectedIndex != 0)
+            {
+                ch0_sel = (byte)(comboBox_WFSelChannel0.SelectedIndex);
+            }
+            if (comboBox_WFSelChannel1.SelectedIndex != -1 && comboBox_WFSelChannel1.SelectedIndex != 0)
+            {
+                ch1_sel = (byte)(comboBox_WFSelChannel1.SelectedIndex);
+            }
+            if (comboBox_WFSelChannel2.SelectedIndex != -1 && comboBox_WFSelChannel2.SelectedIndex != 0)
+            {
+                ch2_sel = (byte)(comboBox_WFSelChannel2.SelectedIndex);
+            }
+            if (comboBox_WFSelChannel3.SelectedIndex != -1 && comboBox_WFSelChannel3.SelectedIndex != 0)
+            {
+                ch3_sel = (byte)(comboBox_WFSelChannel3.SelectedIndex);
+            }
+            if (comboBox_WFSelChannel4.SelectedIndex != -1 && comboBox_WFSelChannel4.SelectedIndex != 0)
+            {
+                ch4_sel = (byte)(comboBox_WFSelChannel4.SelectedIndex);
+            }
+            if (comboBox_WFSelChannel5.SelectedIndex != -1 && comboBox_WFSelChannel5.SelectedIndex != 0)
+            {
+                ch5_sel = (byte)(comboBox_WFSelChannel5.SelectedIndex);
+            }
+            if (comboBox_WFSelChannel6.SelectedIndex != -1 && comboBox_WFSelChannel6.SelectedIndex != 0)
+            {
+                ch6_sel = (byte)(comboBox_WFSelChannel6.SelectedIndex);
+            }
+            byte2 = byte3 = byte4 = byte5 = byte6 = byte7 = byte8 = byte9 = 0;
+
+            byte3 |= (byte)(ch6_sel & 0x0F);
+
+            byte4 |= (byte)(ch5_sel << 4);
+            byte4 |= (byte)(ch4_sel & 0x0F);
+
+            byte5 |= (byte)(ch3_sel << 4);
+            byte5 |= (byte)(ch2_sel & 0x0F);
+
+            byte6 |= (byte)(ch1_sel << 4);
+            byte6 |= (byte)(ch0_sel & 0x0F);
+
+            if (ch0_type == true) byte7 |= 0x01;
+            if (ch1_type == true) byte7 |= 0x02;
+            if (ch2_type == true) byte7 |= 0x04;
+            if (ch3_type == true) byte7 |= 0x08;
+            if (ch4_type == true) byte7 |= 0x10;
+            if (ch5_type == true) byte7 |= 0x20;
+            if (ch6_type == true) byte7 |= 0x40;
+
+            byte8 = (byte)(wf_samples / 256);
+            byte9 = (byte)(wf_samples & 0xFF);
+
+            /* Frame Creation */
+            temp_b_array[0] = 0x27;
+            temp_b_array[1] = 0xFF;
+            temp_b_array[2] = byte2;             /* 0x00 for WF capture */
+            temp_b_array[3] = byte3;
+            temp_b_array[4] = byte4;
+            temp_b_array[5] = byte5;
+            temp_b_array[6] = byte6;
+            temp_b_array[7] = byte7;
+            temp_b_array[8] = byte8;
+            temp_b_array[9] = byte9;
+            temp_b_array[10] = DS_CRC.CRC_BCC_XOR(temp_b_array, 1, 9);
+            temp_b_array_length = 11;
+
+            serial_port.write(temp_b_array, 0, temp_b_array_length, false);
+        }
+
+        private void buttonWFPlot_Click(object sender, EventArgs e)
+        {
+            plot_wf(textBox_WFSamples.Text, pictureBox_Waveform.Width, pictureBox_Waveform.Height,
+                textBox_WFScaling0.Text, textBox_WFScaling1.Text, textBox_WFScaling2.Text, textBox_WFScaling3.Text, textBox_WFScaling4.Text, textBox_WFScaling5.Text,
+                textBox_WFScaling6.Text);
+            string pathName = "D:\\DevelopersTool\\waveform.png"; 
+            WaveForm = new Bitmap(pathName);
+            pictureBox_Waveform.BackgroundImage = WaveForm;
+            pictureBox_Waveform.Refresh();
+            WaveForm.Dispose();
+        }
+        public static void plot_wf(string str,int width, int height, string scale0, string scale1, string scale2, string scale3, string scale4, string scale5, string scale6)
+        {
+            Point pt1, pt2;
+            float ScalingHorz;
+            float[] ScalingVert = new float[7];
+            int image_width, image_height, originX, originY;
+            
+            /* getting no of rows and and creating the array */
+            int NoOfSamples = DS_Functions.CalcStringLines(str);
+            int[,] array = new int[NoOfSamples, 7];
+
+            string copy_str = str;
+            
+            /* filling the array */
+            int str_ptr = 0, old_str_ptr = 0, row_ptr = 0, col_ptr = 0;
+            foreach (char c in copy_str)
+            {
+                if(c == '\t' || c == ',' || c == ' ')                               /* Column separator */
+                {
+                    /* filling element */
+                    array[row_ptr,col_ptr] = Convert.ToInt32(copy_str.Substring(old_str_ptr, str_ptr - old_str_ptr));
+                    col_ptr++;
+                    old_str_ptr = str_ptr+1;
+                }
+                else if(c == '\n')            /* Row separator */
+                {
+                    row_ptr++;
+                    col_ptr = 0;
+                    old_str_ptr = str_ptr + 1;
+                }
+                str_ptr++;
+            }
+
+            /* getting the width of the picturebox */
+            image_width = (width);
+            image_height = (height);
+
+            /* finding Origins */
+            originX = 15;
+            originY = image_height / 2;
+
+            ///* finding scaling factors */
+            ScalingHorz = (float)(image_width - 2 * originX) / NoOfSamples;
+            ScalingVert[0] = (float)Convert.ToDouble(scale0);
+            ScalingVert[1] = (float)Convert.ToDouble(scale1);
+            ScalingVert[2] = (float)Convert.ToDouble(scale2);
+            ScalingVert[3] = (float)Convert.ToDouble(scale3);
+            ScalingVert[4] = (float)Convert.ToDouble(scale4);
+            ScalingVert[5] = (float)Convert.ToDouble(scale5);
+            ScalingVert[6] = (float)Convert.ToDouble(scale6);
+
+            /* Selecting Pen */
+            Pen penRed = new Pen(Color.Red);
+            Pen penYellow = new Pen(Color.Yellow);
+            Pen penBlue = new Pen(Color.RoyalBlue);
+            Pen penLime = new Pen(Color.Lime);
+            Pen penVoilet = new Pen(Color.BlueViolet);
+            Pen penBlack = new Pen(Color.Black);
+            Pen penPink = new Pen(Color.Fuchsia);
+            Pen penOrange = new Pen(Color.DarkOrange);
+
+            
+            Bitmap bmp = new Bitmap(image_width, image_height);
+            using (var gfx = Graphics.FromImage(bmp))
+            {
+                gfx.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+                gfx.Clear(Color.White);
+            
+                /* drawing horizontal ref line */
+                pt1 = new Point(originX, originY);
+                pt2 = new Point(image_width - originX, originY);
+                gfx.DrawLine(penBlack, pt1, pt2);
+            
+                /* drawing Vertical Start ref line */
+                pt1 = new Point(originX, 0);
+                pt2 = new Point(originX, image_height);
+                gfx.DrawLine(penBlack, pt1, pt2);
+            
+                /* drawing Vertical End ref line */
+                pt1 = new Point(image_width - originX, 0);
+                pt2 = new Point(image_width - originX, image_height);
+                gfx.DrawLine(penBlack, pt1, pt2);
+            
+            
+                for (int i = 0; i < NoOfSamples - 1; i++)
+                {
+                    for (int index = 0; index < 7; index++)
+                    {
+                        pt1 = new Point((int)(originX + ScalingHorz * i), originY - (int)(ScalingVert[index] * array[i, index]));
+                        pt2 = new Point((int)(originX + ScalingHorz * (i + 1)), originY - (int)(ScalingVert[index] * array[i + 1, index]));
+                        if (index == 0)
+                        {
+                            gfx.DrawLine(penRed, pt1, pt2);
+                        }
+                        else if (index == 1)
+                        {
+                            gfx.DrawLine(penYellow, pt1, pt2);
+                        }
+                        else if (index == 2)
+                        {
+                            gfx.DrawLine(penBlue, pt1, pt2);
+                        }
+                        else if (index == 3)
+                        {
+                            gfx.DrawLine(penLime, pt1, pt2);
+                        }
+                        else if (index == 4)
+                        {
+                            gfx.DrawLine(penVoilet, pt1, pt2);
+                        }
+                        else if (index == 5)
+                        {
+                            gfx.DrawLine(penPink, pt1, pt2);
+                        }
+                        else if (index == 6)
+                        {
+                            gfx.DrawLine(penOrange, pt1, pt2);
+                        }
+                    }
+                }
+                gfx.Dispose();
+            }
+            //pictureBox_Waveform.Image = null;
+            //
+            
+            string pathName = "D:\\DevelopersTool\\waveform.png";
+            
+            bmp.Save(pathName);
+            bmp.Dispose();
+        }
+        public static string decode_wf_frame(byte[] b_array, int b_array_len)
+        {
+            string ret_str = String.Empty;
+            ushort NoOfWF, NoOfSamples;
+            short temp_int;
+            /* getting no of waveform and No of samples */
+            NoOfWF = b_array[4];
+            NoOfSamples = (ushort)(b_array[7] * 256 + b_array[8]);
+
+            /* validate the length of the frame as  per no of waveform data present */
+            if ((b_array_len - 12) == (2 * NoOfWF * NoOfSamples))
+            {
+                /* filling integer array */
+                for (ushort i = 0; i < NoOfSamples; i++)
+                {
+                    for (ushort index = 0; index < NoOfWF; index++)
+                    {
+                        temp_int = DS_Functions.ByteArrayToS16(b_array, (ushort)(2 * (i * NoOfWF + index) + 9));
+                        ret_str += temp_int.ToString();
+                        ret_str += "\t";
+                    }
+                    ret_str += newline;
+                }
+            }
+            else
+            {
+                ret_str = "Invalid string length";
+            }
+            return ret_str;
+        }
+        private void button_WFDecode_Click(object sender, EventArgs e)
+        {
+            String str = textBox_WFFrame.Text;
+            byte[] b_array = new byte[str.Length / 2];
+            if (DS_Functions.CheckValidHexSpacedString(str) == true)
+            {
+                b_array = DS_Functions.hex_string_to_byte_array(str.Replace(" ", ""));
+            }
+           
+            debug_string_for_textbox1 = decode_wf_frame(b_array, b_array.Length);
+            update_decode_info = true;
         }
 
         private void buttonEvenComOddSeg_Click(object sender, EventArgs e)
@@ -1082,6 +1434,16 @@ namespace Developer_Tools
             textBox_FgFlag.Text = fg_flag.ToString();
             textBox_MISCData.Text = MISCData;
 
+            if (update_wf_capture_info == true)
+            {
+                textBox_WFFrame.Text = debug_string_for_textbox;
+                update_wf_capture_info = false;
+            }
+            if(update_decode_info == true)
+            {
+                textBox_WFSamples.Text = debug_string_for_textbox1;
+                update_decode_info = false;
+            }
             ///* Vector Diagram Display */
             //if (ShowVectorDiag == true)
             //{
@@ -1460,8 +1822,10 @@ namespace Developer_Tools
                 DS_HDLC.decode_hdlc_frame(b_array);
                 if (DS_HDLC.HdlcCommandCode == 0)                        /* waveform capture */
                 {
-                    //debug_string_for_textbox = DS_Functions.Byte_Array_To_HEX_String(b_array, 0, b_array_len);
-                    //update_wf_capture_info = true;
+                    debug_string_for_textbox = DS_Functions.byte_array_to_hex_string_spaced(b_array, b_array_len);
+                    update_wf_capture_info = true;
+                    debug_string_for_textbox1 = decode_wf_frame(b_array, b_array_len);
+                    update_decode_info = true;
                 }
                 else if (DS_HDLC.HdlcCommandCode == 15)
                 {

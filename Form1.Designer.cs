@@ -509,6 +509,7 @@ namespace Developer_Tools
             this.buttonDecode = new System.Windows.Forms.Button();
             this.textBoxInput = new System.Windows.Forms.TextBox();
             this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.pictureBox_Waveform = new System.Windows.Forms.PictureBox();
             this.groupBox29 = new System.Windows.Forms.GroupBox();
             this.textBoxWFLegendCh6 = new System.Windows.Forms.TextBox();
             this.textBox_WFScaling6 = new System.Windows.Forms.TextBox();
@@ -561,9 +562,9 @@ namespace Developer_Tools
             this.checkBox_WFCh0TypeSel = new System.Windows.Forms.CheckBox();
             this.button_WFDecode = new System.Windows.Forms.Button();
             this.button_WFCapture = new System.Windows.Forms.Button();
-            this.pictureBoxWaveform = new System.Windows.Forms.PictureBox();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.groupBox23 = new System.Windows.Forms.GroupBox();
+            this.button_CommandDumpEEPROM = new System.Windows.Forms.Button();
             this.button_CommandDumpLoadSurvey = new System.Windows.Forms.Button();
             this.button_CommandFGTrigger = new System.Windows.Forms.Button();
             this.button_CommandMemoryFF = new System.Windows.Forms.Button();
@@ -593,7 +594,6 @@ namespace Developer_Tools
             this.openJSONFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.timer500ms = new System.Windows.Forms.Timer(this.components);
             this.timer100ms = new System.Windows.Forms.Timer(this.components);
-            this.button_CommandDumpEEPROM = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.menuStripMain.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -632,10 +632,10 @@ namespace Developer_Tools
             this.groupBox13.SuspendLayout();
             this.groupBox14.SuspendLayout();
             this.tabPage7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Waveform)).BeginInit();
             this.groupBox29.SuspendLayout();
             this.groupBox27.SuspendLayout();
             this.groupBox24.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWaveform)).BeginInit();
             this.tabPage8.SuspendLayout();
             this.groupBox23.SuspendLayout();
             this.groupBox10.SuspendLayout();
@@ -5751,18 +5751,26 @@ namespace Developer_Tools
             // tabPage7
             // 
             this.tabPage7.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.tabPage7.Controls.Add(this.pictureBox_Waveform);
             this.tabPage7.Controls.Add(this.groupBox29);
             this.tabPage7.Controls.Add(this.groupBox27);
             this.tabPage7.Controls.Add(this.textBox_WFSamples);
             this.tabPage7.Controls.Add(this.textBox_WFFrame);
             this.tabPage7.Controls.Add(this.groupBox24);
-            this.tabPage7.Controls.Add(this.pictureBoxWaveform);
             this.tabPage7.Location = new System.Drawing.Point(4, 25);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage7.Size = new System.Drawing.Size(1206, 562);
             this.tabPage7.TabIndex = 2;
             this.tabPage7.Text = "Waveform Capture";
+            // 
+            // pictureBox_Waveform
+            // 
+            this.pictureBox_Waveform.Location = new System.Drawing.Point(315, 140);
+            this.pictureBox_Waveform.Name = "pictureBox_Waveform";
+            this.pictureBox_Waveform.Size = new System.Drawing.Size(874, 416);
+            this.pictureBox_Waveform.TabIndex = 13;
+            this.pictureBox_Waveform.TabStop = false;
             // 
             // groupBox29
             // 
@@ -5799,6 +5807,7 @@ namespace Developer_Tools
             // 
             // textBoxWFLegendCh6
             // 
+            this.textBoxWFLegendCh6.BackColor = System.Drawing.Color.DarkOrange;
             this.textBoxWFLegendCh6.Location = new System.Drawing.Point(95, 188);
             this.textBoxWFLegendCh6.Name = "textBoxWFLegendCh6";
             this.textBoxWFLegendCh6.Size = new System.Drawing.Size(75, 23);
@@ -5812,7 +5821,7 @@ namespace Developer_Tools
             this.textBox_WFScaling6.Name = "textBox_WFScaling6";
             this.textBox_WFScaling6.Size = new System.Drawing.Size(47, 23);
             this.textBox_WFScaling6.TabIndex = 26;
-            this.textBox_WFScaling6.Text = "1";
+            this.textBox_WFScaling6.Text = "0.25";
             this.textBox_WFScaling6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label132
@@ -5826,6 +5835,7 @@ namespace Developer_Tools
             // 
             // textBoxWFLegendCh5
             // 
+            this.textBoxWFLegendCh5.BackColor = System.Drawing.Color.Fuchsia;
             this.textBoxWFLegendCh5.Location = new System.Drawing.Point(95, 162);
             this.textBoxWFLegendCh5.Name = "textBoxWFLegendCh5";
             this.textBoxWFLegendCh5.Size = new System.Drawing.Size(75, 23);
@@ -5835,6 +5845,7 @@ namespace Developer_Tools
             // 
             // textBoxWFLegendCh4
             // 
+            this.textBoxWFLegendCh4.BackColor = System.Drawing.Color.BlueViolet;
             this.textBoxWFLegendCh4.Location = new System.Drawing.Point(95, 136);
             this.textBoxWFLegendCh4.Name = "textBoxWFLegendCh4";
             this.textBoxWFLegendCh4.Size = new System.Drawing.Size(75, 23);
@@ -5844,6 +5855,7 @@ namespace Developer_Tools
             // 
             // textBoxWFLegendCh3
             // 
+            this.textBoxWFLegendCh3.BackColor = System.Drawing.Color.Lime;
             this.textBoxWFLegendCh3.Location = new System.Drawing.Point(95, 110);
             this.textBoxWFLegendCh3.Name = "textBoxWFLegendCh3";
             this.textBoxWFLegendCh3.Size = new System.Drawing.Size(75, 23);
@@ -5857,7 +5869,7 @@ namespace Developer_Tools
             this.textBox_WFScaling5.Name = "textBox_WFScaling5";
             this.textBox_WFScaling5.Size = new System.Drawing.Size(47, 23);
             this.textBox_WFScaling5.TabIndex = 21;
-            this.textBox_WFScaling5.Text = "1";
+            this.textBox_WFScaling5.Text = "0.25";
             this.textBox_WFScaling5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label129
@@ -5875,7 +5887,7 @@ namespace Developer_Tools
             this.textBox_WFScaling4.Name = "textBox_WFScaling4";
             this.textBox_WFScaling4.Size = new System.Drawing.Size(47, 23);
             this.textBox_WFScaling4.TabIndex = 20;
-            this.textBox_WFScaling4.Text = "1";
+            this.textBox_WFScaling4.Text = "0.25";
             this.textBox_WFScaling4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label130
@@ -5893,7 +5905,7 @@ namespace Developer_Tools
             this.textBox_WFScaling3.Name = "textBox_WFScaling3";
             this.textBox_WFScaling3.Size = new System.Drawing.Size(47, 23);
             this.textBox_WFScaling3.TabIndex = 19;
-            this.textBox_WFScaling3.Text = "1";
+            this.textBox_WFScaling3.Text = "0.25";
             this.textBox_WFScaling3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label131
@@ -5925,6 +5937,7 @@ namespace Developer_Tools
             // 
             // textBoxWFLegendCh2
             // 
+            this.textBoxWFLegendCh2.BackColor = System.Drawing.Color.RoyalBlue;
             this.textBoxWFLegendCh2.Location = new System.Drawing.Point(95, 84);
             this.textBoxWFLegendCh2.Name = "textBoxWFLegendCh2";
             this.textBoxWFLegendCh2.Size = new System.Drawing.Size(75, 23);
@@ -5934,6 +5947,7 @@ namespace Developer_Tools
             // 
             // textBoxWFLegendCh1
             // 
+            this.textBoxWFLegendCh1.BackColor = System.Drawing.Color.Yellow;
             this.textBoxWFLegendCh1.Location = new System.Drawing.Point(95, 58);
             this.textBoxWFLegendCh1.Name = "textBoxWFLegendCh1";
             this.textBoxWFLegendCh1.Size = new System.Drawing.Size(75, 23);
@@ -5943,6 +5957,7 @@ namespace Developer_Tools
             // 
             // textBoxWFLegendCh0
             // 
+            this.textBoxWFLegendCh0.BackColor = System.Drawing.Color.Red;
             this.textBoxWFLegendCh0.Location = new System.Drawing.Point(95, 32);
             this.textBoxWFLegendCh0.Name = "textBoxWFLegendCh0";
             this.textBoxWFLegendCh0.Size = new System.Drawing.Size(75, 23);
@@ -5952,12 +5967,13 @@ namespace Developer_Tools
             // 
             // buttonWFPlot
             // 
-            this.buttonWFPlot.Location = new System.Drawing.Point(176, 32);
+            this.buttonWFPlot.Location = new System.Drawing.Point(193, 32);
             this.buttonWFPlot.Name = "buttonWFPlot";
-            this.buttonWFPlot.Size = new System.Drawing.Size(98, 176);
+            this.buttonWFPlot.Size = new System.Drawing.Size(81, 176);
             this.buttonWFPlot.TabIndex = 4;
             this.buttonWFPlot.Text = "Plot";
             this.buttonWFPlot.UseVisualStyleBackColor = true;
+            this.buttonWFPlot.Click += new System.EventHandler(this.buttonWFPlot_Click);
             // 
             // textBox_WFScaling2
             // 
@@ -5965,7 +5981,7 @@ namespace Developer_Tools
             this.textBox_WFScaling2.Name = "textBox_WFScaling2";
             this.textBox_WFScaling2.Size = new System.Drawing.Size(47, 23);
             this.textBox_WFScaling2.TabIndex = 10;
-            this.textBox_WFScaling2.Text = "0.25";
+            this.textBox_WFScaling2.Text = "1";
             this.textBox_WFScaling2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label122
@@ -5983,7 +5999,7 @@ namespace Developer_Tools
             this.textBox_WFScaling1.Name = "textBox_WFScaling1";
             this.textBox_WFScaling1.Size = new System.Drawing.Size(47, 23);
             this.textBox_WFScaling1.TabIndex = 9;
-            this.textBox_WFScaling1.Text = "0.25";
+            this.textBox_WFScaling1.Text = "1";
             this.textBox_WFScaling1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label123
@@ -6001,7 +6017,7 @@ namespace Developer_Tools
             this.textBox_WFScaling0.Name = "textBox_WFScaling0";
             this.textBox_WFScaling0.Size = new System.Drawing.Size(47, 23);
             this.textBox_WFScaling0.TabIndex = 8;
-            this.textBox_WFScaling0.Text = "0.25";
+            this.textBox_WFScaling0.Text = "1";
             this.textBox_WFScaling0.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label124
@@ -6071,21 +6087,21 @@ namespace Developer_Tools
             // textBox_WFSamples
             // 
             this.textBox_WFSamples.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.textBox_WFSamples.Location = new System.Drawing.Point(740, -2);
+            this.textBox_WFSamples.Location = new System.Drawing.Point(740, 6);
             this.textBox_WFSamples.Multiline = true;
             this.textBox_WFSamples.Name = "textBox_WFSamples";
             this.textBox_WFSamples.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox_WFSamples.Size = new System.Drawing.Size(449, 133);
+            this.textBox_WFSamples.Size = new System.Drawing.Size(449, 125);
             this.textBox_WFSamples.TabIndex = 9;
             // 
             // textBox_WFFrame
             // 
             this.textBox_WFFrame.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.textBox_WFFrame.Location = new System.Drawing.Point(310, -2);
+            this.textBox_WFFrame.Location = new System.Drawing.Point(310, 6);
             this.textBox_WFFrame.Multiline = true;
             this.textBox_WFFrame.Name = "textBox_WFFrame";
             this.textBox_WFFrame.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox_WFFrame.Size = new System.Drawing.Size(424, 133);
+            this.textBox_WFFrame.Size = new System.Drawing.Size(424, 125);
             this.textBox_WFFrame.TabIndex = 8;
             // 
             // groupBox24
@@ -6283,7 +6299,7 @@ namespace Developer_Tools
             // 
             // textBox_WFNoOfSamples
             // 
-            this.textBox_WFNoOfSamples.Location = new System.Drawing.Point(230, 36);
+            this.textBox_WFNoOfSamples.Location = new System.Drawing.Point(221, 36);
             this.textBox_WFNoOfSamples.Name = "textBox_WFNoOfSamples";
             this.textBox_WFNoOfSamples.Size = new System.Drawing.Size(29, 23);
             this.textBox_WFNoOfSamples.TabIndex = 16;
@@ -6324,7 +6340,7 @@ namespace Developer_Tools
             // label128
             // 
             this.label128.AutoSize = true;
-            this.label128.Location = new System.Drawing.Point(221, 20);
+            this.label128.Location = new System.Drawing.Point(209, 15);
             this.label128.Name = "label128";
             this.label128.Size = new System.Drawing.Size(56, 17);
             this.label128.TabIndex = 17;
@@ -6352,30 +6368,23 @@ namespace Developer_Tools
             // 
             // button_WFDecode
             // 
-            this.button_WFDecode.Location = new System.Drawing.Point(193, 164);
+            this.button_WFDecode.Location = new System.Drawing.Point(193, 139);
             this.button_WFDecode.Name = "button_WFDecode";
-            this.button_WFDecode.Size = new System.Drawing.Size(87, 41);
+            this.button_WFDecode.Size = new System.Drawing.Size(87, 66);
             this.button_WFDecode.TabIndex = 3;
             this.button_WFDecode.Text = "Decode";
             this.button_WFDecode.UseVisualStyleBackColor = true;
+            this.button_WFDecode.Click += new System.EventHandler(this.button_WFDecode_Click);
             // 
             // button_WFCapture
             // 
             this.button_WFCapture.Location = new System.Drawing.Point(193, 60);
             this.button_WFCapture.Name = "button_WFCapture";
-            this.button_WFCapture.Size = new System.Drawing.Size(87, 39);
+            this.button_WFCapture.Size = new System.Drawing.Size(87, 73);
             this.button_WFCapture.TabIndex = 2;
-            this.button_WFCapture.Text = "Capture";
+            this.button_WFCapture.Text = "Capture and Decode";
             this.button_WFCapture.UseVisualStyleBackColor = true;
-            // 
-            // pictureBoxWaveform
-            // 
-            this.pictureBoxWaveform.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.pictureBoxWaveform.Location = new System.Drawing.Point(310, 137);
-            this.pictureBoxWaveform.Name = "pictureBoxWaveform";
-            this.pictureBoxWaveform.Size = new System.Drawing.Size(879, 427);
-            this.pictureBoxWaveform.TabIndex = 10;
-            this.pictureBoxWaveform.TabStop = false;
+            this.button_WFCapture.Click += new System.EventHandler(this.button_WFCapture_Click);
             // 
             // tabPage8
             // 
@@ -6403,6 +6412,16 @@ namespace Developer_Tools
             this.groupBox23.TabIndex = 16;
             this.groupBox23.TabStop = false;
             this.groupBox23.Text = "Commands";
+            // 
+            // button_CommandDumpEEPROM
+            // 
+            this.button_CommandDumpEEPROM.Location = new System.Drawing.Point(143, 22);
+            this.button_CommandDumpEEPROM.Name = "button_CommandDumpEEPROM";
+            this.button_CommandDumpEEPROM.Size = new System.Drawing.Size(136, 28);
+            this.button_CommandDumpEEPROM.TabIndex = 9;
+            this.button_CommandDumpEEPROM.Text = "Dump All Memory";
+            this.button_CommandDumpEEPROM.UseVisualStyleBackColor = true;
+            this.button_CommandDumpEEPROM.Click += new System.EventHandler(this.button_CommandDumpEEPROM_Click);
             // 
             // button_CommandDumpLoadSurvey
             // 
@@ -6599,7 +6618,7 @@ namespace Developer_Tools
             // labelFirmwareFileSize
             // 
             this.labelFirmwareFileSize.AutoSize = true;
-            this.labelFirmwareFileSize.Location = new System.Drawing.Point(293, 49);
+            this.labelFirmwareFileSize.Location = new System.Drawing.Point(284, 49);
             this.labelFirmwareFileSize.Name = "labelFirmwareFileSize";
             this.labelFirmwareFileSize.Size = new System.Drawing.Size(54, 17);
             this.labelFirmwareFileSize.TabIndex = 8;
@@ -6608,7 +6627,7 @@ namespace Developer_Tools
             // labelBootloaderFileSize
             // 
             this.labelBootloaderFileSize.AutoSize = true;
-            this.labelBootloaderFileSize.Location = new System.Drawing.Point(294, 22);
+            this.labelBootloaderFileSize.Location = new System.Drawing.Point(284, 23);
             this.labelBootloaderFileSize.Name = "labelBootloaderFileSize";
             this.labelBootloaderFileSize.Size = new System.Drawing.Size(54, 17);
             this.labelBootloaderFileSize.TabIndex = 7;
@@ -6620,7 +6639,7 @@ namespace Developer_Tools
             this.textBoxFirmwarePath.Location = new System.Drawing.Point(81, 46);
             this.textBoxFirmwarePath.Name = "textBoxFirmwarePath";
             this.textBoxFirmwarePath.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.textBoxFirmwarePath.Size = new System.Drawing.Size(206, 23);
+            this.textBoxFirmwarePath.Size = new System.Drawing.Size(199, 23);
             this.textBoxFirmwarePath.TabIndex = 6;
             this.textBoxFirmwarePath.Text = "Click to browse";
             this.textBoxFirmwarePath.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -6632,7 +6651,7 @@ namespace Developer_Tools
             this.textBoxBootloaderPath.Location = new System.Drawing.Point(81, 20);
             this.textBoxBootloaderPath.Name = "textBoxBootloaderPath";
             this.textBoxBootloaderPath.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.textBoxBootloaderPath.Size = new System.Drawing.Size(206, 23);
+            this.textBoxBootloaderPath.Size = new System.Drawing.Size(199, 23);
             this.textBoxBootloaderPath.TabIndex = 5;
             this.textBoxBootloaderPath.Text = "Click to browse";
             this.textBoxBootloaderPath.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -6642,10 +6661,11 @@ namespace Developer_Tools
             // 
             this.buttonBootCreate.Location = new System.Drawing.Point(8, 75);
             this.buttonBootCreate.Name = "buttonBootCreate";
-            this.buttonBootCreate.Size = new System.Drawing.Size(339, 33);
+            this.buttonBootCreate.Size = new System.Drawing.Size(343, 33);
             this.buttonBootCreate.TabIndex = 4;
             this.buttonBootCreate.Text = "Create";
             this.buttonBootCreate.UseVisualStyleBackColor = true;
+            this.buttonBootCreate.Click += new System.EventHandler(this.buttonBootCreate_Click);
             // 
             // label9
             // 
@@ -6673,16 +6693,6 @@ namespace Developer_Tools
             // timer100ms
             // 
             this.timer100ms.Tick += new System.EventHandler(this.timer100ms_Tick);
-            // 
-            // button_CommandDumpEEPROM
-            // 
-            this.button_CommandDumpEEPROM.Location = new System.Drawing.Point(143, 22);
-            this.button_CommandDumpEEPROM.Name = "button_CommandDumpEEPROM";
-            this.button_CommandDumpEEPROM.Size = new System.Drawing.Size(136, 28);
-            this.button_CommandDumpEEPROM.TabIndex = 9;
-            this.button_CommandDumpEEPROM.Text = "Dump All Memory";
-            this.button_CommandDumpEEPROM.UseVisualStyleBackColor = true;
-            this.button_CommandDumpEEPROM.Click += new System.EventHandler(this.button_CommandDumpEEPROM_Click);
             // 
             // openFileDialog1
             // 
@@ -6771,13 +6781,13 @@ namespace Developer_Tools
             this.groupBox14.PerformLayout();
             this.tabPage7.ResumeLayout(false);
             this.tabPage7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Waveform)).EndInit();
             this.groupBox29.ResumeLayout(false);
             this.groupBox29.PerformLayout();
             this.groupBox27.ResumeLayout(false);
             this.groupBox27.PerformLayout();
             this.groupBox24.ResumeLayout(false);
             this.groupBox24.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWaveform)).EndInit();
             this.tabPage8.ResumeLayout(false);
             this.groupBox23.ResumeLayout(false);
             this.groupBox10.ResumeLayout(false);
@@ -7020,7 +7030,6 @@ namespace Developer_Tools
         private System.Windows.Forms.Label label120;
         private System.Windows.Forms.TextBox textBox_WFSaveText;
         private System.Windows.Forms.TextBox textBox_WFSaveFileName;
-        private System.Windows.Forms.PictureBox pictureBoxWaveform;
         private System.Windows.Forms.TextBox textBox_WFSamples;
         private System.Windows.Forms.TextBox textBox_WFFrame;
         private System.Windows.Forms.GroupBox groupBox24;
@@ -7356,6 +7365,7 @@ namespace Developer_Tools
         private System.Windows.Forms.Label label76;
         private System.Windows.Forms.Button button_CommandDumpEEPROM;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.PictureBox pictureBox_Waveform;
     }
 }
 
