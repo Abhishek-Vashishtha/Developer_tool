@@ -390,6 +390,49 @@ namespace Developer_Tools
             this.label149 = new System.Windows.Forms.Label();
             this.label150 = new System.Windows.Forms.Label();
             this.tabPage10 = new System.Windows.Forms.TabPage();
+            this.textBox_VectorDiagramCurrentScale = new System.Windows.Forms.TextBox();
+            this.label97 = new System.Windows.Forms.Label();
+            this.textBox_VectorDiagramVoltageScale = new System.Windows.Forms.TextBox();
+            this.label95 = new System.Windows.Forms.Label();
+            this.groupBox33 = new System.Windows.Forms.GroupBox();
+            this.label_AngleNVect = new System.Windows.Forms.Label();
+            this.label96 = new System.Windows.Forms.Label();
+            this.label_AngleB = new System.Windows.Forms.Label();
+            this.label_AngleY = new System.Windows.Forms.Label();
+            this.label80 = new System.Windows.Forms.Label();
+            this.label_AngleR = new System.Windows.Forms.Label();
+            this.label81 = new System.Windows.Forms.Label();
+            this.label82 = new System.Windows.Forms.Label();
+            this.label_CurrNVect = new System.Windows.Forms.Label();
+            this.label91 = new System.Windows.Forms.Label();
+            this.label_VolR = new System.Windows.Forms.Label();
+            this.label92 = new System.Windows.Forms.Label();
+            this.label_CurrN = new System.Windows.Forms.Label();
+            this.label94 = new System.Windows.Forms.Label();
+            this.label_VolY = new System.Windows.Forms.Label();
+            this.label_CurrB = new System.Windows.Forms.Label();
+            this.label_VolB = new System.Windows.Forms.Label();
+            this.label_CurrY = new System.Windows.Forms.Label();
+            this.label83 = new System.Windows.Forms.Label();
+            this.label_CurrR = new System.Windows.Forms.Label();
+            this.label84 = new System.Windows.Forms.Label();
+            this.label85 = new System.Windows.Forms.Label();
+            this.label86 = new System.Windows.Forms.Label();
+            this.label87 = new System.Windows.Forms.Label();
+            this.groupBox32 = new System.Windows.Forms.GroupBox();
+            this.label_VolRY = new System.Windows.Forms.Label();
+            this.label_AngleBR = new System.Windows.Forms.Label();
+            this.label77 = new System.Windows.Forms.Label();
+            this.label_AngleYB = new System.Windows.Forms.Label();
+            this.label78 = new System.Windows.Forms.Label();
+            this.label_AngleRY = new System.Windows.Forms.Label();
+            this.label79 = new System.Windows.Forms.Label();
+            this.label_VolBR = new System.Windows.Forms.Label();
+            this.label90 = new System.Windows.Forms.Label();
+            this.label_VolYB = new System.Windows.Forms.Label();
+            this.label89 = new System.Windows.Forms.Label();
+            this.label88 = new System.Windows.Forms.Label();
+            this.pictureBox_VectorDiagram = new System.Windows.Forms.PictureBox();
             this.checkBox_EnergyMeterShowVectorDiagram = new System.Windows.Forms.CheckBox();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.label119 = new System.Windows.Forms.Label();
@@ -595,6 +638,8 @@ namespace Developer_Tools
             this.timer500ms = new System.Windows.Forms.Timer(this.components);
             this.timer100ms = new System.Windows.Forms.Timer(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.label98 = new System.Windows.Forms.Label();
+            this.label99 = new System.Windows.Forms.Label();
             this.menuStripMain.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -625,6 +670,9 @@ namespace Developer_Tools
             this.groupBox19.SuspendLayout();
             this.groupBox31.SuspendLayout();
             this.tabPage10.SuspendLayout();
+            this.groupBox33.SuspendLayout();
+            this.groupBox32.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_VectorDiagram)).BeginInit();
             this.tabPage6.SuspendLayout();
             this.groupBox20.SuspendLayout();
             this.groupBox12.SuspendLayout();
@@ -4635,6 +4683,15 @@ namespace Developer_Tools
             // tabPage10
             // 
             this.tabPage10.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.tabPage10.Controls.Add(this.label98);
+            this.tabPage10.Controls.Add(this.label99);
+            this.tabPage10.Controls.Add(this.textBox_VectorDiagramCurrentScale);
+            this.tabPage10.Controls.Add(this.label97);
+            this.tabPage10.Controls.Add(this.textBox_VectorDiagramVoltageScale);
+            this.tabPage10.Controls.Add(this.label95);
+            this.tabPage10.Controls.Add(this.groupBox33);
+            this.tabPage10.Controls.Add(this.groupBox32);
+            this.tabPage10.Controls.Add(this.pictureBox_VectorDiagram);
             this.tabPage10.Controls.Add(this.checkBox_EnergyMeterShowVectorDiagram);
             this.tabPage10.Location = new System.Drawing.Point(4, 25);
             this.tabPage10.Name = "tabPage10";
@@ -4642,6 +4699,446 @@ namespace Developer_Tools
             this.tabPage10.Size = new System.Drawing.Size(1206, 562);
             this.tabPage10.TabIndex = 4;
             this.tabPage10.Text = "Vector Diagram";
+            // 
+            // textBox_VectorDiagramCurrentScale
+            // 
+            this.textBox_VectorDiagramCurrentScale.Location = new System.Drawing.Point(867, 217);
+            this.textBox_VectorDiagramCurrentScale.Name = "textBox_VectorDiagramCurrentScale";
+            this.textBox_VectorDiagramCurrentScale.Size = new System.Drawing.Size(40, 23);
+            this.textBox_VectorDiagramCurrentScale.TabIndex = 30;
+            this.textBox_VectorDiagramCurrentScale.Text = "5";
+            this.textBox_VectorDiagramCurrentScale.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label97
+            // 
+            this.label97.AutoSize = true;
+            this.label97.Location = new System.Drawing.Point(765, 220);
+            this.label97.Name = "label97";
+            this.label97.Size = new System.Drawing.Size(95, 17);
+            this.label97.TabIndex = 29;
+            this.label97.Text = "Current Scaling";
+            // 
+            // textBox_VectorDiagramVoltageScale
+            // 
+            this.textBox_VectorDiagramVoltageScale.Location = new System.Drawing.Point(867, 191);
+            this.textBox_VectorDiagramVoltageScale.Name = "textBox_VectorDiagramVoltageScale";
+            this.textBox_VectorDiagramVoltageScale.Size = new System.Drawing.Size(40, 23);
+            this.textBox_VectorDiagramVoltageScale.TabIndex = 28;
+            this.textBox_VectorDiagramVoltageScale.Text = "1";
+            this.textBox_VectorDiagramVoltageScale.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label95
+            // 
+            this.label95.AutoSize = true;
+            this.label95.Location = new System.Drawing.Point(765, 194);
+            this.label95.Name = "label95";
+            this.label95.Size = new System.Drawing.Size(95, 17);
+            this.label95.TabIndex = 27;
+            this.label95.Text = "Voltage Scaling";
+            // 
+            // groupBox33
+            // 
+            this.groupBox33.Controls.Add(this.label_AngleNVect);
+            this.groupBox33.Controls.Add(this.label96);
+            this.groupBox33.Controls.Add(this.label_AngleB);
+            this.groupBox33.Controls.Add(this.label_AngleY);
+            this.groupBox33.Controls.Add(this.label80);
+            this.groupBox33.Controls.Add(this.label_AngleR);
+            this.groupBox33.Controls.Add(this.label81);
+            this.groupBox33.Controls.Add(this.label82);
+            this.groupBox33.Controls.Add(this.label_CurrNVect);
+            this.groupBox33.Controls.Add(this.label91);
+            this.groupBox33.Controls.Add(this.label_VolR);
+            this.groupBox33.Controls.Add(this.label92);
+            this.groupBox33.Controls.Add(this.label_CurrN);
+            this.groupBox33.Controls.Add(this.label94);
+            this.groupBox33.Controls.Add(this.label_VolY);
+            this.groupBox33.Controls.Add(this.label_CurrB);
+            this.groupBox33.Controls.Add(this.label_VolB);
+            this.groupBox33.Controls.Add(this.label_CurrY);
+            this.groupBox33.Controls.Add(this.label83);
+            this.groupBox33.Controls.Add(this.label_CurrR);
+            this.groupBox33.Controls.Add(this.label84);
+            this.groupBox33.Controls.Add(this.label85);
+            this.groupBox33.Controls.Add(this.label86);
+            this.groupBox33.Controls.Add(this.label87);
+            this.groupBox33.Location = new System.Drawing.Point(792, 6);
+            this.groupBox33.Name = "groupBox33";
+            this.groupBox33.Size = new System.Drawing.Size(408, 159);
+            this.groupBox33.TabIndex = 26;
+            this.groupBox33.TabStop = false;
+            this.groupBox33.Text = "Phase Wise";
+            // 
+            // label_AngleNVect
+            // 
+            this.label_AngleNVect.ForeColor = System.Drawing.Color.Black;
+            this.label_AngleNVect.Location = new System.Drawing.Point(353, 129);
+            this.label_AngleNVect.Name = "label_AngleNVect";
+            this.label_AngleNVect.Size = new System.Drawing.Size(45, 19);
+            this.label_AngleNVect.TabIndex = 38;
+            this.label_AngleNVect.Text = "0";
+            this.label_AngleNVect.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label96
+            // 
+            this.label96.AutoSize = true;
+            this.label96.Location = new System.Drawing.Point(267, 131);
+            this.label96.Name = "label96";
+            this.label96.Size = new System.Drawing.Size(81, 17);
+            this.label96.TabIndex = 37;
+            this.label96.Text = "Angle N Vect";
+            // 
+            // label_AngleB
+            // 
+            this.label_AngleB.ForeColor = System.Drawing.Color.Black;
+            this.label_AngleB.Location = new System.Drawing.Point(354, 79);
+            this.label_AngleB.Name = "label_AngleB";
+            this.label_AngleB.Size = new System.Drawing.Size(47, 17);
+            this.label_AngleB.TabIndex = 36;
+            this.label_AngleB.Text = "0";
+            this.label_AngleB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label_AngleY
+            // 
+            this.label_AngleY.ForeColor = System.Drawing.Color.Black;
+            this.label_AngleY.Location = new System.Drawing.Point(354, 48);
+            this.label_AngleY.Name = "label_AngleY";
+            this.label_AngleY.Size = new System.Drawing.Size(47, 17);
+            this.label_AngleY.TabIndex = 35;
+            this.label_AngleY.Text = "0";
+            this.label_AngleY.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label80
+            // 
+            this.label80.AutoSize = true;
+            this.label80.Location = new System.Drawing.Point(6, 19);
+            this.label80.Name = "label80";
+            this.label80.Size = new System.Drawing.Size(63, 17);
+            this.label80.TabIndex = 5;
+            this.label80.Text = "Voltage R";
+            // 
+            // label_AngleR
+            // 
+            this.label_AngleR.ForeColor = System.Drawing.Color.Black;
+            this.label_AngleR.Location = new System.Drawing.Point(354, 21);
+            this.label_AngleR.Name = "label_AngleR";
+            this.label_AngleR.Size = new System.Drawing.Size(47, 17);
+            this.label_AngleR.TabIndex = 34;
+            this.label_AngleR.Text = "0";
+            this.label_AngleR.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label81
+            // 
+            this.label81.AutoSize = true;
+            this.label81.Location = new System.Drawing.Point(6, 46);
+            this.label81.Name = "label81";
+            this.label81.Size = new System.Drawing.Size(63, 17);
+            this.label81.TabIndex = 6;
+            this.label81.Text = "Voltage Y";
+            // 
+            // label82
+            // 
+            this.label82.AutoSize = true;
+            this.label82.Location = new System.Drawing.Point(6, 73);
+            this.label82.Name = "label82";
+            this.label82.Size = new System.Drawing.Size(62, 17);
+            this.label82.TabIndex = 7;
+            this.label82.Text = "Voltage B";
+            // 
+            // label_CurrNVect
+            // 
+            this.label_CurrNVect.ForeColor = System.Drawing.Color.Black;
+            this.label_CurrNVect.Location = new System.Drawing.Point(214, 129);
+            this.label_CurrNVect.Name = "label_CurrNVect";
+            this.label_CurrNVect.Size = new System.Drawing.Size(47, 17);
+            this.label_CurrNVect.TabIndex = 33;
+            this.label_CurrNVect.Text = "0";
+            this.label_CurrNVect.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label91
+            // 
+            this.label91.AutoSize = true;
+            this.label91.Location = new System.Drawing.Point(297, 79);
+            this.label91.Name = "label91";
+            this.label91.Size = new System.Drawing.Size(51, 17);
+            this.label91.TabIndex = 18;
+            this.label91.Text = "Angle B";
+            // 
+            // label_VolR
+            // 
+            this.label_VolR.ForeColor = System.Drawing.Color.Black;
+            this.label_VolR.Location = new System.Drawing.Point(72, 19);
+            this.label_VolR.Name = "label_VolR";
+            this.label_VolR.Size = new System.Drawing.Size(47, 17);
+            this.label_VolR.TabIndex = 25;
+            this.label_VolR.Text = "0";
+            this.label_VolR.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label92
+            // 
+            this.label92.AutoSize = true;
+            this.label92.Location = new System.Drawing.Point(296, 48);
+            this.label92.Name = "label92";
+            this.label92.Size = new System.Drawing.Size(52, 17);
+            this.label92.TabIndex = 17;
+            this.label92.Text = "Angle Y";
+            // 
+            // label_CurrN
+            // 
+            this.label_CurrN.ForeColor = System.Drawing.Color.Black;
+            this.label_CurrN.Location = new System.Drawing.Point(214, 101);
+            this.label_CurrN.Name = "label_CurrN";
+            this.label_CurrN.Size = new System.Drawing.Size(47, 17);
+            this.label_CurrN.TabIndex = 32;
+            this.label_CurrN.Text = "0";
+            this.label_CurrN.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label94
+            // 
+            this.label94.AutoSize = true;
+            this.label94.Location = new System.Drawing.Point(296, 21);
+            this.label94.Name = "label94";
+            this.label94.Size = new System.Drawing.Size(52, 17);
+            this.label94.TabIndex = 16;
+            this.label94.Text = "Angle R";
+            // 
+            // label_VolY
+            // 
+            this.label_VolY.ForeColor = System.Drawing.Color.Black;
+            this.label_VolY.Location = new System.Drawing.Point(72, 46);
+            this.label_VolY.Name = "label_VolY";
+            this.label_VolY.Size = new System.Drawing.Size(47, 17);
+            this.label_VolY.TabIndex = 27;
+            this.label_VolY.Text = "0";
+            this.label_VolY.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label_CurrB
+            // 
+            this.label_CurrB.ForeColor = System.Drawing.Color.Black;
+            this.label_CurrB.Location = new System.Drawing.Point(214, 77);
+            this.label_CurrB.Name = "label_CurrB";
+            this.label_CurrB.Size = new System.Drawing.Size(47, 17);
+            this.label_CurrB.TabIndex = 31;
+            this.label_CurrB.Text = "0";
+            this.label_CurrB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label_VolB
+            // 
+            this.label_VolB.ForeColor = System.Drawing.Color.Black;
+            this.label_VolB.Location = new System.Drawing.Point(72, 74);
+            this.label_VolB.Name = "label_VolB";
+            this.label_VolB.Size = new System.Drawing.Size(47, 17);
+            this.label_VolB.TabIndex = 28;
+            this.label_VolB.Text = "0";
+            this.label_VolB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label_CurrY
+            // 
+            this.label_CurrY.ForeColor = System.Drawing.Color.Black;
+            this.label_CurrY.Location = new System.Drawing.Point(214, 46);
+            this.label_CurrY.Name = "label_CurrY";
+            this.label_CurrY.Size = new System.Drawing.Size(47, 17);
+            this.label_CurrY.TabIndex = 30;
+            this.label_CurrY.Text = "0";
+            this.label_CurrY.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label83
+            // 
+            this.label83.AutoSize = true;
+            this.label83.Location = new System.Drawing.Point(143, 19);
+            this.label83.Name = "label83";
+            this.label83.Size = new System.Drawing.Size(63, 17);
+            this.label83.TabIndex = 8;
+            this.label83.Text = "Current R";
+            // 
+            // label_CurrR
+            // 
+            this.label_CurrR.ForeColor = System.Drawing.Color.Black;
+            this.label_CurrR.Location = new System.Drawing.Point(214, 19);
+            this.label_CurrR.Name = "label_CurrR";
+            this.label_CurrR.Size = new System.Drawing.Size(47, 17);
+            this.label_CurrR.TabIndex = 29;
+            this.label_CurrR.Text = "0";
+            this.label_CurrR.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label84
+            // 
+            this.label84.AutoSize = true;
+            this.label84.Location = new System.Drawing.Point(143, 46);
+            this.label84.Name = "label84";
+            this.label84.Size = new System.Drawing.Size(63, 17);
+            this.label84.TabIndex = 9;
+            this.label84.Text = "Current Y";
+            // 
+            // label85
+            // 
+            this.label85.AutoSize = true;
+            this.label85.Location = new System.Drawing.Point(143, 74);
+            this.label85.Name = "label85";
+            this.label85.Size = new System.Drawing.Size(62, 17);
+            this.label85.TabIndex = 10;
+            this.label85.Text = "Current B";
+            // 
+            // label86
+            // 
+            this.label86.AutoSize = true;
+            this.label86.Location = new System.Drawing.Point(143, 101);
+            this.label86.Name = "label86";
+            this.label86.Size = new System.Drawing.Size(64, 17);
+            this.label86.TabIndex = 11;
+            this.label86.Text = "Current N";
+            // 
+            // label87
+            // 
+            this.label87.AutoSize = true;
+            this.label87.Location = new System.Drawing.Point(116, 129);
+            this.label87.Name = "label87";
+            this.label87.Size = new System.Drawing.Size(92, 17);
+            this.label87.TabIndex = 12;
+            this.label87.Text = "Current N Vect";
+            // 
+            // groupBox32
+            // 
+            this.groupBox32.Controls.Add(this.label_VolRY);
+            this.groupBox32.Controls.Add(this.label_AngleBR);
+            this.groupBox32.Controls.Add(this.label77);
+            this.groupBox32.Controls.Add(this.label_AngleYB);
+            this.groupBox32.Controls.Add(this.label78);
+            this.groupBox32.Controls.Add(this.label_AngleRY);
+            this.groupBox32.Controls.Add(this.label79);
+            this.groupBox32.Controls.Add(this.label_VolBR);
+            this.groupBox32.Controls.Add(this.label90);
+            this.groupBox32.Controls.Add(this.label_VolYB);
+            this.groupBox32.Controls.Add(this.label89);
+            this.groupBox32.Controls.Add(this.label88);
+            this.groupBox32.Location = new System.Drawing.Point(918, 172);
+            this.groupBox32.Name = "groupBox32";
+            this.groupBox32.Size = new System.Drawing.Size(282, 100);
+            this.groupBox32.TabIndex = 25;
+            this.groupBox32.TabStop = false;
+            this.groupBox32.Text = "Phase to Phase";
+            // 
+            // label_VolRY
+            // 
+            this.label_VolRY.ForeColor = System.Drawing.Color.Black;
+            this.label_VolRY.Location = new System.Drawing.Point(93, 22);
+            this.label_VolRY.Name = "label_VolRY";
+            this.label_VolRY.Size = new System.Drawing.Size(49, 13);
+            this.label_VolRY.TabIndex = 19;
+            this.label_VolRY.Text = "0";
+            this.label_VolRY.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label_AngleBR
+            // 
+            this.label_AngleBR.ForeColor = System.Drawing.Color.Black;
+            this.label_AngleBR.Location = new System.Drawing.Point(225, 74);
+            this.label_AngleBR.Name = "label_AngleBR";
+            this.label_AngleBR.Size = new System.Drawing.Size(47, 17);
+            this.label_AngleBR.TabIndex = 24;
+            this.label_AngleBR.Text = "0";
+            this.label_AngleBR.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label77
+            // 
+            this.label77.AutoSize = true;
+            this.label77.Location = new System.Drawing.Point(16, 22);
+            this.label77.Name = "label77";
+            this.label77.Size = new System.Drawing.Size(71, 17);
+            this.label77.TabIndex = 2;
+            this.label77.Text = "Voltage RY";
+            // 
+            // label_AngleYB
+            // 
+            this.label_AngleYB.ForeColor = System.Drawing.Color.Black;
+            this.label_AngleYB.Location = new System.Drawing.Point(225, 48);
+            this.label_AngleYB.Name = "label_AngleYB";
+            this.label_AngleYB.Size = new System.Drawing.Size(47, 17);
+            this.label_AngleYB.TabIndex = 23;
+            this.label_AngleYB.Text = "0";
+            this.label_AngleYB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label78
+            // 
+            this.label78.AutoSize = true;
+            this.label78.Location = new System.Drawing.Point(16, 48);
+            this.label78.Name = "label78";
+            this.label78.Size = new System.Drawing.Size(70, 17);
+            this.label78.TabIndex = 3;
+            this.label78.Text = "Voltage YB";
+            // 
+            // label_AngleRY
+            // 
+            this.label_AngleRY.ForeColor = System.Drawing.Color.Black;
+            this.label_AngleRY.Location = new System.Drawing.Point(225, 22);
+            this.label_AngleRY.Name = "label_AngleRY";
+            this.label_AngleRY.Size = new System.Drawing.Size(47, 17);
+            this.label_AngleRY.TabIndex = 22;
+            this.label_AngleRY.Text = "0";
+            this.label_AngleRY.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label79
+            // 
+            this.label79.AutoSize = true;
+            this.label79.Location = new System.Drawing.Point(16, 74);
+            this.label79.Name = "label79";
+            this.label79.Size = new System.Drawing.Size(70, 17);
+            this.label79.TabIndex = 4;
+            this.label79.Text = "Voltage BR";
+            // 
+            // label_VolBR
+            // 
+            this.label_VolBR.ForeColor = System.Drawing.Color.Black;
+            this.label_VolBR.Location = new System.Drawing.Point(93, 74);
+            this.label_VolBR.Name = "label_VolBR";
+            this.label_VolBR.Size = new System.Drawing.Size(47, 17);
+            this.label_VolBR.TabIndex = 21;
+            this.label_VolBR.Text = "0";
+            this.label_VolBR.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label90
+            // 
+            this.label90.AutoSize = true;
+            this.label90.Location = new System.Drawing.Point(161, 22);
+            this.label90.Name = "label90";
+            this.label90.Size = new System.Drawing.Size(60, 17);
+            this.label90.TabIndex = 13;
+            this.label90.Text = "Angle RY";
+            // 
+            // label_VolYB
+            // 
+            this.label_VolYB.ForeColor = System.Drawing.Color.Black;
+            this.label_VolYB.Location = new System.Drawing.Point(93, 48);
+            this.label_VolYB.Name = "label_VolYB";
+            this.label_VolYB.Size = new System.Drawing.Size(47, 17);
+            this.label_VolYB.TabIndex = 20;
+            this.label_VolYB.Text = "0";
+            this.label_VolYB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label89
+            // 
+            this.label89.AutoSize = true;
+            this.label89.Location = new System.Drawing.Point(161, 48);
+            this.label89.Name = "label89";
+            this.label89.Size = new System.Drawing.Size(59, 17);
+            this.label89.TabIndex = 14;
+            this.label89.Text = "Angle YB";
+            // 
+            // label88
+            // 
+            this.label88.AutoSize = true;
+            this.label88.Location = new System.Drawing.Point(161, 74);
+            this.label88.Name = "label88";
+            this.label88.Size = new System.Drawing.Size(59, 17);
+            this.label88.TabIndex = 15;
+            this.label88.Text = "Angle BR";
+            // 
+            // pictureBox_VectorDiagram
+            // 
+            this.pictureBox_VectorDiagram.Location = new System.Drawing.Point(17, 34);
+            this.pictureBox_VectorDiagram.Name = "pictureBox_VectorDiagram";
+            this.pictureBox_VectorDiagram.Size = new System.Drawing.Size(678, 518);
+            this.pictureBox_VectorDiagram.TabIndex = 1;
+            this.pictureBox_VectorDiagram.TabStop = false;
             // 
             // checkBox_EnergyMeterShowVectorDiagram
             // 
@@ -6698,6 +7195,24 @@ namespace Developer_Tools
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // label98
+            // 
+            this.label98.AutoSize = true;
+            this.label98.Location = new System.Drawing.Point(968, 535);
+            this.label98.Name = "label98";
+            this.label98.Size = new System.Drawing.Size(222, 17);
+            this.label98.TabIndex = 32;
+            this.label98.Text = "Lead - AntiClockwise - Negative Angle";
+            // 
+            // label99
+            // 
+            this.label99.AutoSize = true;
+            this.label99.Location = new System.Drawing.Point(1006, 513);
+            this.label99.Name = "label99";
+            this.label99.Size = new System.Drawing.Size(185, 17);
+            this.label99.TabIndex = 31;
+            this.label99.Text = "Lag - Clockwise - Positive Angle";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -6767,6 +7282,11 @@ namespace Developer_Tools
             this.groupBox31.PerformLayout();
             this.tabPage10.ResumeLayout(false);
             this.tabPage10.PerformLayout();
+            this.groupBox33.ResumeLayout(false);
+            this.groupBox33.PerformLayout();
+            this.groupBox32.ResumeLayout(false);
+            this.groupBox32.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_VectorDiagram)).EndInit();
             this.tabPage6.ResumeLayout(false);
             this.tabPage6.PerformLayout();
             this.groupBox20.ResumeLayout(false);
@@ -7366,6 +7886,51 @@ namespace Developer_Tools
         private System.Windows.Forms.Button button_CommandDumpEEPROM;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.PictureBox pictureBox_Waveform;
+        private System.Windows.Forms.Label label84;
+        private System.Windows.Forms.Label label83;
+        private System.Windows.Forms.Label label82;
+        private System.Windows.Forms.Label label81;
+        private System.Windows.Forms.Label label80;
+        private System.Windows.Forms.Label label79;
+        private System.Windows.Forms.Label label78;
+        private System.Windows.Forms.Label label77;
+        private System.Windows.Forms.PictureBox pictureBox_VectorDiagram;
+        private System.Windows.Forms.Label label88;
+        private System.Windows.Forms.Label label89;
+        private System.Windows.Forms.Label label90;
+        private System.Windows.Forms.Label label87;
+        private System.Windows.Forms.Label label86;
+        private System.Windows.Forms.Label label85;
+        private System.Windows.Forms.GroupBox groupBox33;
+        private System.Windows.Forms.Label label_AngleB;
+        private System.Windows.Forms.Label label_AngleY;
+        private System.Windows.Forms.Label label_AngleR;
+        private System.Windows.Forms.Label label_CurrNVect;
+        private System.Windows.Forms.Label label91;
+        private System.Windows.Forms.Label label_VolR;
+        private System.Windows.Forms.Label label92;
+        private System.Windows.Forms.Label label_CurrN;
+        private System.Windows.Forms.Label label94;
+        private System.Windows.Forms.Label label_VolY;
+        private System.Windows.Forms.Label label_CurrB;
+        private System.Windows.Forms.Label label_VolB;
+        private System.Windows.Forms.Label label_CurrY;
+        private System.Windows.Forms.Label label_CurrR;
+        private System.Windows.Forms.GroupBox groupBox32;
+        private System.Windows.Forms.Label label_VolRY;
+        private System.Windows.Forms.Label label_AngleBR;
+        private System.Windows.Forms.Label label_AngleYB;
+        private System.Windows.Forms.Label label_AngleRY;
+        private System.Windows.Forms.Label label_VolBR;
+        private System.Windows.Forms.Label label_VolYB;
+        private System.Windows.Forms.Label label_AngleNVect;
+        private System.Windows.Forms.Label label96;
+        private System.Windows.Forms.TextBox textBox_VectorDiagramCurrentScale;
+        private System.Windows.Forms.Label label97;
+        private System.Windows.Forms.TextBox textBox_VectorDiagramVoltageScale;
+        private System.Windows.Forms.Label label95;
+        private System.Windows.Forms.Label label98;
+        private System.Windows.Forms.Label label99;
     }
 }
 

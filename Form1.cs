@@ -10,8 +10,27 @@ namespace Developer_Tools
 {
     public partial class Form1 : Form
     {
-        /* global variables */
+        /* Pen variables */
+        public static Pen penRed = new Pen(Color.Red);
+        public static Pen penYellow = new Pen(Color.Yellow);
+        public static Pen penBlue = new Pen(Color.RoyalBlue);
+        public static Pen penLime = new Pen(Color.Lime);
+        public static Pen penVoilet = new Pen(Color.BlueViolet);
+        public static Pen penBlack = new Pen(Color.Black);
+        public static Pen penBlackThin = new Pen(Color.Black,1);
+        public static Pen penPink = new Pen(Color.Fuchsia);
+        public static Pen penOrange = new Pen(Color.DarkOrange);
+
+        /* WF Plotting */
+        Bitmap WaveForm;
+
+        /* Generic strings */
         public static string newline = Environment.NewLine;
+        public static string tab = "\t";
+        public static string cr = "\r";
+        public static string lf = "\n";
+
+        /* Login related */
         public static bool login_success = false;
 
         /* communication traffic */
@@ -35,8 +54,7 @@ namespace Developer_Tools
         static string debug_string_for_textbox, debug_string_for_textbox1;
         static Boolean update_wf_capture_info, update_decode_info;
 
-        /* WF Plotting */
-        Bitmap WaveForm;
+        
         /******************************** Energy Meter Variables ********************************/
         /* input signal */
         public static double ip_vol_r, ip_vol_y, ip_vol_b, ip_curr_r, ip_curr_y, ip_curr_b, ip_curr_n_calculated;
@@ -519,16 +537,7 @@ namespace Developer_Tools
             ScalingVert[5] = (float)Convert.ToDouble(scale5);
             ScalingVert[6] = (float)Convert.ToDouble(scale6);
 
-            /* Selecting Pen */
-            Pen penRed = new Pen(Color.Red);
-            Pen penYellow = new Pen(Color.Yellow);
-            Pen penBlue = new Pen(Color.RoyalBlue);
-            Pen penLime = new Pen(Color.Lime);
-            Pen penVoilet = new Pen(Color.BlueViolet);
-            Pen penBlack = new Pen(Color.Black);
-            Pen penPink = new Pen(Color.Fuchsia);
-            Pen penOrange = new Pen(Color.DarkOrange);
-
+           
             
             Bitmap bmp = new Bitmap(image_width, image_height);
             using (var gfx = Graphics.FromImage(bmp))
@@ -1179,6 +1188,214 @@ namespace Developer_Tools
             }
 
             Meter_Const = Convert.ToUInt16(textBox_InputMeterConst.Text);
+
+            if(checkBox_EnergyMeterShowVectorDiagram.Checked == true)
+            {
+                Point StartPoint, EndPoint;
+                Font arialFont = new Font("Arial", 10);
+                SolidBrush blackBrush = new SolidBrush(Color.Black);
+
+                int image_width, image_height, image_guideline_len;
+                double VolMultiplier, CurrMultiplier;
+                double refAngle,AngleForVr,AngleForVy,AngleForVb,AngleForIr,AngleForIy,AngleForIb,AngleForInVect;
+                Point Origin = new Point(pictureBox_VectorDiagram.Width / 2, pictureBox_VectorDiagram.Height / 2);  //339,259
+                
+                /* getting the width of the picturebox */
+                image_width = pictureBox_VectorDiagram.Width;       // 678
+                image_height = pictureBox_VectorDiagram.Height;     // 518
+                image_guideline_len = (image_width + image_height) / 2; // 598
+
+                VolMultiplier = Convert.ToDouble(textBox_VectorDiagramVoltageScale.Text);
+                CurrMultiplier = Convert.ToDouble(textBox_VectorDiagramCurrentScale.Text); 
+
+                Bitmap bmp = new Bitmap(image_width, image_height);
+                using (var gfx = Graphics.FromImage(bmp))
+                {
+                    gfx.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+                    gfx.Clear(Color.White);
+
+                    StartPoint = Origin;
+
+                    /* drawing 0 degree line */
+                    EndPoint = DS_Graphics.GetPoint(StartPoint, image_width/2, 0, 1);
+                    penBlackThin.DashPattern = new float[] { 1.0F, 8.0F};
+                    gfx.DrawLine(penBlackThin, StartPoint, EndPoint);
+
+                    EndPoint = DS_Graphics.GetPoint(StartPoint, image_width / 2, 180, 1);
+                    penBlackThin.DashPattern = new float[] { 1.0F, 8.0F };
+                    gfx.DrawLine(penBlackThin, StartPoint, EndPoint);
+
+                    /* drawing 30 degree line */
+                    EndPoint = DS_Graphics.GetPoint(StartPoint, image_width / 2, 30, 1);
+                    penBlackThin.DashPattern = new float[] { 1.0F, 8.0F };
+                    gfx.DrawLine(penBlackThin, StartPoint, EndPoint);
+
+                    EndPoint = DS_Graphics.GetPoint(StartPoint, image_width / 2, 180 + 30, 1);
+                    penBlackThin.DashPattern = new float[] { 1.0F, 8.0F };
+                    gfx.DrawLine(penBlackThin, StartPoint, EndPoint);
+
+                    /* drawing 60 degree line */
+                    EndPoint = DS_Graphics.GetPoint(StartPoint, image_guideline_len / 2, 60, 1);
+                    penBlackThin.DashPattern = new float[] { 1.0F, 8.0F };
+                    gfx.DrawLine(penBlackThin, StartPoint, EndPoint);
+
+                    EndPoint = DS_Graphics.GetPoint(StartPoint, image_guideline_len / 2, 180 + 60, 1);
+                    penBlackThin.DashPattern = new float[] { 1.0F, 8.0F };
+                    gfx.DrawLine(penBlackThin, StartPoint, EndPoint);
+
+                    /* drawing 90 degree line */
+                    EndPoint = DS_Graphics.GetPoint(StartPoint, image_height / 2, 90, 1);
+                    penBlackThin.DashPattern = new float[] { 1.0F, 8.0F };
+                    gfx.DrawLine(penBlackThin, StartPoint, EndPoint);
+
+                    EndPoint = DS_Graphics.GetPoint(StartPoint, image_height / 2, 180 + 90, 1);
+                    penBlackThin.DashPattern = new float[] { 1.0F, 8.0F };
+                    gfx.DrawLine(penBlackThin, StartPoint, EndPoint);
+
+                    /* drawing 120 degree line */
+                    EndPoint = DS_Graphics.GetPoint(StartPoint, image_guideline_len / 2, 120, 1);
+                    penBlackThin.DashPattern = new float[] { 1.0F, 8.0F };
+                    gfx.DrawLine(penBlackThin, StartPoint, EndPoint);
+
+                    EndPoint = DS_Graphics.GetPoint(StartPoint, image_guideline_len / 2, 180 + 120, 1);
+                    penBlackThin.DashPattern = new float[] { 1.0F, 8.0F };
+                    gfx.DrawLine(penBlackThin, StartPoint, EndPoint);
+
+                    /* drawing 150 degree line */
+                    EndPoint = DS_Graphics.GetPoint(StartPoint, image_width / 2, 150, 1);
+                    penBlackThin.DashPattern = new float[] { 1.0F, 8.0F };
+                    gfx.DrawLine(penBlackThin, StartPoint, EndPoint);
+
+                    EndPoint = DS_Graphics.GetPoint(StartPoint, image_width / 2, 180 + 150, 1);
+                    penBlackThin.DashPattern = new float[] { 1.0F, 8.0F };
+                    gfx.DrawLine(penBlackThin, StartPoint, EndPoint);
+
+                    /***************************************************
+                     * *       (0,0)           (10,0)                        
+                     * *    
+                     * *
+                     * *
+                     * *
+                     * *
+                     * *       (0,10)          (10,10)
+                     * *************************************************/
+                    /* Lag -> Clockwise -> Angle Positive */
+                    AngleForVr = 0;
+                    AngleForVy = Form1.AngleRY;
+                    AngleForVb = -Form1.AngleBR;
+                    if (Form1.VolR == 0)
+                    {
+                        AngleForVr = 0;
+                    }
+                    if (Form1.VolY == 0)
+                    {
+                        AngleForVy = 120;
+                    }
+                    if (Form1.VolB == 0)
+                    {
+                        AngleForVb = 240;
+                    }
+                    AngleForIr = AngleForVr + Form1.AnglePFR;
+                    AngleForIy = AngleForVy + Form1.AnglePFY;
+                    AngleForIb = AngleForVb + Form1.AnglePFB;
+                    AngleForInVect = Form1.AngleNVector;
+
+                    /* Voltage R */
+                    if (Form1.VolR != 0)
+                    {
+                        EndPoint = DS_Graphics.GetPointMetering(StartPoint, Form1.VolR, AngleForVr, VolMultiplier);
+                        gfx.DrawLine(penRed, StartPoint, EndPoint);
+
+                        DS_Graphics.drawArrowMetering(penRed, gfx, EndPoint, AngleForVr, 12);
+                        
+                        EndPoint = DS_Graphics.GetPointMetering(EndPoint, 15.0, AngleForVr, 1);
+                        gfx.DrawString("Vr", arialFont, blackBrush, EndPoint);
+                    }
+
+                    /* Voltage Y */
+                    if (Form1.VolY != 0)
+                    {
+                        EndPoint = DS_Graphics.GetPointMetering(StartPoint, Form1.VolY, AngleForVy, VolMultiplier);
+                        gfx.DrawLine(penYellow, StartPoint, EndPoint);
+
+                        DS_Graphics.drawArrowMetering(penYellow, gfx, EndPoint, AngleForVy, 12);
+
+                        EndPoint = DS_Graphics.GetPointMetering(EndPoint, 15.0, AngleForVy, 1);
+                        gfx.DrawString("Vy", arialFont, blackBrush, EndPoint);
+                    }
+
+                    /* Voltage B */
+                    if (Form1.VolB != 0)
+                    {
+                        EndPoint = DS_Graphics.GetPointMetering(StartPoint, Form1.VolB, AngleForVb, VolMultiplier);
+                        gfx.DrawLine(penBlue, StartPoint, EndPoint);
+
+                        DS_Graphics.drawArrowMetering(penBlue, gfx, EndPoint, AngleForVb, 12);
+
+                        EndPoint = DS_Graphics.GetPointMetering(EndPoint, 15.0, AngleForVb, 1);
+                        gfx.DrawString("Vb", arialFont, blackBrush, EndPoint);
+                    }
+
+                    /* Current R */
+                    if (Form1.CurrRSigned != 0)
+                    {
+                        EndPoint = DS_Graphics.GetPointMetering(StartPoint, Math.Abs(Form1.CurrRSigned), AngleForIr, CurrMultiplier);
+                        gfx.DrawLine(penRed, StartPoint, EndPoint);
+
+                        DS_Graphics.drawArrowMetering(penRed, gfx, EndPoint, AngleForIr, 12);
+
+                        EndPoint = DS_Graphics.GetPointMetering(EndPoint, 15.0, AngleForIr, 1);
+                        gfx.DrawString("Ir", arialFont, blackBrush, EndPoint);
+                    }
+
+                    /* Current Y */
+                    if (Form1.CurrYSigned != 0)
+                    {
+                        EndPoint = DS_Graphics.GetPointMetering(StartPoint, Math.Abs(Form1.CurrYSigned), AngleForIy, CurrMultiplier);
+                        gfx.DrawLine(penYellow, StartPoint, EndPoint);
+
+                        DS_Graphics.drawArrowMetering(penYellow, gfx, EndPoint, AngleForIy, 12);
+
+                        EndPoint = DS_Graphics.GetPointMetering(EndPoint, 15.0, AngleForIy, 1);
+                        gfx.DrawString("Iy", arialFont, blackBrush, EndPoint);
+                    }
+
+                    /* Current B */
+                    if (Form1.CurrBSigned != 0)
+                    {
+                        EndPoint = DS_Graphics.GetPointMetering(StartPoint, Math.Abs(Form1.CurrBSigned), AngleForIb, CurrMultiplier);
+                        gfx.DrawLine(penBlue, StartPoint, EndPoint);
+
+                        DS_Graphics.drawArrowMetering(penBlue, gfx, EndPoint, AngleForIb, 12);
+
+                        EndPoint = DS_Graphics.GetPointMetering(EndPoint, 15.0, AngleForIb, 1);
+                        gfx.DrawString("Ib", arialFont, blackBrush, EndPoint);
+                    }
+
+                    /* Current N */
+                    if (Form1.CurrNVector != 0)
+                    {
+                        EndPoint = DS_Graphics.GetPointMetering(StartPoint, Math.Abs(Form1.CurrNVector), AngleForInVect, CurrMultiplier);
+                        gfx.DrawLine(penBlack, StartPoint, EndPoint);
+
+                        DS_Graphics.drawArrowMetering(penBlack, gfx, EndPoint, AngleForInVect, 12);
+
+                        EndPoint = DS_Graphics.GetPoint(EndPoint, 15.0, AngleForInVect, 1);
+                        gfx.DrawString("In_v", arialFont, blackBrush, EndPoint);
+                    }
+                    gfx.Dispose();
+                }
+               
+                string pathName = "D:\\DevelopersTool\\vector_diagram.png";
+                bmp.Save(pathName);
+                bmp.Dispose();
+
+                /* displaying the image */
+                WaveForm = new Bitmap(pathName);
+                pictureBox_VectorDiagram.BackgroundImage = WaveForm;
+                pictureBox_VectorDiagram.Refresh();
+                WaveForm.Dispose();
+            }
         }
         public void update_textboxes()
         {
@@ -1194,7 +1411,28 @@ namespace Developer_Tools
             
             textBox_DataTrafficTxBytesTotal.Text = DS_Serial.totalTxBytes.ToString();
             textBox_DataTrafficRxBytesTotal.Text = DS_Serial.totalRxBytes.ToString();
-            
+
+            if (checkBox_EnergyMeterShowVectorDiagram.Checked == true)
+            {
+                label_VolR.Text = VolR.ToString("0.00");
+                label_VolY.Text = VolY.ToString("0.00");
+                label_VolB.Text = VolB.ToString("0.00");
+                label_CurrR.Text = CurrRSigned.ToString("0.000");
+                label_CurrY.Text = CurrYSigned.ToString("0.000");
+                label_CurrB.Text = CurrBSigned.ToString("0.000");
+                label_CurrN.Text = CurrN.ToString("0.000");
+                label_AngleR.Text = AnglePFR.ToString("0.00");
+                label_AngleY.Text = AnglePFY.ToString("0.00");
+                label_AngleB.Text = AnglePFB.ToString("0.00");
+                label_CurrNVect.Text = CurrNVector.ToString("0.000");
+                label_AngleNVect.Text = AngleNVector.ToString("0.00");
+                label_VolRY.Text = VolRY.ToString("0.00");
+                label_VolYB.Text = VolYB.ToString("0.00");
+                label_VolBR.Text = VolBR.ToString("0.00");
+                label_AngleRY.Text = AngleRY.ToString("0.00");
+                label_AngleYB.Text = AngleYB.ToString("0.00");
+                label_AngleBR.Text = AngleBR.ToString("0.00");
+            }
             /* Metrology Data text box update*/
             textBox_VolR.Text = VolR.ToString("0.00");
             textBox_VolY.Text = VolY.ToString("0.00");

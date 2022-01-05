@@ -75,6 +75,7 @@
     <Compile Include="DS_App.cs" />
     <Compile Include="DS_CRC.cs" />
     <Compile Include="DS_Functions.cs" />
+    <Compile Include="DS_Graphics.cs" />
     <Compile Include="DS_HDLC.cs" />
     <Compile Include="DS_JSON.cs" />
     <Compile Include="DS_Serial.cs">
