@@ -1283,17 +1283,23 @@ namespace Developer_Tools
                     AngleForVr = 0;
                     AngleForVy = Form1.AngleRY;
                     AngleForVb = -Form1.AngleBR;
-                    if (Form1.VolR == 0)
+                    if (Form1.VolR == 0)  // ry = br = 0
                     {
                         AngleForVr = 0;
+                        AngleForVy = 120;
+                        AngleForVb = AngleForVy + Form1.AngleYB;
                     }
-                    if (Form1.VolY == 0)
+                    if (Form1.VolY == 0) // ry = yb = 0
                     {
                         AngleForVy = 120;
+                        AngleForVb = 240;
+                        AngleForVr = AngleForVb + Form1.AngleBR;
                     }
-                    if (Form1.VolB == 0)
+                    if (Form1.VolB == 0) // yb = br = 0
                     {
                         AngleForVb = 240;
+                        AngleForVr = 0;
+                        AngleForVy = AngleForVr + Form1.AngleRY;
                     }
                     AngleForIr = AngleForVr + Form1.AnglePFR;
                     AngleForIy = AngleForVy + Form1.AnglePFY;
@@ -1483,7 +1489,13 @@ namespace Developer_Tools
             textBox_VAR_vi.Text = (VolR * Math.Abs(CurrRSigned)).ToString("0.0");
             textBox_VAY_vi.Text = (VolY * Math.Abs(CurrYSigned)).ToString("0.0");
             textBox_VAB_vi.Text = (VolB * Math.Abs(CurrBSigned)).ToString("0.0");
+            textBox_VATotal_vi.Text = (Convert.ToDouble(textBox_VAR_vi.Text) + Convert.ToDouble(textBox_VAR_vi.Text) + Convert.ToDouble(textBox_VAR_vi.Text)).ToString("0.0"); ;
 
+            textBox_VAR_triangle.Text = Math.Sqrt(WattR * WattR + VARR * VARR).ToString("0.0");
+            textBox_VAY_triangle.Text = Math.Sqrt(WattY * WattY + VARY * VARY).ToString("0.0");
+            textBox_VAB_triangle.Text = Math.Sqrt(WattB * WattB + VARB * VARB).ToString("0.0");
+            textBox_VATotal_triangle.Text = (Convert.ToDouble(textBox_VAR_triangle.Text) + Convert.ToDouble(textBox_VAR_triangle.Text) + Convert.ToDouble(textBox_VAR_triangle.Text)).ToString("0.0"); ;
+            
             textBox_FreqR.Text = FreqR.ToString("0.000");
             textBox_FreqY.Text = FreqY.ToString("0.000");
             textBox_FreqB.Text = FreqB.ToString("0.000");
@@ -2103,9 +2115,9 @@ namespace Developer_Tools
                     PFB = DS_Functions.ByteArrayToS16(b_array, arr_ptr, 1000); arr_ptr += 2;
                     PFNet = DS_Functions.ByteArrayToS16(b_array, arr_ptr, 1000); arr_ptr += 2;
 
-                    AnglePFR = DS_Functions.ByteArrayToS16(b_array, arr_ptr, 1000); arr_ptr += 2;
-                    AnglePFY = DS_Functions.ByteArrayToS16(b_array, arr_ptr, 1000); arr_ptr += 2;
-                    AnglePFB = DS_Functions.ByteArrayToS16(b_array, arr_ptr, 1000); arr_ptr += 2;
+                    AnglePFR = DS_Functions.ByteArrayToS16(b_array, arr_ptr, 100); arr_ptr += 2;
+                    AnglePFY = DS_Functions.ByteArrayToS16(b_array, arr_ptr, 100); arr_ptr += 2;
+                    AnglePFB = DS_Functions.ByteArrayToS16(b_array, arr_ptr, 100); arr_ptr += 2;
 
                     WattR = DS_Functions.ByteArrayToS32(b_array, arr_ptr, 10); arr_ptr += 4;
                     WattY = DS_Functions.ByteArrayToS32(b_array, arr_ptr, 10); arr_ptr += 4;
