@@ -37,6 +37,9 @@ namespace Developer_Tools
         static int traffic_mode;
         static string traffic_string = String.Empty;
 
+        /* instant data log */
+        static string instant_data_log_filename = String.Empty;
+
         /* configuration file */
         string config_file_name;
 
@@ -77,10 +80,47 @@ namespace Developer_Tools
         public static double WattRFunda, WattYFunda, WattBFunda, WattNetFunda;
         public static double VARR, VARY, VARB, VARNet;
         public static double VAR, VAY, VAB, VANet;
+        public static double VAR_vi, VAY_vi, VAB_vi, VANet_vi;
+        public static double VAR_triangle, VAY_triangle, VAB_triangle, VANet_triangle;
         public static double FreqR, FreqY, FreqB, FreqNet;
         public static int QuadrantR, QuadrantY, QuadrantB, QuadrantNet;
         public static int SamplesR, SamplesY, SamplesB, SamplesN, SamplesPerSec;
         public static double THDVr, THDVy, THDVb, THDIr, THDIy, THDIb;
+
+        public static double EnergyWhR_imp, EnergyWhY_imp, EnergyWhB_imp, EnergyWhTotal_imp;
+        public static double EnergyWhR_exp, EnergyWhY_exp, EnergyWhB_exp, EnergyWhTotal_exp;
+        public static double EnergyVARhR_q1, EnergyVARhY_q1, EnergyVARhB_q1, EnergyVARhTotal_q1;
+        public static double EnergyVARhR_q2, EnergyVARhY_q2, EnergyVARhB_q2, EnergyVARhTotal_q2;
+        public static double EnergyVARhR_q3, EnergyVARhY_q3, EnergyVARhB_q3, EnergyVARhTotal_q3;
+        public static double EnergyVARhR_q4, EnergyVARhY_q4, EnergyVARhB_q4, EnergyVARhTotal_q4;
+        public static double EnergyVAhR_imp, EnergyVAhY_imp, EnergyVAhB_imp, EnergyVAhTotal_imp;
+        public static double EnergyVAhR_exp, EnergyVAhY_exp, EnergyVAhB_exp, EnergyVAhTotal_exp;
+        public static double EnergyFWhR_imp, EnergyFWhY_imp, EnergyFWhB_imp, EnergyFWhTotal_imp;
+        public static double EnergyFWhR_exp, EnergyFWhY_exp, EnergyFWhB_exp, EnergyFWhTotal_exp;
+        public static int pulse_EnergyWhR_imp, pulse_EnergyWhY_imp, pulse_EnergyWhB_imp, pulse_EnergyWhTotal_imp;
+        public static int pulse_EnergyWhR_exp, pulse_EnergyWhY_exp, pulse_EnergyWhB_exp, pulse_EnergyWhTotal_exp;
+        public static int pulse_EnergyVARhR_q1, pulse_EnergyVARhY_q1, pulse_EnergyVARhB_q1, pulse_EnergyVARhTotal_q1;
+        public static int pulse_EnergyVARhR_q2, pulse_EnergyVARhY_q2, pulse_EnergyVARhB_q2, pulse_EnergyVARhTotal_q2;
+        public static int pulse_EnergyVARhR_q3, pulse_EnergyVARhY_q3, pulse_EnergyVARhB_q3, pulse_EnergyVARhTotal_q3;
+        public static int pulse_EnergyVARhR_q4, pulse_EnergyVARhY_q4, pulse_EnergyVARhB_q4, pulse_EnergyVARhTotal_q4;
+        public static int pulse_EnergyVAhR_imp, pulse_EnergyVAhY_imp, pulse_EnergyVAhB_imp, pulse_EnergyVAhTotal_imp;
+        public static int pulse_EnergyVAhR_exp, pulse_EnergyVAhY_exp, pulse_EnergyVAhB_exp, pulse_EnergyVAhTotal_exp;
+        public static int pulse_EnergyFWhR_imp, pulse_EnergyFWhY_imp, pulse_EnergyFWhB_imp, pulse_EnergyFWhTotal_imp;
+        public static int pulse_EnergyFWhR_exp, pulse_EnergyFWhY_exp, pulse_EnergyFWhB_exp, pulse_EnergyFWhTotal_exp;
+
+        public static string Time;
+        public static int powerUpSec, reactiveSamples, reactiveTimer, reactiveTimeDelay, reactiveTimeDeviation;
+        public static long LoopCycles;
+        public static double battery_voltage, battery_voltage_rtc, temperature_tlv;
+        public static string MISCData, TamperStatus;
+        public static byte MeteringMode, fg_flag;
+        public static int METER_CONST = 1200, PULSE = 6;
+
+        public static double error_act_r, error_act_y, error_act_b, error_act_total;
+        public static double error_react_r, error_react_y, error_react_b, error_react_total;
+        public static double error_app_r, error_app_y, error_app_b, error_app_total;
+
+        public static byte[] tamper_status = new byte[8];
 
         private void buttonOddComEvenSeg_Click(object sender, EventArgs e)
         {
@@ -607,6 +647,61 @@ namespace Developer_Tools
             bmp.Save(pathName);
             bmp.Dispose();
         }
+
+        private void checkBox_LogToNewFile_CheckedChanged(object sender, EventArgs e)
+        {
+            if(checkBox_LogToNewFile.Checked == true)
+            {
+                button_InstantLogFileCreate.Enabled = true;
+                textBox_InstantLogNewFileName.Enabled = true;
+            }
+            else
+            {
+                button_InstantLogFileCreate.Enabled = false;
+                textBox_InstantLogNewFileName.Enabled = false;
+            }
+        }
+
+        private void checkBox_LogData_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox_LogData.Checked == false)
+            {
+                button_InstantLogFileCreate.Enabled = false;
+                textBox_InstantLogNewFileName.Enabled = false;
+                checkBox_LogToNewFile.Enabled = false;
+            }
+            else
+            {
+                checkBox_LogToNewFile.Enabled = true;
+                if (checkBox_LogToNewFile.Checked == true)
+                {
+                    button_InstantLogFileCreate.Enabled = true;
+                    textBox_InstantLogNewFileName.Enabled = true;
+                }
+                else
+                {
+                    button_InstantLogFileCreate.Enabled = false;
+                    textBox_InstantLogNewFileName.Enabled = false;
+                }
+            }
+        }
+
+        private void button_InstantLogFileCreate_Click(object sender, EventArgs e)
+        {
+            string pathName = "D:\\DevelopersTool\\DevelopersToolEnergyMeterInstantDataLogFile.txt";
+            if (textBox_InstantLogNewFileName.Text != String.Empty)
+            {
+                pathName = "D:\\DevelopersTool\\" + textBox_InstantLogNewFileName.Text + ".txt";
+                StreamWriter sw = File.AppendText(pathName);
+                sw.Close();
+                sw.Dispose();
+            }
+            else
+            {
+                MessageBox.Show("Enter a file name");
+            }
+        }
+
         public static string decode_wf_frame(byte[] b_array, int b_array_len)
         {
             string ret_str = String.Empty;
@@ -687,41 +782,7 @@ namespace Developer_Tools
 
         }
 
-        public static double EnergyWhR_imp, EnergyWhY_imp, EnergyWhB_imp, EnergyWhTotal_imp;
-        public static double EnergyWhR_exp, EnergyWhY_exp, EnergyWhB_exp, EnergyWhTotal_exp;
-        public static double EnergyVARhR_q1, EnergyVARhY_q1, EnergyVARhB_q1, EnergyVARhTotal_q1;
-        public static double EnergyVARhR_q2, EnergyVARhY_q2, EnergyVARhB_q2, EnergyVARhTotal_q2;
-        public static double EnergyVARhR_q3, EnergyVARhY_q3, EnergyVARhB_q3, EnergyVARhTotal_q3;
-        public static double EnergyVARhR_q4, EnergyVARhY_q4, EnergyVARhB_q4, EnergyVARhTotal_q4;
-        public static double EnergyVAhR_imp, EnergyVAhY_imp, EnergyVAhB_imp, EnergyVAhTotal_imp;
-        public static double EnergyVAhR_exp, EnergyVAhY_exp, EnergyVAhB_exp, EnergyVAhTotal_exp;
-        public static double EnergyFWhR_imp, EnergyFWhY_imp, EnergyFWhB_imp, EnergyFWhTotal_imp;
-        public static double EnergyFWhR_exp, EnergyFWhY_exp, EnergyFWhB_exp, EnergyFWhTotal_exp;
-        public static int pulse_EnergyWhR_imp, pulse_EnergyWhY_imp, pulse_EnergyWhB_imp, pulse_EnergyWhTotal_imp;
-        public static int pulse_EnergyWhR_exp, pulse_EnergyWhY_exp, pulse_EnergyWhB_exp, pulse_EnergyWhTotal_exp;
-        public static int pulse_EnergyVARhR_q1, pulse_EnergyVARhY_q1, pulse_EnergyVARhB_q1, pulse_EnergyVARhTotal_q1;
-        public static int pulse_EnergyVARhR_q2, pulse_EnergyVARhY_q2, pulse_EnergyVARhB_q2, pulse_EnergyVARhTotal_q2;
-        public static int pulse_EnergyVARhR_q3, pulse_EnergyVARhY_q3, pulse_EnergyVARhB_q3, pulse_EnergyVARhTotal_q3;
-        public static int pulse_EnergyVARhR_q4, pulse_EnergyVARhY_q4, pulse_EnergyVARhB_q4, pulse_EnergyVARhTotal_q4;
-        public static int pulse_EnergyVAhR_imp, pulse_EnergyVAhY_imp, pulse_EnergyVAhB_imp, pulse_EnergyVAhTotal_imp;
-        public static int pulse_EnergyVAhR_exp, pulse_EnergyVAhY_exp, pulse_EnergyVAhB_exp, pulse_EnergyVAhTotal_exp;
-        public static int pulse_EnergyFWhR_imp, pulse_EnergyFWhY_imp, pulse_EnergyFWhB_imp, pulse_EnergyFWhTotal_imp;
-        public static int pulse_EnergyFWhR_exp, pulse_EnergyFWhY_exp, pulse_EnergyFWhB_exp, pulse_EnergyFWhTotal_exp;
-
-        public static string Time;
-        public static int powerUpSec, reactiveSamples, reactiveTimer, reactiveTimeDelay, reactiveTimeDeviation;
-        public static long LoopCycles;
-        public static double battery_voltage, battery_voltage_rtc, temperature_tlv;
-        public static string MISCData, TamperStatus;
-        public static byte MeteringMode, fg_flag;
-        public static int METER_CONST = 1200, PULSE = 6;
-        
-        public static double error_act_r, error_act_y, error_act_b, error_act_total;
-        public static double error_react_r, error_react_y, error_react_b, error_react_total;
-        public static double error_app_r, error_app_y, error_app_b, error_app_total;
-
-        public static byte[] tamper_status = new byte[8];
-        
+       
         
         public Form1()
         {
@@ -1197,7 +1258,7 @@ namespace Developer_Tools
 
                 int image_width, image_height, image_guideline_len;
                 double VolMultiplier, CurrMultiplier;
-                double refAngle,AngleForVr,AngleForVy,AngleForVb,AngleForIr,AngleForIy,AngleForIb,AngleForInVect;
+                double AngleForVr,AngleForVy,AngleForVb,AngleForIr,AngleForIy,AngleForIb,AngleForInVect;
                 Point Origin = new Point(pictureBox_VectorDiagram.Width / 2, pictureBox_VectorDiagram.Height / 2);  //339,259
                 
                 /* getting the width of the picturebox */
@@ -1403,6 +1464,33 @@ namespace Developer_Tools
                 WaveForm.Dispose();
             }
         }
+        public void update_global_vars()
+        {
+            /* Serial instant data log file name */
+            if(checkBox_LogData.Checked == true)
+            {
+                /* set the file name */
+                if(checkBox_LogToNewFile.Checked == true)
+                {
+                    instant_data_log_filename = "D:\\DevelopersTool\\" + textBox_InstantLogNewFileName.Text + ".txt";
+                }
+                else
+                {
+                    instant_data_log_filename = "D:\\DevelopersTool\\DevelopersToolEnergyMeterInstantDataLogFile.txt";
+                }
+                /* verfiy the file existant on the disk */
+                if (File.Exists(instant_data_log_filename) == false)
+                {
+                    checkBox_LogData.Checked = false;
+                    MessageBox.Show("File Not Exists..!!");
+                    instant_data_log_filename = string.Empty;
+                }
+            }
+            else
+            {
+                instant_data_log_filename = string.Empty;
+            }
+        }
         public void update_textboxes()
         {
             /* Communication traffic textbox update */
@@ -1486,16 +1574,16 @@ namespace Developer_Tools
             textBox_VAB.Text = VAB.ToString("0.0");
             textBox_VANet.Text = VANet.ToString("0.0");
 
-            textBox_VAR_vi.Text = (VolR * Math.Abs(CurrRSigned)).ToString("0.0");
-            textBox_VAY_vi.Text = (VolY * Math.Abs(CurrYSigned)).ToString("0.0");
-            textBox_VAB_vi.Text = (VolB * Math.Abs(CurrBSigned)).ToString("0.0");
-            textBox_VATotal_vi.Text = (Convert.ToDouble(textBox_VAR_vi.Text) + Convert.ToDouble(textBox_VAR_vi.Text) + Convert.ToDouble(textBox_VAR_vi.Text)).ToString("0.0"); ;
+            textBox_VAR_vi.Text = VAR_vi.ToString("0.0");
+            textBox_VAY_vi.Text = VAY_vi.ToString("0.0");
+            textBox_VAB_vi.Text = VAB_vi.ToString("0.0");
+            textBox_VATotal_vi.Text = VANet_vi.ToString("0.0");
 
-            textBox_VAR_triangle.Text = Math.Sqrt(WattR * WattR + VARR * VARR).ToString("0.0");
-            textBox_VAY_triangle.Text = Math.Sqrt(WattY * WattY + VARY * VARY).ToString("0.0");
-            textBox_VAB_triangle.Text = Math.Sqrt(WattB * WattB + VARB * VARB).ToString("0.0");
-            textBox_VATotal_triangle.Text = (Convert.ToDouble(textBox_VAR_triangle.Text) + Convert.ToDouble(textBox_VAR_triangle.Text) + Convert.ToDouble(textBox_VAR_triangle.Text)).ToString("0.0"); ;
-            
+            textBox_VAR_triangle.Text = VAR_triangle.ToString("0.0");
+            textBox_VAY_triangle.Text = VAY_triangle.ToString("0.0");
+            textBox_VAB_triangle.Text = VAB_triangle.ToString("0.0");
+            textBox_VATotal_triangle.Text = VANet_triangle.ToString("0.0");
+
             textBox_FreqR.Text = FreqR.ToString("0.000");
             textBox_FreqY.Text = FreqY.ToString("0.000");
             textBox_FreqB.Text = FreqB.ToString("0.000");
@@ -1602,79 +1690,6 @@ namespace Developer_Tools
             textBox_ReactiveTimer.Text = reactiveTimer.ToString();
             textBox_ReactiveTimeDelay.Text = reactiveTimeDelay.ToString();
             textBox_ReactiveTimeDeviation.Text = reactiveTimeDeviation.ToString();
-
-            TamperStatus = String.Empty;
-            if (DS_Functions.checkBit(tamper_status[7], 0x80) == true) { TamperStatus += " | bit63"; }
-            if (DS_Functions.checkBit(tamper_status[7], 0x40) == true) { TamperStatus += " | bit62"; }
-            if (DS_Functions.checkBit(tamper_status[7], 0x20) == true) { TamperStatus += " | bit61"; }
-            if (DS_Functions.checkBit(tamper_status[7], 0x10) == true) { TamperStatus += " | bit60"; }
-            if (DS_Functions.checkBit(tamper_status[7], 0x08) == true) { TamperStatus += " | bit59"; }
-            if (DS_Functions.checkBit(tamper_status[7], 0x04) == true) { TamperStatus += " | bit58"; }
-            if (DS_Functions.checkBit(tamper_status[7], 0x02) == true) { TamperStatus += " | bit57"; }
-            if (DS_Functions.checkBit(tamper_status[7], 0x01) == true) { TamperStatus += " | bit56"; }
-
-            if (DS_Functions.checkBit(tamper_status[6], 0x80) == true) { TamperStatus += " | bit55"; }
-            if (DS_Functions.checkBit(tamper_status[6], 0x40) == true) { TamperStatus += " | bit54"; }
-            if (DS_Functions.checkBit(tamper_status[6], 0x20) == true) { TamperStatus += " | bit53"; }
-            if (DS_Functions.checkBit(tamper_status[6], 0x10) == true) { TamperStatus += " | bit52"; }
-            if (DS_Functions.checkBit(tamper_status[6], 0x08) == true) { TamperStatus += " | bit51"; }
-            if (DS_Functions.checkBit(tamper_status[6], 0x04) == true) { TamperStatus += " | bit50"; }
-            if (DS_Functions.checkBit(tamper_status[6], 0x02) == true) { TamperStatus += " | bit49"; }
-            if (DS_Functions.checkBit(tamper_status[6], 0x01) == true) { TamperStatus += " | bit48"; }
-
-            if (DS_Functions.checkBit(tamper_status[5], 0x80) == true) { TamperStatus += " | bit47"; }
-            if (DS_Functions.checkBit(tamper_status[5], 0x40) == true) { TamperStatus += " | bit46"; }
-            if (DS_Functions.checkBit(tamper_status[5], 0x20) == true) { TamperStatus += " | bit45"; }
-            if (DS_Functions.checkBit(tamper_status[5], 0x10) == true) { TamperStatus += " | bit44"; }
-            if (DS_Functions.checkBit(tamper_status[5], 0x08) == true) { TamperStatus += " | bit43"; }
-            if (DS_Functions.checkBit(tamper_status[5], 0x04) == true) { TamperStatus += " | bit42"; }
-            if (DS_Functions.checkBit(tamper_status[5], 0x02) == true) { TamperStatus += " | bit41"; }
-            if (DS_Functions.checkBit(tamper_status[5], 0x01) == true) { TamperStatus += " | Faulty Capacitor"; }
-
-            if (DS_Functions.checkBit(tamper_status[4], 0x80) == true) { TamperStatus += " | RTC Battery Low"; }
-            if (DS_Functions.checkBit(tamper_status[4], 0x40) == true) { TamperStatus += " | Over Cureent B"; }
-            if (DS_Functions.checkBit(tamper_status[4], 0x20) == true) { TamperStatus += " | Over Current Y"; }
-            if (DS_Functions.checkBit(tamper_status[4], 0x10) == true) { TamperStatus += " | Over Current R"; }
-            if (DS_Functions.checkBit(tamper_status[4], 0x08) == true) { TamperStatus += " | Abnormal Frequency"; }
-            if (DS_Functions.checkBit(tamper_status[4], 0x04) == true) { TamperStatus += " | Two wire"; }
-            if (DS_Functions.checkBit(tamper_status[4], 0x02) == true) { TamperStatus += " | RTC Error"; }
-            if (DS_Functions.checkBit(tamper_status[4], 0x01) == true) { TamperStatus += " | bit32"; }
-
-            if (DS_Functions.checkBit(tamper_status[3], 0x80) == true) { TamperStatus += " | 35KV/ESD"; }
-            if (DS_Functions.checkBit(tamper_status[3], 0x40) == true) { TamperStatus += " | Invalid phase association"; }
-            if (DS_Functions.checkBit(tamper_status[3], 0x20) == true) { TamperStatus += " | Invalid voltage"; }
-            if (DS_Functions.checkBit(tamper_status[3], 0x10) == true) { TamperStatus += " | High Neutral Current"; }
-            if (DS_Functions.checkBit(tamper_status[3], 0x08) == true) { TamperStatus += " | Wrong connection"; }
-            if (DS_Functions.checkBit(tamper_status[3], 0x04) == true) { TamperStatus += " | Main battery low"; }
-            if (DS_Functions.checkBit(tamper_status[3], 0x02) == true) { TamperStatus += " | Low Load"; }
-            if (DS_Functions.checkBit(tamper_status[3], 0x01) == true) { TamperStatus += " | Over Load"; }
-
-            if (DS_Functions.checkBit(tamper_status[2], 0x80) == true) { TamperStatus += " | EEPROM Fail"; }
-            if (DS_Functions.checkBit(tamper_status[2], 0x40) == true) { TamperStatus += " | B Phase Active Export"; }
-            if (DS_Functions.checkBit(tamper_status[2], 0x20) == true) { TamperStatus += " | Y Phase Active Export"; }
-            if (DS_Functions.checkBit(tamper_status[2], 0x10) == true) { TamperStatus += " | R Phase Active Export"; }
-            if (DS_Functions.checkBit(tamper_status[2], 0x08) == true) { TamperStatus += " | Phase sequence reverse"; }
-            if (DS_Functions.checkBit(tamper_status[2], 0x04) == true) { TamperStatus += " | Top Cover"; }
-            if (DS_Functions.checkBit(tamper_status[2], 0x02) == true) { TamperStatus += " | Low PF"; }
-            if (DS_Functions.checkBit(tamper_status[2], 0x01) == true) { TamperStatus += " | Neutral Disturb"; }
-
-            if (DS_Functions.checkBit(tamper_status[1], 0x80) == true) { TamperStatus += " | Magnet"; }
-            if (DS_Functions.checkBit(tamper_status[1], 0x40) == true) { TamperStatus += " | Over Current"; }
-            if (DS_Functions.checkBit(tamper_status[1], 0x20) == true) { TamperStatus += " | CT Bypass"; }
-            if (DS_Functions.checkBit(tamper_status[1], 0x10) == true) { TamperStatus += " | Current Unbalance"; }
-            if (DS_Functions.checkBit(tamper_status[1], 0x08) == true) { TamperStatus += " | CY Open B"; }
-            if (DS_Functions.checkBit(tamper_status[1], 0x04) == true) { TamperStatus += " | CT Open Y"; }
-            if (DS_Functions.checkBit(tamper_status[1], 0x02) == true) { TamperStatus += " | CT Open R"; }
-            if (DS_Functions.checkBit(tamper_status[1], 0x01) == true) { TamperStatus += " | CT Reverse B"; }
-
-            if (DS_Functions.checkBit(tamper_status[0], 0x80) == true) { TamperStatus += " | CT Reverse Y"; }
-            if (DS_Functions.checkBit(tamper_status[0], 0x40) == true) { TamperStatus += " | CT Reverse R"; }
-            if (DS_Functions.checkBit(tamper_status[0], 0x20) == true) { TamperStatus += " | Vol Unbalance"; }
-            if (DS_Functions.checkBit(tamper_status[0], 0x10) == true) { TamperStatus += " | Vol Low"; }
-            if (DS_Functions.checkBit(tamper_status[0], 0x08) == true) { TamperStatus += " | Vol High"; }
-            if (DS_Functions.checkBit(tamper_status[0], 0x04) == true) { TamperStatus += " | Vol Miss B"; }
-            if (DS_Functions.checkBit(tamper_status[0], 0x02) == true) { TamperStatus += " | Vol Miss Y"; }
-            if (DS_Functions.checkBit(tamper_status[0], 0x01) == true) { TamperStatus += " | Vol Miss R"; }
 
             textBox_TamperStatus.Text = TamperStatus;
             if (MeteringMode == 0)
@@ -1783,6 +1798,7 @@ namespace Developer_Tools
         private void timer100ms_Tick(object sender, EventArgs e)
         {
             update_textboxes();     /* make it as a thread and do the operation */
+            update_global_vars();
         }
 
         private void textBox_InputVr_Click(object sender, EventArgs e)
@@ -2434,7 +2450,16 @@ namespace Developer_Tools
                     EnergyFWhY_exp += PulseWeight[pulse_EnergyFWhY_exp % PULSE];
                     EnergyFWhB_exp += PulseWeight[pulse_EnergyFWhB_exp % PULSE];
                     EnergyFWhTotal_exp += PulseWeight[pulse_EnergyFWhTotal_exp % PULSE];
-                    
+
+                    VAR_vi = VolR * Math.Abs(CurrRSigned);
+                    VAY_vi = VolY * Math.Abs(CurrYSigned);
+                    VAB_vi = VolB * Math.Abs(CurrBSigned);
+                    VANet_vi = VAR_vi + VAY_vi + VAB_vi;
+
+                    VAR_triangle = Math.Sqrt(WattR * WattR + VARR * VARR);
+                    VAY_triangle = Math.Sqrt(WattY * WattY + VARY * VARY);
+                    VAB_triangle = Math.Sqrt(WattB * WattB + VARB * VARB);
+                    VANet_triangle = Math.Sqrt(WattNet * WattNet + VARNet * VARNet);
 
                     /* Calculating Error */
                     if (cal_accuracy == true)
@@ -2506,128 +2531,215 @@ namespace Developer_Tools
                             }
                         }
                     }
-            
-                    ///* Data logging */
-                    //if (logData_f == true)
-                    //{
-                    //    string pathName;
-                    //    if (log_to_newfile_f == true)
-                    //    {
-                    //        pathName = "D:\\SerialTools\\" + newlogfileName + ".txt";
-                    //    }
-                    //    else
-                    //    {
-                    //        pathName = "D:\\SerialTools\\" + "SerialToolsLogFile" + ".txt";
-                    //    }
-                    //    string dir = @"D:\SerialTools";
-                    //    if (!Directory.Exists(dir))
-                    //    {
-                    //        Directory.CreateDirectory(dir);
-                    //    }
-                    //    using (StreamWriter sw = File.AppendText(pathName))
-                    //    {
-                    //        sw.Write(metrology_timer.ToString()); sw.Write(tab);
-                    //        sw.Write(Time); sw.Write(tab);
-                    //        sw.Write(VolR.ToString("0.00")); sw.Write(tab);
-                    //        sw.Write(VolY.ToString("0.00")); sw.Write(tab);
-                    //        sw.Write(VolB.ToString("0.00")); sw.Write(tab);
-                    //        sw.Write(VolRdc.ToString()); sw.Write(tab);
-                    //        sw.Write(VolYdc.ToString()); sw.Write(tab);
-                    //        sw.Write(VolBdc.ToString()); sw.Write(tab);
-                    //        sw.Write(CurrR.ToString("0.000")); sw.Write(tab);
-                    //        sw.Write(CurrY.ToString("0.000")); sw.Write(tab);
-                    //        sw.Write(CurrB.ToString("0.000")); sw.Write(tab);
-                    //        sw.Write(CurrN.ToString("0.000")); sw.Write(tab);
-                    //        sw.Write(CurrRdc.ToString()); sw.Write(tab);
-                    //        sw.Write(CurrYdc.ToString()); sw.Write(tab);
-                    //        sw.Write(CurrBdc.ToString()); sw.Write(tab);
-                    //        sw.Write(CurrNdc.ToString()); sw.Write(tab);
-                    //        sw.Write(PFR.ToString("0.000")); sw.Write(tab);
-                    //        sw.Write(PFY.ToString("0.000")); sw.Write(tab);
-                    //        sw.Write(PFB.ToString("0.000")); sw.Write(tab);
-                    //        sw.Write(PFNet.ToString("0.000")); sw.Write(tab);
-                    //        sw.Write(AnglePFR.ToString("0.00")); sw.Write(tab);
-                    //        sw.Write(AnglePFY.ToString("0.00")); sw.Write(tab);
-                    //        sw.Write(AnglePFB.ToString("0.00")); sw.Write(tab);
-                    //        sw.Write(WattR.ToString("0.0")); sw.Write(tab);
-                    //        sw.Write(WattY.ToString("0.0")); sw.Write(tab);
-                    //        sw.Write(WattB.ToString("0.0")); sw.Write(tab);
-                    //        sw.Write(WattNet.ToString("0.0")); sw.Write(tab);
-                    //        sw.Write(VARR.ToString("0.0")); sw.Write(tab);
-                    //        sw.Write(VARY.ToString("0.0")); sw.Write(tab);
-                    //        sw.Write(VARB.ToString("0.0")); sw.Write(tab);
-                    //        sw.Write(VARNet.ToString("0.0")); sw.Write(tab);
-                    //        sw.Write(VAR.ToString("0.0")); sw.Write(tab);
-                    //        sw.Write(VAY.ToString("0.0")); sw.Write(tab);
-                    //        sw.Write(VAB.ToString("0.0")); sw.Write(tab);
-                    //        sw.Write(VANet.ToString("0.0")); sw.Write(tab);
-                    //        sw.Write(FreqR.ToString("0.000")); sw.Write(tab);
-                    //        sw.Write(FreqY.ToString("0.000")); sw.Write(tab);
-                    //        sw.Write(FreqB.ToString("0.000")); sw.Write(tab);
-                    //        sw.Write(FreqNet.ToString("0.000")); sw.Write(tab);
-                    //        sw.Write(QuadrantR.ToString()); sw.Write(tab);
-                    //        sw.Write(QuadrantY.ToString()); sw.Write(tab);
-                    //        sw.Write(QuadrantB.ToString()); sw.Write(tab);
-                    //        sw.Write(QuadrantNet.ToString()); sw.Write(tab);
-                    //        sw.Write(CalAngleActR.ToString("0.00")); sw.Write(tab);
-                    //        sw.Write(CalAngleActY.ToString("0.00")); sw.Write(tab);
-                    //        sw.Write(CalAngleActB.ToString("0.00")); sw.Write(tab);
-                    //        sw.Write(CalAngleReactR.ToString("0.00")); sw.Write(tab);
-                    //        sw.Write(CalAngleReactY.ToString("0.00")); sw.Write(tab);
-                    //        sw.Write(CalAngleReactB.ToString("0.00")); sw.Write(tab);
-                    //        sw.Write(SamplesR.ToString()); sw.Write(tab);
-                    //        sw.Write(SamplesY.ToString()); sw.Write(tab);
-                    //        sw.Write(SamplesB.ToString()); sw.Write(tab);
-                    //        sw.Write(SamplesPerSec.ToString()); sw.Write(tab);
-                    //        sw.Write(SamplesN.ToString()); sw.Write(tab);
-                    //        sw.Write(CurrNVector.ToString("0.000")); sw.Write(tab);
-                    //        sw.Write(AngleNVector.ToString("0.000")); sw.Write(tab);
-                    //        sw.Write(VolRY.ToString("0.00")); sw.Write(tab);
-                    //        sw.Write(VolYB.ToString("0.00")); sw.Write(tab);
-                    //        sw.Write(VolBR.ToString("0.00")); sw.Write(tab);
-                    //        sw.Write(AngleRY.ToString("0.00")); sw.Write(tab);
-                    //        sw.Write(AngleYB.ToString("0.00")); sw.Write(tab);
-                    //        sw.Write(AngleBR.ToString("0.00")); sw.Write(tab);
-                    //        sw.Write(EnergyWhR.ToString("0.0000")); sw.Write(tab);
-                    //        sw.Write(EnergyWhY.ToString("0.0000")); sw.Write(tab);
-                    //        sw.Write(EnergyWhB.ToString("0.0000")); sw.Write(tab);
-                    //        sw.Write(EnergyWhTotal.ToString("0.0000")); sw.Write(tab);
-                    //        sw.Write(EnergyVARhLagTotal.ToString("0.0000")); sw.Write(tab);
-                    //        sw.Write(EnergyVARhLeadTotal.ToString("0.0000")); sw.Write(tab);
-                    //        sw.Write(EnergyVAhTotal.ToString("0.0000")); sw.Write(tab);
-                    //        sw.Write(error_act_r.ToString("0.00")); sw.Write(tab);
-                    //        sw.Write(error_act_y.ToString("0.00")); sw.Write(tab);
-                    //        sw.Write(error_act_b.ToString("0.00")); sw.Write(tab);
-                    //        sw.Write(error_act_total.ToString("0.00")); sw.Write(tab);
-                    //        sw.Write(error_react_r.ToString("0.00")); sw.Write(tab);
-                    //        sw.Write(error_react_y.ToString("0.00")); sw.Write(tab);
-                    //        sw.Write(error_react_b.ToString("0.00")); sw.Write(tab);
-                    //        sw.Write(error_react_total.ToString("0.00")); sw.Write(tab);
-                    //        sw.Write(error_app_r.ToString("0.00")); sw.Write(tab);
-                    //        sw.Write(error_app_y.ToString("0.00")); sw.Write(tab);
-                    //        sw.Write(error_app_b.ToString("0.00")); sw.Write(tab);
-                    //        sw.Write(error_app_total.ToString("0.00")); sw.Write(tab);
-                    //        sw.Write(temperature_tlv.ToString()); sw.Write(tab);
-                    //        sw.Write(battery_voltage.ToString("0.00")); sw.Write(tab);
-                    //        sw.Write(reactiveSamples.ToString()); sw.Write(tab);
-                    //        sw.Write(reactiveTimer.ToString()); sw.Write(tab);
-                    //        sw.Write(reactiveTimeDelay.ToString()); sw.Write(tab);
-                    //        sw.Write(reactiveTimeDeviation.ToString()); sw.Write(tab);
-                    //        sw.Write(THDVr.ToString("0.0")); sw.Write(tab);
-                    //        sw.Write(THDVy.ToString("0.0")); sw.Write(tab);
-                    //        sw.Write(THDVb.ToString("0.0")); sw.Write(tab);
-                    //        sw.Write(THDIr.ToString("0.0")); sw.Write(tab);
-                    //        sw.Write(THDIy.ToString("0.0")); sw.Write(tab);
-                    //        sw.Write(THDIb.ToString("0.0")); sw.Write(tab);
-                    //        sw.Write(EnergyWhTotalFunda.ToString("0.0000")); sw.Write(tab);
-                    //        sw.Write(LoopCycles.ToString()); sw.Write(tab);
-                    //        sw.Write(DS_Functions.Byte_Array_To_HEX_String(tamper_status)); sw.Write(tab);
-                    //        sw.Write(MISCData); sw.Write(tab);
-                    //        sw.Write(newline);
-                    //        sw.Close();
-                    //        sw.Dispose();
-                    //    }
-                    //}
+
+                    TamperStatus = String.Empty;
+                    if (DS_Functions.checkBit(tamper_status[7], 0x80) == true) { TamperStatus += " | bit63"; }
+                    if (DS_Functions.checkBit(tamper_status[7], 0x40) == true) { TamperStatus += " | bit62"; }
+                    if (DS_Functions.checkBit(tamper_status[7], 0x20) == true) { TamperStatus += " | bit61"; }
+                    if (DS_Functions.checkBit(tamper_status[7], 0x10) == true) { TamperStatus += " | bit60"; }
+                    if (DS_Functions.checkBit(tamper_status[7], 0x08) == true) { TamperStatus += " | bit59"; }
+                    if (DS_Functions.checkBit(tamper_status[7], 0x04) == true) { TamperStatus += " | bit58"; }
+                    if (DS_Functions.checkBit(tamper_status[7], 0x02) == true) { TamperStatus += " | bit57"; }
+                    if (DS_Functions.checkBit(tamper_status[7], 0x01) == true) { TamperStatus += " | bit56"; }
+
+                    if (DS_Functions.checkBit(tamper_status[6], 0x80) == true) { TamperStatus += " | bit55"; }
+                    if (DS_Functions.checkBit(tamper_status[6], 0x40) == true) { TamperStatus += " | bit54"; }
+                    if (DS_Functions.checkBit(tamper_status[6], 0x20) == true) { TamperStatus += " | bit53"; }
+                    if (DS_Functions.checkBit(tamper_status[6], 0x10) == true) { TamperStatus += " | bit52"; }
+                    if (DS_Functions.checkBit(tamper_status[6], 0x08) == true) { TamperStatus += " | bit51"; }
+                    if (DS_Functions.checkBit(tamper_status[6], 0x04) == true) { TamperStatus += " | bit50"; }
+                    if (DS_Functions.checkBit(tamper_status[6], 0x02) == true) { TamperStatus += " | bit49"; }
+                    if (DS_Functions.checkBit(tamper_status[6], 0x01) == true) { TamperStatus += " | bit48"; }
+
+                    if (DS_Functions.checkBit(tamper_status[5], 0x80) == true) { TamperStatus += " | bit47"; }
+                    if (DS_Functions.checkBit(tamper_status[5], 0x40) == true) { TamperStatus += " | bit46"; }
+                    if (DS_Functions.checkBit(tamper_status[5], 0x20) == true) { TamperStatus += " | bit45"; }
+                    if (DS_Functions.checkBit(tamper_status[5], 0x10) == true) { TamperStatus += " | bit44"; }
+                    if (DS_Functions.checkBit(tamper_status[5], 0x08) == true) { TamperStatus += " | bit43"; }
+                    if (DS_Functions.checkBit(tamper_status[5], 0x04) == true) { TamperStatus += " | bit42"; }
+                    if (DS_Functions.checkBit(tamper_status[5], 0x02) == true) { TamperStatus += " | bit41"; }
+                    if (DS_Functions.checkBit(tamper_status[5], 0x01) == true) { TamperStatus += " | Faulty Capacitor"; }
+
+                    if (DS_Functions.checkBit(tamper_status[4], 0x80) == true) { TamperStatus += " | RTC Battery Low"; }
+                    if (DS_Functions.checkBit(tamper_status[4], 0x40) == true) { TamperStatus += " | Over Cureent B"; }
+                    if (DS_Functions.checkBit(tamper_status[4], 0x20) == true) { TamperStatus += " | Over Current Y"; }
+                    if (DS_Functions.checkBit(tamper_status[4], 0x10) == true) { TamperStatus += " | Over Current R"; }
+                    if (DS_Functions.checkBit(tamper_status[4], 0x08) == true) { TamperStatus += " | Abnormal Frequency"; }
+                    if (DS_Functions.checkBit(tamper_status[4], 0x04) == true) { TamperStatus += " | Two wire"; }
+                    if (DS_Functions.checkBit(tamper_status[4], 0x02) == true) { TamperStatus += " | RTC Error"; }
+                    if (DS_Functions.checkBit(tamper_status[4], 0x01) == true) { TamperStatus += " | bit32"; }
+
+                    if (DS_Functions.checkBit(tamper_status[3], 0x80) == true) { TamperStatus += " | 35KV/ESD"; }
+                    if (DS_Functions.checkBit(tamper_status[3], 0x40) == true) { TamperStatus += " | Invalid phase association"; }
+                    if (DS_Functions.checkBit(tamper_status[3], 0x20) == true) { TamperStatus += " | Invalid voltage"; }
+                    if (DS_Functions.checkBit(tamper_status[3], 0x10) == true) { TamperStatus += " | High Neutral Current"; }
+                    if (DS_Functions.checkBit(tamper_status[3], 0x08) == true) { TamperStatus += " | Wrong connection"; }
+                    if (DS_Functions.checkBit(tamper_status[3], 0x04) == true) { TamperStatus += " | Main battery low"; }
+                    if (DS_Functions.checkBit(tamper_status[3], 0x02) == true) { TamperStatus += " | Low Load"; }
+                    if (DS_Functions.checkBit(tamper_status[3], 0x01) == true) { TamperStatus += " | Over Load"; }
+
+                    if (DS_Functions.checkBit(tamper_status[2], 0x80) == true) { TamperStatus += " | EEPROM Fail"; }
+                    if (DS_Functions.checkBit(tamper_status[2], 0x40) == true) { TamperStatus += " | B Phase Active Export"; }
+                    if (DS_Functions.checkBit(tamper_status[2], 0x20) == true) { TamperStatus += " | Y Phase Active Export"; }
+                    if (DS_Functions.checkBit(tamper_status[2], 0x10) == true) { TamperStatus += " | R Phase Active Export"; }
+                    if (DS_Functions.checkBit(tamper_status[2], 0x08) == true) { TamperStatus += " | Phase sequence reverse"; }
+                    if (DS_Functions.checkBit(tamper_status[2], 0x04) == true) { TamperStatus += " | Top Cover"; }
+                    if (DS_Functions.checkBit(tamper_status[2], 0x02) == true) { TamperStatus += " | Low PF"; }
+                    if (DS_Functions.checkBit(tamper_status[2], 0x01) == true) { TamperStatus += " | Neutral Disturb"; }
+
+                    if (DS_Functions.checkBit(tamper_status[1], 0x80) == true) { TamperStatus += " | Magnet"; }
+                    if (DS_Functions.checkBit(tamper_status[1], 0x40) == true) { TamperStatus += " | Over Current"; }
+                    if (DS_Functions.checkBit(tamper_status[1], 0x20) == true) { TamperStatus += " | CT Bypass"; }
+                    if (DS_Functions.checkBit(tamper_status[1], 0x10) == true) { TamperStatus += " | Current Unbalance"; }
+                    if (DS_Functions.checkBit(tamper_status[1], 0x08) == true) { TamperStatus += " | CY Open B"; }
+                    if (DS_Functions.checkBit(tamper_status[1], 0x04) == true) { TamperStatus += " | CT Open Y"; }
+                    if (DS_Functions.checkBit(tamper_status[1], 0x02) == true) { TamperStatus += " | CT Open R"; }
+                    if (DS_Functions.checkBit(tamper_status[1], 0x01) == true) { TamperStatus += " | CT Reverse B"; }
+
+                    if (DS_Functions.checkBit(tamper_status[0], 0x80) == true) { TamperStatus += " | CT Reverse Y"; }
+                    if (DS_Functions.checkBit(tamper_status[0], 0x40) == true) { TamperStatus += " | CT Reverse R"; }
+                    if (DS_Functions.checkBit(tamper_status[0], 0x20) == true) { TamperStatus += " | Vol Unbalance"; }
+                    if (DS_Functions.checkBit(tamper_status[0], 0x10) == true) { TamperStatus += " | Vol Low"; }
+                    if (DS_Functions.checkBit(tamper_status[0], 0x08) == true) { TamperStatus += " | Vol High"; }
+                    if (DS_Functions.checkBit(tamper_status[0], 0x04) == true) { TamperStatus += " | Vol Miss B"; }
+                    if (DS_Functions.checkBit(tamper_status[0], 0x02) == true) { TamperStatus += " | Vol Miss Y"; }
+                    if (DS_Functions.checkBit(tamper_status[0], 0x01) == true) { TamperStatus += " | Vol Miss R"; }
+
+                    /* Data logging */
+                    if (instant_data_log_filename != String.Empty)
+                    {
+                        using (StreamWriter sw = File.AppendText(instant_data_log_filename))
+                        {
+                            sw.Write(powerUpSec.ToString()); sw.Write(tab);
+                            sw.Write(Time); sw.Write(tab);
+                            sw.Write(VolR.ToString("0.00")); sw.Write(tab);
+                            sw.Write(VolY.ToString("0.00")); sw.Write(tab);
+                            sw.Write(VolB.ToString("0.00")); sw.Write(tab);
+                            sw.Write(VolRdc.ToString()); sw.Write(tab);
+                            sw.Write(VolYdc.ToString()); sw.Write(tab);
+                            sw.Write(VolBdc.ToString()); sw.Write(tab);
+                            sw.Write(CurrRSigned.ToString("0.000")); sw.Write(tab);
+                            sw.Write(CurrYSigned.ToString("0.000")); sw.Write(tab);
+                            sw.Write(CurrBSigned.ToString("0.000")); sw.Write(tab);
+                            sw.Write(CurrN.ToString("0.000")); sw.Write(tab);
+                            sw.Write(CurrRdc.ToString()); sw.Write(tab);
+                            sw.Write(CurrYdc.ToString()); sw.Write(tab);
+                            sw.Write(CurrBdc.ToString()); sw.Write(tab);
+                            sw.Write(CurrNdc.ToString()); sw.Write(tab);
+                            sw.Write(PFR.ToString("0.000")); sw.Write(tab);
+                            sw.Write(PFY.ToString("0.000")); sw.Write(tab);
+                            sw.Write(PFB.ToString("0.000")); sw.Write(tab);
+                            sw.Write(PFNet.ToString("0.000")); sw.Write(tab);
+                            sw.Write(AnglePFR.ToString("0.00")); sw.Write(tab);
+                            sw.Write(AnglePFY.ToString("0.00")); sw.Write(tab);
+                            sw.Write(AnglePFB.ToString("0.00")); sw.Write(tab);
+                            sw.Write(WattR.ToString("0.0")); sw.Write(tab);
+                            sw.Write(WattY.ToString("0.0")); sw.Write(tab);
+                            sw.Write(WattB.ToString("0.0")); sw.Write(tab);
+                            sw.Write(WattNet.ToString("0.0")); sw.Write(tab);
+
+                            sw.Write(VARR.ToString("0.0")); sw.Write(tab);
+                            sw.Write(VARY.ToString("0.0")); sw.Write(tab);
+                            sw.Write(VARB.ToString("0.0")); sw.Write(tab);
+                            sw.Write(VARNet.ToString("0.0")); sw.Write(tab);
+                            sw.Write(VAR.ToString("0.0")); sw.Write(tab);
+                            sw.Write(VAY.ToString("0.0")); sw.Write(tab);
+                            sw.Write(VAB.ToString("0.0")); sw.Write(tab);
+                            sw.Write(VANet.ToString("0.0")); sw.Write(tab);
+                            sw.Write(VAR_vi.ToString("0.0")); sw.Write(tab);
+                            sw.Write(VAY_vi.ToString("0.0")); sw.Write(tab);
+                            sw.Write(VAB_vi.ToString("0.0")); sw.Write(tab);
+                            sw.Write(VANet_vi.ToString("0.0")); sw.Write(tab);
+                            sw.Write(VAR_triangle.ToString("0.0")); sw.Write(tab);
+                            sw.Write(VAY_triangle.ToString("0.0")); sw.Write(tab);
+                            sw.Write(VAB_triangle.ToString("0.0")); sw.Write(tab);
+                            sw.Write(VANet_triangle.ToString("0.0")); sw.Write(tab);
+                            sw.Write(FreqR.ToString("0.000")); sw.Write(tab);
+                            sw.Write(FreqY.ToString("0.000")); sw.Write(tab);
+                            sw.Write(FreqB.ToString("0.000")); sw.Write(tab);
+                            sw.Write(FreqNet.ToString("0.000")); sw.Write(tab);
+                            sw.Write(QuadrantR.ToString()); sw.Write(tab);
+                            sw.Write(QuadrantY.ToString()); sw.Write(tab);
+                            sw.Write(QuadrantB.ToString()); sw.Write(tab);
+                            sw.Write(QuadrantNet.ToString()); sw.Write(tab);
+                            sw.Write(SamplesR.ToString()); sw.Write(tab);
+                            sw.Write(SamplesY.ToString()); sw.Write(tab);
+                            sw.Write(SamplesB.ToString()); sw.Write(tab);
+                            sw.Write(SamplesPerSec.ToString()); sw.Write(tab);
+                            sw.Write(SamplesN.ToString()); sw.Write(tab);
+                            sw.Write(THDVr.ToString("0.0")); sw.Write(tab);
+                            sw.Write(THDVy.ToString("0.0")); sw.Write(tab);
+                            sw.Write(THDVb.ToString("0.0")); sw.Write(tab);
+                            sw.Write(THDIr.ToString("0.0")); sw.Write(tab);
+                            sw.Write(THDIy.ToString("0.0")); sw.Write(tab);
+                            sw.Write(THDIb.ToString("0.0")); sw.Write(tab);
+                            sw.Write(CurrNVector.ToString("0.000")); sw.Write(tab); 
+                            sw.Write(AngleNVector.ToString("0.00")); sw.Write(tab);
+                            sw.Write(VolRY.ToString("0.00")); sw.Write(tab);
+                            sw.Write(VolYB.ToString("0.00")); sw.Write(tab);
+                            sw.Write(VolBR.ToString("0.00")); sw.Write(tab);
+                            sw.Write(AngleRY.ToString("0.00")); sw.Write(tab);
+                            sw.Write(AngleYB.ToString("0.00")); sw.Write(tab);
+                            sw.Write(AngleBR.ToString("0.00")); sw.Write(tab);
+                            sw.Write(error_act_r.ToString("0.00")); sw.Write(tab);
+                            sw.Write(error_act_y.ToString("0.00")); sw.Write(tab);
+                            sw.Write(error_act_b.ToString("0.00")); sw.Write(tab);
+                            sw.Write(error_act_total.ToString("0.00")); sw.Write(tab);
+                            sw.Write(error_react_r.ToString("0.00")); sw.Write(tab);
+                            sw.Write(error_react_y.ToString("0.00")); sw.Write(tab);
+                            sw.Write(error_react_b.ToString("0.00")); sw.Write(tab);
+                            sw.Write(error_react_total.ToString("0.00")); sw.Write(tab);
+                            sw.Write(error_app_r.ToString("0.00")); sw.Write(tab);
+                            sw.Write(error_app_y.ToString("0.00")); sw.Write(tab);
+                            sw.Write(error_app_b.ToString("0.00")); sw.Write(tab);
+                            sw.Write(error_app_total.ToString("0.00")); sw.Write(tab);
+
+                            sw.Write(EnergyWhR_imp.ToString("0.000")); sw.Write(tab);
+                            sw.Write(EnergyWhR_exp.ToString("0.000")); sw.Write(tab);
+                            sw.Write(EnergyWhY_imp.ToString("0.000")); sw.Write(tab);
+                            sw.Write(EnergyWhY_exp.ToString("0.000")); sw.Write(tab);
+                            sw.Write(EnergyWhB_imp.ToString("0.000")); sw.Write(tab);
+                            sw.Write(EnergyWhB_exp.ToString("0.000")); sw.Write(tab);
+                            sw.Write(EnergyWhTotal_imp.ToString("0.000")); sw.Write(tab);
+                            sw.Write(EnergyWhTotal_exp.ToString("0.000")); sw.Write(tab);
+                            sw.Write(EnergyVARhTotal_q1.ToString("0.000")); sw.Write(tab);
+                            sw.Write(EnergyVARhTotal_q2.ToString("0.000")); sw.Write(tab);
+                            sw.Write(EnergyVARhTotal_q3.ToString("0.000")); sw.Write(tab);
+                            sw.Write(EnergyVARhTotal_q4.ToString("0.000")); sw.Write(tab); 
+                            sw.Write(EnergyVAhTotal_imp.ToString("0.000")); sw.Write(tab);
+                            sw.Write(EnergyVAhTotal_exp.ToString("0.000")); sw.Write(tab);
+                            sw.Write(EnergyFWhR_imp.ToString("0.000")); sw.Write(tab);
+                            sw.Write(EnergyFWhR_exp.ToString("0.000")); sw.Write(tab);
+                            sw.Write(EnergyFWhY_imp.ToString("0.000")); sw.Write(tab);
+                            sw.Write(EnergyFWhY_exp.ToString("0.000")); sw.Write(tab);
+                            sw.Write(EnergyFWhB_imp.ToString("0.000")); sw.Write(tab);
+                            sw.Write(EnergyFWhB_exp.ToString("0.000")); sw.Write(tab);
+                            sw.Write(EnergyFWhTotal_imp.ToString("0.000")); sw.Write(tab);
+                            sw.Write(EnergyFWhTotal_exp.ToString("0.000")); sw.Write(tab);
+                            sw.Write(WattRFunda.ToString("0.0")); sw.Write(tab);
+                            sw.Write(WattYFunda.ToString("0.0")); sw.Write(tab);
+                            sw.Write(WattBFunda.ToString("0.0")); sw.Write(tab);
+                            sw.Write(WattNetFunda.ToString("0.0")); sw.Write(tab);
+
+                            sw.Write(temperature_tlv.ToString()); sw.Write(tab);
+                            sw.Write(LoopCycles.ToString()); sw.Write(tab);
+                            sw.Write(battery_voltage.ToString("0.00")); sw.Write(tab);
+                            sw.Write(battery_voltage_rtc.ToString("0.00")); sw.Write(tab);
+                            sw.Write(MeteringMode.ToString()); sw.Write(tab);
+                            sw.Write(fg_flag.ToString()); sw.Write(tab);
+
+                            sw.Write(reactiveSamples.ToString()); sw.Write(tab);
+                            sw.Write(reactiveTimer.ToString()); sw.Write(tab);
+                            sw.Write(reactiveTimeDelay.ToString()); sw.Write(tab);
+                            sw.Write(reactiveTimeDeviation.ToString()); sw.Write(tab);
+
+                            sw.Write(MISCData); sw.Write(tab);
+                            sw.Write(TamperStatus); sw.Write(tab);
+                            sw.Write(newline);
+                            sw.Close();
+                            sw.Dispose();
+                        }
+                    }
                 }
             }
         }

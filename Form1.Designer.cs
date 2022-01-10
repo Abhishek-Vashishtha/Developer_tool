@@ -125,6 +125,12 @@ namespace Developer_Tools
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabControl3 = new System.Windows.Forms.TabControl();
             this.tabPage11 = new System.Windows.Forms.TabPage();
+            this.textBox_VATotal_triangle = new System.Windows.Forms.TextBox();
+            this.textBox_VATotal_vi = new System.Windows.Forms.TextBox();
+            this.textBox_VAB_triangle = new System.Windows.Forms.TextBox();
+            this.textBox_VAY_triangle = new System.Windows.Forms.TextBox();
+            this.textBox_VAR_triangle = new System.Windows.Forms.TextBox();
+            this.label100 = new System.Windows.Forms.Label();
             this.textBox_VAB_vi = new System.Windows.Forms.TextBox();
             this.textBox_VAY_vi = new System.Windows.Forms.TextBox();
             this.textBox_VAR_vi = new System.Windows.Forms.TextBox();
@@ -190,7 +196,7 @@ namespace Developer_Tools
             this.textBox_CurrN = new System.Windows.Forms.TextBox();
             this.textBox_CurrNdc = new System.Windows.Forms.TextBox();
             this.groupBox15 = new System.Windows.Forms.GroupBox();
-            this.textBox_NewFileName = new System.Windows.Forms.TextBox();
+            this.textBox_InstantLogNewFileName = new System.Windows.Forms.TextBox();
             this.checkBox_LogToNewFile = new System.Windows.Forms.CheckBox();
             this.checkBox_LogData = new System.Windows.Forms.CheckBox();
             this.button_Read = new System.Windows.Forms.Button();
@@ -640,12 +646,7 @@ namespace Developer_Tools
             this.timer500ms = new System.Windows.Forms.Timer(this.components);
             this.timer100ms = new System.Windows.Forms.Timer(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.textBox_VAB_triangle = new System.Windows.Forms.TextBox();
-            this.textBox_VAY_triangle = new System.Windows.Forms.TextBox();
-            this.textBox_VAR_triangle = new System.Windows.Forms.TextBox();
-            this.label100 = new System.Windows.Forms.Label();
-            this.textBox_VATotal_vi = new System.Windows.Forms.TextBox();
-            this.textBox_VATotal_triangle = new System.Windows.Forms.TextBox();
+            this.button_InstantLogFileCreate = new System.Windows.Forms.Button();
             this.menuStripMain.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -1802,6 +1803,69 @@ namespace Developer_Tools
             this.tabPage11.Text = "Instant data";
             this.tabPage11.Click += new System.EventHandler(this.tabPage11_Click);
             // 
+            // textBox_VATotal_triangle
+            // 
+            this.textBox_VATotal_triangle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_VATotal_triangle.Location = new System.Drawing.Point(717, 238);
+            this.textBox_VATotal_triangle.Name = "textBox_VATotal_triangle";
+            this.textBox_VATotal_triangle.ReadOnly = true;
+            this.textBox_VATotal_triangle.Size = new System.Drawing.Size(61, 20);
+            this.textBox_VATotal_triangle.TabIndex = 699;
+            this.textBox_VATotal_triangle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox_VATotal_vi
+            // 
+            this.textBox_VATotal_vi.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_VATotal_vi.Location = new System.Drawing.Point(717, 216);
+            this.textBox_VATotal_vi.Name = "textBox_VATotal_vi";
+            this.textBox_VATotal_vi.ReadOnly = true;
+            this.textBox_VATotal_vi.Size = new System.Drawing.Size(61, 20);
+            this.textBox_VATotal_vi.TabIndex = 698;
+            this.textBox_VATotal_vi.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox_VAB_triangle
+            // 
+            this.textBox_VAB_triangle.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.textBox_VAB_triangle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_VAB_triangle.Location = new System.Drawing.Point(646, 238);
+            this.textBox_VAB_triangle.Name = "textBox_VAB_triangle";
+            this.textBox_VAB_triangle.ReadOnly = true;
+            this.textBox_VAB_triangle.Size = new System.Drawing.Size(61, 20);
+            this.textBox_VAB_triangle.TabIndex = 697;
+            this.textBox_VAB_triangle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox_VAY_triangle
+            // 
+            this.textBox_VAY_triangle.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.textBox_VAY_triangle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_VAY_triangle.Location = new System.Drawing.Point(570, 238);
+            this.textBox_VAY_triangle.Name = "textBox_VAY_triangle";
+            this.textBox_VAY_triangle.ReadOnly = true;
+            this.textBox_VAY_triangle.Size = new System.Drawing.Size(61, 20);
+            this.textBox_VAY_triangle.TabIndex = 696;
+            this.textBox_VAY_triangle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox_VAR_triangle
+            // 
+            this.textBox_VAR_triangle.BackColor = System.Drawing.Color.LightCoral;
+            this.textBox_VAR_triangle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_VAR_triangle.Location = new System.Drawing.Point(489, 237);
+            this.textBox_VAR_triangle.Name = "textBox_VAR_triangle";
+            this.textBox_VAR_triangle.ReadOnly = true;
+            this.textBox_VAR_triangle.Size = new System.Drawing.Size(61, 20);
+            this.textBox_VAR_triangle.TabIndex = 695;
+            this.textBox_VAR_triangle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label100
+            // 
+            this.label100.AutoSize = true;
+            this.label100.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label100.Location = new System.Drawing.Point(411, 240);
+            this.label100.Name = "label100";
+            this.label100.Size = new System.Drawing.Size(75, 13);
+            this.label100.TabIndex = 694;
+            this.label100.Text = "Power (VA-△):";
+            // 
             // textBox_VAB_vi
             // 
             this.textBox_VAB_vi.BackColor = System.Drawing.Color.CornflowerBlue;
@@ -2491,7 +2555,8 @@ namespace Developer_Tools
             // 
             // groupBox15
             // 
-            this.groupBox15.Controls.Add(this.textBox_NewFileName);
+            this.groupBox15.Controls.Add(this.button_InstantLogFileCreate);
+            this.groupBox15.Controls.Add(this.textBox_InstantLogNewFileName);
             this.groupBox15.Controls.Add(this.checkBox_LogToNewFile);
             this.groupBox15.Controls.Add(this.checkBox_LogData);
             this.groupBox15.Controls.Add(this.button_Read);
@@ -2503,18 +2568,17 @@ namespace Developer_Tools
             this.groupBox15.TabStop = false;
             this.groupBox15.Text = "Read Setup";
             // 
-            // textBox_NewFileName
+            // textBox_InstantLogNewFileName
             // 
-            this.textBox_NewFileName.Enabled = false;
-            this.textBox_NewFileName.Location = new System.Drawing.Point(5, 38);
-            this.textBox_NewFileName.Name = "textBox_NewFileName";
-            this.textBox_NewFileName.Size = new System.Drawing.Size(239, 22);
-            this.textBox_NewFileName.TabIndex = 307;
+            this.textBox_InstantLogNewFileName.Enabled = false;
+            this.textBox_InstantLogNewFileName.Location = new System.Drawing.Point(5, 38);
+            this.textBox_InstantLogNewFileName.Name = "textBox_InstantLogNewFileName";
+            this.textBox_InstantLogNewFileName.Size = new System.Drawing.Size(239, 22);
+            this.textBox_InstantLogNewFileName.TabIndex = 307;
             // 
             // checkBox_LogToNewFile
             // 
             this.checkBox_LogToNewFile.AutoSize = true;
-            this.checkBox_LogToNewFile.Enabled = false;
             this.checkBox_LogToNewFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBox_LogToNewFile.Location = new System.Drawing.Point(82, 19);
             this.checkBox_LogToNewFile.Name = "checkBox_LogToNewFile";
@@ -2522,13 +2586,13 @@ namespace Developer_Tools
             this.checkBox_LogToNewFile.TabIndex = 306;
             this.checkBox_LogToNewFile.Text = "New File";
             this.checkBox_LogToNewFile.UseVisualStyleBackColor = true;
+            this.checkBox_LogToNewFile.CheckedChanged += new System.EventHandler(this.checkBox_LogToNewFile_CheckedChanged);
             // 
             // checkBox_LogData
             // 
             this.checkBox_LogData.AutoSize = true;
             this.checkBox_LogData.Checked = true;
             this.checkBox_LogData.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox_LogData.Enabled = false;
             this.checkBox_LogData.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBox_LogData.Location = new System.Drawing.Point(6, 19);
             this.checkBox_LogData.Name = "checkBox_LogData";
@@ -2536,6 +2600,7 @@ namespace Developer_Tools
             this.checkBox_LogData.TabIndex = 304;
             this.checkBox_LogData.Text = "Log Data";
             this.checkBox_LogData.UseVisualStyleBackColor = true;
+            this.checkBox_LogData.CheckedChanged += new System.EventHandler(this.checkBox_LogData_CheckedChanged);
             // 
             // button_Read
             // 
@@ -7225,68 +7290,16 @@ namespace Developer_Tools
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // textBox_VAB_triangle
+            // button_InstantLogFileCreate
             // 
-            this.textBox_VAB_triangle.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.textBox_VAB_triangle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_VAB_triangle.Location = new System.Drawing.Point(646, 238);
-            this.textBox_VAB_triangle.Name = "textBox_VAB_triangle";
-            this.textBox_VAB_triangle.ReadOnly = true;
-            this.textBox_VAB_triangle.Size = new System.Drawing.Size(61, 20);
-            this.textBox_VAB_triangle.TabIndex = 697;
-            this.textBox_VAB_triangle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox_VAY_triangle
-            // 
-            this.textBox_VAY_triangle.BackColor = System.Drawing.Color.LightGoldenrodYellow;
-            this.textBox_VAY_triangle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_VAY_triangle.Location = new System.Drawing.Point(570, 238);
-            this.textBox_VAY_triangle.Name = "textBox_VAY_triangle";
-            this.textBox_VAY_triangle.ReadOnly = true;
-            this.textBox_VAY_triangle.Size = new System.Drawing.Size(61, 20);
-            this.textBox_VAY_triangle.TabIndex = 696;
-            this.textBox_VAY_triangle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox_VAR_triangle
-            // 
-            this.textBox_VAR_triangle.BackColor = System.Drawing.Color.LightCoral;
-            this.textBox_VAR_triangle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_VAR_triangle.Location = new System.Drawing.Point(489, 237);
-            this.textBox_VAR_triangle.Name = "textBox_VAR_triangle";
-            this.textBox_VAR_triangle.ReadOnly = true;
-            this.textBox_VAR_triangle.Size = new System.Drawing.Size(61, 20);
-            this.textBox_VAR_triangle.TabIndex = 695;
-            this.textBox_VAR_triangle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label100
-            // 
-            this.label100.AutoSize = true;
-            this.label100.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label100.Location = new System.Drawing.Point(411, 240);
-            this.label100.Name = "label100";
-            this.label100.Size = new System.Drawing.Size(75, 13);
-            this.label100.TabIndex = 694;
-            this.label100.Text = "Power (VA-△):";
-            // 
-            // textBox_VATotal_vi
-            // 
-            this.textBox_VATotal_vi.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_VATotal_vi.Location = new System.Drawing.Point(717, 216);
-            this.textBox_VATotal_vi.Name = "textBox_VATotal_vi";
-            this.textBox_VATotal_vi.ReadOnly = true;
-            this.textBox_VATotal_vi.Size = new System.Drawing.Size(61, 20);
-            this.textBox_VATotal_vi.TabIndex = 698;
-            this.textBox_VATotal_vi.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox_VATotal_triangle
-            // 
-            this.textBox_VATotal_triangle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_VATotal_triangle.Location = new System.Drawing.Point(717, 238);
-            this.textBox_VATotal_triangle.Name = "textBox_VATotal_triangle";
-            this.textBox_VATotal_triangle.ReadOnly = true;
-            this.textBox_VATotal_triangle.Size = new System.Drawing.Size(61, 20);
-            this.textBox_VATotal_triangle.TabIndex = 699;
-            this.textBox_VATotal_triangle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.button_InstantLogFileCreate.Enabled = false;
+            this.button_InstantLogFileCreate.Location = new System.Drawing.Point(168, 13);
+            this.button_InstantLogFileCreate.Name = "button_InstantLogFileCreate";
+            this.button_InstantLogFileCreate.Size = new System.Drawing.Size(75, 23);
+            this.button_InstantLogFileCreate.TabIndex = 308;
+            this.button_InstantLogFileCreate.Text = "Create File";
+            this.button_InstantLogFileCreate.UseVisualStyleBackColor = true;
+            this.button_InstantLogFileCreate.Click += new System.EventHandler(this.button_InstantLogFileCreate_Click);
             // 
             // Form1
             // 
@@ -7924,7 +7937,7 @@ namespace Developer_Tools
         private System.Windows.Forms.TextBox textBox_CurrN;
         private System.Windows.Forms.TextBox textBox_CurrNdc;
         private System.Windows.Forms.GroupBox groupBox15;
-        private System.Windows.Forms.TextBox textBox_NewFileName;
+        private System.Windows.Forms.TextBox textBox_InstantLogNewFileName;
         private System.Windows.Forms.CheckBox checkBox_LogToNewFile;
         private System.Windows.Forms.Button button_Read;
         private System.Windows.Forms.CheckBox checkBox_LogData;
@@ -8012,6 +8025,7 @@ namespace Developer_Tools
         private System.Windows.Forms.TextBox textBox_VAY_triangle;
         private System.Windows.Forms.TextBox textBox_VAR_triangle;
         private System.Windows.Forms.Label label100;
+        private System.Windows.Forms.Button button_InstantLogFileCreate;
     }
 }
 
