@@ -1260,7 +1260,33 @@ namespace Developer_Tools
             {
                 EnergyInHR = false;
             }
-            if(checkBox_EnergyMeterShowVectorDiagram.Checked == true)
+            
+            /* Serial instant data log file name */
+            if (checkBox_LogData.Checked == true)
+            {
+                /* set the file name */
+                if (checkBox_LogToNewFile.Checked == true)
+                {
+                    instant_data_log_filename = "D:\\DevelopersTool\\" + textBox_InstantLogNewFileName.Text + ".txt";
+                }
+                else
+                {
+                    instant_data_log_filename = "D:\\DevelopersTool\\DevelopersToolEnergyMeterInstantDataLogFile.txt";
+                }
+                /* verfiy the file existant on the disk */
+                if (File.Exists(instant_data_log_filename) == false)
+                {
+                    checkBox_LogData.Checked = false;
+                    MessageBox.Show("File Not Exists..!!");
+                    instant_data_log_filename = string.Empty;
+                }
+            }
+            else
+            {
+                instant_data_log_filename = string.Empty;
+            }
+
+            if (checkBox_EnergyMeterShowVectorDiagram.Checked == true)
             {
                 Point StartPoint, EndPoint;
                 Font arialFont = new Font("Arial", 10);
@@ -1474,33 +1500,7 @@ namespace Developer_Tools
                 WaveForm.Dispose();
             }
         }
-        public void update_global_vars()
-        {
-            /* Serial instant data log file name */
-            if(checkBox_LogData.Checked == true)
-            {
-                /* set the file name */
-                if(checkBox_LogToNewFile.Checked == true)
-                {
-                    instant_data_log_filename = "D:\\DevelopersTool\\" + textBox_InstantLogNewFileName.Text + ".txt";
-                }
-                else
-                {
-                    instant_data_log_filename = "D:\\DevelopersTool\\DevelopersToolEnergyMeterInstantDataLogFile.txt";
-                }
-                /* verfiy the file existant on the disk */
-                if (File.Exists(instant_data_log_filename) == false)
-                {
-                    checkBox_LogData.Checked = false;
-                    MessageBox.Show("File Not Exists..!!");
-                    instant_data_log_filename = string.Empty;
-                }
-            }
-            else
-            {
-                instant_data_log_filename = string.Empty;
-            }
-        }
+        
         public void update_textboxes()
         {
             /* Communication traffic textbox update */
@@ -1813,7 +1813,6 @@ namespace Developer_Tools
         private void timer100ms_Tick(object sender, EventArgs e)
         {
             update_textboxes();     /* make it as a thread and do the operation */
-            update_global_vars();
         }
 
         private void textBox_InputVr_Click(object sender, EventArgs e)
