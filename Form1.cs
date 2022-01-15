@@ -97,6 +97,7 @@ namespace Developer_Tools
         public static double EnergyVAhR_exp, EnergyVAhY_exp, EnergyVAhB_exp, EnergyVAhTotal_exp;
         public static double EnergyFWhR_imp, EnergyFWhY_imp, EnergyFWhB_imp, EnergyFWhTotal_imp;
         public static double EnergyFWhR_exp, EnergyFWhY_exp, EnergyFWhB_exp, EnergyFWhTotal_exp;
+        public static double EnergyDefWhR, EnergyDefWhY, EnergyDefWhB, EnergyDefWhTotal;
         public static int pulse_EnergyWhR_imp, pulse_EnergyWhY_imp, pulse_EnergyWhB_imp, pulse_EnergyWhTotal_imp;
         public static int pulse_EnergyWhR_exp, pulse_EnergyWhY_exp, pulse_EnergyWhB_exp, pulse_EnergyWhTotal_exp;
         public static int pulse_EnergyVARhR_q1, pulse_EnergyVARhY_q1, pulse_EnergyVARhB_q1, pulse_EnergyVARhTotal_q1;
@@ -107,6 +108,7 @@ namespace Developer_Tools
         public static int pulse_EnergyVAhR_exp, pulse_EnergyVAhY_exp, pulse_EnergyVAhB_exp, pulse_EnergyVAhTotal_exp;
         public static int pulse_EnergyFWhR_imp, pulse_EnergyFWhY_imp, pulse_EnergyFWhB_imp, pulse_EnergyFWhTotal_imp;
         public static int pulse_EnergyFWhR_exp, pulse_EnergyFWhY_exp, pulse_EnergyFWhB_exp, pulse_EnergyFWhTotal_exp;
+        public static int pulse_EnergyDefWhR, pulse_EnergyDefWhY, pulse_EnergyDefWhB, pulse_EnergyDefWhTotal;
 
         public static string Time;
         public static int powerUpSec, reactiveSamples, reactiveTimer, reactiveTimeDelay, reactiveTimeDeviation;
@@ -1659,6 +1661,11 @@ namespace Developer_Tools
             textBox_FEnergyWhExportB.Text = EnergyFWhB_exp.ToString("0.000");
             textBox_FEnergyWhExportTotal.Text = EnergyFWhTotal_exp.ToString("0.000");
 
+            textBox_EnergyDefWhR.Text = EnergyDefWhR.ToString("0.000");
+            textBox_EnergyDefWhY.Text = EnergyDefWhY.ToString("0.000");
+            textBox_EnergyDefWhB.Text = EnergyDefWhB.ToString("0.000");
+            textBox_EnergyDefWhTotal.Text = EnergyDefWhTotal.ToString("0.000");
+
             textBox_ErrorActR.Text = error_act_r.ToString("0.00");
             textBox_ErrorActY.Text = error_act_y.ToString("0.00");
             textBox_ErrorActB.Text = error_act_b.ToString("0.00");
@@ -2226,6 +2233,10 @@ namespace Developer_Tools
                     EnergyFWhY_exp = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
                     EnergyFWhB_exp = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
                     EnergyFWhTotal_exp = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
+                    EnergyDefWhR = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
+                    EnergyDefWhY = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
+                    EnergyDefWhB = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
+                    EnergyDefWhTotal = DS_Functions.ByteArrayToUs32(b_array, arr_ptr); arr_ptr += 4;
 
                     pulse_EnergyWhR_imp = b_array[arr_ptr++];
                     pulse_EnergyWhY_imp = b_array[arr_ptr++];
@@ -2267,6 +2278,10 @@ namespace Developer_Tools
                     pulse_EnergyFWhY_exp = b_array[arr_ptr++];
                     pulse_EnergyFWhB_exp = b_array[arr_ptr++];
                     pulse_EnergyFWhTotal_exp = b_array[arr_ptr++];
+                    pulse_EnergyDefWhR = b_array[arr_ptr++];
+                    pulse_EnergyDefWhY = b_array[arr_ptr++];
+                    pulse_EnergyDefWhB = b_array[arr_ptr++];
+                    pulse_EnergyDefWhTotal = b_array[arr_ptr++];
 
                     Time = String.Empty;
 
@@ -2419,6 +2434,10 @@ namespace Developer_Tools
                         EnergyFWhY_exp += QUANTA * (pulse_EnergyFWhY_exp / PULSE);
                         EnergyFWhB_exp += QUANTA * (pulse_EnergyFWhB_exp / PULSE);
                         EnergyFWhTotal_exp += QUANTA * (pulse_EnergyFWhTotal_exp / PULSE);
+                        EnergyDefWhR += QUANTA * (pulse_EnergyDefWhR / PULSE);
+                        EnergyDefWhY += QUANTA * (pulse_EnergyDefWhY / PULSE);
+                        EnergyDefWhB += QUANTA * (pulse_EnergyDefWhB / PULSE);
+                        EnergyDefWhTotal += QUANTA * (pulse_EnergyDefWhTotal / PULSE);
 
                         EnergyWhR_imp += PulseWeight[pulse_EnergyWhR_imp % PULSE];
                         EnergyWhY_imp += PulseWeight[pulse_EnergyWhY_imp % PULSE];
@@ -2460,6 +2479,10 @@ namespace Developer_Tools
                         EnergyFWhY_exp += PulseWeight[pulse_EnergyFWhY_exp % PULSE];
                         EnergyFWhB_exp += PulseWeight[pulse_EnergyFWhB_exp % PULSE];
                         EnergyFWhTotal_exp += PulseWeight[pulse_EnergyFWhTotal_exp % PULSE];
+                        EnergyDefWhR += PulseWeight[pulse_EnergyDefWhR % PULSE];
+                        EnergyDefWhY += PulseWeight[pulse_EnergyDefWhY % PULSE];
+                        EnergyDefWhB += PulseWeight[pulse_EnergyDefWhB % PULSE];
+                        EnergyDefWhTotal += PulseWeight[pulse_EnergyDefWhTotal % PULSE];
                     }
                     VAR_vi = VolR * Math.Abs(CurrRSigned);
                     VAY_vi = VolY * Math.Abs(CurrYSigned);
@@ -2712,12 +2735,33 @@ namespace Developer_Tools
                             sw.Write(EnergyWhB_exp.ToString("0.000")); sw.Write(tab);
                             sw.Write(EnergyWhTotal_imp.ToString("0.000")); sw.Write(tab);
                             sw.Write(EnergyWhTotal_exp.ToString("0.000")); sw.Write(tab);
+                            
+                            sw.Write(EnergyVARhR_q1.ToString("0.000")); sw.Write(tab);
+                            sw.Write(EnergyVARhR_q2.ToString("0.000")); sw.Write(tab);
+                            sw.Write(EnergyVARhR_q3.ToString("0.000")); sw.Write(tab);
+                            sw.Write(EnergyVARhR_q4.ToString("0.000")); sw.Write(tab);
+                            sw.Write(EnergyVARhY_q1.ToString("0.000")); sw.Write(tab);
+                            sw.Write(EnergyVARhY_q2.ToString("0.000")); sw.Write(tab);
+                            sw.Write(EnergyVARhY_q3.ToString("0.000")); sw.Write(tab);
+                            sw.Write(EnergyVARhY_q4.ToString("0.000")); sw.Write(tab);
+                            sw.Write(EnergyVARhB_q1.ToString("0.000")); sw.Write(tab);
+                            sw.Write(EnergyVARhB_q2.ToString("0.000")); sw.Write(tab);
+                            sw.Write(EnergyVARhB_q3.ToString("0.000")); sw.Write(tab);
+                            sw.Write(EnergyVARhB_q4.ToString("0.000")); sw.Write(tab); 
                             sw.Write(EnergyVARhTotal_q1.ToString("0.000")); sw.Write(tab);
                             sw.Write(EnergyVARhTotal_q2.ToString("0.000")); sw.Write(tab);
                             sw.Write(EnergyVARhTotal_q3.ToString("0.000")); sw.Write(tab);
-                            sw.Write(EnergyVARhTotal_q4.ToString("0.000")); sw.Write(tab); 
+                            sw.Write(EnergyVARhTotal_q4.ToString("0.000")); sw.Write(tab);
+
+                            sw.Write(EnergyVAhR_imp.ToString("0.000")); sw.Write(tab);
+                            sw.Write(EnergyVAhR_exp.ToString("0.000")); sw.Write(tab);
+                            sw.Write(EnergyVAhY_imp.ToString("0.000")); sw.Write(tab);
+                            sw.Write(EnergyVAhY_exp.ToString("0.000")); sw.Write(tab);
+                            sw.Write(EnergyVAhB_imp.ToString("0.000")); sw.Write(tab);
+                            sw.Write(EnergyVAhB_exp.ToString("0.000")); sw.Write(tab); 
                             sw.Write(EnergyVAhTotal_imp.ToString("0.000")); sw.Write(tab);
                             sw.Write(EnergyVAhTotal_exp.ToString("0.000")); sw.Write(tab);
+
                             sw.Write(EnergyFWhR_imp.ToString("0.000")); sw.Write(tab);
                             sw.Write(EnergyFWhR_exp.ToString("0.000")); sw.Write(tab);
                             sw.Write(EnergyFWhY_imp.ToString("0.000")); sw.Write(tab);
@@ -2726,11 +2770,53 @@ namespace Developer_Tools
                             sw.Write(EnergyFWhB_exp.ToString("0.000")); sw.Write(tab);
                             sw.Write(EnergyFWhTotal_imp.ToString("0.000")); sw.Write(tab);
                             sw.Write(EnergyFWhTotal_exp.ToString("0.000")); sw.Write(tab);
+
+                            sw.Write(EnergyDefWhR.ToString("0.000")); sw.Write(tab);
+                            sw.Write(EnergyDefWhY.ToString("0.000")); sw.Write(tab);
+                            sw.Write(EnergyDefWhB.ToString("0.000")); sw.Write(tab);
+                            sw.Write(EnergyDefWhTotal.ToString("0.000")); sw.Write(tab);
+
+                            sw.Write(pulse_EnergyWhR_imp.ToString()); sw.Write(tab);
+                            sw.Write(pulse_EnergyWhR_exp.ToString()); sw.Write(tab);
+                            sw.Write(pulse_EnergyWhY_imp.ToString()); sw.Write(tab);
+                            sw.Write(pulse_EnergyWhY_exp.ToString()); sw.Write(tab);
+                            sw.Write(pulse_EnergyWhB_imp.ToString()); sw.Write(tab);
+                            sw.Write(pulse_EnergyWhB_exp.ToString()); sw.Write(tab);
+                            sw.Write(pulse_EnergyWhTotal_imp.ToString()); sw.Write(tab);
+                            sw.Write(pulse_EnergyWhTotal_exp.ToString()); sw.Write(tab);
+
+                            sw.Write(pulse_EnergyVARhR_q1.ToString()); sw.Write(tab);
+                            sw.Write(pulse_EnergyVARhR_q2.ToString()); sw.Write(tab);
+                            sw.Write(pulse_EnergyVARhR_q3.ToString()); sw.Write(tab);
+                            sw.Write(pulse_EnergyVARhR_q4.ToString()); sw.Write(tab);
+                            sw.Write(pulse_EnergyVARhY_q1.ToString()); sw.Write(tab);
+                            sw.Write(pulse_EnergyVARhY_q2.ToString()); sw.Write(tab);
+                            sw.Write(pulse_EnergyVARhY_q3.ToString()); sw.Write(tab);
+                            sw.Write(pulse_EnergyVARhY_q4.ToString()); sw.Write(tab);
+                            sw.Write(pulse_EnergyVARhB_q1.ToString()); sw.Write(tab);
+                            sw.Write(pulse_EnergyVARhB_q2.ToString()); sw.Write(tab);
+                            sw.Write(pulse_EnergyVARhB_q3.ToString()); sw.Write(tab);
+                            sw.Write(pulse_EnergyVARhB_q4.ToString()); sw.Write(tab);
+                            sw.Write(pulse_EnergyVARhTotal_q1.ToString()); sw.Write(tab);
+                            sw.Write(pulse_EnergyVARhTotal_q2.ToString()); sw.Write(tab);
+                            sw.Write(pulse_EnergyVARhTotal_q3.ToString()); sw.Write(tab);
+                            sw.Write(pulse_EnergyVARhTotal_q4.ToString()); sw.Write(tab);
+
+                            sw.Write(pulse_EnergyVAhR_imp.ToString()); sw.Write(tab);
+                            sw.Write(pulse_EnergyVAhR_exp.ToString()); sw.Write(tab);
+                            sw.Write(pulse_EnergyVAhY_imp.ToString()); sw.Write(tab);
+                            sw.Write(pulse_EnergyVAhY_exp.ToString()); sw.Write(tab);
+                            sw.Write(pulse_EnergyVAhB_imp.ToString()); sw.Write(tab);
+                            sw.Write(pulse_EnergyVAhB_exp.ToString()); sw.Write(tab);
+                            sw.Write(pulse_EnergyVAhTotal_imp.ToString()); sw.Write(tab);
+                            sw.Write(pulse_EnergyVAhTotal_exp.ToString()); sw.Write(tab);
+
                             sw.Write(WattRFunda.ToString("0.0")); sw.Write(tab);
                             sw.Write(WattYFunda.ToString("0.0")); sw.Write(tab);
                             sw.Write(WattBFunda.ToString("0.0")); sw.Write(tab);
                             sw.Write(WattNetFunda.ToString("0.0")); sw.Write(tab);
 
+                            
                             sw.Write(temperature_tlv.ToString()); sw.Write(tab);
                             sw.Write(LoopCycles.ToString()); sw.Write(tab);
                             sw.Write(battery_voltage.ToString("0.00")); sw.Write(tab);
