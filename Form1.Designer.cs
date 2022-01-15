@@ -196,6 +196,7 @@ namespace Developer_Tools
             this.textBox_CurrN = new System.Windows.Forms.TextBox();
             this.textBox_CurrNdc = new System.Windows.Forms.TextBox();
             this.groupBox15 = new System.Windows.Forms.GroupBox();
+            this.button_InstantLogFileCreate = new System.Windows.Forms.Button();
             this.textBox_InstantLogNewFileName = new System.Windows.Forms.TextBox();
             this.checkBox_LogToNewFile = new System.Windows.Forms.CheckBox();
             this.checkBox_LogData = new System.Windows.Forms.CheckBox();
@@ -646,7 +647,7 @@ namespace Developer_Tools
             this.timer500ms = new System.Windows.Forms.Timer(this.components);
             this.timer100ms = new System.Windows.Forms.Timer(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.button_InstantLogFileCreate = new System.Windows.Forms.Button();
+            this.checkBox_InstantEnergyInHR = new System.Windows.Forms.CheckBox();
             this.menuStripMain.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -700,7 +701,7 @@ namespace Developer_Tools
             // 
             // menuStripMain
             // 
-            this.menuStripMain.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.menuStripMain.BackColor = System.Drawing.Color.WhiteSmoke;
             this.menuStripMain.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.menuStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.connectionToolStripMenuItem,
@@ -1646,6 +1647,7 @@ namespace Developer_Tools
             // tabPage11
             // 
             this.tabPage11.BackColor = System.Drawing.Color.LightGray;
+            this.tabPage11.Controls.Add(this.checkBox_InstantEnergyInHR);
             this.tabPage11.Controls.Add(this.textBox_VATotal_triangle);
             this.tabPage11.Controls.Add(this.textBox_VATotal_vi);
             this.tabPage11.Controls.Add(this.textBox_VAB_triangle);
@@ -2567,6 +2569,17 @@ namespace Developer_Tools
             this.groupBox15.TabIndex = 660;
             this.groupBox15.TabStop = false;
             this.groupBox15.Text = "Read Setup";
+            // 
+            // button_InstantLogFileCreate
+            // 
+            this.button_InstantLogFileCreate.Enabled = false;
+            this.button_InstantLogFileCreate.Location = new System.Drawing.Point(168, 13);
+            this.button_InstantLogFileCreate.Name = "button_InstantLogFileCreate";
+            this.button_InstantLogFileCreate.Size = new System.Drawing.Size(75, 23);
+            this.button_InstantLogFileCreate.TabIndex = 308;
+            this.button_InstantLogFileCreate.Text = "Create File";
+            this.button_InstantLogFileCreate.UseVisualStyleBackColor = true;
+            this.button_InstantLogFileCreate.Click += new System.EventHandler(this.button_InstantLogFileCreate_Click);
             // 
             // textBox_InstantLogNewFileName
             // 
@@ -7290,23 +7303,22 @@ namespace Developer_Tools
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // button_InstantLogFileCreate
+            // checkBox_InstantEnergyInHR
             // 
-            this.button_InstantLogFileCreate.Enabled = false;
-            this.button_InstantLogFileCreate.Location = new System.Drawing.Point(168, 13);
-            this.button_InstantLogFileCreate.Name = "button_InstantLogFileCreate";
-            this.button_InstantLogFileCreate.Size = new System.Drawing.Size(75, 23);
-            this.button_InstantLogFileCreate.TabIndex = 308;
-            this.button_InstantLogFileCreate.Text = "Create File";
-            this.button_InstantLogFileCreate.UseVisualStyleBackColor = true;
-            this.button_InstantLogFileCreate.Click += new System.EventHandler(this.button_InstantLogFileCreate_Click);
+            this.checkBox_InstantEnergyInHR.AutoSize = true;
+            this.checkBox_InstantEnergyInHR.Location = new System.Drawing.Point(820, 370);
+            this.checkBox_InstantEnergyInHR.Name = "checkBox_InstantEnergyInHR";
+            this.checkBox_InstantEnergyInHR.Size = new System.Drawing.Size(87, 21);
+            this.checkBox_InstantEnergyInHR.TabIndex = 700;
+            this.checkBox_InstantEnergyInHR.Text = "HR Energy";
+            this.checkBox_InstantEnergyInHR.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1234, 661);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.progressBar_connectionStatus);
@@ -8026,6 +8038,7 @@ namespace Developer_Tools
         private System.Windows.Forms.TextBox textBox_VAR_triangle;
         private System.Windows.Forms.Label label100;
         private System.Windows.Forms.Button button_InstantLogFileCreate;
+        private System.Windows.Forms.CheckBox checkBox_InstantEnergyInHR;
     }
 }
 

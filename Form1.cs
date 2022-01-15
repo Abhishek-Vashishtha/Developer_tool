@@ -121,7 +121,7 @@ namespace Developer_Tools
         public static double error_app_r, error_app_y, error_app_b, error_app_total;
 
         public static byte[] tamper_status = new byte[8];
-
+        public static bool EnergyInHR;
         private void buttonOddComEvenSeg_Click(object sender, EventArgs e)
         {
             /* Frame Creation */
@@ -1250,6 +1250,14 @@ namespace Developer_Tools
 
             Meter_Const = Convert.ToUInt16(textBox_InputMeterConst.Text);
 
+            if(checkBox_InstantEnergyInHR.Checked == true)
+            {
+                EnergyInHR = true;
+            }
+            else
+            {
+                EnergyInHR = false;
+            }
             if(checkBox_EnergyMeterShowVectorDiagram.Checked == true)
             {
                 Point StartPoint, EndPoint;
@@ -2369,88 +2377,90 @@ namespace Developer_Tools
                         PULSE = 0;
                     }
                     //QUANTA * (pulseEnergyWhR / PULSE)
-                    EnergyWhR_imp += QUANTA *(pulse_EnergyWhR_imp / PULSE);
-                    EnergyWhY_imp += QUANTA *(pulse_EnergyWhY_imp / PULSE);
-                    EnergyWhB_imp += QUANTA *(pulse_EnergyWhB_imp / PULSE);
-                    EnergyWhTotal_imp += QUANTA *(pulse_EnergyWhTotal_imp / PULSE);
-                    EnergyWhR_exp += QUANTA *(pulse_EnergyWhR_exp / PULSE);
-                    EnergyWhY_exp += QUANTA *(pulse_EnergyWhY_exp / PULSE);
-                    EnergyWhB_exp += QUANTA *(pulse_EnergyWhB_exp / PULSE);
-                    EnergyWhTotal_exp += QUANTA *(pulse_EnergyWhTotal_exp / PULSE);
-                    EnergyVARhR_q1 += QUANTA *(pulse_EnergyVARhR_q1 / PULSE);
-                    EnergyVARhY_q1 += QUANTA *(pulse_EnergyVARhY_q1 / PULSE);
-                    EnergyVARhB_q1 += QUANTA *(pulse_EnergyVARhB_q1 / PULSE);
-                    EnergyVARhTotal_q1 += QUANTA *(pulse_EnergyVARhTotal_q1 / PULSE);
-                    EnergyVARhR_q2 += QUANTA *(pulse_EnergyVARhR_q2 / PULSE);
-                    EnergyVARhY_q2 += QUANTA *(pulse_EnergyVARhY_q2 / PULSE);
-                    EnergyVARhB_q2 += QUANTA *(pulse_EnergyVARhB_q2 / PULSE);
-                    EnergyVARhTotal_q2 += QUANTA *(pulse_EnergyVARhTotal_q2 / PULSE);
-                    EnergyVARhR_q3 += QUANTA *(pulse_EnergyVARhR_q3 / PULSE);
-                    EnergyVARhY_q3 += QUANTA *(pulse_EnergyVARhY_q3 / PULSE);
-                    EnergyVARhB_q3 += QUANTA *(pulse_EnergyVARhB_q3 / PULSE);
-                    EnergyVARhTotal_q3 += QUANTA *(pulse_EnergyVARhTotal_q3 / PULSE);
-                    EnergyVARhR_q4 += QUANTA *(pulse_EnergyVARhR_q4 / PULSE);
-                    EnergyVARhY_q4 += QUANTA *(pulse_EnergyVARhY_q4 / PULSE);
-                    EnergyVARhB_q4 += QUANTA *(pulse_EnergyVARhB_q4 / PULSE);
-                    EnergyVARhTotal_q4 += QUANTA *(pulse_EnergyVARhTotal_q4 / PULSE);
-                    EnergyVAhR_imp += QUANTA *(pulse_EnergyVAhR_imp / PULSE);
-                    EnergyVAhY_imp += QUANTA *(pulse_EnergyVAhY_imp / PULSE);
-                    EnergyVAhB_imp += QUANTA *(pulse_EnergyVAhB_imp / PULSE);
-                    EnergyVAhTotal_imp += QUANTA *(pulse_EnergyVAhTotal_imp / PULSE);
-                    EnergyVAhR_exp += QUANTA *(pulse_EnergyVAhR_exp / PULSE);
-                    EnergyVAhY_exp += QUANTA *(pulse_EnergyVAhY_exp / PULSE);
-                    EnergyVAhB_exp += QUANTA *(pulse_EnergyVAhB_exp / PULSE);
-                    EnergyVAhTotal_exp += QUANTA *(pulse_EnergyVAhTotal_exp / PULSE);
-                    EnergyFWhR_imp += QUANTA *(pulse_EnergyFWhR_imp / PULSE);
-                    EnergyFWhY_imp += QUANTA *(pulse_EnergyFWhY_imp / PULSE);
-                    EnergyFWhB_imp += QUANTA *(pulse_EnergyFWhB_imp / PULSE);
-                    EnergyFWhTotal_imp += QUANTA *(pulse_EnergyFWhTotal_imp / PULSE);
-                    EnergyFWhR_exp += QUANTA *(pulse_EnergyFWhR_exp / PULSE);
-                    EnergyFWhY_exp += QUANTA *(pulse_EnergyFWhY_exp / PULSE);
-                    EnergyFWhB_exp += QUANTA *(pulse_EnergyFWhB_exp / PULSE);
-                    EnergyFWhTotal_exp += QUANTA *(pulse_EnergyFWhTotal_exp / PULSE);
+                    if (EnergyInHR == true)
+                    {
+                        EnergyWhR_imp += QUANTA * (pulse_EnergyWhR_imp / PULSE);
+                        EnergyWhY_imp += QUANTA * (pulse_EnergyWhY_imp / PULSE);
+                        EnergyWhB_imp += QUANTA * (pulse_EnergyWhB_imp / PULSE);
+                        EnergyWhTotal_imp += QUANTA * (pulse_EnergyWhTotal_imp / PULSE);
+                        EnergyWhR_exp += QUANTA * (pulse_EnergyWhR_exp / PULSE);
+                        EnergyWhY_exp += QUANTA * (pulse_EnergyWhY_exp / PULSE);
+                        EnergyWhB_exp += QUANTA * (pulse_EnergyWhB_exp / PULSE);
+                        EnergyWhTotal_exp += QUANTA * (pulse_EnergyWhTotal_exp / PULSE);
+                        EnergyVARhR_q1 += QUANTA * (pulse_EnergyVARhR_q1 / PULSE);
+                        EnergyVARhY_q1 += QUANTA * (pulse_EnergyVARhY_q1 / PULSE);
+                        EnergyVARhB_q1 += QUANTA * (pulse_EnergyVARhB_q1 / PULSE);
+                        EnergyVARhTotal_q1 += QUANTA * (pulse_EnergyVARhTotal_q1 / PULSE);
+                        EnergyVARhR_q2 += QUANTA * (pulse_EnergyVARhR_q2 / PULSE);
+                        EnergyVARhY_q2 += QUANTA * (pulse_EnergyVARhY_q2 / PULSE);
+                        EnergyVARhB_q2 += QUANTA * (pulse_EnergyVARhB_q2 / PULSE);
+                        EnergyVARhTotal_q2 += QUANTA * (pulse_EnergyVARhTotal_q2 / PULSE);
+                        EnergyVARhR_q3 += QUANTA * (pulse_EnergyVARhR_q3 / PULSE);
+                        EnergyVARhY_q3 += QUANTA * (pulse_EnergyVARhY_q3 / PULSE);
+                        EnergyVARhB_q3 += QUANTA * (pulse_EnergyVARhB_q3 / PULSE);
+                        EnergyVARhTotal_q3 += QUANTA * (pulse_EnergyVARhTotal_q3 / PULSE);
+                        EnergyVARhR_q4 += QUANTA * (pulse_EnergyVARhR_q4 / PULSE);
+                        EnergyVARhY_q4 += QUANTA * (pulse_EnergyVARhY_q4 / PULSE);
+                        EnergyVARhB_q4 += QUANTA * (pulse_EnergyVARhB_q4 / PULSE);
+                        EnergyVARhTotal_q4 += QUANTA * (pulse_EnergyVARhTotal_q4 / PULSE);
+                        EnergyVAhR_imp += QUANTA * (pulse_EnergyVAhR_imp / PULSE);
+                        EnergyVAhY_imp += QUANTA * (pulse_EnergyVAhY_imp / PULSE);
+                        EnergyVAhB_imp += QUANTA * (pulse_EnergyVAhB_imp / PULSE);
+                        EnergyVAhTotal_imp += QUANTA * (pulse_EnergyVAhTotal_imp / PULSE);
+                        EnergyVAhR_exp += QUANTA * (pulse_EnergyVAhR_exp / PULSE);
+                        EnergyVAhY_exp += QUANTA * (pulse_EnergyVAhY_exp / PULSE);
+                        EnergyVAhB_exp += QUANTA * (pulse_EnergyVAhB_exp / PULSE);
+                        EnergyVAhTotal_exp += QUANTA * (pulse_EnergyVAhTotal_exp / PULSE);
+                        EnergyFWhR_imp += QUANTA * (pulse_EnergyFWhR_imp / PULSE);
+                        EnergyFWhY_imp += QUANTA * (pulse_EnergyFWhY_imp / PULSE);
+                        EnergyFWhB_imp += QUANTA * (pulse_EnergyFWhB_imp / PULSE);
+                        EnergyFWhTotal_imp += QUANTA * (pulse_EnergyFWhTotal_imp / PULSE);
+                        EnergyFWhR_exp += QUANTA * (pulse_EnergyFWhR_exp / PULSE);
+                        EnergyFWhY_exp += QUANTA * (pulse_EnergyFWhY_exp / PULSE);
+                        EnergyFWhB_exp += QUANTA * (pulse_EnergyFWhB_exp / PULSE);
+                        EnergyFWhTotal_exp += QUANTA * (pulse_EnergyFWhTotal_exp / PULSE);
 
-                    EnergyWhR_imp += PulseWeight[pulse_EnergyWhR_imp % PULSE];
-                    EnergyWhY_imp += PulseWeight[pulse_EnergyWhY_imp % PULSE];
-                    EnergyWhB_imp += PulseWeight[pulse_EnergyWhB_imp % PULSE];
-                    EnergyWhTotal_imp += PulseWeight[pulse_EnergyWhTotal_imp % PULSE];
-                    EnergyWhR_exp += PulseWeight[pulse_EnergyWhR_exp % PULSE];
-                    EnergyWhY_exp += PulseWeight[pulse_EnergyWhY_exp % PULSE];
-                    EnergyWhB_exp += PulseWeight[pulse_EnergyWhB_exp % PULSE];
-                    EnergyWhTotal_exp += PulseWeight[pulse_EnergyWhTotal_exp % PULSE];
-                    EnergyVARhR_q1 += PulseWeight[pulse_EnergyVARhR_q1 % PULSE];
-                    EnergyVARhY_q1 += PulseWeight[pulse_EnergyVARhY_q1 % PULSE];
-                    EnergyVARhB_q1 += PulseWeight[pulse_EnergyVARhB_q1 % PULSE];
-                    EnergyVARhTotal_q1 += PulseWeight[pulse_EnergyVARhTotal_q1 % PULSE];
-                    EnergyVARhR_q2 += PulseWeight[pulse_EnergyVARhR_q2 % PULSE];
-                    EnergyVARhY_q2 += PulseWeight[pulse_EnergyVARhY_q2 % PULSE];
-                    EnergyVARhB_q2 += PulseWeight[pulse_EnergyVARhB_q2 % PULSE];
-                    EnergyVARhTotal_q2 += PulseWeight[pulse_EnergyVARhTotal_q2 % PULSE];
-                    EnergyVARhR_q3 += PulseWeight[pulse_EnergyVARhR_q3 % PULSE];
-                    EnergyVARhY_q3 += PulseWeight[pulse_EnergyVARhY_q3 % PULSE];
-                    EnergyVARhB_q3 += PulseWeight[pulse_EnergyVARhB_q3 % PULSE];
-                    EnergyVARhTotal_q3 += PulseWeight[pulse_EnergyVARhTotal_q3 % PULSE];
-                    EnergyVARhR_q4 += PulseWeight[pulse_EnergyVARhR_q4 % PULSE];
-                    EnergyVARhY_q4 += PulseWeight[pulse_EnergyVARhY_q4 % PULSE];
-                    EnergyVARhB_q4 += PulseWeight[pulse_EnergyVARhB_q4 % PULSE];
-                    EnergyVARhTotal_q4 += PulseWeight[pulse_EnergyVARhTotal_q4 % PULSE];
-                    EnergyVAhR_imp += PulseWeight[pulse_EnergyVAhR_imp % PULSE];
-                    EnergyVAhY_imp += PulseWeight[pulse_EnergyVAhY_imp % PULSE];
-                    EnergyVAhB_imp += PulseWeight[pulse_EnergyVAhB_imp % PULSE];
-                    EnergyVAhTotal_imp += PulseWeight[pulse_EnergyVAhTotal_imp % PULSE];
-                    EnergyVAhR_exp += PulseWeight[pulse_EnergyVAhR_exp % PULSE];
-                    EnergyVAhY_exp += PulseWeight[pulse_EnergyVAhY_exp % PULSE];
-                    EnergyVAhB_exp += PulseWeight[pulse_EnergyVAhB_exp % PULSE];
-                    EnergyVAhTotal_exp += PulseWeight[pulse_EnergyVAhTotal_exp % PULSE];
-                    EnergyFWhR_imp += PulseWeight[pulse_EnergyFWhR_imp % PULSE];
-                    EnergyFWhY_imp += PulseWeight[pulse_EnergyFWhY_imp % PULSE];
-                    EnergyFWhB_imp += PulseWeight[pulse_EnergyFWhB_imp % PULSE];
-                    EnergyFWhTotal_imp += PulseWeight[pulse_EnergyFWhTotal_imp % PULSE];
-                    EnergyFWhR_exp += PulseWeight[pulse_EnergyFWhR_exp % PULSE];
-                    EnergyFWhY_exp += PulseWeight[pulse_EnergyFWhY_exp % PULSE];
-                    EnergyFWhB_exp += PulseWeight[pulse_EnergyFWhB_exp % PULSE];
-                    EnergyFWhTotal_exp += PulseWeight[pulse_EnergyFWhTotal_exp % PULSE];
-
+                        EnergyWhR_imp += PulseWeight[pulse_EnergyWhR_imp % PULSE];
+                        EnergyWhY_imp += PulseWeight[pulse_EnergyWhY_imp % PULSE];
+                        EnergyWhB_imp += PulseWeight[pulse_EnergyWhB_imp % PULSE];
+                        EnergyWhTotal_imp += PulseWeight[pulse_EnergyWhTotal_imp % PULSE];
+                        EnergyWhR_exp += PulseWeight[pulse_EnergyWhR_exp % PULSE];
+                        EnergyWhY_exp += PulseWeight[pulse_EnergyWhY_exp % PULSE];
+                        EnergyWhB_exp += PulseWeight[pulse_EnergyWhB_exp % PULSE];
+                        EnergyWhTotal_exp += PulseWeight[pulse_EnergyWhTotal_exp % PULSE];
+                        EnergyVARhR_q1 += PulseWeight[pulse_EnergyVARhR_q1 % PULSE];
+                        EnergyVARhY_q1 += PulseWeight[pulse_EnergyVARhY_q1 % PULSE];
+                        EnergyVARhB_q1 += PulseWeight[pulse_EnergyVARhB_q1 % PULSE];
+                        EnergyVARhTotal_q1 += PulseWeight[pulse_EnergyVARhTotal_q1 % PULSE];
+                        EnergyVARhR_q2 += PulseWeight[pulse_EnergyVARhR_q2 % PULSE];
+                        EnergyVARhY_q2 += PulseWeight[pulse_EnergyVARhY_q2 % PULSE];
+                        EnergyVARhB_q2 += PulseWeight[pulse_EnergyVARhB_q2 % PULSE];
+                        EnergyVARhTotal_q2 += PulseWeight[pulse_EnergyVARhTotal_q2 % PULSE];
+                        EnergyVARhR_q3 += PulseWeight[pulse_EnergyVARhR_q3 % PULSE];
+                        EnergyVARhY_q3 += PulseWeight[pulse_EnergyVARhY_q3 % PULSE];
+                        EnergyVARhB_q3 += PulseWeight[pulse_EnergyVARhB_q3 % PULSE];
+                        EnergyVARhTotal_q3 += PulseWeight[pulse_EnergyVARhTotal_q3 % PULSE];
+                        EnergyVARhR_q4 += PulseWeight[pulse_EnergyVARhR_q4 % PULSE];
+                        EnergyVARhY_q4 += PulseWeight[pulse_EnergyVARhY_q4 % PULSE];
+                        EnergyVARhB_q4 += PulseWeight[pulse_EnergyVARhB_q4 % PULSE];
+                        EnergyVARhTotal_q4 += PulseWeight[pulse_EnergyVARhTotal_q4 % PULSE];
+                        EnergyVAhR_imp += PulseWeight[pulse_EnergyVAhR_imp % PULSE];
+                        EnergyVAhY_imp += PulseWeight[pulse_EnergyVAhY_imp % PULSE];
+                        EnergyVAhB_imp += PulseWeight[pulse_EnergyVAhB_imp % PULSE];
+                        EnergyVAhTotal_imp += PulseWeight[pulse_EnergyVAhTotal_imp % PULSE];
+                        EnergyVAhR_exp += PulseWeight[pulse_EnergyVAhR_exp % PULSE];
+                        EnergyVAhY_exp += PulseWeight[pulse_EnergyVAhY_exp % PULSE];
+                        EnergyVAhB_exp += PulseWeight[pulse_EnergyVAhB_exp % PULSE];
+                        EnergyVAhTotal_exp += PulseWeight[pulse_EnergyVAhTotal_exp % PULSE];
+                        EnergyFWhR_imp += PulseWeight[pulse_EnergyFWhR_imp % PULSE];
+                        EnergyFWhY_imp += PulseWeight[pulse_EnergyFWhY_imp % PULSE];
+                        EnergyFWhB_imp += PulseWeight[pulse_EnergyFWhB_imp % PULSE];
+                        EnergyFWhTotal_imp += PulseWeight[pulse_EnergyFWhTotal_imp % PULSE];
+                        EnergyFWhR_exp += PulseWeight[pulse_EnergyFWhR_exp % PULSE];
+                        EnergyFWhY_exp += PulseWeight[pulse_EnergyFWhY_exp % PULSE];
+                        EnergyFWhB_exp += PulseWeight[pulse_EnergyFWhB_exp % PULSE];
+                        EnergyFWhTotal_exp += PulseWeight[pulse_EnergyFWhTotal_exp % PULSE];
+                    }
                     VAR_vi = VolR * Math.Abs(CurrRSigned);
                     VAY_vi = VolY * Math.Abs(CurrYSigned);
                     VAB_vi = VolB * Math.Abs(CurrBSigned);
