@@ -125,6 +125,12 @@ namespace Developer_Tools
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabControl3 = new System.Windows.Forms.TabControl();
             this.tabPage11 = new System.Windows.Forms.TabPage();
+            this.textBox_EnergyDefWhTotal = new System.Windows.Forms.TextBox();
+            this.textBox_EnergyDefWhR = new System.Windows.Forms.TextBox();
+            this.textBox_EnergyDefWhY = new System.Windows.Forms.TextBox();
+            this.textBox_EnergyDefWhB = new System.Windows.Forms.TextBox();
+            this.label101 = new System.Windows.Forms.Label();
+            this.checkBox_InstantEnergyInHR = new System.Windows.Forms.CheckBox();
             this.textBox_VATotal_triangle = new System.Windows.Forms.TextBox();
             this.textBox_VATotal_vi = new System.Windows.Forms.TextBox();
             this.textBox_VAB_triangle = new System.Windows.Forms.TextBox();
@@ -647,12 +653,6 @@ namespace Developer_Tools
             this.timer500ms = new System.Windows.Forms.Timer(this.components);
             this.timer100ms = new System.Windows.Forms.Timer(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.checkBox_InstantEnergyInHR = new System.Windows.Forms.CheckBox();
-            this.textBox_EnergyDefWhTotal = new System.Windows.Forms.TextBox();
-            this.textBox_EnergyDefWhR = new System.Windows.Forms.TextBox();
-            this.textBox_EnergyDefWhY = new System.Windows.Forms.TextBox();
-            this.textBox_EnergyDefWhB = new System.Windows.Forms.TextBox();
-            this.label101 = new System.Windows.Forms.Label();
             this.menuStripMain.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -992,6 +992,7 @@ namespace Developer_Tools
             this.textBox_DataTraffic.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox_DataTraffic.Size = new System.Drawing.Size(593, 529);
             this.textBox_DataTraffic.TabIndex = 12;
+            this.textBox_DataTraffic.TextChanged += new System.EventHandler(this.textBox_DataTraffic_TextChanged);
             // 
             // tabControl2
             // 
@@ -1815,6 +1816,65 @@ namespace Developer_Tools
             this.tabPage11.Text = "Instant data";
             this.tabPage11.Click += new System.EventHandler(this.tabPage11_Click);
             // 
+            // textBox_EnergyDefWhTotal
+            // 
+            this.textBox_EnergyDefWhTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_EnergyDefWhTotal.Location = new System.Drawing.Point(322, 536);
+            this.textBox_EnergyDefWhTotal.Name = "textBox_EnergyDefWhTotal";
+            this.textBox_EnergyDefWhTotal.Size = new System.Drawing.Size(69, 20);
+            this.textBox_EnergyDefWhTotal.TabIndex = 705;
+            this.textBox_EnergyDefWhTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // textBox_EnergyDefWhR
+            // 
+            this.textBox_EnergyDefWhR.BackColor = System.Drawing.Color.LightCoral;
+            this.textBox_EnergyDefWhR.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_EnergyDefWhR.Location = new System.Drawing.Point(85, 536);
+            this.textBox_EnergyDefWhR.Name = "textBox_EnergyDefWhR";
+            this.textBox_EnergyDefWhR.Size = new System.Drawing.Size(69, 20);
+            this.textBox_EnergyDefWhR.TabIndex = 702;
+            this.textBox_EnergyDefWhR.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // textBox_EnergyDefWhY
+            // 
+            this.textBox_EnergyDefWhY.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.textBox_EnergyDefWhY.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_EnergyDefWhY.Location = new System.Drawing.Point(163, 536);
+            this.textBox_EnergyDefWhY.Name = "textBox_EnergyDefWhY";
+            this.textBox_EnergyDefWhY.Size = new System.Drawing.Size(69, 20);
+            this.textBox_EnergyDefWhY.TabIndex = 703;
+            this.textBox_EnergyDefWhY.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // textBox_EnergyDefWhB
+            // 
+            this.textBox_EnergyDefWhB.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.textBox_EnergyDefWhB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_EnergyDefWhB.Location = new System.Drawing.Point(245, 536);
+            this.textBox_EnergyDefWhB.Name = "textBox_EnergyDefWhB";
+            this.textBox_EnergyDefWhB.Size = new System.Drawing.Size(69, 20);
+            this.textBox_EnergyDefWhB.TabIndex = 704;
+            this.textBox_EnergyDefWhB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label101
+            // 
+            this.label101.AutoSize = true;
+            this.label101.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label101.Location = new System.Drawing.Point(31, 539);
+            this.label101.Name = "label101";
+            this.label101.Size = new System.Drawing.Size(48, 13);
+            this.label101.TabIndex = 701;
+            this.label101.Text = "Defraud:";
+            // 
+            // checkBox_InstantEnergyInHR
+            // 
+            this.checkBox_InstantEnergyInHR.AutoSize = true;
+            this.checkBox_InstantEnergyInHR.Location = new System.Drawing.Point(820, 370);
+            this.checkBox_InstantEnergyInHR.Name = "checkBox_InstantEnergyInHR";
+            this.checkBox_InstantEnergyInHR.Size = new System.Drawing.Size(87, 21);
+            this.checkBox_InstantEnergyInHR.TabIndex = 700;
+            this.checkBox_InstantEnergyInHR.Text = "HR Energy";
+            this.checkBox_InstantEnergyInHR.UseVisualStyleBackColor = true;
+            // 
             // textBox_VATotal_triangle
             // 
             this.textBox_VATotal_triangle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -2210,7 +2270,7 @@ namespace Developer_Tools
             this.label112.Font = new System.Drawing.Font("Palatino Linotype", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label112.Location = new System.Drawing.Point(16, 88);
             this.label112.Name = "label112";
-            this.label112.Size = new System.Drawing.Size(58, 16);
+            this.label112.Size = new System.Drawing.Size(57, 16);
             this.label112.TabIndex = 6;
             this.label112.Text = "Time dev:";
             // 
@@ -2229,7 +2289,7 @@ namespace Developer_Tools
             this.label111.Font = new System.Drawing.Font("Palatino Linotype", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label111.Location = new System.Drawing.Point(8, 64);
             this.label111.Name = "label111";
-            this.label111.Size = new System.Drawing.Size(66, 16);
+            this.label111.Size = new System.Drawing.Size(65, 16);
             this.label111.TabIndex = 4;
             this.label111.Text = "Time delay:";
             // 
@@ -2257,7 +2317,7 @@ namespace Developer_Tools
             this.label110.Font = new System.Drawing.Font("Palatino Linotype", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label110.Location = new System.Drawing.Point(34, 41);
             this.label110.Name = "label110";
-            this.label110.Size = new System.Drawing.Size(40, 16);
+            this.label110.Size = new System.Drawing.Size(39, 16);
             this.label110.TabIndex = 1;
             this.label110.Text = "Timer:";
             // 
@@ -2267,7 +2327,7 @@ namespace Developer_Tools
             this.label109.Font = new System.Drawing.Font("Palatino Linotype", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label109.Location = new System.Drawing.Point(22, 19);
             this.label109.Name = "label109";
-            this.label109.Size = new System.Drawing.Size(52, 16);
+            this.label109.Size = new System.Drawing.Size(51, 16);
             this.label109.TabIndex = 0;
             this.label109.Text = "Samples:";
             // 
@@ -2582,7 +2642,6 @@ namespace Developer_Tools
             // 
             // button_InstantLogFileCreate
             // 
-            this.button_InstantLogFileCreate.Enabled = false;
             this.button_InstantLogFileCreate.Location = new System.Drawing.Point(168, 13);
             this.button_InstantLogFileCreate.Name = "button_InstantLogFileCreate";
             this.button_InstantLogFileCreate.Size = new System.Drawing.Size(75, 23);
@@ -2593,7 +2652,6 @@ namespace Developer_Tools
             // 
             // textBox_InstantLogNewFileName
             // 
-            this.textBox_InstantLogNewFileName.Enabled = false;
             this.textBox_InstantLogNewFileName.Location = new System.Drawing.Point(5, 38);
             this.textBox_InstantLogNewFileName.Name = "textBox_InstantLogNewFileName";
             this.textBox_InstantLogNewFileName.Size = new System.Drawing.Size(239, 22);
@@ -3243,7 +3301,7 @@ namespace Developer_Tools
             this.radioButton_InputModeNet.Checked = true;
             this.radioButton_InputModeNet.Location = new System.Drawing.Point(6, 34);
             this.radioButton_InputModeNet.Name = "radioButton_InputModeNet";
-            this.radioButton_InputModeNet.Size = new System.Drawing.Size(93, 20);
+            this.radioButton_InputModeNet.Size = new System.Drawing.Size(92, 20);
             this.radioButton_InputModeNet.TabIndex = 1;
             this.radioButton_InputModeNet.TabStop = true;
             this.radioButton_InputModeNet.Text = "Net Metering";
@@ -3254,7 +3312,7 @@ namespace Developer_Tools
             this.radioButton_InputModeFwd.AutoSize = true;
             this.radioButton_InputModeFwd.Location = new System.Drawing.Point(6, 15);
             this.radioButton_InputModeFwd.Name = "radioButton_InputModeFwd";
-            this.radioButton_InputModeFwd.Size = new System.Drawing.Size(96, 20);
+            this.radioButton_InputModeFwd.Size = new System.Drawing.Size(95, 20);
             this.radioButton_InputModeFwd.TabIndex = 0;
             this.radioButton_InputModeFwd.Text = "Fwd Metering";
             this.radioButton_InputModeFwd.UseVisualStyleBackColor = true;
@@ -7271,6 +7329,7 @@ namespace Developer_Tools
             this.textBoxBootloaderPath.Text = "Click to browse";
             this.textBoxBootloaderPath.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxBootloaderPath.Click += new System.EventHandler(this.textBoxBootloaderPath_Click);
+            this.textBoxBootloaderPath.TextChanged += new System.EventHandler(this.textBoxBootloaderPath_TextChanged);
             // 
             // buttonBootCreate
             // 
@@ -7312,65 +7371,6 @@ namespace Developer_Tools
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // checkBox_InstantEnergyInHR
-            // 
-            this.checkBox_InstantEnergyInHR.AutoSize = true;
-            this.checkBox_InstantEnergyInHR.Location = new System.Drawing.Point(820, 370);
-            this.checkBox_InstantEnergyInHR.Name = "checkBox_InstantEnergyInHR";
-            this.checkBox_InstantEnergyInHR.Size = new System.Drawing.Size(87, 21);
-            this.checkBox_InstantEnergyInHR.TabIndex = 700;
-            this.checkBox_InstantEnergyInHR.Text = "HR Energy";
-            this.checkBox_InstantEnergyInHR.UseVisualStyleBackColor = true;
-            // 
-            // textBox_EnergyDefWhTotal
-            // 
-            this.textBox_EnergyDefWhTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_EnergyDefWhTotal.Location = new System.Drawing.Point(322, 536);
-            this.textBox_EnergyDefWhTotal.Name = "textBox_EnergyDefWhTotal";
-            this.textBox_EnergyDefWhTotal.Size = new System.Drawing.Size(69, 20);
-            this.textBox_EnergyDefWhTotal.TabIndex = 705;
-            this.textBox_EnergyDefWhTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // textBox_EnergyDefWhR
-            // 
-            this.textBox_EnergyDefWhR.BackColor = System.Drawing.Color.LightCoral;
-            this.textBox_EnergyDefWhR.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_EnergyDefWhR.Location = new System.Drawing.Point(85, 536);
-            this.textBox_EnergyDefWhR.Name = "textBox_EnergyDefWhR";
-            this.textBox_EnergyDefWhR.Size = new System.Drawing.Size(69, 20);
-            this.textBox_EnergyDefWhR.TabIndex = 702;
-            this.textBox_EnergyDefWhR.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // textBox_EnergyDefWhY
-            // 
-            this.textBox_EnergyDefWhY.BackColor = System.Drawing.Color.LightGoldenrodYellow;
-            this.textBox_EnergyDefWhY.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_EnergyDefWhY.Location = new System.Drawing.Point(163, 536);
-            this.textBox_EnergyDefWhY.Name = "textBox_EnergyDefWhY";
-            this.textBox_EnergyDefWhY.Size = new System.Drawing.Size(69, 20);
-            this.textBox_EnergyDefWhY.TabIndex = 703;
-            this.textBox_EnergyDefWhY.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // textBox_EnergyDefWhB
-            // 
-            this.textBox_EnergyDefWhB.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.textBox_EnergyDefWhB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_EnergyDefWhB.Location = new System.Drawing.Point(245, 536);
-            this.textBox_EnergyDefWhB.Name = "textBox_EnergyDefWhB";
-            this.textBox_EnergyDefWhB.Size = new System.Drawing.Size(69, 20);
-            this.textBox_EnergyDefWhB.TabIndex = 704;
-            this.textBox_EnergyDefWhB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label101
-            // 
-            this.label101.AutoSize = true;
-            this.label101.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label101.Location = new System.Drawing.Point(31, 539);
-            this.label101.Name = "label101";
-            this.label101.Size = new System.Drawing.Size(48, 13);
-            this.label101.TabIndex = 701;
-            this.label101.Text = "Defraud:";
             // 
             // Form1
             // 

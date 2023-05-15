@@ -33,7 +33,12 @@ namespace Developer_Tools
             pathName = "D:\\DevelopersTool\\DevelopersToolEnergyMeterInstantDataLogFile.txt";
             if (File.Exists(pathName) == false)
             {
+                string header = "Time\tRTC\tVoltage\t\t\tVoltage DC\t\t\tCurrent\t\t\t\tCurrent DC\t\t\t\tPF\t\t\t\tAngle\t\t\tPower(W)\t\t\t\tPower(VAR)\t\t\t\tPower(VA)\t\t\t\tPower(VA)-vi\t\t\t\tPower(VA)-power triangle\t\t\t\tFrequency\t\t\t\tQuadrant\t\t\t\tSamples\t\t\t\t\tTHD(Vol)\t\t\tTHD(Curr)\t\t\tCurr_N_vect\tAngle_N_vect\tVoltage\t\t\tAngle\t\t\tActive Err(%)\t\t\t\tRective Err(%)\t\t\t\tApparent Err(%)\t\t\t\t" +
+                    "Energy(Wh)\t\t\t\t\t\t\t\tEnergy(VARh)\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tEnergy(VAh)\t\t\t\t\t\t\t\t" +
+                    "Fundamental Energy(Wh)\t\t\t\t\t\t\t\tDefraud Energy(Wh)\t\t\t\tActive Pulse\t\t\t\t\t\t\t\tReactive Pulse\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tApparent Pulse\t\t\t\t\t\t\t\tFundamental Power(Wh)\t\t\t\tTemperature(C)\tCycle/Sec\tBAttery vol(V)\tRTC Coltage(V)\tMetering Mode\tFG Flag\t" +
+                    "Reactive Samples\tReactive Timer\tReactive Time delay\tReactive Time deviation\tMISC Data\tTamper Data\n";
                 DS_TextFile.createNewFile(pathName);
+                DS_TextFile.appendToFile(pathName, header);
             }
 
             /* setup(JSON file) */

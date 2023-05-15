@@ -1,0 +1,68 @@
+D:\1.1 Projects Software\7. Developer Tools Remaking\Developer Tools\bin\Debug\Developer Tools.exe
+D:\1.1 Projects Software\7. Developer Tools Remaking\Developer Tools\bin\Debug\Developer Tools.pdb
+D:\1.1 Projects Software\7. Developer Tools Remaking\Developer Tools\obj\Debug\Developer_Tools.Properties.Resources.resources
+D:\1.1 Projects Software\7. Developer Tools Remaking\Developer Tools\obj\Debug\Developer Tools.csproj.GenerateResource.cache
+D:\1.1 Projects Software\7. Developer Tools Remaking\Developer Tools\obj\Debug\Developer Tools.csproj.CoreCompileInputs.cache
+D:\1.1 Projects Software\7. Developer Tools Remaking\Developer Tools\obj\Debug\Developer Tools.exe
+D:\1.1 Projects Software\7. Developer Tools Remaking\Developer Tools\obj\Debug\Developer Tools.pdb
+D:\1.1 Projects Software\7. Developer Tools Remaking\Developer Tools\obj\Debug\Developer Tools.csproj.AssemblyReference.cache
+D:\1.1 Projects Software\7. Developer Tools Remaking\Developer Tools\obj\Debug\Developer_Tools.Form1.resources
+D:\1.1 Projects Software\7. Developer Tools Remaking\Developer Tools\obj\Debug\Developer_Tools.FormSerialSinglePortSetup.resources
+D:\1.1 Projects Software\7. Developer Tools Remaking\Developer Tools\obj\Debug\Developer_Tools.FormLogin.resources
+D:\1.1 Projects Software\7. Developer Tools Remaking\Developer Tools\bin\Debug\Newtonsoft.Json.dll
+D:\1.1 Projects Software\7. Developer Tools Remaking\Developer Tools\bin\Debug\Newtonsoft.Json.xml
+D:\1.1 Projects Software\7. Developer Tools Remaking\Developer Tools\obj\Debug\Developer Tools.csproj.CopyComplete
+E:\1.1 Projects Software\7. Developer Tools Remaking\Developer Tools\bin\Debug\Developer Tools.exe
+E:\1.1 Projects Software\7. Developer Tools Remaking\Developer Tools\bin\Debug\Developer Tools.pdb
+E:\1.1 Projects Software\7. Developer Tools Remaking\Developer Tools\bin\Debug\Newtonsoft.Json.dll
+E:\1.1 Projects Software\7. Developer Tools Remaking\Developer Tools\bin\Debug\Newtonsoft.Json.xml
+E:\1.1 Projects Software\7. Developer Tools Remaking\Developer Tools\obj\Debug\Developer Tools.csproj.AssemblyReference.cache
+E:\1.1 Projects Software\7. Developer Tools Remaking\Developer Tools\obj\Debug\Developer_Tools.Form1.resources
+E:\1.1 Projects Software\7. Developer Tools Remaking\Developer Tools\obj\Debug\Developer_Tools.FormLogin.resources
+E:\1.1 Projects Software\7. Developer Tools Remaking\Developer Tools\obj\Debug\Developer_Tools.Properties.Resources.resources
+E:\1.1 Projects Software\7. Developer Tools Remaking\Developer Tools\obj\Debug\Developer Tools.csproj.GenerateResource.cache
+E:\1.1 Projects Software\7. Developer Tools Remaking\Developer Tools\obj\Debug\Developer Tools.csproj.CoreCompileInputs.cache
+E:\1.1 Projects Software\7. Developer Tools Remaking\Developer Tools\obj\Debug\Developer Tools.csproj.CopyComplete
+E:\1.1 Projects Software\7. Developer Tools Remaking\Developer Tools\obj\Debug\Developer Tools.exe
+E:\1.1 Projects Software\7. Developer Tools Remaking\Developer Tools\obj\Debug\Developer Tools.pdb
+E:\1.1 Projects Software\7. Developer Tools Remaking\Developer Tools\obj\Debug\Developer_Tools.FormSerialConfiguration.resources
+E:\1. Projects\3. Projects Software\4. Developer Tools\Developer Tools\bin\Debug\Developer Tools.exe
+E:\1. Projects\3. Projects Software\4. Developer Tools\Developer Tools\bin\Debug\Developer Tools.pdb
+E:\1. Projects\3. Projects Software\4. Developer Tools\Developer Tools\bin\Debug\Newtonsoft.Json.dll
+E:\1. Projects\3. Projects Software\4. Developer Tools\Developer Tools\bin\Debug\Newtonsoft.Json.xml
+E:\1. Projects\3. Projects Software\4. Developer Tools\Developer Tools\obj\Debug\Developer_Tools.Form1.resources
+E:\1. Projects\3. Projects Software\4. Developer Tools\Developer Tools\obj\Debug\Developer_Tools.Properties.Resources.resources
+E:\1. Projects\3. Projects Software\4. Developer Tools\Developer Tools\obj\Debug\Developer Tools.csproj.GenerateResource.cache
+E:\1. Projects\3. Projects Software\4. Developer Tools\Developer Tools\obj\Debug\Developer Tools.csproj.CoreCompileInputs.cache
+E:\1. Projects\3. Projects Software\4. Developer Tools\Developer Tools\obj\Debug\Developer Tools.csproj.CopyComplete
+E:\1. Projects\3. Projects Software\4. Developer Tools\Developer Tools\obj\Debug\Developer Tools.exe
+E:\1. Projects\3. Projects Software\4. Developer Tools\Developer Tools\obj\Debug\Developer Tools.pdb
+E:\1. Projects\3. Projects Software\4. Developer Tools\Developer Tools\obj\Debug\Developer Tools.csproj.AssemblyReference.cache
+E:\1. Projects\3. Projects Software\4. Developer Tools\Developer Tools\bin\Debug\Developer Tools.exe.config
+E:\1. Projects\3. Dheeraj Projects Software\4. Developer Tools\Developer Tools\bin\Debug\Developer Tools.exe.config
+E:\1. Projects\3. Dheeraj Projects Software\4. Developer Tools\Developer Tools\bin\Debug\Developer Tools.exe
+E:\1. Projects\3. Dheeraj Projects Software\4. Developer Tools\Developer Tools\bin\Debug\Developer Tools.pdb
+E:\1. Projects\3. Dheeraj Projects Software\4. Developer Tools\Developer Tools\bin\Debug\Newtonsoft.Json.dll
+E:\1. Projects\3. Dheeraj Projects Software\4. Developer Tools\Developer Tools\bin\Debug\Newtonsoft.Json.xml
+E:\1. Projects\3. Dheeraj Projects Software\4. Developer Tools\Developer Tools\obj\Debug\Developer Tools.csproj.AssemblyReference.cache
+E:\1. Projects\3. Dheeraj Projects Software\4. Developer Tools\Developer Tools\obj\Debug\Developer_Tools.Form1.resources
+E:\1. Projects\3. Dheeraj Projects Software\4. Developer Tools\Developer Tools\obj\Debug\Developer_Tools.Properties.Resources.resources
+E:\1. Projects\3. Dheeraj Projects Software\4. Developer Tools\Developer Tools\obj\Debug\Developer Tools.csproj.GenerateResource.cache
+E:\1. Projects\3. Dheeraj Projects Software\4. Developer Tools\Developer Tools\obj\Debug\Developer Tools.csproj.CoreCompileInputs.cache
+E:\1. Projects\3. Dheeraj Projects Software\4. Developer Tools\Developer Tools\obj\Debug\Developer Tools.csproj.CopyComplete
+E:\1. Projects\3. Dheeraj Projects Software\4. Developer Tools\Developer Tools\obj\Debug\Developer Tools.exe
+E:\1. Projects\3. Dheeraj Projects Software\4. Developer Tools\Developer Tools\obj\Debug\Developer Tools.pdb
+D:\Software code\Projects Software\4. Developer Tools\Developer Tools\bin\Debug\Developer Tools.exe.config
+D:\Software code\Projects Software\4. Developer Tools\Developer Tools\bin\Debug\Developer Tools.exe
+D:\Software code\Projects Software\4. Developer Tools\Developer Tools\bin\Debug\Developer Tools.pdb
+D:\Software code\Projects Software\4. Developer Tools\Developer Tools\bin\Debug\Newtonsoft.Json.dll
+D:\Software code\Projects Software\4. Developer Tools\Developer Tools\bin\Debug\Newtonsoft.Json.xml
+D:\Software code\Projects Software\4. Developer Tools\Developer Tools\obj\Debug\Developer Tools.csproj.AssemblyReference.cache
+D:\Software code\Projects Software\4. Developer Tools\Developer Tools\obj\Debug\Developer Tools.csproj.SuggestedBindingRedirects.cache
+D:\Software code\Projects Software\4. Developer Tools\Developer Tools\obj\Debug\Developer_Tools.Form1.resources
+D:\Software code\Projects Software\4. Developer Tools\Developer Tools\obj\Debug\Developer_Tools.Properties.Resources.resources
+D:\Software code\Projects Software\4. Developer Tools\Developer Tools\obj\Debug\Developer Tools.csproj.GenerateResource.cache
+D:\Software code\Projects Software\4. Developer Tools\Developer Tools\obj\Debug\Developer Tools.csproj.CoreCompileInputs.cache
+D:\Software code\Projects Software\4. Developer Tools\Developer Tools\obj\Debug\Developer Tools.csproj.CopyComplete
+D:\Software code\Projects Software\4. Developer Tools\Developer Tools\obj\Debug\Developer Tools.exe
+D:\Software code\Projects Software\4. Developer Tools\Developer Tools\obj\Debug\Developer Tools.pdb

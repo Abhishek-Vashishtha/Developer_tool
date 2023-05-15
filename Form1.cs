@@ -91,6 +91,17 @@ namespace Developer_Tools
         public static double EnergyWhR_exp, EnergyWhY_exp, EnergyWhB_exp, EnergyWhTotal_exp;
         public static double EnergyVARhR_q1, EnergyVARhY_q1, EnergyVARhB_q1, EnergyVARhTotal_q1;
         public static double EnergyVARhR_q2, EnergyVARhY_q2, EnergyVARhB_q2, EnergyVARhTotal_q2;
+
+        private void textBoxBootloaderPath_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox_DataTraffic_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
         public static double EnergyVARhR_q3, EnergyVARhY_q3, EnergyVARhB_q3, EnergyVARhTotal_q3;
         public static double EnergyVARhR_q4, EnergyVARhY_q4, EnergyVARhB_q4, EnergyVARhTotal_q4;
         public static double EnergyVAhR_imp, EnergyVAhY_imp, EnergyVAhB_imp, EnergyVAhTotal_imp;
@@ -652,51 +663,27 @@ namespace Developer_Tools
 
         private void checkBox_LogToNewFile_CheckedChanged(object sender, EventArgs e)
         {
-            if(checkBox_LogToNewFile.Checked == true)
-            {
-                button_InstantLogFileCreate.Enabled = true;
-                textBox_InstantLogNewFileName.Enabled = true;
-            }
-            else
-            {
-                button_InstantLogFileCreate.Enabled = false;
-                textBox_InstantLogNewFileName.Enabled = false;
-            }
+
         }
 
         private void checkBox_LogData_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox_LogData.Checked == false)
-            {
-                button_InstantLogFileCreate.Enabled = false;
-                textBox_InstantLogNewFileName.Enabled = false;
-                checkBox_LogToNewFile.Enabled = false;
-            }
-            else
-            {
-                checkBox_LogToNewFile.Enabled = true;
-                if (checkBox_LogToNewFile.Checked == true)
-                {
-                    button_InstantLogFileCreate.Enabled = true;
-                    textBox_InstantLogNewFileName.Enabled = true;
-                }
-                else
-                {
-                    button_InstantLogFileCreate.Enabled = false;
-                    textBox_InstantLogNewFileName.Enabled = false;
-                }
-            }
+
         }
 
         private void button_InstantLogFileCreate_Click(object sender, EventArgs e)
         {
-            string pathName = "D:\\DevelopersTool\\DevelopersToolEnergyMeterInstantDataLogFile.txt";
             if (textBox_InstantLogNewFileName.Text != String.Empty)
             {
-                pathName = "D:\\DevelopersTool\\" + textBox_InstantLogNewFileName.Text + ".txt";
-                StreamWriter sw = File.AppendText(pathName);
-                sw.Close();
-                sw.Dispose();
+                string pathName = "D:\\DevelopersTool\\" + textBox_InstantLogNewFileName.Text + ".txt";
+                DS_TextFile.createNewFile(pathName);
+                string header = "Time\tRTC\tVoltage\t\t\tVoltage DC\t\t\tCurrent\t\t\t\tCurrent DC\t\t\t\tPF\t\t\t\tAngle\t\t\tPower(W)\t\t\t\tPower(VAR)\t\t\t\tPower(VA)\t\t\t\tPower(VA)-vi\t\t\t\tPower(VA)-power triangle\t\t\t\tFrequency\t\t\t\tQuadrant\t\t\t\tSamples\t\t\t\t\tTHD(Vol)\t\t\tTHD(Curr)\t\t\tCurr_N_vect\tAngle_N_vect\tVoltage\t\t\tAngle\t\t\tActive Err(%)\t\t\t\tRective Err(%)\t\t\t\tApparent Err(%)\t\t\t\t" +
+                     "Energy(Wh)\t\t\t\t\t\t\t\tEnergy(VARh)\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tEnergy(VAh)\t\t\t\t\t\t\t\t" +
+                     "Fundamental Energy(Wh)\t\t\t\t\t\t\t\tDefraud Energy(Wh)\t\t\t\tActive Pulse\t\t\t\t\t\t\t\tReactive Pulse\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tApparent Pulse\t\t\t\t\t\t\t\tFundamental Power(Wh)\t\t\t\tTemperature(C)\tCycle/Sec\tBattery vol(V)\tRTC Voltage(V)\tMetering Mode\tFG Flag\t" +
+                     "Reactive Samples\tReactive Timer\tReactive Time delay\tReactive Time deviation\tMISC Data\tTamper Data\n";
+                DS_TextFile.appendToFile(pathName, header);
+                header = "\t\tR\tY\tB\tR\tY\tB\tR\tY\tB\tN\tR\tY\tB\tN\tR\tY\tB\tNet\tR\tY\tB\tR\tY\tB\tNet\tR\tY\tB\tNet\tR\tY\tB\tNet\tR\tY\tB\tNet\tR\tY\tB\tNet\tR\tY\tB\tNet\tR\tY\tB\tAll ph\tR\tY\tB\tPer second\tN\tR\tY\tB\tR\tY\tB\t\t\tRY\tYB\tBR\tRY\tYB\tBR\tR\tY\tB\tNet\tR\tY\tB\tNet\tR\tY\tB\tNet\tR imp\tR exp\tY imp\tY exp\tB imp\tB exp\tTotal imp\tTotal exp\tR q1\tR q2\tR q3\tR q4\tY q1\tY q2\tY q3\tY q4\tB q1\tB q2\tB q3\tB q4\tTotal q1\tTotal q2\tTotal q3\tTotal q4\tR imp\tR exp\tY imp\tY exp\tB imp\tB exp\tTotal imp\tTotal exp\tR imp\tR exp\tY imp\tY exp\tB imp\tB exp\tTotal imp\tTotal exp\tR\tY\tB\tTotal\tR imp\tR exp\tY imp\tY exp\tB imp\tB exp\tTotal imp\tTotal exp\tR q1\tR q2\tR q3\tR q4\tY q1\tY q2\tY q3\tY q4\tB q1\tB q2\tB q3\tB q4\tTotal q1\tTotal q2\tTotal q3\tTotal q4\tR imp\tR exp\tY imp\tY exp\tB imp\tB exp\tTotal imp\tTotal exp\tR\tY\tB\tNet\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n";
+                DS_TextFile.appendToFile(pathName, header);
             }
             else
             {
@@ -1276,6 +1263,7 @@ namespace Developer_Tools
                 /* verfiy the file existant on the disk */
                 if (File.Exists(instant_data_log_filename) == false)
                 {
+                    checkBox_LogToNewFile.Checked = false;
                     checkBox_LogData.Checked = false;
                     MessageBox.Show("File Not Exists..!!");
                     instant_data_log_filename = string.Empty;
@@ -2295,7 +2283,7 @@ namespace Developer_Tools
                     powerUpSec = DS_Functions.ByteArrayToUs16(b_array, arr_ptr); arr_ptr += 2;
 
                     CurrNVector = DS_Functions.ByteArrayToS32(b_array, arr_ptr, 1000); arr_ptr += 4;
-                    AngleNVector = DS_Functions.ByteArrayToS32(b_array, arr_ptr, 100); arr_ptr += 2;
+                    AngleNVector = DS_Functions.ByteArrayToS16(b_array, arr_ptr, 100); arr_ptr += 2;
 
 
                     temperature_tlv = DS_Functions.ByteArrayToUs16(b_array, arr_ptr, 100); arr_ptr += 2;

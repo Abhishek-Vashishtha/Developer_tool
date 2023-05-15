@@ -16,5 +16,13 @@ namespace Developer_Tools
             string fileContents = System.IO.File.ReadAllText(@path);
             return fileContents;
         }
+
+        public static void appendToFile(string path, string data)
+        {
+            StreamWriter sw = File.AppendText(path);
+            sw.Write(data);
+            sw.Close();
+            sw.Dispose();
+        }
     }
 }
